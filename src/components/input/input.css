@@ -22,9 +22,13 @@
   }
 
   &__label {
+  }
+
+  &__text {
     position: absolute;
     top: 6px;
     left: 0;
+    width: 100%;
     font-size: 13px;
     color: #999;
     font-weight: 500;
@@ -32,11 +36,11 @@
     transition: 0.3s font-size, top 0.3s;
   }
 
-  &__text-field:valid + &__label {
+  &__text-field:valid + &__text {
     top: -8px;
   }
 
-  &__text-field:focus + &__label {
+  &__text-field:focus + &__text {
     top: -12px;
     font-size: 9px;
     line-height: 9px;
