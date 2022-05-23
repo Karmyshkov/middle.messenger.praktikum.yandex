@@ -1,0 +1,24 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "---",
+  "scripts": {
+    "build": "parcel build src/pages/index.hbs --no-cache --public-url ./",
+    "start": "parcel src/pages/index.hbs --no-cache && parcel watch ./*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karmyshkov/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "Evgeniy Karmyskov <karmyskove@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/Karmyshkov/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "parcel": "^2.5.0",
+    "postcss-nested": "^5.0.6"
+  }
+}
