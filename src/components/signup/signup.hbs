@@ -1,11 +1,12 @@
 <form class="signup">
   <h1 class="signup__title">Регистрация</h1>
-  {{>input/input text="Почта" type="email"}}
-  {{>input/input text="Логин" type="text"}}
-  {{>input/input text="Имя" type="text"}}
-  {{>input/input text="Фамилия" type="text"}}
-  {{>input/input text="Пароль" type="password"}}
-  {{>input/input text="Пароль (ещё раз)" type="password"}}
+  {{>input/input type="email" helperText="Почта"}}
+  {{>input/input type="text" helperText="Логин" minlength="5" maxlength="20"}}
+  {{>input/input type="text" helperText="Имя" minlength="1" maxlength="50"}}
+  {{>input/input type="text" helperText="Фамилия" minlength="1" maxlength="50"}}
+  {{>input/input type="password" helperText="Пароль" minlength="4" maxlength="20"}}
+  {{>input/input type="password" helperText="Пароль (ещё раз)" minlength="4" maxlength="20"}}
   <button class="signup__btn" type="submit">Зарегистрироваться</button>
   <a class="signup__link" href="./index.hbs">Войти</a>
 </form>
+

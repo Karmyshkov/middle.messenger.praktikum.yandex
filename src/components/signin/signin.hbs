@@ -1,7 +1,7 @@
 <form class="signin">
   <h1 class="signin__title">Вход</h1>
-  {{>input/input text="Логин" type="text"}}
-  {{>input/input text="Пароль" type="password"}}
+  {{>input/input type="text" helperText="Логин" minlength="5" maxlength="20"}}
+  {{>input/input type="password" helperText="Пароль" minlength="4" maxlength="20"}}
   <button class="signin__btn" type="submit">Авторизоваться</button>
   <a class="signin__link" href="./register.hbs">Нет аккаунта?</a>
 </form>
