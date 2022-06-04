@@ -19,9 +19,11 @@
     color: #1e1e1e;
     font-weight: 500;
     line-height: 13px;
+    margin-bottom: 7px;
   }
 
   &__label {
+    cursor: text;
   }
 
   &__text {
@@ -36,6 +38,10 @@
     transition: 0.3s font-size, top 0.3s;
   }
 
+  &__text_error {
+    color: #ff2f2f;
+  }
+
   &__text-field:valid + &__text {
     top: -8px;
   }
@@ -44,5 +50,19 @@
     top: -12px;
     font-size: 9px;
     line-height: 9px;
+  }
+
+  &__helper-text {
+    margin: 0;
+    min-height: 8px;
+    font-size: 8px;
+    color: #ff2f2f;
+    font-weight: 400;
+    line-height: 8px;
+    opacity: 0;
+  }
+
+  &__helper-text_show {
+    opacity: 1;
   }
 }
