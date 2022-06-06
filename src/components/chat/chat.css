@@ -6,7 +6,7 @@
 
   &__column {
     list-style: none;
-    padding: 21px 10px 0;
+    padding-top: 21px;
   }
 
   &__link-profile {
@@ -30,5 +30,10 @@
   }
 
   &__link-img {
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
   }
 }

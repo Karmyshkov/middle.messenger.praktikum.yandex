@@ -16,11 +16,11 @@
   }
 
   &__search {
-    margin-bottom: 14px;
+    margin: 0 10px 14px;
   }
 
   &__link-profile {
     display: block;
-    margin-bottom: 23px;
+    margin: 0 10px 23px 0;
   }
 }
