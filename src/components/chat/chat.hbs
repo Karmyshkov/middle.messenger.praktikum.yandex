@@ -6,7 +6,9 @@
     </a>
     {{> search/search}}
     <ul class="chat__list">
-      {{> listItem/listItem}}
+      {{#each data.messages}}
+        {{> listItem/listItem this="{{this}}" }}
+      {{/each}}
     </ul>
   </li>
   <li class="chat__column"></li>

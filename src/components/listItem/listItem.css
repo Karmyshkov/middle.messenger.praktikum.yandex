@@ -14,6 +14,10 @@
     margin: 0 10px;
   }
 
+  &__container:last-of-type {
+    border-bottom: 1px solid var(--color-line);
+  }
+
   &__avatar {
     max-width: 47px;
     border-radius: 50%;
@@ -42,6 +46,10 @@
     line-height: 15px;
   }
 
+  &__message_bold {
+    color: var(--color-primaty);
+  }
+
   &__wrap {
     display: flex;
     flex-direction: column;
@@ -60,6 +68,7 @@
   }
 
   &__count-message {
+    display: none;
     margin: 0;
     align-self: flex-end;
     font-size: 11px;
@@ -69,5 +78,9 @@
     padding: 4px 6px;
     background-color: var(--color-secondary);
     border-radius: 50%;
+  }
+
+  &__count-message_is-show {
+    display: block;
   }
 }
