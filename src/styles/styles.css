@@ -1,3 +1,14 @@
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--color-light-grey);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-grey);
+  border-radius: 20px;
+}
+
 .page {
   box-sizing: border-box;
   font-family: var(--ff);
