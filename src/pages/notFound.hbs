@@ -5,10 +5,10 @@ css:
   - ../vendor/fonts.css
   - ../variables/variables.css
   - ../styles/styles.css
-  - ../components/errorPage/errorPage.css
+  - ../components/error/error.css
 ---
 {{!< base}}
 
 <div class="page">
-  {{> errorPage/errorPage statusCode="404" title="404" subtitle="Не туда попали"}}
+  {{> error/error statusCode="404" title="404" subtitle="Не туда попали"}}
 </div>
