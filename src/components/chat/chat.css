@@ -1,0 +1,11 @@
+.chat {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 310px 1fr;
+
+  &__column {
+    list-style: none;
+    padding: 21px 10px 0;
+  }
+}
