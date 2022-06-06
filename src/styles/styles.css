@@ -7,11 +7,20 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   height: 100vh;
-}
 
-.page__form {
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &__form {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__search {
+    margin-bottom: 14px;
+  }
+
+  &__link-profile {
+    display: block;
+    margin-bottom: 23px;
+  }
 }

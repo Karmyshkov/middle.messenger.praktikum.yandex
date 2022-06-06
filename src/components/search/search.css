@@ -10,11 +10,12 @@
     cursor: text;
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 38%;
     transform: translateY(-50%);
   }
 
   &__input {
+    box-sizing: border-box;
     outline: none;
     border: none;
     width: 100%;
@@ -22,7 +23,7 @@
     color: var(--color-primaty);
     font-weight: 500;
     line-height: 12px;
-    padding: 6px;
+    padding: 9px;
     background-color: var(--color-light-grey);
     border-radius: 5px;
   }
