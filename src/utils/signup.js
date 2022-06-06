@@ -11,6 +11,7 @@ function isMatchedPassword() {
       } else {
         addClassNameToInput()
       }
+      disabledBtn()
     })
   )
 }
@@ -34,6 +35,15 @@ function addedMessageToMatchedPassword() {
     inputRepeatPassword.textContent = ""
     inputRepeatPassword.classList.remove("input__helper-text_show")
     removeClassNameToInput()
+  }
+}
+
+function disabledBtn() {
+  const submitBtn = document.querySelector("button")
+  if (inputs[0].value === inputs[1].value) {
+    submitBtn.classList.remove("button_disable")
+  } else {
+    submitBtn.classList.add("button_disable")
   }
 }
 
