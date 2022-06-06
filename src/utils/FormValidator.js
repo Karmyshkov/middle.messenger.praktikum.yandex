@@ -4,15 +4,19 @@ function enableValidation() {
 }
 
 function addEventListenerToForm(form) {
+  toggleBtnState(false)
   const inputs = Array.from(form.querySelectorAll(".input__text-field"))
 
-  inputs.forEach(addEventListenerToInput)
+  inputs.forEach((input) => addEventListenerToInput(input, form))
 
   form.addEventListener("submit", (evt) => evt.preventDefault())
 }
 
-function addEventListenerToInput(input) {
-  input.addEventListener("input", handleFieldValidation)
+function addEventListenerToInput(input, form) {
+  input.addEventListener("input", (evt) => {
+    handleFieldValidation(evt)
+    toggleBtnState(checkStateForm(form), form)
+  })
 }
 
 function handleFieldValidation(evt) {
@@ -32,6 +36,19 @@ function closeErrorMessage(errorContainer) {
 function showErrorMessage(errorContainer, validationMessage) {
   errorContainer.textContent = validationMessage
   errorContainer.classList.add("input__helper-text_show")
+}
+
+function checkStateForm(form) {
+  return form.checkValidity()
+}
+
+function toggleBtnState(isStateForm, form = document.forms[0]) {
+  const submitBtn = form.querySelector("button")
+  if (isStateForm) {
+    submitBtn.classList.remove("signup__btn_disable")
+  } else {
+    submitBtn.classList.add("signup__btn_disable")
+  }
 }
 
 enableValidation()

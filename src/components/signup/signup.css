@@ -84,6 +84,11 @@
     opacity: 0.8;
   }
 
+  &__btn_disable {
+    opacity: 0.8;
+    cursor: default;
+  }
+
   &__link {
     text-decoration: none;
     display: block;
