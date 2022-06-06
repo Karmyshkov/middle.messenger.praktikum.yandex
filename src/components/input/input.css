@@ -13,10 +13,10 @@
     outline: none;
     border: none;
     width: 100%;
-    border-bottom: 1px solid #3369f3;
+    border-bottom: 1px solid var(--color-secondary);
     padding-bottom: 7px;
     font-size: 13px;
-    color: #1e1e1e;
+    color: var(--color-primaty);
     font-weight: 500;
     line-height: 13px;
     margin-bottom: 7px;
@@ -32,14 +32,14 @@
     left: 0;
     width: 100%;
     font-size: 13px;
-    color: #999;
+    color: var(--color-grey);
     font-weight: 500;
     line-height: 13px;
     transition: 0.3s font-size, top 0.3s;
   }
 
   &__text_error {
-    color: #ff2f2f;
+    color: var(--color-error);
   }
 
   &__text-field:valid + &__text {
@@ -56,7 +56,7 @@
     margin: 0;
     min-height: 8px;
     font-size: 8px;
-    color: #ff2f2f;
+    color: var(--color-error);
     font-weight: 400;
     line-height: 8px;
     opacity: 0;

@@ -1,12 +1,12 @@
 .button {
   border: none;
   cursor: pointer;
-  background-color: #3369f3;
+  background-color: var(--color-secondary);
   width: 100%;
   padding: 12px 0;
   border-radius: 8px;
   font-size: 13px;
-  color: #fff;
+  color: var(--color-third);
   font-weight: 500;
   line-height: 13px;
   text-align: center;

@@ -1,0 +1,14 @@
+---
+title: Страница не найдена
+css:
+  - ../vendor/normalize.css
+  - ../vendor/fonts.css
+  - ../variables/variables.css
+  - ../styles/styles.css
+  - ../components/errorPage/errorPage.css
+---
+{{!< base}}
+
+<div class="page">
+  {{> errorPage/errorPage statusCode="404" title="404" subtitle="Не туда попали"}}
+</div>
