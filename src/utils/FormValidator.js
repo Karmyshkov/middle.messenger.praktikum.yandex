@@ -45,9 +45,9 @@ function checkStateForm(form) {
 function toggleBtnState(isStateForm, form = document.forms[0]) {
   const submitBtn = form.querySelector("button")
   if (isStateForm) {
-    submitBtn.classList.remove("signup__btn_disable")
+    submitBtn.classList.remove("button_disable")
   } else {
-    submitBtn.classList.add("signup__btn_disable")
+    submitBtn.classList.add("button_disable")
   }
 }
 

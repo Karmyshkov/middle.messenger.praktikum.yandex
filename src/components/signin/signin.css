@@ -64,26 +64,6 @@
     line-height: 9px;
   }
 
-  &__btn {
-    border: none;
-    cursor: pointer;
-    background-color: #3369f3;
-    width: 100%;
-    padding: 12px 0;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #fff;
-    font-weight: 500;
-    line-height: 13px;
-    text-align: center;
-    margin-bottom: 14px;
-    transition: 0.3s opacity;
-  }
-
-  &__btn:hover {
-    opacity: 0.8;
-  }
-
   &__link {
     text-decoration: none;
     display: block;
