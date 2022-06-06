@@ -4,7 +4,7 @@ function enableValidation() {
 }
 
 function addEventListenerToForm(form) {
-  const inputs = Array.from(document.querySelectorAll(".input__text-field"))
+  const inputs = Array.from(form.querySelectorAll(".input__text-field"))
 
   inputs.forEach(addEventListenerToInput)
 
