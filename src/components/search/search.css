@@ -17,7 +17,8 @@
   &__input {
     box-sizing: border-box;
     outline: none;
-    border: none;
+    border-color: transparent;
+    border-width: 1px;
     width: 100%;
     font-size: 12px;
     color: var(--color-primaty);
@@ -26,6 +27,15 @@
     padding: 9px;
     background-color: var(--color-light-grey);
     border-radius: 5px;
+    transition: 0.3s border-color;
+  }
+
+  &__input:hover {
+    border-color: var(--color-grey);
+  }
+
+  &__input:focus {
+    border-color: var(--color-grey);
   }
 
   &__input::placeholder {
