@@ -1,0 +1,37 @@
+.search {
+  font-family: inherit;
+
+  &__label {
+    position: relative;
+    display: block;
+  }
+
+  &__img {
+    cursor: text;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translateY(-50%);
+  }
+
+  &__input {
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 12px;
+    color: var(--color-primaty);
+    font-weight: 500;
+    line-height: 12px;
+    padding: 6px;
+    background-color: var(--color-light-grey);
+    border-radius: 5px;
+  }
+
+  &__input::placeholder {
+    font-size: 12px;
+    color: var(--color-grey);
+    font-weight: 500;
+    line-height: 12px;
+    text-align: center;
+  }
+}
