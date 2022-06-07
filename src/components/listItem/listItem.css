@@ -1,6 +1,7 @@
 .list-item {
   list-style: none;
   transition: 0.3s background-color;
+  text-align: left;
 
   &:hover {
     cursor: pointer;
