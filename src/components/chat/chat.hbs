@@ -11,12 +11,18 @@
       {{/each}}
     </ul>
   </li>
-  {{!-- <li class="chat__column chat__column_is-not-selected">
+  <li class="chat__column chat__column-default">
     <h2 class="chat__title">Выберите чат чтобы отправить сообщение</h2>
-  </li> --}}
-  <li class="chat__column chat__column_df">
-    <div class="chat__inner">
-
+  </li>
+  <li class="chat__column chat__column-dialog chat__column_is-hidden">
+    <div class="chat__header">
+      <div class="chat__inner">
+        {{> avatar/avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="asd"}}
+        <p class="chat__user-name">Вадим</p>
+      </div>
+      <button class="chat__btn" aria-label="Кнопка меню">
+        <img class="chat__btn-img" src="../image/menu.svg" alt="Бургер меню">
+      </button>
     </div>
   </li>
 </ul>
