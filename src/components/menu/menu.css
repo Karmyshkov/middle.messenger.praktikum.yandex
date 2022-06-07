@@ -30,7 +30,9 @@
   }
 
   &__btn {
-    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
     display: flex;
     align-items: center;
     font-size: 12px;
@@ -42,5 +44,11 @@
 
   &__btn:hover {
     opacity: 0.8;
+  }
+
+  &__btn_add-user {
+  }
+
+  &__btn_delete-user {
   }
 }

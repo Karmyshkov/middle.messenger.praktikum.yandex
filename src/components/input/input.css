@@ -9,7 +9,7 @@
     margin-bottom: 22px;
   }
 
-  &:last-of-type {
+  &_is-auth {
     margin-bottom: 136px;
 
     @media screen and (max-width: 320px) {
@@ -20,6 +20,7 @@
   &__text-field {
     outline: none;
     border: none;
+    background-color: transparent;
     width: 100%;
     border-bottom: 1px solid var(--color-secondary);
     padding-bottom: 7px;
