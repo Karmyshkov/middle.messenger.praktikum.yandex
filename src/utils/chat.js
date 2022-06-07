@@ -1,7 +1,7 @@
 const messages = document.querySelectorAll(".list-item")
 const contentDefault = document.querySelector(".chat__column-default")
 const contentDialod = document.querySelector(".chat__column-dialog")
-const btnMenu = document.querySelector(".chat__btn")
+const btnMenu = document.querySelector(".burger-menu")
 const menu = document.querySelector(".menu")
 
 messages.forEach((message) =>
@@ -21,14 +21,14 @@ function removeActiveClassName(message) {
 
 function handleOpenMenu() {
   document.addEventListener("click", closePopupByOutsideZone)
-  this.classList.add("chat__btn_active")
+  this.classList.add("burger-menu_active")
   menu.classList.add("menu_is-show")
 }
 
 function handleCloseMenu() {
   document.removeEventListener("click", closePopupByOutsideZone)
+  btnMenu.classList.remove("burger-menu_active")
   menu.classList.remove("menu_is-show")
-  btnMenu.classList.remove("chat__btn_active")
 }
 
 function closePopupByOutsideZone(evt) {

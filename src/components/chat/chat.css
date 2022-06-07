@@ -94,36 +94,4 @@
     font-weight: 600;
     line-height: 13px;
   }
-
-  &__btn {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    padding: 5px 11px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    transition: 0.3s background-color;
-  }
-
-  &__btn:hover {
-    background-color: var(--color-menu-btn);
-  }
-
-  &__btn:hover > &__btn-icon {
-    fill: var(--color-secondary);
-  }
-
-  &__btn_active {
-    background-color: var(--color-menu-btn);
-  }
-
-  &__btn_active > &__btn-icon {
-    fill: var(--color-secondary);
-  }
-
-  &__btn-icon {
-    fill: var(--color-primaty);
-    transition: 0.3s fill;
-  }
 }
