@@ -3,6 +3,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: 310px 1fr;
+  height: 100%;
 
   &__column {
     list-style: none;
@@ -12,12 +13,6 @@
   &__column_left {
     background-color: var(--color-bg-list);
     border-right: 1px solid var(--color-line);
-  }
-
-  &__column_is-not-selected {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   &__link-profile {
@@ -54,5 +49,8 @@
     color: var(--color-grey);
     font-weight: 500;
     line-height: 12px;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+    text-align: center;
   }
 }
