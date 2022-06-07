@@ -21,8 +21,14 @@
         <p class="chat__user-name">Вадим</p>
       </div>
       <button class="chat__btn" aria-label="Кнопка меню">
-        <img class="chat__btn-img" src="../image/menu.svg" alt="Бургер меню">
+        <svg class="chat__btn-icon" width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="1.5" cy="2" r="1.5"/>
+          <circle cx="1.5" cy="8" r="1.5"/>
+          <circle cx="1.5" cy="14" r="1.5"/>
+        </svg>
+        {{!-- <img class="chat__btn-img" src="../image/menu.svg" alt="Бургер меню"> --}}
       </button>
+      {{> menu/menu}}
     </div>
   </li>
 </ul>

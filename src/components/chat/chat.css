@@ -77,7 +77,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     border-bottom: 1px solid var(--color-dark-line);
     padding-bottom: 10px;
   }
@@ -99,7 +99,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-    padding: 8px 14px;
+    padding: 5px 11px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -107,11 +107,23 @@
   }
 
   &__btn:hover {
-    background-color: var(--color-light-blue);
+    background-color: var(--color-menu-btn);
   }
 
-  &__btn-img {
-    width: 3px;
-    height: 15px;
+  &__btn:hover > &__btn-icon {
+    fill: var(--color-secondary);
+  }
+
+  &__btn_active {
+    background-color: var(--color-menu-btn);
+  }
+
+  &__btn_active > &__btn-icon {
+    fill: var(--color-secondary);
+  }
+
+  &__btn-icon {
+    fill: var(--color-primaty);
+    transition: 0.3s fill;
   }
 }
