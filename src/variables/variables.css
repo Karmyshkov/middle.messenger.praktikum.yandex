@@ -11,6 +11,9 @@
   --color-light-blue: #e4edfd;
   --color-bg-list: #fbfbfb;
   --color-menu-btn: #f5f5f5;
+  --color-bg-message-me: #f8f8f8;
+  --color-bg-message-friend: #e4edfd;
   --color-bg-popap: rgba(0, 0, 0, 0.4);
+  --color-bg-time: #a9a9a9;
   --shadow: rgba(0, 0, 0, 0.14);
 }
