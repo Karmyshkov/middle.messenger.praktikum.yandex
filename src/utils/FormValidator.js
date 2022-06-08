@@ -1,54 +1,63 @@
-function enableValidation() {
-  const forms = [...document.forms]
-  forms.forEach(addEventListenerToForm)
-}
+class FormValidator {
+  constructor(config) {
+    this._formSelector = config.formSelector
+    this._inputSelector = config.inputSelector
+    this._inputHelperTextSelector = config.inputHelperTextSelector
+    this._btnSubmitFormSelector = config.btnSubmitFormSelector
+    this._isShowHelperTextSelector = config.isShowHelperTextSelector
+    this._isDisableBtnSubmit = config.isDisableBtnSubmit
+    this._form = document.querySelector(`.${this._formSelector}`)
+    this._inputs = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`))
+    this._btnSubmit = document.querySelector(`.${this._btnSubmitFormSelector}`)
+  }
 
-function addEventListenerToForm(form) {
-  toggleBtnState(false)
-  const inputs = Array.from(form.querySelectorAll(".input__text-field"))
+  enableValidation() {
+    this.addEventListenerToForm()
+  }
 
-  inputs.forEach((input) => addEventListenerToInput(input, form))
+  addEventListenerToForm() {
+    this.toggleBtnState(false)
+    this._inputs.forEach((input) => this.addEventListenerToInput(input))
+    this._form.addEventListener("submit", (evt) => evt.preventDefault())
+  }
 
-  form.addEventListener("submit", (evt) => evt.preventDefault())
-}
+  addEventListenerToInput(input) {
+    input.addEventListener("input", (evt) => {
+      this.handleFieldValidation(evt)
+      this.toggleBtnState(this.checkStateForm())
+    })
+  }
 
-function addEventListenerToInput(input, form) {
-  input.addEventListener("input", (evt) => {
-    handleFieldValidation(evt)
-    toggleBtnState(checkStateForm(form), form)
-  })
-}
+  handleFieldValidation(evt) {
+    const element = evt.target
+    const errorContainer = element.parentElement.parentElement.querySelector(
+      `.${this._inputHelperTextSelector}`
+    )
+    !element.validity.valid
+      ? this.showErrorMessage(errorContainer, element.validationMessage)
+      : this.closeErrorMessage(errorContainer)
+  }
 
-function handleFieldValidation(evt) {
-  const element = evt.target
-  const errorContainer =
-    element.parentElement.parentElement.querySelector(".input__helper-text")
-  !element.validity.valid
-    ? showErrorMessage(errorContainer, element.validationMessage)
-    : closeErrorMessage(errorContainer)
-}
+  closeErrorMessage(errorContainer) {
+    errorContainer.textContent = ""
+    errorContainer.classList.remove(this._isShowHelperTextSelector)
+  }
 
-function closeErrorMessage(errorContainer) {
-  errorContainer.textContent = ""
-  errorContainer.classList.remove("input__helper-text_show")
-}
+  showErrorMessage(errorContainer, validationMessage) {
+    errorContainer.textContent = validationMessage
+    errorContainer.classList.add(this._isShowHelperTextSelector)
+  }
 
-function showErrorMessage(errorContainer, validationMessage) {
-  errorContainer.textContent = validationMessage
-  errorContainer.classList.add("input__helper-text_show")
-}
+  checkStateForm() {
+    return this._form.checkValidity()
+  }
 
-function checkStateForm(form) {
-  return form.checkValidity()
-}
-
-function toggleBtnState(isStateForm, form = document.forms[0]) {
-  const submitBtn = form.querySelector("button")
-  if (isStateForm) {
-    submitBtn.classList.remove("button_disable")
-  } else {
-    submitBtn.classList.add("button_disable")
+  toggleBtnState(isStateForm) {
+    isStateForm
+      ? this._btnSubmit.classList.remove(this._isDisableBtnSubmit)
+      : this._btnSubmit.classList.add(this._isDisableBtnSubmit)
   }
 }
 
-enableValidation()
+const formValidator = new FormValidator(config)
+formValidator.enableValidation()
