@@ -5,6 +5,8 @@ const btnMenu = document.querySelector(".burger-menu")
 const menu = document.querySelector(".menu")
 const addUserBtn = menu.querySelector(".menu__btn_add-user")
 const deleteUserBtn = menu.querySelector(".menu__btn_delete-user")
+const popupAddUser = document.querySelector(".popup_add-user")
+const popupDeleteUser = document.querySelector(".popup_delete-user")
 
 messages.forEach((message) =>
   message.addEventListener("click", () => addActiveClassName(message))
@@ -34,7 +36,7 @@ function handleCloseMenu() {
 }
 
 function closeMenuByOutsideZone(evt) {
-  if (!evt.target.classList.contains("menu_is-show") && evt.target !== btnMenu) {
+  if (!(evt.composedPath().includes(menu) || evt.composedPath().includes(btnMenu))) {
     handleCloseMenu()
   }
 }
@@ -43,25 +45,26 @@ btnMenu.addEventListener("click", handleOpenMenu)
 
 function handleOpenPopup(selector) {
   const popup = document.querySelector(selector)
-  document.addEventListener("click", closePopupByOutsideZone)
   popup.classList.add("popup_opened")
+  handleCloseMenu()
 }
 
-function handleClosePopup() {
-  document.removeEventListener("click", closePopupByOutsideZone)
-  const popup = document.querySelector(".popup_opened")
+function handleClosePopup(popup) {
   popup.classList.remove("popup_opened")
 }
 
-function closePopupByOutsideZone(evt) {
-  if (
-    !evt.target.classList.contains("popup__container") &&
-    evt.target !== addUserBtn &&
-    evt.target !== deleteUserBtn
-  ) {
-    handleClosePopup()
+function closePopupByOutsideZone(evt, popup) {
+  if (evt.target.classList.contains("popup_opened")) {
+    handleClosePopup(popup)
   }
 }
 
 addUserBtn.addEventListener("click", () => handleOpenPopup(".popup_add-user"))
 deleteUserBtn.addEventListener("click", () => handleOpenPopup(".popup_delete-user"))
+
+popupAddUser.addEventListener("click", (evt) =>
+  closePopupByOutsideZone(evt, popupAddUser)
+)
+popupDeleteUser.addEventListener("click", (evt) =>
+  closePopupByOutsideZone(evt, popupDeleteUser)
+)
