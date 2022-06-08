@@ -6,7 +6,7 @@
     </a>
     {{> search/search}}
     <ul class="chat__list">
-      {{#each data.messages}}
+      {{#each chats.payload}}
         {{> listItem/listItem this=this }}
       {{/each}}
     </ul>
@@ -17,12 +17,18 @@
   <li class="chat__column chat__column-dialog chat__column_is-hidden">
     <div class="chat__header">
       <div class="chat__inner">
-        {{> avatar/avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="asd"}}
+        {{> avatar/avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="Вадим"}}
         <p class="chat__user-name">Вадим</p>
       </div>
       {{> burgerMenu/burgerMenu}}
       {{> menu/menu}}
     </div>
+    <p class="chat__text-date">19 июня</p>
+    <ul class="chat__messages">
+      {{#each messages.payload}}
+        {{> message/message this=this }}
+      {{/each}}
+    </ul>
   </li>
   {{> popup/popup title="Добавить пользователя" helperText="Логин" textBtn="Добавить" classes="popup_add-user"}}
   {{> popup/popup title="Удалить пользователя" helperText="Логин" textBtn="Удалить" classes="popup_delete-user"}}
