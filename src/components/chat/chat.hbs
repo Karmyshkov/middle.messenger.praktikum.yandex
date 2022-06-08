@@ -4,7 +4,7 @@
       <span class="chat__link-text">Профиль</span>
       <img class="chat__link-img" src="../image/right-arrow.svg" alt="Перейти к профилю пользователя">
     </a>
-    {{> search/search}}
+    {{> searchChat/searchChat}}
     <ul class="chat__list">
       {{#each chats.payload}}
         {{> listItem/listItem this=this }}

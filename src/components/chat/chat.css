@@ -32,6 +32,11 @@
 
   &__column-dialog {
     margin: 10px 20px;
+    overflow-y: auto;
+  }
+
+  &__column-dialog::-webkit-scrollbar {
+    width: 0;
   }
 
   &__column_is-hidden {
