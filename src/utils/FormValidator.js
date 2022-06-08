@@ -5,57 +5,57 @@ class FormValidator {
     this._inputHelperTextSelector = config.inputHelperTextSelector
     this._btnSubmitFormSelector = config.btnSubmitFormSelector
     this._isShowHelperTextSelector = config.isShowHelperTextSelector
-    this._isDisableBtnSubmit = config.isDisableBtnSubmit
+    this._isDisableBtnSubmitSelector = config.isDisableBtnSubmitSelector
     this._form = document.querySelector(`.${this._formSelector}`)
     this._inputs = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`))
     this._btnSubmit = document.querySelector(`.${this._btnSubmitFormSelector}`)
   }
 
   enableValidation() {
-    this.addEventListenerToForm()
+    this._addEventListenerToForm()
   }
 
-  addEventListenerToForm() {
-    this.toggleBtnState(false)
-    this._inputs.forEach((input) => this.addEventListenerToInput(input))
+  _addEventListenerToForm() {
+    this._toggleBtnState(false)
+    this._inputs.forEach((input) => this._addEventListenerToInput(input))
     this._form.addEventListener("submit", (evt) => evt.preventDefault())
   }
 
-  addEventListenerToInput(input) {
+  _addEventListenerToInput(input) {
     input.addEventListener("input", (evt) => {
-      this.handleFieldValidation(evt)
-      this.toggleBtnState(this.checkStateForm())
+      this._handleFieldValidation(evt)
+      this._toggleBtnState(this._checkStateForm())
     })
   }
 
-  handleFieldValidation(evt) {
+  _handleFieldValidation(evt) {
     const element = evt.target
     const errorContainer = element.parentElement.parentElement.querySelector(
       `.${this._inputHelperTextSelector}`
     )
     !element.validity.valid
-      ? this.showErrorMessage(errorContainer, element.validationMessage)
-      : this.closeErrorMessage(errorContainer)
+      ? this._showErrorMessage(errorContainer, element.validationMessage)
+      : this._closeErrorMessage(errorContainer)
   }
 
-  closeErrorMessage(errorContainer) {
+  _closeErrorMessage(errorContainer) {
     errorContainer.textContent = ""
     errorContainer.classList.remove(this._isShowHelperTextSelector)
   }
 
-  showErrorMessage(errorContainer, validationMessage) {
+  _showErrorMessage(errorContainer, validationMessage) {
     errorContainer.textContent = validationMessage
     errorContainer.classList.add(this._isShowHelperTextSelector)
   }
 
-  checkStateForm() {
+  _checkStateForm() {
     return this._form.checkValidity()
   }
 
-  toggleBtnState(isStateForm) {
+  _toggleBtnState(isStateForm) {
     isStateForm
-      ? this._btnSubmit.classList.remove(this._isDisableBtnSubmit)
-      : this._btnSubmit.classList.add(this._isDisableBtnSubmit)
+      ? this._btnSubmit.classList.remove(this._isDisableBtnSubmitSelector)
+      : this._btnSubmit.classList.add(this._isDisableBtnSubmitSelector)
   }
 }
 
