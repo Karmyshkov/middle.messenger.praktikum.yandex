@@ -6,7 +6,7 @@
   overflow: hidden;
 
   &:last-of-type {
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
 
   &_is-not-owner {
