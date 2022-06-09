@@ -40,8 +40,11 @@
   }
 
   &__form {
+    font-family: inherit;
     text-align: center;
     margin-top: 60px;
+    max-width: 510px;
+    margin: 60px auto 0;
   }
 
   &__input-file {
@@ -52,6 +55,7 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
+    margin-bottom: 21px;
   }
 
   &__label::before {
@@ -90,5 +94,25 @@
     color: var(--color-third);
     font-weight: 500;
     line-height: 14px;
+  }
+
+  &__user-name {
+    margin: 0;
+    font-size: 16px;
+    color: var(-color-primaty);
+    font-weight: 600;
+    line-height: 16px;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
+  }
+
+  &__list:last-of-type {
+    margin-bottom: 0;
   }
 }
