@@ -2,7 +2,6 @@
   <h1 class="signin__title">Вход</h1>
   {{>input/input type="text" helperText="Логин" minlength="5" maxlength="20"}}
   {{>input/input type="password" helperText="Пароль" minlength="4" maxlength="20" classes="input_is-auth"}}
-  {{>button/button typeBtn="submit" textBtn="Авторизоваться"}}
+  {{>button/button href="./chat.hbs" textBtn="Авторизоваться"}}
   <a class="signin__link" href="./register.hbs">Нет аккаунта?</a>
-  <a class="signin__link" href="./chat.hbs">chat</a>
 </form>

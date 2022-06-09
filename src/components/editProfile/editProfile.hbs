@@ -4,12 +4,12 @@
     <form class="edit-profile__form">
       {{> editAvatar/editAvatar}}
       <ul class="edit-profile__list">
-        {{> inputProfile/inputProfile helperText="Почта" value=profile.payload.email}}
-        {{> inputProfile/inputProfile helperText="Логин" value=profile.payload.name}}
-        {{> inputProfile/inputProfile helperText="Имя" value=profile.payload.name}}
-        {{> inputProfile/inputProfile helperText="Фамилия" value=profile.payload.lastName}}
-        {{> inputProfile/inputProfile helperText="Имя в чате" value=profile.payload.chatName}}
-        {{> inputProfile/inputProfile helperText="Телефон" value=profile.payload.phone}}
+        {{> inputProfile/inputProfile type="email" helperText="Почта" value=profile.payload.email}}
+        {{> inputProfile/inputProfile type="text" helperText="Логин" value=profile.payload.name}}
+        {{> inputProfile/inputProfile type="text" helperText="Имя" value=profile.payload.name}}
+        {{> inputProfile/inputProfile type="text" helperText="Фамилия" value=profile.payload.lastName}}
+        {{> inputProfile/inputProfile type="text" helperText="Имя в чате" value=profile.payload.chatName}}
+        {{> inputProfile/inputProfile type="phone" helperText="Телефон" value=profile.payload.phone}}
         {{> button/button typeBtn="submit" textBtn="Сохранить" classes="button_page_edit-profile"}}
       </ul>
     </form>

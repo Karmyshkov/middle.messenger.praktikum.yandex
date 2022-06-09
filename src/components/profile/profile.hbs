@@ -5,17 +5,17 @@
       {{> editAvatar/editAvatar}}
       <p class="profile__user-name">Иван</p>
       <ul class="profile__list">
-        {{> inputProfile/inputProfile helperText="Почта" value=profile.payload.email}}
-        {{> inputProfile/inputProfile helperText="Логин" value=profile.payload.name}}
-        {{> inputProfile/inputProfile helperText="Имя" value=profile.payload.name}}
-        {{> inputProfile/inputProfile helperText="Фамилия" value=profile.payload.lastName}}
-        {{> inputProfile/inputProfile helperText="Имя в чате" value=profile.payload.chatName}}
-        {{> inputProfile/inputProfile helperText="Телефон" value=profile.payload.phone}}
+        {{> inputProfile/inputProfile type="email" helperText="Почта" value=profile.payload.email}}
+        {{> inputProfile/inputProfile type="text" helperText="Логин" value=profile.payload.name}}
+        {{> inputProfile/inputProfile type="text" helperText="Имя" value=profile.payload.name}}
+        {{> inputProfile/inputProfile type="text" helperText="Фамилия" value=profile.payload.lastName}}
+        {{> inputProfile/inputProfile type="text" helperText="Имя в чате" value=profile.payload.chatName}}
+        {{> inputProfile/inputProfile type="phone" helperText="Телефон" value=profile.payload.phone}}
       </ul>
       <ul class="profile__list">
         {{> btnProfile/btnProfile href="./editProfile.hbs"  text="Изменить данные" classes="btn-profile__link_color_red"}}
-        {{> btnProfile/btnProfile text="Изменить пароль" classes="btn-profile__link_color_red"}}
-        {{> btnProfile/btnProfile text="Выйти" classes="btn-profile__link_color_blue"}}
+        {{> btnProfile/btnProfile href="./ediPassword.hbs" text="Изменить пароль" classes="btn-profile__link_color_red"}}
+        {{> btnProfile/btnProfile href="./index.hbs" text="Выйти" classes="btn-profile__link_color_blue"}}
       </ul>
     </form>
   </li>
