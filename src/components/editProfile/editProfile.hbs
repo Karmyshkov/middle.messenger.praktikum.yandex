@@ -1,8 +1,12 @@
 <ul class="profile">
-  {{> btnBackProfile/btnBackProfile href="./chat.hbs"}}
+  {{> btnBackProfile/btnBackProfile href="./profile.hbs"}}
   <li class="profile__column">
     <form class="profile__form">
-      {{> editAvatar/editAvatar}}
+      <input class="profile__input-file" type="file" id="input__file" />
+      <label class="profile__label" for="input__file">
+        <img class="profile__img" src="../image/avatar.svg" alt="Аватар по умолчанию" />
+        <span class="profile__span">Поменять аватар</span>
+      </label>
       <p class="profile__user-name">Иван</p>
       <ul class="profile__list">
         {{> inputProfile/inputProfile helperText="Почта" value=profile.payload.email}}
