@@ -8,3 +8,23 @@ const config = {
   labelTextSelector: "input__text",
   isValuelabelTextSelector: "input__text_isValue",
 }
+
+const chatConfig = {
+  messagesSelector: "list-item",
+  contentDefaultSelector: "chat__column-default",
+  contentDialodSelector: "chat__column-dialog",
+  btnMenuSelector: "burger-menu",
+  menuSelector: "menu",
+  addUserBtnSelector: "menu__btn_add-user",
+  deleteUserBtnSelector: "menu__btn_delete-user",
+  popupAddUserSelector: "popup_add-user",
+  popupDeleteUserSelector: "popup_delete-user",
+  isActiveChatSelector: "chat_is-active",
+  hiddenChatSelecor: "chat__column_is-hidden",
+  isActiveBurgerMenuSelector: "burger-menu_active",
+  isShowMenuSelector: "menu_is-show",
+  isOpenPopupSelecot: "popup_opened",
+  popoverSelector: "popover",
+  btnAttachSelector: "chat-footer__btn-attach",
+  isShowPopoverSelector: "popover_is-show",
+}

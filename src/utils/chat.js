@@ -1,70 +1,131 @@
-const messages = document.querySelectorAll(".list-item")
-const contentDefault = document.querySelector(".chat__column-default")
-const contentDialod = document.querySelector(".chat__column-dialog")
-const btnMenu = document.querySelector(".burger-menu")
-const menu = document.querySelector(".menu")
-const addUserBtn = menu.querySelector(".menu__btn_add-user")
-const deleteUserBtn = menu.querySelector(".menu__btn_delete-user")
-const popupAddUser = document.querySelector(".popup_add-user")
-const popupDeleteUser = document.querySelector(".popup_delete-user")
+class Chat {
+  constructor(config) {
+    this._messagesSelector = config.messagesSelector
+    this._contentDefaultSelector = config.contentDefaultSelector
+    this._contentDialodSelector = config.contentDialodSelector
+    this._btnMenuSelector = config.btnMenuSelector
+    this._menuSelector = config.menuSelector
+    this._addUserBtnSelector = config.addUserBtnSelector
+    this._deleteUserBtnSelector = config.deleteUserBtnSelector
+    this._popupAddUserSelector = config.popupAddUserSelector
+    this._popupDeleteUserSelector = config.popupDeleteUserSelector
+    this._isActiveChatSelector = chatConfig.isActiveChatSelector
+    this._hiddenChatSelecor = config.hiddenChatSelecor
+    this._isActiveBurgerMenuSelector = config.isActiveBurgerMenuSelector
+    this._isShowMenuSelector = config.isShowMenuSelector
+    this._isOpenPopupSelector = config.isOpenPopupSelecot
+    this._popoverSelector = config.popoverSelector
+    this._btnAttachSelector = config.btnAttachSelector
+    this._isShowPopoverSelector = config.isShowPopoverSelector
+    this._messages = document.querySelectorAll(`.${this._messagesSelector}`)
+    this._btnMenu = document.querySelector(`.${this._btnMenuSelector}`)
+    this._menu = document.querySelector(`.${this._menuSelector}`)
+    this._addUserBtn = this._menu.querySelector(`.${this._addUserBtnSelector}`)
+    this._deleteUserBtn = this._menu.querySelector(`.${this._deleteUserBtnSelector}`)
+    this._popupAddUser = document.querySelector(`.${this._popupAddUserSelector}`)
+    this._popupDeleteUser = document.querySelector(`.${this._popupDeleteUserSelector}`)
+    this._contentDefault = document.querySelector(`.${this._contentDefaultSelector}`)
+    this._contentDialod = document.querySelector(`.${this._contentDialodSelector}`)
+    this._popover = document.querySelector(`.${this._popoverSelector}`)
+    this._btnAttach = document.querySelector(`.${this._btnAttachSelector}`)
+  }
 
-messages.forEach((message) =>
-  message.addEventListener("click", () => addActiveClassName(message))
-)
+  _addActiveClassName(message) {
+    this._messages.forEach(this._removeActiveClassName)
+    message.classList.add(this._isActiveChatSelector)
+    this._contentDefault.classList.add(this._hiddenChatSelecor)
+    this._contentDialod.classList.remove(this._hiddenChatSelecor)
+  }
 
-function addActiveClassName(message) {
-  messages.forEach(removeActiveClassName)
-  message.classList.add("chat_is-active")
-  contentDefault.classList.add("chat__column_is-hidden")
-  contentDialod.classList.remove("chat__column_is-hidden")
-}
+  _removeActiveClassName = (message) => {
+    message.classList.remove(this._isActiveChatSelector)
+  }
 
-function removeActiveClassName(message) {
-  message.classList.remove("chat_is-active")
-}
+  _disabledScroll(element) {
+    element.style.overflowY = "hidden"
+  }
 
-function handleOpenMenu() {
-  document.addEventListener("click", closeMenuByOutsideZone)
-  this.classList.add("burger-menu_active")
-  menu.classList.add("menu_is-show")
-}
+  _enabledScroll(element) {
+    element.style.overflowY = "auto"
+  }
 
-function handleCloseMenu() {
-  document.removeEventListener("click", closeMenuByOutsideZone)
-  btnMenu.classList.remove("burger-menu_active")
-  menu.classList.remove("menu_is-show")
-}
+  _handleOpenMenu = () => {
+    document.addEventListener("click", this._closeMenuByOutsideZone)
+    this._disabledScroll(this._contentDialod)
+    this._btnMenu.classList.add(this._isActiveBurgerMenuSelector)
+    this._menu.classList.add(this._isShowMenuSelector)
+  }
 
-function closeMenuByOutsideZone(evt) {
-  if (!(evt.composedPath().includes(menu) || evt.composedPath().includes(btnMenu))) {
-    handleCloseMenu()
+  _handleCloseMenu() {
+    document.removeEventListener("click", this._closeMenuByOutsideZone)
+    this._enabledScroll(this._contentDialod)
+    this._btnMenu.classList.remove(this._isActiveBurgerMenuSelector)
+    this._menu.classList.remove(this._isShowMenuSelector)
+  }
+
+  _closeMenuByOutsideZone = (evt) => {
+    if (
+      !(
+        evt.composedPath().includes(this._menu) ||
+        evt.composedPath().includes(this._btnMenu)
+      )
+    ) {
+      this._handleCloseMenu()
+    }
+  }
+
+  _handleOpenPopup(popup) {
+    popup.classList.add(this._isOpenPopupSelector)
+    this._handleCloseMenu()
+  }
+
+  _handleClosePopup(popup) {
+    popup.classList.remove(this._isOpenPopupSelector)
+  }
+
+  _handleOpenPopover = () => {
+    this._popover.classList.add(this._isShowPopoverSelector)
+    this._disabledScroll(this._contentDialod)
+    document.addEventListener("click", this._closePopupByOutsideZone)
+  }
+
+  _handleClosePopover() {
+    this._popover.classList.remove(this._isShowPopoverSelector)
+    this._enabledScroll(this._contentDialod)
+  }
+
+  _closePopupByOutsideZone = (evt) => {
+    if (
+      !(
+        evt.composedPath().includes(this._popover) ||
+        evt.composedPath().includes(this._btnAttach)
+      )
+    ) {
+      this._handleClosePopover()
+    }
+  }
+
+  addEventListeners() {
+    this._messages.forEach((message) =>
+      message.addEventListener("click", () => this._addActiveClassName(message))
+    )
+
+    this._btnMenu.addEventListener("click", this._handleOpenMenu)
+    this._addUserBtn.addEventListener("click", () =>
+      this._handleOpenPopup(this._popupAddUser)
+    )
+    this._deleteUserBtn.addEventListener("click", () =>
+      this._handleOpenPopup(this._popupDeleteUser)
+    )
+    this._popupAddUser.addEventListener("click", (evt) =>
+      this._closePopupByOutsideZone(evt, this._popupAddUser)
+    )
+    this._popupDeleteUser.addEventListener("click", (evt) =>
+      this._closePopupByOutsideZone(evt, this._popupDeleteUser)
+    )
+    this._btnAttach.addEventListener("click", this._handleOpenPopover)
   }
 }
 
-btnMenu.addEventListener("click", handleOpenMenu)
-
-function handleOpenPopup(selector) {
-  const popup = document.querySelector(selector)
-  popup.classList.add("popup_opened")
-  handleCloseMenu()
-}
-
-function handleClosePopup(popup) {
-  popup.classList.remove("popup_opened")
-}
-
-function closePopupByOutsideZone(evt, popup) {
-  if (evt.target.classList.contains("popup_opened")) {
-    handleClosePopup(popup)
-  }
-}
-
-addUserBtn.addEventListener("click", () => handleOpenPopup(".popup_add-user"))
-deleteUserBtn.addEventListener("click", () => handleOpenPopup(".popup_delete-user"))
-
-popupAddUser.addEventListener("click", (evt) =>
-  closePopupByOutsideZone(evt, popupAddUser)
-)
-popupDeleteUser.addEventListener("click", (evt) =>
-  closePopupByOutsideZone(evt, popupDeleteUser)
-)
+const chat = new Chat(chatConfig)
+chat.addEventListeners()
