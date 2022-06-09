@@ -1,14 +1,9 @@
-<ul class="profile">
+<ul class="edit-profile">
   {{> btnBackProfile/btnBackProfile href="./profile.hbs"}}
-  <li class="profile__column">
-    <form class="profile__form">
-      <input class="profile__input-file" type="file" id="input__file" />
-      <label class="profile__label" for="input__file">
-        <img class="profile__img" src="../image/avatar.svg" alt="Аватар по умолчанию" />
-        <span class="profile__span">Поменять аватар</span>
-      </label>
-      <p class="profile__user-name">Иван</p>
-      <ul class="profile__list">
+  <li class="edit-profile__column">
+    <form class="edit-profile__form">
+      {{> editAvatar/editAvatar}}
+      <ul class="edit-profile__list">
         {{> inputProfile/inputProfile helperText="Почта" value=profile.payload.email}}
         {{> inputProfile/inputProfile helperText="Логин" value=profile.payload.name}}
         {{> inputProfile/inputProfile helperText="Имя" value=profile.payload.name}}
@@ -16,10 +11,6 @@
         {{> inputProfile/inputProfile helperText="Имя в чате" value=profile.payload.chatName}}
         {{> inputProfile/inputProfile helperText="Телефон" value=profile.payload.phone}}
       </ul>
-      <ul class="profile__list">
-        {{> btnProfile/btnProfile href="./editProfile.hbs"  text="Изменить данные" classes="btn-profile__link_color_red"}}
-        {{> btnProfile/btnProfile text="Изменить пароль" classes="btn-profile__link_color_red"}}
-        {{> btnProfile/btnProfile text="Выйти" classes="btn-profile__link_color_blue"}}
     </form>
   </li>
 </ul>
