@@ -21,12 +21,8 @@ class Popup {
     this._menuClassSelector = config.menuClassSelector
     this._isShowMenuSelecor = config.isShowMenuSelecor
     this._menuBtnSelector = config.menuBtnSelector
-    this._editAvatar = this._editAvatarSelector
-      ? document.querySelector(`.${this._editAvatarSelector}`)
-      : ""
-    this._editAvatarText = this.editAvatarTextSelector
-      ? document.querySelector(`.${this.editAvatarTextSelector}`)
-      : ""
+    this._editAvatar = document.querySelector(`.${this._editAvatarSelector}`)
+    this._editAvatarText = document.querySelector(`.${this.editAvatarTextSelector}`)
     this._contentDialod = document.querySelector(`.${this._contentDialodSelector}`)
     this._btnMenu = document.querySelector(`.${this._btnMenuSelector}`)
     this._menu = document.querySelector(`.${this._menuSelector}`)
@@ -34,10 +30,8 @@ class Popup {
     this._popupDeleteUser = document.querySelector(`.${this._popupDeleteUserSelector}`)
     this._popover = document.querySelector(`.${this._popoverSelector}`)
     this._btnAttach = document.querySelector(`.${this._btnAttachSelector}`)
-    this._menuItems = this._menu.querySelectorAll(`.${this._menuItemSelector}`)
-    this._popupСontainers = this._menu.querySelectorAll(
-      `.${this._popupСontainerSelector}`
-    )
+    this._menuItems = document.querySelectorAll(`.${this._menuItemSelector}`)
+    this._popupСontainers = document.querySelectorAll(`.${this._popupСontainerSelector}`)
   }
 
   _disabledScroll(element) {

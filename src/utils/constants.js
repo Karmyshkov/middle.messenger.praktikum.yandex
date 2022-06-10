@@ -1,5 +1,4 @@
 const inputValidateConfig = {
-  formSelector: "form",
   inputSelector: "input__text-field",
   inputPasswordSelector: "input[type='password']",
   inputErrorSelector: "input__text_error",

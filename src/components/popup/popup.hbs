@@ -1,7 +1,7 @@
 <div class="popup {{classesPopup}}">
   <div class="popup__container">
     <h2 class="popup__title">{{title}}</h2>
-    <form class="form popup__form {{classesForm}}" name="form-edit-profile" novalidate>
+    <form class="popup__form {{classesForm}}" name="form-edit-profile" novalidate>
       {{#if isDefault}}
         {{> input/input type="text" helperText=helperText minlength="5" maxlength="20"}}
         {{> button/button textBtn=textBtn}}
