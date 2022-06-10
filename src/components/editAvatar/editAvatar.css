@@ -1,20 +1,9 @@
 .edit-avatar {
-  padding: 0;
-  margin: 0;
-  border: none;
-
-  &__input {
-    display: none;
-  }
-
-  &__label {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    margin-bottom: 21px;
-  }
-
-  &__label::before {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 21px;
+  &::before {
     content: "";
     display: inline-block;
     width: 100%;
@@ -28,11 +17,11 @@
     transition: 0.3s opacity;
   }
 
-  &__label:hover::before {
+  &:hover::before {
     opacity: 1;
   }
 
-  &__label:hover > &__span {
+  &:hover > &__span {
     opacity: 1;
   }
 

@@ -23,6 +23,9 @@
   &_delete-user {
   }
 
+  &_change-avatar {
+  }
+
   &__container {
     background-color: var(--color-third);
     box-sizing: border-box;
