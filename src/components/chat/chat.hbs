@@ -21,7 +21,6 @@
         <p class="chat__user-name">Вадим</p>
       </div>
       {{> burgerMenu/burgerMenu}}
-      {{> menu/menu}}
     </div>
     <p class="chat__text-date">19 июня</p>
     <ul class="chat__messages">
@@ -31,7 +30,8 @@
     </ul>
     {{> chatFooter/chatFooter}}
   </li>
+  {{> menu/menu isUser=true }}
+  {{> menu/menu isUser=false }}
   {{> popup/popup title="Добавить пользователя" helperText="Логин" textBtn="Добавить" classesPopup="popup_add-user"}}
   {{> popup/popup title="Удалить пользователя" helperText="Логин" textBtn="Удалить" classesPopup="popup_delete-user"}}
-  {{> popover/popover }}
 </ul>

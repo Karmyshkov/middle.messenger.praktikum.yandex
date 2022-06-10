@@ -20,13 +20,18 @@
     padding: 11px 0;
   }
 
+  &:hover {
+    opacity: 0.8;
+  }
+
   &_page_edit-profile {
     max-width: 280px;
     margin: 60px auto 0;
   }
 
-  &:hover {
-    opacity: 0.8;
+  &_page_edit-password {
+    max-width: 280px;
+    margin: 162px auto 0;
   }
 
   &_disable {
