@@ -28,6 +28,7 @@ function removeClassNameToInput() {
 
 function addedMessageToMatchedPassword() {
   if (inputs[0].value !== inputs[1].value) {
+    console.log("asd")
     inputRepeatPassword.textContent = "Пароли не совпадают"
     inputRepeatPassword.classList.add("input__helper-text_show")
     addClassNameToInput()
@@ -39,7 +40,7 @@ function addedMessageToMatchedPassword() {
 }
 
 function disabledBtn() {
-  const submitBtn = document.querySelector("button")
+  const submitBtn = document.querySelector(".button")
   if (inputs[0].value === inputs[1].value) {
     submitBtn.classList.remove("button_disable")
   } else {
@@ -48,3 +49,6 @@ function disabledBtn() {
 }
 
 isMatchedPassword()
+
+const signupFormValidator = new FormValidator(inputValidateConfig, "signup")
+signupFormValidator.enableValidation()

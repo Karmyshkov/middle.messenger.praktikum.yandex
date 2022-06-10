@@ -45,4 +45,10 @@
   &__form {
     font-family: inherit;
   }
+
+  &__form_add-user {
+  }
+
+  &__form_delete-user {
+  }
 }

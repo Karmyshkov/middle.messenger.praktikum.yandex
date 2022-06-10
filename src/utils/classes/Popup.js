@@ -13,6 +13,7 @@ class Popup {
     this._isShowPopoverSelector = config.isShowPopoverSelector
     this._contentDialodSelector = config.contentDialodSelector
     this._menuItemSelector = config.menuItemSelector
+    this._popupСontainerSelector = config.popupСontainerSelector
     this._contentDialod = document.querySelector(`.${this._contentDialodSelector}`)
     this._btnMenu = document.querySelector(`.${this._btnMenuSelector}`)
     this._menu = document.querySelector(`.${this._menuSelector}`)
@@ -21,6 +22,9 @@ class Popup {
     this._popover = document.querySelector(`.${this._popoverSelector}`)
     this._btnAttach = document.querySelector(`.${this._btnAttachSelector}`)
     this._menuItems = this._menu.querySelectorAll(`.${this._menuItemSelector}`)
+    this._popupСontainers = this._menu.querySelectorAll(
+      `.${this._popupСontainerSelector}`
+    )
   }
 
   _disabledScroll(element) {
@@ -60,11 +64,11 @@ class Popup {
         evt.composedPath().includes(this._btnMenu)
       ) && this._handleClosePopup()
     } else {
-      const popup__container = document.querySelector(".popup__container")
-
-      !evt.composedPath().includes(popup__container) &&
-        !Array.from(evt.target.classList).includes("menu__btn") &&
-        this._handleClosePopup()
+      this._popupСontainers.forEach((popupContainer) => {
+        !evt.composedPath().includes(popupContainer) &&
+          !Array.from(evt.target.classList).includes("menu__btn") &&
+          this._handleClosePopup()
+      })
     }
   }
 

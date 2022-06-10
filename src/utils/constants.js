@@ -1,4 +1,4 @@
-const config = {
+const inputValidateConfig = {
   formSelector: "form",
   inputSelector: "input__text-field",
   inputHelperTextSelector: "input__helper-text",
@@ -23,4 +23,5 @@ const chatConfig = {
   btnAttachSelector: "chat-footer__btn-attach",
   isShowPopoverSelector: "popover_is-show",
   menuItemSelector: "menu__item",
+  popupСontainerSelector: "popup__container",
 }

@@ -1,6 +1,6 @@
 class FormValidator {
-  constructor(config) {
-    this._formSelector = config.formSelector
+  constructor(config, formSelector) {
+    this._formSelector = formSelector
     this._inputSelector = config.inputSelector
     this._inputHelperTextSelector = config.inputHelperTextSelector
     this._btnSubmitFormSelector = config.btnSubmitFormSelector
@@ -58,6 +58,3 @@ class FormValidator {
       : this._btnSubmit.classList.add(this._isDisableBtnSubmitSelector)
   }
 }
-
-const formValidator = new FormValidator(config)
-formValidator.enableValidation()

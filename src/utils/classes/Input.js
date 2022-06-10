@@ -33,5 +33,5 @@ class Input {
   }
 }
 
-const input = new Input(config)
+const input = new Input(inputValidateConfig)
 input.checkOnValueInput()
