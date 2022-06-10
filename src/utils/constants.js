@@ -17,6 +17,7 @@ const chatConfig = {
   contentDialodSelector: "chat__column-dialog",
   popupAddUserSelector: "popup_add-user",
   popupDeleteUserSelector: "popup_delete-user",
+  popupChangeAvatarSelector: "popup_change-avatar",
   isActiveChatSelector: "chat_is-active",
   hiddenChatSelecor: "chat__column_is-hidden",
   isActiveBurgerMenuSelector: "burger-menu_active",
@@ -26,4 +27,10 @@ const chatConfig = {
   isShowPopoverSelector: "popover_is-show",
   menuItemSelector: "menu__item",
   popupСontainerSelector: "popup__container",
+  editAvatarSelector: "edit-avatar",
+  editAvatarTextSelector: "edit-avatar__span",
+  menuListElementUserSelector: "menu__list_element_user",
+  menuClassSelector: "menu",
+  isShowMenuSelecor: "menu_is-show",
+  menuBtnSelector: "menu__btn",
 }
