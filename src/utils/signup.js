@@ -1,6 +1,11 @@
-const inputs = Array.from(document.forms[0].querySelectorAll("input[type='password']"))
-const inputRepeatPassword =
-  inputs[1].parentElement.parentElement.querySelector(".input__helper-text")
+const signupFormValidator = new FormValidator(inputValidateConfig, "signup")
+signupFormValidator.enableValidation()
+
+const inputs = document.querySelectorAll(inputValidateConfig.inputPasswordSelector)
+const inputRepeatPassword = inputs[1].parentElement.parentElement.querySelector(
+  `.${inputValidateConfig.inputSelector}`
+)
+const submitBtn = document.querySelector(`.${inputValidateConfig.btnSubmitFormSelector}`)
 
 function isMatchedPassword() {
   inputs.forEach((input) =>
@@ -17,38 +22,35 @@ function isMatchedPassword() {
 }
 
 function addClassNameToInput() {
-  inputs[0].classList.add("input__text_error")
-  inputs[1].classList.add("input__text_error")
+  inputs[0].classList.add(inputValidateConfig.inputErrorSelector)
+  inputs[1].classList.add(inputValidateConfig.inputErrorSelector)
 }
 
 function removeClassNameToInput() {
-  inputs[0].classList.remove("input__text_error")
-  inputs[1].classList.remove("input__text_error")
+  inputs[0].classList.remove(inputValidateConfig.inputErrorSelector)
+  inputs[1].classList.remove(inputValidateConfig.inputErrorSelector)
 }
 
 function addedMessageToMatchedPassword() {
   if (inputs[0].value !== inputs[1].value) {
-    console.log("asd")
     inputRepeatPassword.textContent = "Пароли не совпадают"
-    inputRepeatPassword.classList.add("input__helper-text_show")
+    inputRepeatPassword.classList.add(inputValidateConfig.isShowHelperTextSelector)
     addClassNameToInput()
   } else {
     inputRepeatPassword.textContent = ""
-    inputRepeatPassword.classList.remove("input__helper-text_show")
+    inputRepeatPassword.classList.remove(inputValidateConfig.isShowHelperTextSelector)
     removeClassNameToInput()
   }
 }
 
 function disabledBtn() {
-  const submitBtn = document.querySelector(".button")
-  if (inputs[0].value === inputs[1].value) {
-    submitBtn.classList.remove("button_disable")
-  } else {
-    submitBtn.classList.add("button_disable")
+  if (document.forms[0].checkValidity()) {
+    if (inputs[0].value === inputs[1].value) {
+      submitBtn.classList.remove(inputValidateConfig.isDisableBtnSubmitSelector)
+    } else {
+      submitBtn.classList.add(inputValidateConfig.isDisableBtnSubmitSelector)
+    }
   }
 }
 
 isMatchedPassword()
-
-const signupFormValidator = new FormValidator(inputValidateConfig, "signup")
-signupFormValidator.enableValidation()
