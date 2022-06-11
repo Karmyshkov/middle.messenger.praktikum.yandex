@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "build": "parcel ./src/pages/index.hbs",
-    "dev": "parcel ./src/pages/index.hbs --no-cache && parcel watch ./*",
-    "start": "node api/server.js"
+    "build": "parcel build ./src/pages/index.hbs --no-cache --public-url ./",
+    "start": "parcel ./src/pages/index.hbs --no-cache && parcel watch ./*",
+    "server": "node ./api/server.js"
   },
   "repository": {
     "type": "git",

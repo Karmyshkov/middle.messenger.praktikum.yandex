@@ -29,18 +29,24 @@ const fileMenu = new Popup(
 )
 fileMenu.addEventListeners()
 
-const addUser = new Popup(
+const addUserPopup = new Popup(
   "popup_add-user",
   "menu__btn_add-user",
   "popup_opened",
   chatConfig
 )
-addUser.addEventListeners()
+addUserPopup.addEventListeners()
 
-const deleteUser = new Popup(
+const deleteUserPopup = new Popup(
   "popup_delete-user",
   "menu__btn_delete-user",
   "popup_opened",
   chatConfig
 )
-deleteUser.addEventListeners()
+deleteUserPopup.addEventListeners()
+
+const addUserFormInput = new Input(inputValidateConfig, "popup__form_add-user")
+addUserFormInput.checkOnValueInput()
+
+const deleteUserFormInput = new Input(inputValidateConfig, "popup__form_delete-user")
+deleteUserFormInput.checkOnValueInput()

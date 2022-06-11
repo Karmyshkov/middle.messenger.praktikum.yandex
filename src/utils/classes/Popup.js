@@ -31,7 +31,6 @@ class Popup {
     this._popover = document.querySelector(`.${this._popoverSelector}`)
     this._btnAttach = document.querySelector(`.${this._btnAttachSelector}`)
     this._menuItems = document.querySelectorAll(`.${this._menuItemSelector}`)
-    this._popupСontainers = document.querySelectorAll(`.${this._popupСontainerSelector}`)
   }
 
   _disabledScroll(element) {
@@ -84,11 +83,10 @@ class Popup {
       classes.includes(this._popupAddUserSelector) ||
       classes.includes(this._popupDeleteUserSelector)
     ) {
-      this._popupСontainers.forEach((popupContainer) => {
-        !evt.composedPath().includes(popupContainer) &&
-          !Array.from(evt.target.classList).includes(this._menuBtnSelector) &&
-          this._handleClosePopup()
-      })
+      const popupContainer = this._menu.querySelector(`.${this._popupСontainerSelector}`)
+      !evt.composedPath().includes(popupContainer) &&
+        !Array.from(evt.target.classList).includes(this._menuBtnSelector) &&
+        this._handleClosePopup()
     }
 
     if (classes.includes(this._popupChangeAvatarSelector)) {

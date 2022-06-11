@@ -1,6 +1,6 @@
 class Input {
-  constructor(config) {
-    this._formSelector = config.formSelector
+  constructor(config, formSelector) {
+    this._formSelector = formSelector
     this._inputSelector = config.inputSelector
     this._labelTextSelector = config.labelTextSelector
     this._isValuelabelTextSelector = config.isValuelabelTextSelector
@@ -32,6 +32,3 @@ class Input {
     })
   }
 }
-
-const input = new Input(inputValidateConfig)
-input.checkOnValueInput()

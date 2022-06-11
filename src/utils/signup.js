@@ -1,6 +1,9 @@
 const signupFormValidator = new FormValidator(inputValidateConfig, "signup")
 signupFormValidator.enableValidation()
 
+const signupInput = new Input(inputValidateConfig, "signup")
+signupInput.checkOnValueInput()
+
 const inputs = document.querySelectorAll(inputValidateConfig.inputPasswordSelector)
 const inputRepeatPassword = inputs[1].parentElement.parentElement.querySelector(
   `.${inputValidateConfig.inputHelperTextSelector}`

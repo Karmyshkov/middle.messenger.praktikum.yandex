@@ -1,15 +1,15 @@
 const express = require("express")
+const path = require("path");
 
 const app = express()
 
 const { PORT = 3000 } = process.env
+const pathName = path.join(__dirname, "../dist/index.html");
 
-console.log(PORT)
-
-app.use(express.static(__dirname + "/dist"))
+app.use(express.static("./dist"));
 
 app.get("/*", (req, res) => {
-  res.sendFile(__dirname + "/dist/index.html")
+  res.sendFile(pathName);
 })
 
 app.listen(PORT, () => console.log(`Server has been started on ${PORT}...`))
