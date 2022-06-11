@@ -32,4 +32,6 @@ const chatConfig = {
   menuClassSelector: "menu",
   isShowMenuSelecor: "menu_is-show",
   menuBtnSelector: "menu__btn",
+  searchInputByChatsSelector: "search-chat__input",
+  imgFromSearchInputByChatsSelector: "search-chat__img",
 }
