@@ -90,7 +90,8 @@ class Popup {
     }
 
     if (classes.includes(this._popupChangeAvatarSelector)) {
-      !evt.composedPath().includes(this._popupСontainers[0]) &&
+      const popupContainer = this._menu.querySelector(`.${this._popupСontainerSelector}`)
+      !evt.composedPath().includes(popupContainer) &&
         evt.target !== this._editAvatarText &&
         evt.target !== this._editAvatar &&
         this._handleClosePopup()
