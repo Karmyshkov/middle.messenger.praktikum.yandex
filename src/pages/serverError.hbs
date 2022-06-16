@@ -1,0 +1,14 @@
+---
+title: Непредвиденная проблема
+css:
+  - ../vendor/normalize.css
+  - ../vendor/fonts.css
+  - ../variables/variables.css
+  - ../styles/styles.css
+  - ../components/error/error.css
+---
+{{!< base}}
+
+<div class="page">
+  {{> error/error title="500" subtitle="Мы уже фиксим"}}
+</div>
