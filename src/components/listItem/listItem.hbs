@@ -6,7 +6,7 @@
       <p class="list-item__message">{{#unless this.countNotReadMessage}}<span class="list-item__message_bold">Вы:</span>{{/unless}} {{this.lastMessage}}</p>
     </div>
     <div class="list-item__wrap">
-      <p class="list-item__time">{{this.time}}</p>
+      <time class="list-item__time">{{this.time}}</time>
       <p class="list-item__count-message {{#if this.countNotReadMessage}}list-item__count-message_is-show{{/if}}">{{this.countNotReadMessage}}</p>
     </div>
   </div>

@@ -10,9 +10,9 @@
   }
 
   &__input {
-    outline: none;
     box-sizing: border-box;
     border-color: transparent;
+    outline: none;
     border-width: 1px;
     font-size: 12px;
     width: 100%;
