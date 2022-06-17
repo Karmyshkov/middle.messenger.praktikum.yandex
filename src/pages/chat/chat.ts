@@ -1,6 +1,5 @@
 import Block from "core/Block";
 import "./chat.css";
-
 import right_arrow from "img/right-arrow.svg";
 
 interface ChatPageProps {}
