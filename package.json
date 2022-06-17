@@ -11,7 +11,8 @@
     "core": "./src/core",
     "pages": "./src/pages",
     "components": "./src/components",
-    "img": "./src/image"
+    "img": "./src/image",
+    "routes": "./src/routes"
   },
   "repository": {
     "type": "git",
