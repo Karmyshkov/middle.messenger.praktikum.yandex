@@ -1,6 +1,7 @@
 import SigninPage from "pages/signin";
 import SignupPage from "pages/signup";
 import ChatPage from "pages/chat";
+import ProfilePage from "pages/profile";
 import NotFoundPage from "pages/not-found";
 import ServerErrorPage from "pages/server-error";
 
@@ -9,14 +10,13 @@ export const getCurrentPage = () => {
   let app = new SigninPage({});
   switch (path) {
     case "/":
-      app = new SigninPage({});
-      break;
+      return (app = new SigninPage({}));
     case "/signup":
-      app = new SignupPage({});
-      break;
+      return (app = new SignupPage({}));
     case "/chat":
-      app = new ChatPage({});
-      break;
+      return (app = new ChatPage({}));
+    case "/profile":
+      return (app = new ProfilePage({}));
     default:
       app = new NotFoundPage({});
   }
