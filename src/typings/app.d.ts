@@ -8,6 +8,8 @@ declare global {
   export module "*.jpg";
   export module "*.png";
   export module "*.webp";
+
+  export module "*.json";
 }
 
 export {};
