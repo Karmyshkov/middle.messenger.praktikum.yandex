@@ -5,11 +5,7 @@ import ChatPage from "pages/chat";
 import NotFoundPage from "pages/not-found";
 import ServerErrorPage from "pages/server-error";
 
-import Input from "components/input";
-import Button from "components/button";
-import Error from "components/error";
-
-const components: BlockConstructable<any>[] = [Input, Button, Error];
+import { components } from "components";
 
 components.forEach((component) => {
   registerComponent(component);
