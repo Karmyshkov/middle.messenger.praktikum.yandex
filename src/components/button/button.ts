@@ -4,12 +4,12 @@ import "./button.css";
 interface ButtonProps {
   textBtn: string;
   href: string;
-  onClick: () => void;
+  classes?: string;
 }
 
 export class Button extends Block {
-  constructor({ textBtn, href, onClick }: ButtonProps) {
-    super({ textBtn, href, events: { click: onClick } });
+  constructor({ textBtn, href, classes }: ButtonProps) {
+    super({ textBtn, href, classes });
   }
 
   protected render(): string {
