@@ -1,9 +1,10 @@
 import Block from "core/Block";
 import "./input.css";
+import { InputTypeEnum } from "types";
 
 interface InputProps {
   onChange?: () => void;
-  type?: "text" | "password" | "email";
+  type: InputTypeEnum;
   helperText: string;
   minlength?: number;
   maxlength?: number;
@@ -12,7 +13,7 @@ interface InputProps {
 
 export class Input extends Block {
   constructor({
-    type = "text",
+    type,
     helperText,
     minlength,
     maxlength,
