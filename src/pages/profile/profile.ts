@@ -1,5 +1,8 @@
 import Block from "core/Block";
-import "./signin.css";
+import "./profile.css";
+import dataProfile from "../../data/profile.json";
+
+const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
 interface ProfilePageProps {}
 
@@ -11,23 +14,18 @@ export class ProfilePage extends Block {
     // language=hbs
     return `
       <ul class="profile">
-        {{> btnBackProfile/btnBackProfile href="./chat.hbs"}}
+        {{{BtnBackProfile href="/chat"}}}
         <li class="profile__column">
           <form class="profile__form">
-            {{> editAvatar/editAvatar}}
+            {{{EditAvatar}}}
             <p class="profile__user-name">Иван</p>
             <ul class="profile__list">
-              {{> inputProfile/inputProfile type="email" helperText="Почта" value=profile.payload.email}}
-              {{> inputProfile/inputProfile type="text" helperText="Логин" value=profile.payload.name}}
-              {{> inputProfile/inputProfile type="text" helperText="Имя" value=profile.payload.name}}
-              {{> inputProfile/inputProfile type="text" helperText="Фамилия" value=profile.payload.lastName}}
-              {{> inputProfile/inputProfile type="text" helperText="Имя в чате" value=profile.payload.chatName}}
-              {{> inputProfile/inputProfile type="phone" helperText="Телефон" value=profile.payload.phone}}
-            </ul>
-            <ul class="profile__list">
-              {{> btnProfile/btnProfile href="./editProfile.hbs"  text="Изменить данные" classes="btn-profile__link_color_red"}}
-              {{> btnProfile/btnProfile href="./ediPassword.hbs" text="Изменить пароль" classes="btn-profile__link_color_red"}}
-              {{> btnProfile/btnProfile href="./index.hbs" text="Выйти" classes="btn-profile__link_color_blue"}}
+              {{{InputProfile type="email" helperText="Почта" value="${email}"}}}
+              {{{InputProfile type="text" helperText="Логин" value="${login}"}}}
+              {{{InputProfile type="text" helperText="Имя" value="${name}"}}}
+              {{{InputProfile type="text" helperText="Фамилия" value="${lastName}"}}}
+              {{{InputProfile type="text" helperText="Имя в чате" value="${chatName}"}}}
+              {{{InputProfile type="phone" helperText="Телефон" value="${phone}"}}}
             </ul>
           </form>
         </li>
