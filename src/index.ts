@@ -1,8 +1,6 @@
 import { renderDOM, registerComponent, BlockConstructable } from "core";
 import SigninPage from "pages/signin";
 
-// import "./app.css"
-
 import Input from "components/input";
 import Button from "components/button";
 

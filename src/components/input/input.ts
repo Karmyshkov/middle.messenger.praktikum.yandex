@@ -13,12 +13,20 @@ interface InputProps {
 export class Input extends Block {
   constructor({
     type = "text",
+    helperText,
     minlength,
     maxlength,
     classes,
     onChange = () => console.log("test"),
   }: InputProps) {
-    super({ type, minlength, maxlength, classes, events: { input: onChange } });
+    super({
+      type,
+      helperText,
+      minlength,
+      maxlength,
+      classes,
+      events: { input: onChange },
+    });
   }
 
   protected render(): string {
