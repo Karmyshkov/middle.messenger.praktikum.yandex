@@ -20,7 +20,7 @@ export class SignupPage extends Block {
             {{{Input type="text" helperText="Фамилия" minlength="1" maxlength="50"}}}
             {{{Input type="password" helperText="Пароль" minlength="4" maxlength="20"}}}
             {{{Input type="password" helperText="Пароль (ещё раз)" minlength="4" maxlength="20" classes="input_is-auth"}}}
-            {{{Button textBtn="Зарегистрироваться"}}}
+            {{{Button href="/" textBtn="Зарегистрироваться"}}}
             <a class="signup__link" href="/">Войти</a>
           </form>
         </main>
