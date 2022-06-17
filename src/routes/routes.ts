@@ -2,6 +2,7 @@ import SigninPage from "pages/signin";
 import SignupPage from "pages/signup";
 import ChatPage from "pages/chat";
 import ProfilePage from "pages/profile";
+import EditProfilePage from "pages/edit-profile";
 import NotFoundPage from "pages/not-found";
 import ServerErrorPage from "pages/server-error";
 
@@ -17,6 +18,8 @@ export const getCurrentPage = () => {
       return (app = new ChatPage({}));
     case "/profile":
       return (app = new ProfilePage({}));
+    case "/edit-profile":
+      return (app = new EditProfilePage({}));
     default:
       app = new NotFoundPage({});
   }
