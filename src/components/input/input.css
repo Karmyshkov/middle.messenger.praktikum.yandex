@@ -18,6 +18,7 @@
   }
 
   &__text-field {
+    box-sizing: border-box;
     outline: none;
     border: none;
     background-color: transparent;
