@@ -46,9 +46,7 @@
   &__link-profile {
     text-decoration: none;
     display: inline-block;
-
     transition: 0.3s opacity;
-    margin-top: 21px;
   }
 
   &__link-profile:hover {
