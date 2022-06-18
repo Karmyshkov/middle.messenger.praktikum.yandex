@@ -5,6 +5,7 @@ import Error from "./error";
 import BtnBackProfile from "./btnBackProfile";
 import EditAvatar from "./editAvatar";
 import InputProfile from "./InputProfile";
+import BtnProfile from "./btnProfile";
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -13,4 +14,5 @@ export const components: BlockConstructable<any>[] = [
   BtnBackProfile,
   EditAvatar,
   InputProfile,
+  BtnProfile,
 ];

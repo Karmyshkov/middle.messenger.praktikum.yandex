@@ -27,6 +27,11 @@ export class ProfilePage extends Block {
               {{{InputProfile type="text" helperText="Имя в чате" value="${chatName}"}}}
               {{{InputProfile type="phone" helperText="Телефон" value="${phone}"}}}
             </ul>
+            <ul class="profile__list">
+              {{{BtnProfile href="/edit-profile"  text="Изменить данные" classes="btn-profile__link_color_red"}}}
+              {{{BtnProfile href="/edi-password" text="Изменить пароль" classes="btn-profile__link_color_red"}}}
+              {{{BtnProfile href="/" text="Выйти" classes="btn-profile__link_color_blue"}}}
+            </ul>
           </form>
         </li>
       </ul>
