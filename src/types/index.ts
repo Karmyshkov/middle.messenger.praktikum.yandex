@@ -1,1 +1,1 @@
-export { InputTypeEnum } from "./types";
+export { InputTypeEnum, ChatType } from "./types";

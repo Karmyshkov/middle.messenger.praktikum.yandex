@@ -6,4 +6,12 @@ enum InputTypeEnum {
   "number",
 }
 
-export { InputTypeEnum };
+type ChatType = {
+  userName: string;
+  lastMessage: string;
+  time: string;
+  countNotReadMessage: number;
+  srcAvatar: string;
+};
+
+export { InputTypeEnum, ChatType };
