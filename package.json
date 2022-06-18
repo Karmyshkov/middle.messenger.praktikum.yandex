@@ -13,7 +13,8 @@
     "components": "./src/components",
     "img": "./src/image",
     "routes": "./src/routes",
-    "types": "./src/types"
+    "types": "./src/types",
+    "data": "./src/data"
   },
   "repository": {
     "type": "git",
