@@ -29,7 +29,7 @@ export class ProfilePage extends Block {
             </ul>
             <ul class="profile__list">
               {{{BtnProfile href="/edit-profile"  text="Изменить данные" classes="btn-profile__link_color_red"}}}
-              {{{BtnProfile href="/edi-password" text="Изменить пароль" classes="btn-profile__link_color_red"}}}
+              {{{BtnProfile href="/edit-password" text="Изменить пароль" classes="btn-profile__link_color_red"}}}
               {{{BtnProfile href="/" text="Выйти" classes="btn-profile__link_color_blue"}}}
             </ul>
           </form>
