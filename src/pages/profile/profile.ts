@@ -1,6 +1,6 @@
 import Block from "core/Block";
 import "./profile.css";
-import dataProfile from "../../data/profile.json";
+import dataProfile from "data/profile.json";
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 

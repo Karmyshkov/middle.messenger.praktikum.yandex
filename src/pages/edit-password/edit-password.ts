@@ -1,6 +1,6 @@
 import Block from "core/Block";
 import "./edit-password.css";
-import dataProfile from "../../data/profile.json";
+import dataProfile from "data/profile.json";
 
 interface EditPasswordPageProps {}
 
