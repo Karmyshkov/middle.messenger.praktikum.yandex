@@ -3,6 +3,7 @@
   position: relative;
   cursor: pointer;
   margin-bottom: 21px;
+
   &::before {
     content: "";
     display: inline-block;
