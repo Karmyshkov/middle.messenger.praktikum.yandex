@@ -3,8 +3,22 @@ import './listItem.css';
 import { ChatType } from 'types';
 
 export class ListItem extends Block {
-  constructor({ userName, lastMessage, time, countNotReadMessage, srcAvatar }: ChatType) {
-    super({ userName, lastMessage, time, countNotReadMessage, srcAvatar });
+  constructor({
+    userName,
+    lastMessage,
+    time,
+    countNotReadMessage,
+    srcAvatar,
+    onClick,
+  }: any) {
+    super({
+      userName,
+      lastMessage,
+      time,
+      countNotReadMessage,
+      srcAvatar,
+      events: { click: onClick },
+    });
   }
   protected getStateFromProps(props: ChatType): void {
     this.state = {
