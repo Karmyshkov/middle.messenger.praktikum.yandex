@@ -61,9 +61,6 @@
     margin-right: 8px;
   }
 
-  &__link-img {
-  }
-
   &__list {
     margin: 0;
     padding: 0;
@@ -99,7 +96,6 @@
   }
 
   &__text-date {
-    margin: 0;
     font-size: 12px;
     color: var(--color-grey);
     font-weight: 500;

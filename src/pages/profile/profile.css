@@ -9,13 +9,9 @@
     list-style: none;
   }
 
-  &__icon {
-  }
-
   &__form {
     font-family: inherit;
     text-align: center;
-    margin-top: 60px;
     max-width: 510px;
     margin: 60px auto 0;
   }

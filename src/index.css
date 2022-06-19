@@ -23,8 +23,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  text-size-adjust: 100%;
   height: 100vh;
 
   &__form {
@@ -41,7 +39,4 @@ body {
   &__link-profile {
     margin: 21px 10px 23px 0;
   }
-}
-
-.form {
 }
