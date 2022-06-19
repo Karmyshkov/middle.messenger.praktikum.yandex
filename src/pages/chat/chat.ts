@@ -1,11 +1,20 @@
 import Block from 'core/Block';
 import './chat.css';
-
 import right_arrow from 'img/right-arrow.svg';
 import chats from 'data/chats.json';
+import messages from 'data/messages.json';
 import { ChatType } from 'types';
+import { Chat } from 'utils/Chat';
+import { config } from 'utils/constants';
 
 export class ChatPage extends Block {
+  protected getStateFromProps() {
+    this.state = {
+      onTest: (evt: Event) => {
+        new Chat(config)._addActiveClassName(evt);
+      },
+    };
+  }
   render() {
     // language=hbs
     return `
@@ -22,12 +31,13 @@ export class ChatPage extends Block {
                 .map(
                   (chat: ChatType) =>
                     `{{{ListItem
-                    userName="${chat.userName}"
-                    lastMessage="${chat.lastMessage}"
-                    time="${chat.time}"
-                    countNotReadMessage="${chat.countNotReadMessage}"
-                    srcAvatar="${chat.srcAvatar}"
-                  }}}`
+                      userName="${chat.userName}"
+                      lastMessage="${chat.lastMessage}"
+                      time="${chat.time}"
+                      countNotReadMessage="${chat.countNotReadMessage}"
+                      srcAvatar="${chat.srcAvatar}"
+                      onClick=onTest
+                    }}}`
                 )
                 .join('')}
             </ul>
@@ -45,9 +55,20 @@ export class ChatPage extends Block {
             </div>
             <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
-
+              ${messages.payload
+                .map(
+                  (message: any) =>
+                    `{{{Message
+                      owner=${message.owner}
+                      text="${message.text ? message.text : ''}"
+                      time="${message.time}"
+                      srcImg="${message.srcImg ? message.srcImg : ''}"
+                      isRead=${message.isRead ? true : false}
+                    }}}`
+                )
+                .join('')}
             </ul>
-            {{ChatFooter}}
+            {{{ChatFooter}}}
           </li>
         </ul>
       </div>
