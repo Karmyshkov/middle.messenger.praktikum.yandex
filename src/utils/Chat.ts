@@ -23,7 +23,7 @@ export class Chat extends View {
     );
   }
 
-  public _addActiveClassName(evt: Event) {
+  public addActiveClassName(evt: Event) {
     this._removeActiveClassName();
     this._element = evt.currentTarget as Element;
     this._element.classList.add(this._isActiveChatSelector);
@@ -33,7 +33,7 @@ export class Chat extends View {
     }
   }
 
-  public _removeActiveClassName = () => {
+  private _removeActiveClassName = () => {
     document
       .querySelector(`.${this._isActiveChatSelector}`)
       ?.classList.remove(this._isActiveChatSelector);

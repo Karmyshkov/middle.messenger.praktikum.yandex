@@ -10,8 +10,8 @@ import { config } from 'utils/constants';
 export class ChatPage extends Block {
   protected getStateFromProps() {
     this.state = {
-      onTest: (evt: Event) => {
-        new Chat(config)._addActiveClassName(evt);
+      click: (evt: Event) => {
+        new Chat(config).addActiveClassName(evt);
       },
     };
   }
@@ -36,7 +36,7 @@ export class ChatPage extends Block {
                       time="${chat.time}"
                       countNotReadMessage="${chat.countNotReadMessage}"
                       srcAvatar="${chat.srcAvatar}"
-                      onClick=onTest
+                      onClick=click
                     }}}`
                 )
                 .join('')}
