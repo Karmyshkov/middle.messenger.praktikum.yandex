@@ -7,7 +7,7 @@
     "dev": "parcel src/index.html --no-source-maps",
     "start": "node ./api/server.js",
     "lint:ts": "npx eslint .",
-    "lint:style": "npx stylelint \"**/*.css\""
+    "lint:style": "npx stylelint \"**/*.css\" --fix"
   },
   "alias": {
     "core": "./src/core",
