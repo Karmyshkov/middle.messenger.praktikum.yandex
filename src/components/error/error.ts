@@ -1,10 +1,6 @@
 import Block from 'core/Block';
 import './error.css';
-
-interface ErrorProps {
-  title: string;
-  subtitle: string;
-}
+import { ErrorProps } from './types';
 
 export class Error extends Block {
   constructor({ title, subtitle }: ErrorProps) {

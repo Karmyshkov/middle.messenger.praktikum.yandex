@@ -1,12 +1,6 @@
 import Block from 'core/Block';
 import './InputProfile.css';
-import { InputTypeEnum } from 'types';
-
-interface InputProfileProps {
-  type: InputTypeEnum;
-  value: string;
-  helperText: string;
-}
+import { InputProfileProps } from './types';
 
 export class InputProfile extends Block {
   constructor({ type, value, helperText }: InputProfileProps) {

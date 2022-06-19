@@ -1,10 +1,7 @@
 import Block from 'core/Block';
 import './btnBackProfile.css';
 import left_arrow from 'img/left-arrow.svg';
-
-interface BtnBackProfileProps {
-  href: string;
-}
+import { BtnBackProfileProps } from './types';
 
 export class BtnBackProfile extends Block {
   constructor({ href }: BtnBackProfileProps) {

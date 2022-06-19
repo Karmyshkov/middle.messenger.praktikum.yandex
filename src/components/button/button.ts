@@ -1,11 +1,6 @@
 import Block from 'core/Block';
 import './button.css';
-
-interface ButtonProps {
-  textBtn: string;
-  href: string;
-  classes?: string;
-}
+import { ButtonProps } from './types';
 
 export class Button extends Block {
   constructor({ textBtn, href, classes }: ButtonProps) {

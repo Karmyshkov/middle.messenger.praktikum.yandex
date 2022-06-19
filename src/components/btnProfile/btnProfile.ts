@@ -1,11 +1,6 @@
 import Block from 'core/Block';
 import './btnProfile.css';
-
-interface BtnProfileProps {
-  text: string;
-  classes: string;
-  href: string;
-}
+import { BtnProfileProps } from './types';
 
 export class BtnProfile extends Block {
   constructor({ text, classes, href }: BtnProfileProps) {

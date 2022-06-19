@@ -1,4 +1,5 @@
 import Block from 'core/Block';
+import './server-error.css';
 
 export class ServerErrorPage extends Block {
   render() {

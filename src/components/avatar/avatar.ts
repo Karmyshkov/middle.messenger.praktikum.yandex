@@ -1,10 +1,6 @@
 import Block from 'core/Block';
 import './avatar.css';
-
-interface AvatarProps {
-  srcAvatar: string;
-  userName: string;
-}
+import { AvatarProps } from './types';
 
 export class Avatar extends Block {
   constructor({ srcAvatar, userName }: AvatarProps) {
