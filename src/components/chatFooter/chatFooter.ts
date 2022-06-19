@@ -1,5 +1,7 @@
 import Block from 'core/Block';
 import './chatFooter.css';
+import attach_btn from 'img/attach-btn.svg';
+import send_btn from 'img/send-btn.svg';
 
 export class ChatFooter extends Block {
   protected render(): string {
@@ -10,7 +12,7 @@ export class ChatFooter extends Block {
           <button class="chat-footer__btn-attach" type="button" aria-label="Прирепить файл">
             <img
               class="chat-footer__icon-attach"
-              src="../image/attach-btn.svg"
+              src="${attach_btn}"
               alt="Иконка прирепить файл"
             />
           </button>
@@ -18,7 +20,7 @@ export class ChatFooter extends Block {
           <button class="chat-footer__btn-send" type="submit" aria-label="Отправить сообщение">
             <img
               class="chat-footer__icon-send"
-              src="../image/send-btn.svg"
+              src="${send_btn}"
               alt="Иконка отправить сообщение"
             />
           </button>
