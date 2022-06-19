@@ -31,6 +31,8 @@
   }
 
   &__column-dialog {
+    display: flex;
+    flex-direction: column;
     margin: 10px 20px;
     overflow-y: auto;
   }
@@ -107,5 +109,6 @@
   &__messages {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 }
