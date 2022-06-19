@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import "./editAvatar.css";
-import avatar from "img/avatar.svg";
+import Block from 'core/Block';
+import './editAvatar.css';
+import avatar from 'img/avatar.svg';
 
 export class EditAvatar extends Block {
   protected render(): string {

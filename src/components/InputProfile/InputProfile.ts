@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import "./InputProfile.css";
-import { InputTypeEnum } from "types";
+import Block from 'core/Block';
+import './InputProfile.css';
+import { InputTypeEnum } from 'types';
 
 interface InputProfileProps {
   type: InputTypeEnum;

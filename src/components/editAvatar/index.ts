@@ -1,1 +1,1 @@
-export { EditAvatar as default } from "./editAvatar";
+export { EditAvatar as default } from './editAvatar';

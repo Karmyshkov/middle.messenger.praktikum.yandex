@@ -1,1 +1,1 @@
-export { BtnBackProfile as default } from "./btnBackProfile";
+export { BtnBackProfile as default } from './btnBackProfile';

@@ -1,12 +1,7 @@
-import Block from "core/Block";
-import "./chatFooter.css";
-
-interface ChatFooterProps {}
+import Block from 'core/Block';
+import './chatFooter.css';
 
 export class ChatFooter extends Block {
-  constructor({}: ChatFooterProps) {
-    super();
-  }
   protected render(): string {
     // language=hbs
     return `

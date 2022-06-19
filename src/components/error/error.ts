@@ -1,5 +1,5 @@
-import Block from "core/Block";
-import "./error.css";
+import Block from 'core/Block';
+import './error.css';
 
 interface ErrorProps {
   title: string;

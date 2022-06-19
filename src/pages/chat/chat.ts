@@ -1,16 +1,11 @@
-import Block from "core/Block";
-import "./chat.css";
+import Block from 'core/Block';
+import './chat.css';
 
-import right_arrow from "img/right-arrow.svg";
-import chats from "data/chats.json";
-import { ChatType } from "types";
-
-interface ChatPageProps {}
+import right_arrow from 'img/right-arrow.svg';
+import chats from 'data/chats.json';
+import { ChatType } from 'types';
 
 export class ChatPage extends Block {
-  constructor(props: ChatPageProps) {
-    super({ ...props });
-  }
   render() {
     // language=hbs
     return `
@@ -34,7 +29,7 @@ export class ChatPage extends Block {
                     srcAvatar="${chat.srcAvatar}"
                   }}}`
                 )
-                .join("")}
+                .join('')}
             </ul>
           </li>
           <li class="chat__column chat__column-default">

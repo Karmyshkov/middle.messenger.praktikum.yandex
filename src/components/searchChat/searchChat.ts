@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import "./searchChat.css";
-import search from "img/search.svg";
+import Block from 'core/Block';
+import './searchChat.css';
+import search from 'img/search.svg';
 
 export class SearchChat extends Block {
   protected render(): string {

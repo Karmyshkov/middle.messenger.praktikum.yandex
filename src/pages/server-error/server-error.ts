@@ -1,12 +1,7 @@
-import Block from "core/Block";
-import "./server-error.css";
-
-interface ServerErrorPageProps {}
+import Block from 'core/Block';
+import './server-error.css';
 
 export class ServerErrorPage extends Block {
-  constructor(props: ServerErrorPageProps) {
-    super({ ...props });
-  }
   render() {
     // language=hbs
     return `

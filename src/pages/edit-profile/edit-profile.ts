@@ -1,15 +1,10 @@
-import Block from "core/Block";
-import "./edit-profile.css";
-import dataProfile from "data/profile.json";
+import Block from 'core/Block';
+import './edit-profile.css';
+import dataProfile from 'data/profile.json';
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
-interface EditProfilePageProps {}
-
 export class EditProfilePage extends Block {
-  constructor(props: EditProfilePageProps) {
-    super({ ...props });
-  }
   render() {
     // language=hbs
     return `

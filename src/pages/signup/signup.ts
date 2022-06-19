@@ -1,12 +1,7 @@
-import Block from "core/Block";
-import "./signup.css";
-
-interface SignupPageProps {}
+import Block from 'core/Block';
+import './signup.css';
 
 export class SignupPage extends Block {
-  constructor(props: SignupPageProps) {
-    super({ ...props });
-  }
   render() {
     // language=hbs
     return `

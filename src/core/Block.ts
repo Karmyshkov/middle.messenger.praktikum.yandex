@@ -1,6 +1,6 @@
-import EventBus from "./EventBus";
-import { nanoid } from "nanoid";
-import Handlebars from "handlebars";
+import EventBus from './EventBus';
+import { nanoid } from 'nanoid';
+import Handlebars from 'handlebars';
 
 interface BlockMeta<P = any> {
   props: P;
@@ -10,10 +10,10 @@ type Events = Values<typeof Block.EVENTS>;
 
 export default class Block<P = any> {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   } as const;
 
   public id = nanoid(6);
@@ -55,7 +55,7 @@ export default class Block<P = any> {
   }
 
   _createResources() {
-    this._element = this._createDocumentElement("div");
+    this._element = this._createDocumentElement('div');
   }
 
   protected getStateFromProps(props: any): void {
@@ -118,7 +118,7 @@ export default class Block<P = any> {
   }
 
   protected render(): string {
-    return "";
+    return '';
   }
 
   getContent(): HTMLElement {
@@ -142,7 +142,7 @@ export default class Block<P = any> {
     return new Proxy(props as unknown as object, {
       get(target: Record<string, unknown>, prop: string) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, unknown>, prop: string, value: unknown) {
         target[prop] = value;
@@ -153,7 +153,7 @@ export default class Block<P = any> {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа");
+        throw new Error('Нет доступа');
       },
     }) as unknown as P;
   }
@@ -187,7 +187,7 @@ export default class Block<P = any> {
   }
 
   _compile(): DocumentFragment {
-    const fragment = document.createElement("template");
+    const fragment = document.createElement('template');
 
     /**
      * Рендерим шаблон
@@ -238,10 +238,10 @@ export default class Block<P = any> {
   }
 
   show() {
-    this.getContent().style.display = "block";
+    this.getContent().style.display = 'block';
   }
 
   hide() {
-    this.getContent().style.display = "none";
+    this.getContent().style.display = 'none';
   }
 }

@@ -1,9 +1,9 @@
 enum InputTypeEnum {
-  "text",
-  "email",
-  "password",
-  "phone",
-  "number",
+  'text',
+  'email',
+  'password',
+  'phone',
+  'number',
 }
 
 type ChatType = {

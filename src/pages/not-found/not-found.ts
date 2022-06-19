@@ -1,12 +1,7 @@
-import Block from "core/Block";
-import "./not-found.css";
-
-interface NotFoundPageProps {}
+import Block from 'core/Block';
+import './not-found.css';
 
 export class NotFoundPage extends Block {
-  constructor(props: NotFoundPageProps) {
-    super({ ...props });
-  }
   render() {
     // language=hbs
     return `

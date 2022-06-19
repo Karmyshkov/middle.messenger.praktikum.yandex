@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import "./input.css";
-import { InputTypeEnum } from "types";
+import Block from 'core/Block';
+import './input.css';
+import { InputTypeEnum } from 'types';
 
 interface InputProps {
   onChange?: () => void;
@@ -18,7 +18,7 @@ export class Input extends Block {
     minlength,
     maxlength,
     classes,
-    onChange = () => console.log("test"),
+    onChange = () => console.log('test'),
   }: InputProps) {
     super({
       type,

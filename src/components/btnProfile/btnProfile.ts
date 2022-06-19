@@ -1,5 +1,5 @@
-import Block from "core/Block";
-import "./btnProfile.css";
+import Block from 'core/Block';
+import './btnProfile.css';
 
 interface BtnProfileProps {
   text: string;

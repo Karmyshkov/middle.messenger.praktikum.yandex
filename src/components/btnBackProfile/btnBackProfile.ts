@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import "./btnBackProfile.css";
-import left_arrow from "img/left-arrow.svg";
+import Block from 'core/Block';
+import './btnBackProfile.css';
+import left_arrow from 'img/left-arrow.svg';
 
 interface BtnBackProfileProps {
   href: string;

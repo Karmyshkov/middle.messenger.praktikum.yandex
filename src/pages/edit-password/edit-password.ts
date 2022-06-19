@@ -1,13 +1,8 @@
-import Block from "core/Block";
-import "./edit-password.css";
-import dataProfile from "data/profile.json";
-
-interface EditPasswordPageProps {}
+import Block from 'core/Block';
+import './edit-password.css';
+import dataProfile from 'data/profile.json';
 
 export class EditPasswordPage extends Block {
-  constructor(props: EditPasswordPageProps) {
-    super({ ...props });
-  }
   render() {
     // language=hbs
     return `

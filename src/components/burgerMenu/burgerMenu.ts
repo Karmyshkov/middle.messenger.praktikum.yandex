@@ -1,12 +1,7 @@
-import Block from "core/Block";
-import "./burgerMenu.css";
-
-interface BurgerMenuProps {}
+import Block from 'core/Block';
+import './burgerMenu.css';
 
 export class BurgerMenu extends Block {
-  constructor({}: BurgerMenuProps) {
-    super();
-  }
   protected render(): string {
     // language=hbs
     return `

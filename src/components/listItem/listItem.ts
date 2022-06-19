@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import "./listItem.css";
-import { ChatType } from "types";
+import Block from 'core/Block';
+import './listItem.css';
+import { ChatType } from 'types';
 
 export class ListItem extends Block {
   constructor({ userName, lastMessage, time, countNotReadMessage, srcAvatar }: ChatType) {

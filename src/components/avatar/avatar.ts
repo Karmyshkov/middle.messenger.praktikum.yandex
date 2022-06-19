@@ -1,5 +1,5 @@
-import Block from "core/Block";
-import "./avatar.css";
+import Block from 'core/Block';
+import './avatar.css';
 
 interface AvatarProps {
   srcAvatar: string;

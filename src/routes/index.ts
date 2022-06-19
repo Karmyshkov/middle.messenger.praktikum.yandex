@@ -1,1 +1,1 @@
-export { getCurrentPage } from "./routes";
+export { getCurrentPage } from './routes';

@@ -1,1 +1,1 @@
-export { SearchChat as default } from "./searchChat";
+export { SearchChat as default } from './searchChat';
