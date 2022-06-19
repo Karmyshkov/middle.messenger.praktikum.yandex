@@ -40,6 +40,20 @@ export class ChatPage extends Block {
           <li class="chat__column chat__column-default">
             <h2 class="chat__title">Выберите чат чтобы отправить сообщение</h2>
           </li>
+          <li class="chat__column chat__column-dialog chat__column_is-hidden">
+            <div class="chat__header">
+              <div class="chat__inner">
+                {{{Avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="Вадим"}}}
+                <p class="chat__user-name">Вадим</p>
+              </div>
+              {{{BurgerMenu}}}
+            </div>
+            <p class="chat__text-date">19 июня</p>
+            <ul class="chat__messages">
+
+            </ul>
+            {{ChatFooter}}
+          </li>
         </ul>
       </div>
     `;
