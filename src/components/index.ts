@@ -9,6 +9,8 @@ import BtnProfile from "./btnProfile";
 import SearchChat from "./searchChat";
 import ListItem from "./listItem";
 import Avatar from "./avatar";
+import BurgerMenu from "./burgerMenu";
+import ChatFooter from "./chatFooter";
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -21,4 +23,6 @@ export const components: BlockConstructable<any>[] = [
   SearchChat,
   ListItem,
   Avatar,
+  BurgerMenu,
+  ChatFooter,
 ];
