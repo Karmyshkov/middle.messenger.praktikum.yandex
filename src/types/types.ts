@@ -1,9 +1,14 @@
-enum InputTypeEnum {
+enum InputType {
   'text',
   'email',
   'password',
   'phone',
   'number',
+}
+
+enum ButtonType {
+  'button',
+  'submit',
 }
 
 type ChatType = {
@@ -14,4 +19,4 @@ type ChatType = {
   srcAvatar: string;
 };
 
-export { InputTypeEnum, ChatType };
+export { InputType, ButtonType, ChatType };
