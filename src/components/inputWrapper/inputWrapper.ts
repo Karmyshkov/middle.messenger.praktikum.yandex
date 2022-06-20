@@ -21,19 +21,27 @@ export class InputWrapper extends Block {
       events: { input: onInput, focus: onFocus },
     });
   }
+  protected getStateFromProps(props: InputWrapperProps): void {
+    this.state = {
+      classes: props.classes,
+      type: props.type,
+      minlength: props.minlength,
+      maxlength: props.maxlength,
+      helperText: props.helperText,
+    };
+  }
   protected render(): string {
+    const { classes, type, minlength, maxlength, helperText } = this.state;
     // language=hbs
     return `
-      <fieldset class="input {{classes}}">
+      <fieldset class="input ${classes}">
         <label class="input__label">
-          <input
-            class="input__text-field"
-            type={{type}}
-            minlength={{minlength}}
-            maxlength={{maxlength}}
-            required
-          />
-          <span class="input__text">{{helperText}}</span>
+          {{{Input
+            type="${type}"
+            minlength="${minlength}"
+            maxlength="${maxlength}"
+          }}}
+          <span class="input__text">${helperText}</span>
         </label>
         <p class="input__helper-text"></p>
       </fieldset>

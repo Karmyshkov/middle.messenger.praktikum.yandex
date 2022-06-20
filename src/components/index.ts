@@ -1,4 +1,5 @@
 import { BlockConstructable } from 'core';
+import Input from './input';
 import InputWrapper from './inputWrapper';
 import Button from './button';
 import Error from './error';
@@ -19,6 +20,7 @@ import Popup from './popup';
 import InputFile from './inputFile';
 
 export const components: BlockConstructable<any>[] = [
+  Input,
   InputWrapper,
   Button,
   Error,
