@@ -3,12 +3,12 @@ import './input.css';
 import { InputProps } from './types';
 
 export class Input extends Block {
-  constructor({ type, minlength, maxlength, onFocus, onBlur }: InputProps) {
+  constructor({ type, minlength, maxlength, onInput, onFocus, onBlur }: InputProps) {
     super({
       type,
       minlength,
       maxlength,
-      events: { focus: onFocus, blur: onBlur },
+      events: { input: onInput, focus: onFocus, blur: onBlur },
     });
   }
   protected getStateFromProps(props: InputProps): void {

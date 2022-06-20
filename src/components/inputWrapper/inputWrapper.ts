@@ -4,6 +4,8 @@ import { InputWrapperProps } from './types';
 import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
 
+const formValidator = new FormValidator(config, 'signin');
+
 export class InputWrapper extends Block {
   constructor({
     type,
@@ -31,7 +33,11 @@ export class InputWrapper extends Block {
       helperText: props.helperText,
 
       handleValidateInput: (evt: Event) => {
-        new FormValidator(config, 'signin').handleFieldValidation(evt);
+        formValidator.handleFieldValidation(evt);
+      },
+
+      handleClearError: () => {
+        formValidator.clearError();
       },
     };
   }
@@ -42,6 +48,7 @@ export class InputWrapper extends Block {
       <fieldset class="input ${classes}">
         <label class="input__label">
           {{{Input
+            onInput=handleClearError
             onFocus=handleValidateInput
             onBlur=handleValidateInput
             type="${type}"
