@@ -1,8 +1,8 @@
 import Block from 'core/Block';
-import './input.css';
-import { InputProps } from './types';
+import './inputWrapper.css';
+import { InputWrapperProps } from './types';
 
-export class Input extends Block {
+export class InputWrapper extends Block {
   constructor({
     type,
     helperText,
@@ -11,7 +11,7 @@ export class Input extends Block {
     classes,
     onInput,
     onFocus,
-  }: InputProps) {
+  }: InputWrapperProps) {
     super({
       type,
       helperText,

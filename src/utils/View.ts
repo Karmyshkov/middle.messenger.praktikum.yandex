@@ -45,4 +45,14 @@ export abstract class View {
   protected _popover!: Nullable<HTMLElement>;
   protected _btnAttach!: Nullable<HTMLElement>;
   protected _menuItems!: NodeList;
+  //FormValidator
+  protected _formSelector!: string;
+  protected _inputSelector!: string;
+  protected _inputHelperTextSelector!: string;
+  protected _btnSubmitFormSelector!: string;
+  protected _isShowHelperTextSelector!: string;
+  protected _isDisableBtnSubmitSelector!: string;
+  protected _form!: Nullable<HTMLFormElement>;
+  protected _inputs!: Element[] | null;
+  protected _btnSubmit!: Nullable<HTMLElement>;
 }

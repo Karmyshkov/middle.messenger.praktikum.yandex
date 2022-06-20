@@ -22,8 +22,8 @@ export class SigninPage extends Block {
         <main class="page__form">
           <form class="signin">
             <h1 class="signin__title">Вход</h1>
-            {{{Input onFocus=handleValidateInput onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20"}}}
-            {{{Input onFocus=handleValidateInput onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" classes="input_is-auth"}}}
+            {{{InputWrapper onFocus=handleValidateInput onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20"}}}
+            {{{InputWrapper onFocus=handleValidateInput onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" classes="input_is-auth"}}}
             {{{Button href="/chat" textBtn="Авторизоваться"}}}
             <a class="signin__link" href="/signup">Нет аккаунта?</a>
           </form>

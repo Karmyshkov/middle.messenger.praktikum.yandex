@@ -1,6 +1,6 @@
 import { InputType } from 'types';
 
-export interface InputProps {
+export interface InputWrapperProps {
   onInput?: () => void;
   onFocus?: () => void;
   type: InputType;

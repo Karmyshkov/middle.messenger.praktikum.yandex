@@ -51,7 +51,7 @@ export class Popup extends Block {
             ${
               isDefault
                 ? `
-                    {{{Input onInput=handleChangeInput type="text" helperText="${helperText}" minlength="5" maxlength="20"}}}
+                    {{{InputWrapper onInput=handleChangeInput type="text" helperText="${helperText}" minlength="5" maxlength="20"}}}
                     {{{Button textBtn="${textBtn}"}}}
                   `
                 : `
