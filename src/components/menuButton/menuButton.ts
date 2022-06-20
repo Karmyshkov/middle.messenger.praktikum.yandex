@@ -20,8 +20,8 @@ export class MenuButton extends Block {
     const { text, icon, alt, classes, type } = this.state;
     // language=hbs
     return `
-      <button class="menu__btn ${classes}" type="${type}">
-        <img class="menu__icon" src="${icon}" alt="${alt}" />
+      <button class="menu-button ${classes}" type="${type}">
+        <img class="menu-button__icon" src="${icon}" alt="${alt}" />
         ${text}
       </button>
     `;

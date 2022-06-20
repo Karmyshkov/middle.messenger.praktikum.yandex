@@ -17,7 +17,7 @@ export class ChatPage extends Block {
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
       },
-      handleOpenMenuUser: () => {
+      handleOpenUserMenu: () => {
         new Popup(
           'menu__list_element_user',
           'burger-menu',
@@ -25,7 +25,7 @@ export class ChatPage extends Block {
           config
         ).handleOpenPopup();
       },
-      handleOpenMenuFile: () => {
+      handleOpenFileMenu: () => {
         new Popup(
           'menu__list_element_file',
           'chat-footer__btn-attach',
@@ -71,7 +71,7 @@ export class ChatPage extends Block {
                 {{{Avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="Вадим"}}}
                 <p class="chat__user-name">Вадим</p>
               </div>
-              {{{BurgerMenu onClick=handleOpenMenuUser}}}
+              {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
             <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
@@ -88,11 +88,13 @@ export class ChatPage extends Block {
                 )
                 .join('')}
             </ul>
-            {{{ChatFooter onClick=handleOpenMenuFile}}}
+            {{{ChatFooter onClick=handleOpenFileMenu}}}
           </li>
         </ul>
-        {{{Menu isUser=true }}}
-        {{{Menu isUser=false }}}
+        {{{Menu isUser=true}}}
+        {{{Menu isUser=false}}}
+        {{{Popup title="Добавить пользователя" helperText="Логин" textBtn="Добавить" classesPopup="popup_add-user" classesForm="popup__form_add-user" isDefault=true}}}
+        {{{Popup title="Удалить пользователя" helperText="Логин" textBtn="Удалить" classesPopup="popup_delete-user"classesForm="popup__form_delete-user" isDefault=true}}}
       </div>
     `;
   }

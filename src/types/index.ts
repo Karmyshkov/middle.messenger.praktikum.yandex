@@ -1,1 +1,1 @@
-export { InputTypeEnum, ChatType } from './types';
+export { InputType, ButtonType, ChatType } from './types';
