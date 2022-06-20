@@ -55,4 +55,5 @@ export abstract class View {
   protected _form!: Nullable<HTMLFormElement>;
   protected _inputs!: Element[] | null;
   protected _btnSubmit!: Nullable<HTMLElement>;
+  protected _errorContainer: Element | null | undefined;
 }
