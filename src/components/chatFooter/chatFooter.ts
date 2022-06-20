@@ -20,7 +20,7 @@ export class ChatFooter extends Block {
               alt="Иконка прирепить файл"
             />
           </button>
-          <input class="chat-footer__input" type="text" placeholder="Поиск" />
+          <input class="chat-footer__input" type="text" placeholder="Поиск" required />
           <button class="chat-footer__btn-send" type="submit" aria-label="Отправить сообщение">
             <img
               class="chat-footer__icon-send"
