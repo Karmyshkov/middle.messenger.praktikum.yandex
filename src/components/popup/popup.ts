@@ -1,6 +1,8 @@
 import Block from 'core/Block';
 import './popup.css';
 import { PopupProps } from './types';
+import { Input } from 'utils/Input';
+import { config } from 'utils/constants';
 
 export class Popup extends Block {
   constructor({
@@ -30,6 +32,10 @@ export class Popup extends Block {
       isDefault: props.isDefault,
       helperText: props.helperText,
       textBtn: props.textBtn,
+
+      handleChangeInput: (evt: Event) => {
+        evt.target && new Input(config, evt.target).checkOnValueInput();
+      },
     };
   }
 
