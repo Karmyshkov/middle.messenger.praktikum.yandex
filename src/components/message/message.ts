@@ -17,7 +17,9 @@ export class Message extends Block {
   }
   protected render(): string {
     const { owner, text, time, srcImg, isRead } = this.state;
-    const classesForTitle = `${!owner ? 'message_is-not-owner' : 'message_is-img'}`;
+    const classesForTitle = `${
+      !owner ? 'message_is-not-owner' : srcImg ? 'message_is-img' : ''
+    }`;
     const classesForText = `${owner ? 'message__text_is-me' : 'message__text_is-friend'}`;
     const classesForTime = `${
       isRead ? 'message__time_is-not-read' : 'message__time_is-read'
