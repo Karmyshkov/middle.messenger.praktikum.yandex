@@ -2,8 +2,12 @@ import Block from 'core/Block';
 import './chatFooter.css';
 import attach_btn from 'img/attach-btn.svg';
 import send_btn from 'img/send-btn.svg';
+import { ChatFooterProps } from './types';
 
 export class ChatFooter extends Block {
+  constructor({ onClick }: ChatFooterProps) {
+    super({ events: { click: onClick } });
+  }
   protected render(): string {
     // language=hbs
     return `
