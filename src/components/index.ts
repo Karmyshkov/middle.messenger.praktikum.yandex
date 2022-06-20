@@ -12,6 +12,7 @@ import Avatar from './avatar';
 import BurgerMenu from './burgerMenu';
 import ChatFooter from './chatFooter';
 import Message from './message';
+import InputChat from './inputChat';
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -27,4 +28,5 @@ export const components: BlockConstructable<any>[] = [
   BurgerMenu,
   ChatFooter,
   Message,
+  InputChat,
 ];
