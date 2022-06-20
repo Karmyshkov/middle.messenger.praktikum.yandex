@@ -29,6 +29,6 @@ export const config = {
   menuClassSelector: 'menu',
   isShowMenuSelecor: 'menu_is-show',
   menuBtnSelector: 'menu__btn',
-  searchInputByChatsSelector: 'search-chat__input',
+  searchInputByChatsSelector: 'input-chat',
   imgFromSearchInputByChatsSelector: 'search-chat__img',
 };

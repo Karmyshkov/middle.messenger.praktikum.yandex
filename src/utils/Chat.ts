@@ -51,15 +51,9 @@ export class Chat extends View {
     }
   };
 
-  private _toggleStateImg = () => {
-    //this._searchInputByChats.value.length > 0 ? this._hiddenImg() : this._showImg();
+  public toggleStateImg = () => {
+    if (this._searchInputByChats) {
+      this._searchInputByChats.value.length > 0 ? this._hiddenImg() : this._showImg();
+    }
   };
-
-  public addEventListeners() {
-    // this._messages.forEach((message) => {
-    //   message.addEventListener('click', () => this._addActiveClassName(message));
-    // });
-    // this._searchInputByChats &&
-    //   this._searchInputByChats.addEventListener('input', this._toggleStateImg);
-  }
 }

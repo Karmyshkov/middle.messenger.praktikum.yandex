@@ -9,6 +9,6 @@ export abstract class View {
   protected _messages!: NodeList;
   protected _contentDefault!: Nullable<HTMLElement>;
   protected _contentDialod!: Nullable<HTMLElement>;
-  protected _searchInputByChats!: Nullable<HTMLElement>;
+  protected _searchInputByChats!: Nullable<HTMLInputElement>;
   protected _imgFromSearchInputByChats!: Nullable<HTMLElement>;
 }
