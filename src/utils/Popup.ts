@@ -27,7 +27,7 @@ export class Popup extends View {
     this.editAvatarTextSelector = config.editAvatarTextSelector;
     this._menuListElementUserSelector = config.menuListElementUserSelector;
     this._menuClassSelector = config.menuClassSelector;
-    this._isShowMenuSelecor = config.isShowMenuSelecor;
+    this._isShowMenuSelecor = config.isShowMenuSelecor; // *
     this._menuBtnSelector = config.menuBtnSelector;
     this._editAvatar = document.querySelector(`.${this._editAvatarSelector}`);
     this._editAvatarText = document.querySelector(`.${this.editAvatarTextSelector}`);
@@ -63,7 +63,7 @@ export class Popup extends View {
 
   public handleOpenPopup = () => {
     if (this._menu) {
-      document.addEventListener('click', this._closePopupByOutsideZone);
+      document.addEventListener('click', this._closeByOutsideZone);
       this._disabledScroll(this._contentDialod);
       this._menu.classList.add(this._isOpenPopupSelector);
       this._menuSelector === this._menuListElementUserSelector &&
@@ -73,7 +73,7 @@ export class Popup extends View {
 
   private _handleClosePopup() {
     if (this._menu) {
-      document.removeEventListener('click', this._closePopupByOutsideZone);
+      document.removeEventListener('click', this._closeByOutsideZone);
       this._enabledScroll(this._contentDialod);
       this._menu.classList.remove(this._isOpenPopupSelector);
       this._menuSelector === this._menuListElementUserSelector &&
@@ -81,36 +81,42 @@ export class Popup extends View {
     }
   }
 
-  private _closePopupByOutsideZone = (evt: Event) => {
+  private _closeByOutsideZoneMenu = (evt: Event) => {
     if (this._menu && this._btnMenu) {
-      const classes = Array.from(this._menu.classList);
+      !(
+        evt.composedPath().includes(this._menu) ||
+        evt.composedPath().includes(this._btnMenu)
+      ) && this._handleClosePopup();
+    }
+  };
+
+  private _closeMenuIfPopupIsOpen = (popupContainer: Element | null) => {
+    if (popupContainer) {
+      document
+        .querySelector(`.${this._isShowMenuSelecor}`)
+        ?.classList.remove(this._isShowMenuSelecor);
+    }
+  };
+
+  private _closeByOutsideZonePopup = (popupContainer: Element | null, evt: Event) => {
+    if (popupContainer) {
+      const target = evt.target as HTMLDivElement;
+
+      !evt.composedPath().includes(popupContainer) &&
+        !Array.from(target.classList).includes(this._menuBtnSelector) &&
+        this._handleClosePopup();
+    }
+  };
+
+  private _closeByOutsideZone = (evt: Event) => {
+    this._closeByOutsideZoneMenu(evt);
+
+    if (this._menu) {
       const popupContainer = this._menu.querySelector(`.${this._popupСontainerSelector}`);
-      const element = evt.target as Element;
 
-      if (classes.includes(this._menuClassSelector)) {
-        !(
-          evt.composedPath().includes(this._menu) ||
-          evt.composedPath().includes(this._btnMenu)
-        ) && this._handleClosePopup();
-      }
+      this._closeMenuIfPopupIsOpen(popupContainer);
 
-      if (
-        popupContainer &&
-        (classes.includes(this._popupAddUserSelector) ||
-          classes.includes(this._popupDeleteUserSelector))
-      ) {
-        popupContainer &&
-          !evt.composedPath().includes(popupContainer) &&
-          !Array.from(element.classList).includes(this._menuBtnSelector) &&
-          this._handleClosePopup();
-      }
-
-      if (popupContainer && classes.includes(this._popupChangeAvatarSelector)) {
-        !evt.composedPath().includes(popupContainer) &&
-          element !== this._editAvatarText &&
-          element !== this._editAvatar &&
-          this._handleClosePopup();
-      }
+      this._closeByOutsideZonePopup(popupContainer, evt);
     }
   };
 }
