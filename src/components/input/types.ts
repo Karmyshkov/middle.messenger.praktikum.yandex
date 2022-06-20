@@ -1,7 +1,7 @@
 import { InputTypeEnum } from 'types';
 
 export interface InputProps {
-  onChange?: () => void;
+  onChangeInput?: () => void;
   type: InputTypeEnum;
   helperText: string;
   minlength?: number;

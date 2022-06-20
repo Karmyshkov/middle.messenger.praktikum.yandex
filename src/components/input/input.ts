@@ -9,7 +9,7 @@ export class Input extends Block {
     minlength,
     maxlength,
     classes,
-    onChange = () => console.log('test'),
+    onChangeInput,
   }: InputProps) {
     super({
       type,
@@ -17,7 +17,7 @@ export class Input extends Block {
       minlength,
       maxlength,
       classes,
-      events: { input: onChange },
+      events: { input: onChangeInput },
     });
   }
 
