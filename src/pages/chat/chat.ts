@@ -5,6 +5,7 @@ import chats from 'data/chats.json';
 import messages from 'data/messages.json';
 import { ChatType } from 'types';
 import { Chat } from 'utils/Chat';
+import { Popup } from 'utils/Popup';
 import { config } from 'utils/constants';
 
 export class ChatPage extends Block {
@@ -15,6 +16,14 @@ export class ChatPage extends Block {
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
+      },
+      handleOpenMenu: () => {
+        new Popup(
+          'menu__list_element_user',
+          'burger-menu',
+          'menu_is-show',
+          config
+        ).handleOpenPopup();
       },
     };
   }
@@ -54,7 +63,7 @@ export class ChatPage extends Block {
                 {{{Avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="Вадим"}}}
                 <p class="chat__user-name">Вадим</p>
               </div>
-              {{{BurgerMenu}}}
+              {{{BurgerMenu onClick=handleOpenMenu}}}
             </div>
             <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">

@@ -1,7 +1,11 @@
 import Block from 'core/Block';
 import './burgerMenu.css';
+import { BurgerMenuProps } from './types';
 
 export class BurgerMenu extends Block {
+  constructor({ onClick }: BurgerMenuProps) {
+    super({ events: { click: onClick } });
+  }
   protected render(): string {
     // language=hbs
     return `
