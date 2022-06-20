@@ -1,6 +1,8 @@
 import Block from 'core/Block';
 import './inputWrapper.css';
 import { InputWrapperProps } from './types';
+import { FormValidator } from 'utils/FormValidator';
+import { config } from 'utils/constants';
 
 export class InputWrapper extends Block {
   constructor({
@@ -10,7 +12,6 @@ export class InputWrapper extends Block {
     maxlength,
     classes,
     onInput,
-    onFocus,
   }: InputWrapperProps) {
     super({
       type,
@@ -18,7 +19,7 @@ export class InputWrapper extends Block {
       minlength,
       maxlength,
       classes,
-      events: { input: onInput, focus: onFocus },
+      events: { input: onInput },
     });
   }
   protected getStateFromProps(props: InputWrapperProps): void {
@@ -28,6 +29,10 @@ export class InputWrapper extends Block {
       minlength: props.minlength,
       maxlength: props.maxlength,
       helperText: props.helperText,
+
+      handleValidateInput: (evt: Event) => {
+        new FormValidator(config, 'signin').handleFieldValidation(evt);
+      },
     };
   }
   protected render(): string {
@@ -37,6 +42,8 @@ export class InputWrapper extends Block {
       <fieldset class="input ${classes}">
         <label class="input__label">
           {{{Input
+            onFocus=handleValidateInput
+            onBlur=handleValidateInput
             type="${type}"
             minlength="${minlength}"
             maxlength="${maxlength}"
