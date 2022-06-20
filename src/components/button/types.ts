@@ -1,6 +1,8 @@
+import { ButtonType } from 'types';
+
 export interface ButtonProps {
   onClick: () => void;
   textBtn: string;
-  href: string;
+  type: ButtonType;
   classes?: string;
 }

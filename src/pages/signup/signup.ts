@@ -25,7 +25,7 @@ export class SignupPage extends Block {
             {{{InputWrapper onInput=handleChangeInput type="text" helperText="Телефон" minlength="10" maxlength="15"}}}
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40"}}}
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль (ещё раз)" minlength="8" maxlength="40" classes="input_is-auth"}}}
-            {{{Button href="/" textBtn="Зарегистрироваться"}}}
+            {{{Button textBtn="Зарегистрироваться" type=""submit}}}
             <a class="signup__link" href="/">Войти</a>
           </form>
         </main>

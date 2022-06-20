@@ -3,12 +3,20 @@ import './button.css';
 import { ButtonProps } from './types';
 
 export class Button extends Block {
-  constructor({ textBtn, href, classes, onClick }: ButtonProps) {
-    super({ textBtn, href, classes, events: { click: onClick } });
+  constructor({ textBtn, type, classes, onClick }: ButtonProps) {
+    super({ textBtn, type, classes, events: { click: onClick } });
+  }
+  protected getStateFromProps(props: ButtonProps): void {
+    this.state = {
+      textBtn: props.textBtn,
+      type: props.type,
+      classes: props.classes,
+    };
   }
 
   protected render(): string {
+    const { textBtn, type, classes } = this.state;
     // language=hbs
-    return `<a href="{{href}}" class="button {{classes}}">{{textBtn}}</a>`;
+    return `<Button class="button ${classes}" type="${type}">${textBtn}</Button>`;
   }
 }

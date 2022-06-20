@@ -1,7 +1,6 @@
 .button {
   cursor: pointer;
-  text-decoration: none;
-  display: block;
+  border: none;
   background-color: var(--color-secondary);
   width: 100%;
   padding: 12px 0;

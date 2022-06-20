@@ -21,7 +21,7 @@ export class EditProfilePage extends Block {
               {{{InputProfile type="text" helperText="Фамилия" value="${lastName}"}}}
               {{{InputProfile type="text" helperText="Имя в чате" value="${chatName}"}}}
               {{{InputProfile type="phone" helperText="Телефон" value="${phone}"}}}
-              {{{Button typeBtn="submit" textBtn="Сохранить" classes="button_page_edit-profile"}}}
+              {{{Button textBtn="Сохранить" classes="button_page_edit-profile" type="submit"}}}
             </ul>
           </form>
         </li>

@@ -52,11 +52,11 @@ export class Popup extends Block {
               isDefault
                 ? `
                     {{{InputWrapper onInput=handleChangeInput type="text" helperText="${helperText}" minlength="5" maxlength="20"}}}
-                    {{{Button textBtn="${textBtn}"}}}
+                    {{{Button textBtn="${textBtn}" type="submit"}}}
                   `
                 : `
                     {{{InputFile}}}
-                    {{{Button textBtn="${textBtn}"}}}
+                    {{{Button textBtn="${textBtn}" type="submit"}}}
                   `
             }
           </form>

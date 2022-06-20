@@ -16,7 +16,7 @@ export class EditPasswordPage extends Block {
               {{{InputProfile type="password" helperText="Старый пароль" value="${dataProfile.payload.password}"}}}
               {{{InputProfile type="password" helperText="Новый пароль" value="1234"}}}
               {{{InputProfile type="password" helperText="Повторите новый пароль" value="1234"}}}
-              {{{Button typeBtn="submit" textBtn="Сохранить" classes="button_page_edit-password"}}}
+              {{{Button textBtn="Сохранить" classes="button_page_edit-password" type="submit"}}}
             </ul>
           </form>
         </li>
