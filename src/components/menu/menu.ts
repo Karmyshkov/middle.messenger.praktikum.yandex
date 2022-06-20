@@ -3,9 +3,9 @@ import './menu.css';
 import { MenuProps } from './types';
 import plus from 'img/plus.svg';
 import close from 'img/close.svg';
-import photo from 'img/close.svg';
-import file from 'img/close.svg';
-import location from 'img/close.svg';
+import photo from 'img/photo.svg';
+import file from 'img/file.svg';
+import location from 'img/location.svg';
 
 export class Menu extends Block {
   constructor({ isUser }: MenuProps) {
