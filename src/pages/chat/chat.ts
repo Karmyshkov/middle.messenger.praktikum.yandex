@@ -10,8 +10,11 @@ import { config } from 'utils/constants';
 export class ChatPage extends Block {
   protected getStateFromProps() {
     this.state = {
-      click: (evt: Event) => {
+      addClassForActiveElement: (evt: Event) => {
         new Chat(config).addActiveClassName(evt);
+      },
+      handleSearchByChats: () => {
+        new Chat(config).toggleStateImg();
       },
     };
   }
@@ -25,7 +28,7 @@ export class ChatPage extends Block {
               <span class="chat__link-text">Профиль</span>
               <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
             </a>
-            {{{SearchChat}}}
+            {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
               ${chats.payload
                 .map(
@@ -36,7 +39,7 @@ export class ChatPage extends Block {
                       time="${chat.time}"
                       countNotReadMessage="${chat.countNotReadMessage}"
                       srcAvatar="${chat.srcAvatar}"
-                      onClick=click
+                      onClick=addClassForActiveElement
                     }}}`
                 )
                 .join('')}
