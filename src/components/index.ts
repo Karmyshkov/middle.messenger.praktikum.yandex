@@ -13,6 +13,7 @@ import BurgerMenu from './burgerMenu';
 import ChatFooter from './chatFooter';
 import Message from './message';
 import InputChat from './inputChat';
+import Menu from './menu';
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -29,4 +30,5 @@ export const components: BlockConstructable<any>[] = [
   ChatFooter,
   Message,
   InputChat,
+  Menu,
 ];

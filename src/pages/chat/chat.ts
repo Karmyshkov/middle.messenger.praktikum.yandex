@@ -74,6 +74,7 @@ export class ChatPage extends Block {
             {{{ChatFooter}}}
           </li>
         </ul>
+        {{{Menu isUser=true }}}
       </div>
     `;
   }
