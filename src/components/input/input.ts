@@ -3,8 +3,17 @@ import './input.css';
 import { InputProps } from './types';
 
 export class Input extends Block {
-  constructor({ type, minlength, maxlength, onInput, onFocus, onBlur }: InputProps) {
+  constructor({
+    name,
+    type,
+    minlength,
+    maxlength,
+    onInput,
+    onFocus,
+    onBlur,
+  }: InputProps) {
     super({
+      name,
       type,
       minlength,
       maxlength,
@@ -13,13 +22,14 @@ export class Input extends Block {
   }
   protected getStateFromProps(props: InputProps): void {
     this.state = {
+      name: props.name,
       type: props.type,
       minlength: props.minlength,
       maxlength: props.maxlength,
     };
   }
   protected render(): string {
-    const { type, minlength, maxlength } = this.state;
+    const { name, type, minlength, maxlength } = this.state;
     // language=hbs
     return `
       <input
@@ -28,6 +38,7 @@ export class Input extends Block {
         minlength=${minlength}
         maxlength=${maxlength}
         required
+        name="${name}"
       />
     `;
   }

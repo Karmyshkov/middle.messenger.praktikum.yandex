@@ -1,22 +1,16 @@
 import { View } from './View';
 
 export class FormValidator extends View {
-  constructor(config: Record<string, string>, formSelector: string) {
+  constructor(config: Record<string, string>) {
     super();
-    this._formSelector = formSelector;
-    this._inputSelector = config.inputSelector;
     this._inputHelperTextSelector = config.inputHelperTextSelector;
-    this._btnSubmitFormSelector = config.btnSubmitFormSelector;
     this._isShowHelperTextSelector = config.isShowHelperTextSelector;
     this._isDisableBtnSubmitSelector = config.isDisableBtnSubmitSelector;
-    this._form = document.querySelector(`.${this._formSelector}`);
-    this._inputs = this._form
-      ? Array.from(this._form.querySelectorAll(`.${this._inputSelector}`))
-      : null;
-    this._btnSubmit = this._form
-      ? this._form.querySelector(`.${this._btnSubmitFormSelector}`)
-      : null;
     this._errorContainer = null;
+  }
+
+  public static checkStateForm(formSelector: string) {
+    return document.forms[formSelector].checkValidity();
   }
 
   private _closeErrorMessage() {

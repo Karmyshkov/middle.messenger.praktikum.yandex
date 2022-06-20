@@ -3,8 +3,8 @@ import './button.css';
 import { ButtonProps } from './types';
 
 export class Button extends Block {
-  constructor({ textBtn, href, classes }: ButtonProps) {
-    super({ textBtn, href, classes });
+  constructor({ textBtn, href, classes, onClick }: ButtonProps) {
+    super({ textBtn, href, classes, events: { click: onClick } });
   }
 
   protected render(): string {

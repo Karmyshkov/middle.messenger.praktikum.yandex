@@ -1,6 +1,7 @@
 import Block from 'core/Block';
 import './signin.css';
 import { Input } from 'utils/Input';
+import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
 
 export class SigninPage extends Block {
@@ -9,6 +10,20 @@ export class SigninPage extends Block {
       handleChangeInput: (evt: Event) => {
         evt.target && new Input(config, evt.target).checkOnValueInput();
       },
+      hendleSubmitForm: (evt: Event) => {
+        evt.preventDefault();
+
+        if (FormValidator.checkStateForm('signin')) {
+          const inputs = this.element?.querySelectorAll('.input__text-field');
+          let dataForm = {};
+
+          inputs?.forEach((input) => {
+            const inputElement = input as HTMLInputElement;
+            dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
+          });
+          console.log(dataForm);
+        }
+      },
     };
   }
   render() {
@@ -16,11 +31,11 @@ export class SigninPage extends Block {
     return `
       <div class="page">
         <main class="page__form">
-          <form class="signin">
+          <form class="signin" name="signin">
             <h1 class="signin__title">Вход</h1>
-            {{{InputWrapper onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20"}}}
-            {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" classes="input_is-auth"}}}
-            {{{Button href="/chat" textBtn="Авторизоваться"}}}
+            {{{InputWrapper onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20" name="login"}}}
+            {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" classes="input_is-auth" name="password"}}}
+            {{{Button onClick=hendleSubmitForm href="/chat" textBtn="Авторизоваться"}}}
             <a class="signin__link" href="/signup">Нет аккаунта?</a>
           </form>
         </main>

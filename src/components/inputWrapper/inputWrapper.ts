@@ -4,10 +4,11 @@ import { InputWrapperProps } from './types';
 import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
 
-const formValidator = new FormValidator(config, 'signin');
+const formValidator = new FormValidator(config);
 
 export class InputWrapper extends Block {
   constructor({
+    name,
     type,
     helperText,
     minlength,
@@ -16,6 +17,7 @@ export class InputWrapper extends Block {
     onInput,
   }: InputWrapperProps) {
     super({
+      name,
       type,
       helperText,
       minlength,
@@ -26,6 +28,7 @@ export class InputWrapper extends Block {
   }
   protected getStateFromProps(props: InputWrapperProps): void {
     this.state = {
+      name: props.name,
       classes: props.classes,
       type: props.type,
       minlength: props.minlength,
@@ -42,10 +45,10 @@ export class InputWrapper extends Block {
     };
   }
   protected render(): string {
-    const { classes, type, minlength, maxlength, helperText } = this.state;
+    const { name, classes, type, minlength, maxlength, helperText } = this.state;
     // language=hbs
     return `
-      <fieldset class="input ${classes}">
+      <fieldset class="input ${classes ? classes : ''}">
         <label class="input__label">
           {{{Input
             onInput=handleClearError
@@ -54,6 +57,7 @@ export class InputWrapper extends Block {
             type="${type}"
             minlength="${minlength}"
             maxlength="${maxlength}"
+            name="${name}"
           }}}
           <span class="input__text">${helperText}</span>
         </label>
