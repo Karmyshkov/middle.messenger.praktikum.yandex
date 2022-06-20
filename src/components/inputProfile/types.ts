@@ -1,7 +1,7 @@
-import { InputTypeEnum } from 'types';
+import { InputType } from 'types';
 
 export interface InputProfileProps {
-  type: InputTypeEnum;
+  type: InputType;
   value: string;
   helperText: string;
 }
