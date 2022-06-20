@@ -6,6 +6,7 @@
   &__input {
     display: none;
   }
+
   &__span {
     cursor: pointer;
     max-width: 122px;

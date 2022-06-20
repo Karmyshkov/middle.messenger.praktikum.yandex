@@ -45,7 +45,6 @@
   }
 
   &__time {
-    margin: 0;
     position: relative;
     color: var(--color-grey);
     font-size: 9px;
@@ -56,15 +55,12 @@
     float: right;
   }
 
-  &__time_is-read {
-  }
-
   &__time_is-read::before {
     content: '';
     display: inline-block;
     width: 10px;
     height: 4px;
-    background-image: url(../../image/isRead.svg);
+    background-image: url('../../image/isRead.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -73,15 +69,12 @@
     left: -10px;
   }
 
-  &__time_is-not-read {
-  }
-
   &__time_is-not-read::before {
     content: '';
     display: inline-block;
     width: 10px;
     height: 4px;
-    background-image: url(../../image/isNotRead.svg);
+    background-image: url('../../image/isNotRead.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
