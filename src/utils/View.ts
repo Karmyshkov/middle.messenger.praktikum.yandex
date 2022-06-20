@@ -6,9 +6,13 @@ export abstract class View {
   protected _hiddenChatSelecor!: string;
   protected _searchInputByChatsSelector!: string;
   protected _imgFromSearchInputByChatsSelector!: string;
+  protected _labelTextSelector!: string;
+  protected _isValuelabelTextSelector!: string;
+
   protected _messages!: NodeList;
   protected _contentDefault!: Nullable<HTMLElement>;
   protected _contentDialod!: Nullable<HTMLElement>;
   protected _searchInputByChats!: Nullable<HTMLInputElement>;
   protected _imgFromSearchInputByChats!: Nullable<HTMLElement>;
+  protected _inputElement!: EventTarget;
 }
