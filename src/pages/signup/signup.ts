@@ -18,13 +18,13 @@ export class SignupPage extends Block {
         <main class="page__form">
           <form class="signup">
             <h1 class="signup__title">Регистрация</h1>
-            {{{Input onChangeInput=handleChangeInput type="email" helperText="Почта"}}}
-            {{{Input onChangeInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20"}}}
-            {{{Input onChangeInput=handleChangeInput type="text" helperText="Имя" minlength="1" maxlength="50"}}}
-            {{{Input onChangeInput=handleChangeInput type="text" helperText="Фамилия" minlength="1" maxlength="50"}}}
-            {{{Input onChangeInput=handleChangeInput type="text" helperText="Телефон" minlength="10" maxlength="15"}}}
-            {{{Input onChangeInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40"}}}
-            {{{Input onChangeInput=handleChangeInput type="password" helperText="Пароль (ещё раз)" minlength="8" maxlength="40" classes="input_is-auth"}}}
+            {{{Input onInput=handleChangeInput type="email" helperText="Почта"}}}
+            {{{Input onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20"}}}
+            {{{Input onInput=handleChangeInput type="text" helperText="Имя" minlength="1" maxlength="50"}}}
+            {{{Input onInput=handleChangeInput type="text" helperText="Фамилия" minlength="1" maxlength="50"}}}
+            {{{Input onInput=handleChangeInput type="text" helperText="Телефон" minlength="10" maxlength="15"}}}
+            {{{Input onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40"}}}
+            {{{Input onInput=handleChangeInput type="password" helperText="Пароль (ещё раз)" minlength="8" maxlength="40" classes="input_is-auth"}}}
             {{{Button href="/" textBtn="Зарегистрироваться"}}}
             <a class="signup__link" href="/">Войти</a>
           </form>

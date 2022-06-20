@@ -1,7 +1,8 @@
 import { InputType } from 'types';
 
 export interface InputProps {
-  onChangeInput?: () => void;
+  onInput?: () => void;
+  onFocus?: () => void;
   type: InputType;
   helperText: string;
   minlength?: number;

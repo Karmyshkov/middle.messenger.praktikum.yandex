@@ -9,7 +9,8 @@ export class Input extends Block {
     minlength,
     maxlength,
     classes,
-    onChangeInput,
+    onInput,
+    onFocus,
   }: InputProps) {
     super({
       type,
@@ -17,10 +18,9 @@ export class Input extends Block {
       minlength,
       maxlength,
       classes,
-      events: { input: onChangeInput },
+      events: { input: onInput, focus: onFocus },
     });
   }
-
   protected render(): string {
     // language=hbs
     return `
