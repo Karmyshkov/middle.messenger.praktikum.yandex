@@ -98,12 +98,16 @@ export class Popup extends View {
     }
   };
 
-  private _closeByOutsideZonePopup = (popupContainer: Element | null, evt: Event) => {
+  private _closeByOutsideZonePopup = (
+    popupContainer: Element | null,
+    selectorBtn: string,
+    evt: Event
+  ) => {
     if (popupContainer) {
       const target = evt.target as HTMLDivElement;
 
       !evt.composedPath().includes(popupContainer) &&
-        !Array.from(target.classList).includes(this._menuBtnSelector) &&
+        !Array.from(target.classList).includes(selectorBtn) &&
         this._handleClosePopup();
     }
   };
@@ -113,10 +117,18 @@ export class Popup extends View {
 
     if (this._menu) {
       const popupContainer = this._menu.querySelector(`.${this._popupСontainerSelector}`);
+      const isEditAvatar = Array.from(this._menu.classList).includes(
+        this._popupChangeAvatarSelector
+      );
 
       this._closeMenuIfPopupIsOpen(popupContainer);
 
-      this._closeByOutsideZonePopup(popupContainer, evt);
+      !isEditAvatar &&
+        this._closeByOutsideZonePopup(popupContainer, this._menuBtnSelector, evt);
+
+      isEditAvatar &&
+        popupContainer &&
+        this._closeByOutsideZonePopup(popupContainer, this._editAvatarSelector, evt);
     }
   };
 }
