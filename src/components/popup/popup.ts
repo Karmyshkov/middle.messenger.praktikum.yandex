@@ -44,10 +44,10 @@ export class Popup extends Block {
       this.state;
     // language=hbs
     return `
-      <div class="popup ${classesPopup}">
+      <div class="popup ${classesPopup ? classesPopup : ''}">
         <div class="popup__container">
           <h2 class="popup__title">${title}</h2>
-          <form class="popup__form ${classesForm}" name="form-edit-profile" novalidate>
+          <form class="popup__form ${classesForm ? classesForm : ''}" novalidate>
             ${
               isDefault
                 ? `
