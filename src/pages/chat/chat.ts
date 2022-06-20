@@ -17,10 +17,18 @@ export class ChatPage extends Block {
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
       },
-      handleOpenMenu: () => {
+      handleOpenMenuUser: () => {
         new Popup(
           'menu__list_element_user',
           'burger-menu',
+          'menu_is-show',
+          config
+        ).handleOpenPopup();
+      },
+      handleOpenMenuFile: () => {
+        new Popup(
+          'menu__list_element_file',
+          'chat-footer__btn-attach',
           'menu_is-show',
           config
         ).handleOpenPopup();
@@ -63,7 +71,7 @@ export class ChatPage extends Block {
                 {{{Avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="Вадим"}}}
                 <p class="chat__user-name">Вадим</p>
               </div>
-              {{{BurgerMenu onClick=handleOpenMenu}}}
+              {{{BurgerMenu onClick=handleOpenMenuUser}}}
             </div>
             <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
@@ -80,10 +88,11 @@ export class ChatPage extends Block {
                 )
                 .join('')}
             </ul>
-            {{{ChatFooter}}}
+            {{{ChatFooter onClick=handleOpenMenuFile}}}
           </li>
         </ul>
         {{{Menu isUser=true }}}
+        {{{Menu isUser=false }}}
       </div>
     `;
   }
