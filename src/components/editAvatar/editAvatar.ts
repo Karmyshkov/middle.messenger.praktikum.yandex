@@ -1,8 +1,12 @@
 import Block from 'core/Block';
 import './editAvatar.css';
 import avatar from 'img/avatar.svg';
+import { EditAvatarProps } from './types';
 
 export class EditAvatar extends Block {
+  constructor({ onClick }: EditAvatarProps) {
+    super({ events: { click: onClick } });
+  }
   protected render(): string {
     // language=hbs
     return `
