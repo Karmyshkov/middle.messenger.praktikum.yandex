@@ -1,5 +1,6 @@
 import Block from 'core/Block';
 import './listItem.css';
+import { ListItemProps } from './types';
 import { ChatType } from 'types';
 
 export class ListItem extends Block {
@@ -10,7 +11,7 @@ export class ListItem extends Block {
     countNotReadMessage,
     srcAvatar,
     onClick,
-  }: any) {
+  }: ChatType & ListItemProps) {
     super({
       userName,
       lastMessage,

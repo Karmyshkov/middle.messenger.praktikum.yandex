@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import './editAvatar.css';
-import avatar from 'img/avatar.svg';
 import { EditAvatarProps } from './types';
+import avatar from 'img/avatar.svg';
 
 export class EditAvatar extends Block {
   constructor({ onClick }: EditAvatarProps) {

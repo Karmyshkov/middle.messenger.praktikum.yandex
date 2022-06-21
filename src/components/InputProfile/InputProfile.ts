@@ -23,7 +23,6 @@ export class InputProfile extends Block {
       helperText: props.helperText,
     };
   }
-
   protected render(): string {
     const { name, minlength, maxlength, type, value, helperText } = this.state;
     // language=hbs

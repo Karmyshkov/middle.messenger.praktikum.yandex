@@ -13,7 +13,6 @@ export class Button extends Block {
       classes: props.classes,
     };
   }
-
   protected render(): string {
     const { textBtn, type, classes } = this.state;
     // language=hbs

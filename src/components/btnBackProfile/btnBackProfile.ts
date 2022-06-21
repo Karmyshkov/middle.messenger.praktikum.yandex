@@ -1,13 +1,12 @@
 import Block from 'core/Block';
 import './btnBackProfile.css';
-import left_arrow from 'img/left-arrow.svg';
 import { BtnBackProfileProps } from './types';
+import left_arrow from 'img/left-arrow.svg';
 
 export class BtnBackProfile extends Block {
   constructor({ href }: BtnBackProfileProps) {
     super({ href });
   }
-
   protected render(): string {
     // language=hbs
     return `

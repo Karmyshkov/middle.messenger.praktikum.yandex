@@ -34,6 +34,8 @@ const config = {
   searchInputByChatsSelector: 'input-chat',
   imgFromSearchInputByChatsSelector: 'search-chat__img',
   inputProfileSelector: 'input-profile__input',
+  menuBtnAddUserSelector: 'menu__btn_add-user',
+  menuBtnDeleteUserSelector: 'menu__btn_delete-user',
 };
 
 const ADD_USER_FORM = 'add-user';

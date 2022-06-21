@@ -15,7 +15,6 @@ export class MenuButton extends Block {
       type: props.type,
     };
   }
-
   protected render(): string {
     const { text, icon, alt, classes, type } = this.state;
     // language=hbs

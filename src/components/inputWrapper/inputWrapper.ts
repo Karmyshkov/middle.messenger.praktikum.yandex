@@ -35,13 +35,8 @@ export class InputWrapper extends Block {
       maxlength: props.maxlength,
       helperText: props.helperText,
 
-      handleValidateInput: (evt: Event) => {
-        formValidator.handleFieldValidation(evt);
-      },
-
-      handleClearError: () => {
-        formValidator.clearError();
-      },
+      handleValidateInput: (evt: Event) => formValidator.handleFieldValidation(evt),
+      handleClearError: () => formValidator.clearError(),
     };
   }
   protected render(): string {

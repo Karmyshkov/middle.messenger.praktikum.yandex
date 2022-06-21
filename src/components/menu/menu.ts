@@ -1,13 +1,13 @@
 import Block from 'core/Block';
 import './menu.css';
 import { MenuProps } from './types';
+import { Popup } from 'utils/classes/Popup';
+import { config } from 'utils/constants';
 import plus from 'img/plus.svg';
 import close from 'img/close.svg';
 import photo from 'img/photo.svg';
 import file from 'img/file.svg';
 import location from 'img/location.svg';
-import { Popup } from 'utils/classes/Popup';
-import { config } from 'utils/constants';
 
 export class Menu extends Block {
   constructor({ isUser }: MenuProps) {
@@ -19,17 +19,17 @@ export class Menu extends Block {
 
       handleAddUserPopup: () => {
         new Popup(
-          'popup_add-user',
-          'menu__btn_add-user',
-          'popup_opened',
+          config.popupAddUserSelector,
+          config.menuBtnAddUserSelector,
+          config.isOpenPopupSelecot,
           config
         ).handleOpenPopup();
       },
       handleDeleteUserPopup: () => {
         new Popup(
-          'popup_delete-user',
-          'menu__btn_delete-user',
-          'popup_opened',
+          config.popupDeleteUserSelector,
+          config.menuBtnDeleteUserSelector,
+          config.isOpenPopupSelecot,
           config
         ).handleOpenPopup();
       },

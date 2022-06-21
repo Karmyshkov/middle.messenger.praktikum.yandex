@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './chatFooter.css';
+import { ChatFooterProps } from './types';
 import attach_btn from 'img/attach-btn.svg';
 import send_btn from 'img/send-btn.svg';
-import { ChatFooterProps } from './types';
 
 export class ChatFooter extends Block {
   constructor({ onClick }: ChatFooterProps) {
