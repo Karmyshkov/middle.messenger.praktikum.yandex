@@ -28,8 +28,8 @@ export class EditProfilePage extends Block {
           config
         ).handleOpenPopup();
       },
-      handleChangeInput: (evt: Event) => {
-        checkOnValueInput(evt);
+      handleChangeInput: () => {
+        editProfileformValidator.clearError();
         editProfileformValidator.toggleBtnState();
       },
       hendleSubmitForm: (evt: Event) => {
