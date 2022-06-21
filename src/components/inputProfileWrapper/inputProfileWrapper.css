@@ -38,4 +38,18 @@
     line-height: 13px;
     transition: 0.3s color;
   }
+
+  &__error {
+    display: none;
+    font-size: 8px;
+    color: var(--color-link-red);
+    float: left;
+    text-align: left;
+    max-width: 510px;
+    overflow: hidden;
+  }
+
+  &__error_is-show {
+    display: block;
+  }
 }

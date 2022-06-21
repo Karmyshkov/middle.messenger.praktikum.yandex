@@ -3,14 +3,23 @@ import './inputProfile.css';
 import { InputProfileProps } from './types';
 
 export class InputProfile extends Block {
-  constructor({ name, minlength, maxlength, type, value, onInput }: InputProfileProps) {
+  constructor({
+    name,
+    minlength,
+    maxlength,
+    type,
+    value,
+    onInput,
+    onFocus,
+    onBlur,
+  }: InputProfileProps) {
     super({
       name,
       minlength,
       maxlength,
       type,
       value,
-      events: { input: onInput },
+      events: { input: onInput, focus: onFocus, blur: onBlur },
     });
   }
   protected getStateFromProps(props: InputProfileProps): void {

@@ -4,11 +4,13 @@ import { FormValidator } from 'utils/classes/FormValidator';
 import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
 
-const formValidator = new FormValidator(
+const signupFormValidator = new FormValidator(
   config,
   AUTH_FORM,
   config.inputSelector,
-  config.btnSubmitFormSelector
+  config.btnSubmitFormSelector,
+  config.inputHelperTextSelector,
+  config.isShowHelperTextSelector
 );
 
 export class SignupPage extends Block {
@@ -16,23 +18,23 @@ export class SignupPage extends Block {
     this.state = {
       handleChangeInput: (evt: Event) => {
         checkOnValueInput(evt);
-        formValidator.clearError();
-        formValidator.toggleBtnState();
+        signupFormValidator.clearError();
+        signupFormValidator.toggleBtnState();
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
 
         handleSubmitForm(
-          formValidator.checkStateForm(),
+          signupFormValidator.checkStateForm(),
           config.inputSelector,
           AUTH_FORM,
           {
-            disableBtn: formValidator.disableBtn,
-            addErors: formValidator.addErorsForDefaultForm,
+            disableBtn: signupFormValidator.disableBtn,
+            addErors: signupFormValidator.addErrorsForInput,
           }
         );
       },
-      handleValidateInput: (evt: Event) => formValidator.handleFieldValidation(evt),
+      handleValidateInput: (evt: Event) => signupFormValidator.handleFieldValidation(evt),
     };
   }
   render() {

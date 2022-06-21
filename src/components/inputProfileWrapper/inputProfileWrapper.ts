@@ -12,6 +12,8 @@ export class InputProfileWrapper extends Block {
     value,
     helperText,
     onInput,
+    onFocus,
+    onBlur,
   }: InputProfileWrapperProps) {
     super({
       formName,
@@ -22,6 +24,8 @@ export class InputProfileWrapper extends Block {
       value,
       helperText,
       onInput,
+      onFocus,
+      onBlur,
     });
   }
   protected getStateFromProps(props: InputProfileWrapperProps): void {
@@ -34,6 +38,8 @@ export class InputProfileWrapper extends Block {
       value: props.value,
       helperText: props.helperText,
       onInput: props.onInput,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
     };
   }
   protected render(): string {
@@ -44,6 +50,8 @@ export class InputProfileWrapper extends Block {
         <label class="input-profile-wrapper__label">
           {{{InputProfile
             onInput=onInput
+            onFocus=onFocus
+            onBlur=onBlur
             type="${type}"
             value="${value}"
             name="${name}"
@@ -51,6 +59,7 @@ export class InputProfileWrapper extends Block {
             maxlength="${maxlength}"
           }}}
           <span class="input-profile-wrapper__span">${helperText}</span>
+          <span class="input-profile-wrapper__error"></span>
         </label>
       </li>
     `;

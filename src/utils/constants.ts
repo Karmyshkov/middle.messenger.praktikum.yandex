@@ -36,6 +36,8 @@ const config = {
   inputProfileSelector: 'input-profile',
   menuBtnAddUserSelector: 'menu__btn_add-user',
   menuBtnDeleteUserSelector: 'menu__btn_delete-user',
+  inputProfileHelperTextSelector: 'input-profile-wrapper__error',
+  isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
 };
 
 const ADD_USER_FORM = 'popup__form_add-user';

@@ -5,14 +5,16 @@ export class FormValidator extends View {
     config: Record<string, string>,
     formSelector: string,
     inputSelector: string,
-    btnSelector: string
+    btnSelector: string,
+    inputHelperTextSelector: string,
+    isShowHelperTextSelector: string
   ) {
     super();
     this._formSelector = formSelector;
     this._btnSelector = btnSelector;
     this._inputSelector = inputSelector;
-    this._inputHelperTextSelector = config.inputHelperTextSelector;
-    this._isShowHelperTextSelector = config.isShowHelperTextSelector;
+    this._inputHelperTextSelector = inputHelperTextSelector;
+    this._isShowHelperTextSelector = isShowHelperTextSelector;
     this._isDisableBtnSubmitSelector = config.isDisableBtnSubmitSelector;
     this._errorContainer = null;
   }
@@ -30,6 +32,11 @@ export class FormValidator extends View {
       this._errorContainer.classList.add(this._isShowHelperTextSelector);
     }
   }
+
+  private _getInputFromForm = () => {
+    const form = document.querySelector(`.${this._formSelector}`) as HTMLFormElement;
+    return form.querySelectorAll(`.${this._inputSelector}`);
+  };
 
   public handleFieldValidation(evt: Event) {
     const element = evt.target;
@@ -52,9 +59,9 @@ export class FormValidator extends View {
     return form.checkValidity();
   }
 
-  public addErorsForDefaultForm = () => {
-    const form = document.querySelector(`.${this._formSelector}`) as HTMLFormElement;
-    form.querySelectorAll(`.${this._inputSelector}`).forEach((input) => {
+  public addErrorsForInput = () => {
+    const inputs = this._getInputFromForm();
+    inputs.forEach((input) => {
       const inputElement = input as HTMLFormElement;
       const element = input.parentElement?.parentElement?.querySelector(
         `.${this._inputHelperTextSelector}`

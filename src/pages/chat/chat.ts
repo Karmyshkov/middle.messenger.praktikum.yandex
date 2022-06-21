@@ -14,14 +14,18 @@ const addUserFormValidator = new FormValidator(
   config,
   ADD_USER_FORM,
   config.inputSelector,
-  config.btnSubmitFormSelector
+  config.btnSubmitFormSelector,
+  config.inputHelperTextSelector,
+  config.isShowHelperTextSelector
 );
 
 const deleteUserFormValidator = new FormValidator(
   config,
   DELETE_USER_FORM,
   config.inputSelector,
-  config.btnSubmitFormSelector
+  config.btnSubmitFormSelector,
+  config.inputHelperTextSelector,
+  config.isShowHelperTextSelector
 );
 
 export class ChatPage extends Block {
@@ -63,7 +67,7 @@ export class ChatPage extends Block {
           ADD_USER_FORM,
           {
             disableBtn: addUserFormValidator.disableBtn,
-            addErors: addUserFormValidator.addErorsForDefaultForm,
+            addErors: addUserFormValidator.addErrorsForInput,
           }
         );
       },
@@ -84,7 +88,7 @@ export class ChatPage extends Block {
           DELETE_USER_FORM,
           {
             disableBtn: deleteUserFormValidator.disableBtn,
-            addErors: deleteUserFormValidator.addErorsForDefaultForm,
+            addErors: deleteUserFormValidator.addErrorsForInput,
           }
         );
       },

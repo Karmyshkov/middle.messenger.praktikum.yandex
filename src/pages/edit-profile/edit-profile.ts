@@ -10,7 +10,9 @@ const editProfileformValidator = new FormValidator(
   config,
   EDIT_PROFILE_FORM,
   config.inputProfileSelector,
-  config.btnSubmitFormSelector
+  config.btnSubmitFormSelector,
+  config.inputProfileHelperTextSelector,
+  config.isShowInputProfileHelperTextSelector
 );
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
@@ -38,10 +40,12 @@ export class EditProfilePage extends Block {
           EDIT_PROFILE_FORM,
           {
             disableBtn: editProfileformValidator.disableBtn,
-            addErors: editProfileformValidator.addErorsForDefaultForm,
+            addErors: editProfileformValidator.addErrorsForInput,
           }
         );
       },
+      handleValidateInput: (evt: Event) =>
+        editProfileformValidator.handleFieldValidation(evt),
     };
   }
   render() {
@@ -60,6 +64,8 @@ export class EditProfilePage extends Block {
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
+                  onFocus=handleValidateInput
+                  onBlur=handleValidateInput
                   type="email"
                   helperText="Почта"
                   value="${email}"
@@ -67,6 +73,9 @@ export class EditProfilePage extends Block {
                   formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
+                  onInput=handleChangeInput
+                  onFocus=handleValidateInput
+                  onBlur=handleValidateInput
                   type="text"
                   helperText="Логин"
                   value="${login}"
@@ -76,6 +85,9 @@ export class EditProfilePage extends Block {
                   formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
+                  onInput=handleChangeInput
+                  onFocus=handleValidateInput
+                  onBlur=handleValidateInput
                   type="text"
                   helperText="Имя"
                   value="${name}"
@@ -85,6 +97,9 @@ export class EditProfilePage extends Block {
                   formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
+                  onInput=handleChangeInput
+                  onFocus=handleValidateInput
+                  onBlur=handleValidateInput
                   type="text"
                   helperText="Фамилия"
                   value="${lastName}"
@@ -94,6 +109,9 @@ export class EditProfilePage extends Block {
                   formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
+                  onInput=handleChangeInput
+                  onFocus=handleValidateInput
+                  onBlur=handleValidateInput
                   type="tel"
                   helperText="Телефон"
                   value="${phone}"
@@ -103,6 +121,9 @@ export class EditProfilePage extends Block {
                   formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
+                  onInput=handleChangeInput
+                  onFocus=handleValidateInput
+                  onBlur=handleValidateInput
                   type="text"
                   helperText="Имя в чате"
                   value="${chatName}"
