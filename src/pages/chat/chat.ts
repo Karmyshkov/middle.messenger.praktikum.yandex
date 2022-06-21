@@ -19,17 +19,17 @@ export class ChatPage extends Block {
       },
       handleOpenUserMenu: () => {
         new Popup(
-          'menu__list_element_user',
-          'burger-menu',
-          'menu_is-show',
+          config.menuListElementUserSelector,
+          config.burgerMenuSelector,
+          config.isShowMenuSelecor,
           config
         ).handleOpenPopup();
       },
       handleOpenFileMenu: () => {
         new Popup(
-          'menu__list_element_file',
-          'chat-footer__btn-attach',
-          'menu_is-show',
+          config.menuListElementFileSelector,
+          config.btnAttachSelector,
+          config.isShowMenuSelecor,
           config
         ).handleOpenPopup();
       },
