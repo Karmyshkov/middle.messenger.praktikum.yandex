@@ -93,8 +93,24 @@ export class ChatPage extends Block {
         </ul>
         {{{Menu isUser=true}}}
         {{{Menu isUser=false}}}
-        {{{Popup title="Добавить пользователя" helperText="Логин" textBtn="Добавить" classesPopup="popup_add-user" classesForm="popup__form_add-user" isDefault=true}}}
-        {{{Popup title="Удалить пользователя" helperText="Логин" textBtn="Удалить" classesPopup="popup_delete-user"classesForm="popup__form_delete-user" isDefault=true}}}
+        {{{Popup
+          title="Добавить пользователя"
+          helperText="Логин"
+          textBtn="Добавить"
+          classesPopup="popup_add-user"
+          classesForm="popup__form_add-user"
+          isDefault=true
+          name="add-user"
+        }}}
+        {{{Popup
+          title="Удалить пользователя"
+          helperText="Логин"
+          textBtn="Удалить"
+          classesPopup="popup_delete-user"
+          classesForm="popup__form_delete-user"
+          isDefault=true
+          name="delete-user"
+        }}}
       </div>
     `;
   }
