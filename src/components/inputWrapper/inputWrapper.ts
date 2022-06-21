@@ -1,10 +1,6 @@
 import Block from 'core/Block';
 import './inputWrapper.css';
 import { InputWrapperProps } from './types';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { config } from 'utils/constants';
-
-const formValidator = new FormValidator(config);
 
 export class InputWrapper extends Block {
   constructor({
@@ -15,6 +11,8 @@ export class InputWrapper extends Block {
     maxlength,
     classes,
     onInput,
+    onFocus,
+    onBlur,
   }: InputWrapperProps) {
     super({
       name,
@@ -23,6 +21,8 @@ export class InputWrapper extends Block {
       minlength,
       maxlength,
       classes,
+      onFocus,
+      onBlur,
       events: { input: onInput },
     });
   }
@@ -34,9 +34,8 @@ export class InputWrapper extends Block {
       minlength: props.minlength,
       maxlength: props.maxlength,
       helperText: props.helperText,
-
-      handleValidateInput: (evt: Event) => formValidator.handleFieldValidation(evt),
-      handleClearError: () => formValidator.clearError(),
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
     };
   }
   protected render(): string {
@@ -47,8 +46,8 @@ export class InputWrapper extends Block {
         <label class="input__label">
           {{{Input
             onInput=handleClearError
-            onFocus=handleValidateInput
-            onBlur=handleValidateInput
+            onFocus=onFocus
+            onBlur=onBlur
             type="${type}"
             minlength="${minlength}"
             maxlength="${maxlength}"

@@ -8,16 +8,16 @@ export class SignupPage extends Block {
     this.state = {
       handleChangeInput: (evt: Event) => {
         checkOnValueInput(evt);
-        toggleBtnState(AUTH_FORM, config.btnSubmitFormSelector);
+        //toggleBtnState(AUTH_FORM, config.btnSubmitFormSelector);
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(
-          AUTH_FORM,
-          config.inputSelector,
-          config.btnSubmitFormSelector,
-          this.element
-        );
+        // handleSubmitForm(
+        //   AUTH_FORM,
+        //   config.inputSelector,
+        //   config.btnSubmitFormSelector,
+        //   this.element
+        // );
       },
     };
   }

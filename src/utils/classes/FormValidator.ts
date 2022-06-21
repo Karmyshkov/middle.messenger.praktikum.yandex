@@ -1,8 +1,16 @@
 import { View } from './View';
 
 export class FormValidator extends View {
-  constructor(config: Record<string, string>) {
+  constructor(
+    config: Record<string, string>,
+    formSelector: string,
+    inputSelector: string,
+    btnSelector: string
+  ) {
     super();
+    this._formSelector = formSelector;
+    this._btnSelector = btnSelector;
+    this._inputSelector = inputSelector;
     this._inputHelperTextSelector = config.inputHelperTextSelector;
     this._isShowHelperTextSelector = config.isShowHelperTextSelector;
     this._isDisableBtnSubmitSelector = config.isDisableBtnSubmitSelector;
@@ -39,11 +47,41 @@ export class FormValidator extends View {
     this._closeErrorMessage();
   }
 
-  public static checkStateForm(formSelector: string) {
-    const form = document.querySelector(`.${formSelector}`) as HTMLFormElement;
+  public checkStateForm() {
+    const form = document.querySelector(`.${this._formSelector}`) as HTMLFormElement;
     return form.checkValidity();
-    //return document.forms[formSelector].checkValidity();
   }
 
-  public static addErors() {}
+  public addErors = () => {
+    const form = document.querySelector(`.${this._formSelector}`) as HTMLFormElement;
+    form.querySelectorAll(`.${this._inputSelector}`).forEach((input) => {
+      const inputElement = input as HTMLFormElement;
+      const element = input.parentElement?.parentElement?.querySelector(
+        `.${this._inputHelperTextSelector}`
+      );
+      if (!inputElement.validity.valid) {
+        if (element) {
+          element.textContent = inputElement.validationMessage;
+          element.classList.add(this._isShowHelperTextSelector);
+        }
+      }
+    });
+  };
+
+  public toggleBtnState = () => {
+    const btn = document
+      .querySelector(`.${this._formSelector}`)
+      ?.querySelector(`.${this._btnSelector}`);
+    if (btn) {
+      this.checkStateForm()
+        ? btn.classList.remove(this._isDisableBtnSubmitSelector)
+        : btn.classList.add(this._isDisableBtnSubmitSelector);
+    }
+  };
+
+  public disableBtn = () => {
+    document
+      .querySelector(`.${this._btnSelector}`)
+      ?.classList.add(this._isDisableBtnSubmitSelector);
+  };
 }

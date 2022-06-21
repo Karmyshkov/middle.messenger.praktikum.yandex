@@ -47,6 +47,8 @@ export abstract class View {
   protected _menuItems!: NodeList;
   //FormValidator
   protected _formSelector!: string;
+  protected _btnSelector!: string;
+  protected _inputSelector!: string;
   protected _inputHelperTextSelector!: string;
   protected _btnSubmitFormSelector!: string;
   protected _isShowHelperTextSelector!: string;

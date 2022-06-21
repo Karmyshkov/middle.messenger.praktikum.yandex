@@ -130,6 +130,7 @@ export class Popup extends View {
   public handleOpenPopup = () => {
     if (this._menu) {
       document.addEventListener('click', this._closeByOutsideZone);
+      this._disabledScroll(this._contentDialod);
       this._menu.classList.add(this._isOpenPopupSelector);
       this._menuSelector === this._menuListElementUserSelector &&
         this._addClassForUserMenu();

@@ -1,26 +1,13 @@
-import { FormValidator } from 'utils/classes/FormValidator';
-import { Popup } from 'utils/classes/Popup';
 import { Input } from 'utils/classes/Input';
-import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
-
-const checkStateForm = (formSelector: string) => {
-  const form = document.querySelector(`.${formSelector}`) as HTMLInputElement;
-  return form.checkValidity();
-};
-
-const disableBtn = (buttonSelector: string) => {
-  document
-    .querySelector(`.${buttonSelector}`)
-    ?.classList.add(config.isDisableBtnSubmitSelector);
-};
+import { config } from 'utils/constants';
 
 export const handleSubmitForm = (
-  formSelector: string,
+  stateForm: boolean,
   inputSelector: string,
-  buttonSelector: string,
-  element: HTMLElement | null
+  element: HTMLElement | null,
+  { disableBtn, addErors }: any
 ) => {
-  if (FormValidator.checkStateForm(formSelector)) {
+  if (stateForm) {
     const inputs = element?.querySelectorAll(`.${inputSelector}`);
     let dataForm = {};
 
@@ -29,24 +16,12 @@ export const handleSubmitForm = (
       dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
     });
     console.log(dataForm);
-
-    if (formSelector === ADD_USER_FORM || formSelector === DELETE_USER_FORM) {
-      Popup.handleClosePopup(config.isOpenPopupSelecot);
-    }
   } else {
-    disableBtn(buttonSelector);
+    disableBtn();
+    addErors();
   }
 };
 
 export const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
-};
-
-export const toggleBtnState = (formSelector: string, btnSelector: string) => {
-  const btn = document.querySelector(`.${btnSelector}`);
-  if (btn) {
-    checkStateForm(formSelector)
-      ? btn.classList.remove(config.isDisableBtnSubmitSelector)
-      : btn.classList.add(config.isDisableBtnSubmitSelector);
-  }
 };

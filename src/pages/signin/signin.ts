@@ -1,24 +1,40 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
+import { FormValidator } from 'utils/classes/FormValidator';
 import { config, AUTH_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput, toggleBtnState } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+
+const formValidator = new FormValidator(
+  config,
+  AUTH_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector
+);
+
+formValidator.disableBtn;
 
 export class SigninPage extends Block {
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
         checkOnValueInput(evt);
-        toggleBtnState(AUTH_FORM, config.btnSubmitFormSelector);
+        formValidator.clearError();
+        formValidator.toggleBtnState();
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
+
         handleSubmitForm(
-          AUTH_FORM,
+          formValidator.checkStateForm(),
           config.inputSelector,
-          config.btnSubmitFormSelector,
-          this.element
+          this.element,
+          {
+            disableBtn: formValidator.disableBtn,
+            addErors: formValidator.addErors,
+          }
         );
       },
+      handleValidateInput: (evt: Event) => formValidator.handleFieldValidation(evt),
     };
   }
   render() {
@@ -30,6 +46,8 @@ export class SigninPage extends Block {
             <h1 class="auth__title">Вход</h1>
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="text"
               helperText="Логин"
               minlength="3"
@@ -38,6 +56,8 @@ export class SigninPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="password"
               helperText="Пароль"
               minlength="8"
