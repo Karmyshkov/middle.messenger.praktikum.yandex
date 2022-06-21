@@ -40,6 +40,10 @@ export class FormValidator extends View {
   }
 
   public static checkStateForm(formSelector: string) {
-    return document.forms[formSelector].checkValidity();
+    const form = document.querySelector(`.${formSelector}`) as HTMLFormElement;
+    return form.checkValidity();
+    //return document.forms[formSelector].checkValidity();
   }
+
+  public static addErors() {}
 }

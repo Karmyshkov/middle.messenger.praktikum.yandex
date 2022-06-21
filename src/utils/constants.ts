@@ -38,12 +38,13 @@ const config = {
   menuBtnDeleteUserSelector: 'menu__btn_delete-user',
 };
 
-const ADD_USER_FORM = 'add-user';
-const DELETE_USER_FORM = 'delete-user';
+const ADD_USER_FORM = 'popup__form_add-user';
+const DELETE_USER_FORM = 'popup__form_delete-user';
 const SIGNIN_FORM = 'signin';
 const SIGNUP_FORM = 'signup';
-const EDIT_PASSWORD_FORM = 'edit-password';
-const EDIT_PROFILE_FORM = 'edit-profile';
+const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
+const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
+const AUTH_FORM = 'auth';
 
 export {
   config,
@@ -53,4 +54,5 @@ export {
   SIGNUP_FORM,
   EDIT_PASSWORD_FORM,
   EDIT_PROFILE_FORM,
+  AUTH_FORM,
 };

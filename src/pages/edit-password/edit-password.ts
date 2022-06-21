@@ -34,7 +34,11 @@ export class EditPasswordPage extends Block {
         <ul class="profile__wrapper">
           {{{BtnBackProfile href="/profile"}}}
           <li class="profile__column">
-            <form class="profile__form" name="edit-password" novalidate>
+            <form
+              class="profile__form profile__form_el_edit-password-form"
+              name="edit-password"
+              novalidate
+            >
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">

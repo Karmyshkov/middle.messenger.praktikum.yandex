@@ -103,7 +103,7 @@ export class ChatPage extends Block {
           classesPopup="popup_add-user"
           classesForm="popup__form_add-user"
           isDefault=true
-          name="add-user"
+          name="popup__form_add-user"
         }}}
         {{{Popup
           title="Удалить пользователя"
@@ -112,7 +112,7 @@ export class ChatPage extends Block {
           classesPopup="popup_delete-user"
           classesForm="popup__form_delete-user"
           isDefault=true
-          name="delete-user"
+          name="popup__form_delete-user"
         }}}
       </div>
     `;

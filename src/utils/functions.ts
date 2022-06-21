@@ -14,12 +14,12 @@ const disableBtn = (buttonSelector: string) => {
 };
 
 export const handleSubmitForm = (
-  nameForm: string,
+  formSelector: string,
   inputSelector: string,
   buttonSelector: string,
   element: HTMLElement | null
 ) => {
-  if (FormValidator.checkStateForm(nameForm)) {
+  if (FormValidator.checkStateForm(formSelector)) {
     const inputs = element?.querySelectorAll(`.${inputSelector}`);
     let dataForm = {};
 
@@ -29,7 +29,7 @@ export const handleSubmitForm = (
     });
     console.log(dataForm);
 
-    if (nameForm === ADD_USER_FORM || nameForm === DELETE_USER_FORM) {
+    if (formSelector === ADD_USER_FORM || formSelector === DELETE_USER_FORM) {
       Popup.handleClosePopup(config.isOpenPopupSelecot);
     }
   } else {

@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
-import { config, SIGNIN_FORM } from 'utils/constants';
+import { config, SIGNIN_FORM, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput, toggleBtnState } from 'utils/functions';
 
 export class SigninPage extends Block {
@@ -13,7 +13,7 @@ export class SigninPage extends Block {
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         handleSubmitForm(
-          SIGNIN_FORM,
+          AUTH_FORM,
           config.inputSelector,
           config.btnSubmitFormSelector,
           this.element
