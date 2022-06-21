@@ -41,6 +41,12 @@ export class Popup extends View {
     this._menuItems = document.querySelectorAll(`.${this._menuItemSelector}`);
   }
 
+  public static handleClosePopup(isOpenPopupSelector: string) {
+    document
+      .querySelector(`.${isOpenPopupSelector}`)
+      ?.classList.remove(isOpenPopupSelector);
+  }
+
   private _disabledScroll(element: HTMLElement | null) {
     if (element) {
       element.style.overflowY = 'hidden';
