@@ -27,3 +27,14 @@ export const handleSubmitForm = (
 export const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
 };
+
+const checkStateForm = (nameForm: string) => {
+  return document.forms[nameForm].checkValidity();
+};
+
+export const toggleBtnState = (nameForm: string, btnSelector: string) => {
+  const btn = document.forms[nameForm].querySelector(`.${btnSelector}`);
+  checkStateForm(nameForm)
+    ? btn.classList.remove(config.isDisableBtnSubmitSelector)
+    : btn.classList.add(config.isDisableBtnSubmitSelector);
+};
