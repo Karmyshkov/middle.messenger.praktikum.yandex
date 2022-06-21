@@ -5,7 +5,10 @@ export class ServerErrorPage extends Block {
     // language=hbs
     return `
       <div class="page">
-        {{{Error title="404" subtitle="Не туда попали"}}}
+        {{{Error
+          title="404"
+          subtitle="Не туда попали"
+        }}}
       </div>
     `;
   }

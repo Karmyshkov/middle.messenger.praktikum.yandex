@@ -35,18 +35,74 @@ export class EditProfilePage extends Block {
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
-                {{{InputProfileWrapper type="email" helperText="Почта" value="${email}" name="email"}}}
-                {{{InputProfileWrapper type="text" helperText="Логин" value="${login}" minlength="3" maxlength="20" name="login"}}}
-                {{{InputProfileWrapper type="text" helperText="Имя" value="${name}" minlength="1" maxlength="50" name="name"}}}
-                {{{InputProfileWrapper type="text" helperText="Фамилия" value="${lastName}" minlength="1" maxlength="50" name="lastName"}}}
-                {{{InputProfileWrapper type="phone" helperText="Телефон" value="${phone}" minlength="10" maxlength="15" name="phone"}}}
-                {{{InputProfileWrapper type="text" helperText="Имя в чате" value="${chatName}" minlength="1" maxlength="50" name="chatName"}}}
-                {{{Button onClick=hendleSubmitForm textBtn="Сохранить" classes="button_page_edit-profile" type="submit"}}}
+                {{{InputProfileWrapper
+                  type="email"
+                  helperText="Почта"
+                  value="${email}"
+                  name="email"
+                  formName="edit-profile"
+                }}}
+                {{{InputProfileWrapper
+                  type="text"
+                  helperText="Логин"
+                  value="${login}"
+                  minlength="3"
+                  maxlength="20"
+                  name="login"
+                  formName="edit-profile"
+                }}}
+                {{{InputProfileWrapper
+                  type="text"
+                  helperText="Имя"
+                  value="${name}"
+                  minlength="1"
+                  maxlength="50"
+                  name="name"
+                  formName="edit-profile"
+                }}}
+                {{{InputProfileWrapper
+                  type="text"
+                  helperText="Фамилия"
+                  value="${lastName}"
+                  minlength="1"
+                  maxlength="50"
+                  name="lastName"
+                  formName="edit-profile"
+                }}}
+                {{{InputProfileWrapper
+                  type="phone"
+                  helperText="Телефон"
+                  value="${phone}"
+                  minlength="10"
+                  maxlength="15"
+                  name="phone"
+                  formName="edit-profile"
+                }}}
+                {{{InputProfileWrapper
+                  type="text"
+                  helperText="Имя в чате"
+                  value="${chatName}"
+                  minlength="1"
+                  maxlength="50"
+                  name="chatName"
+                  formName="edit-profile"
+                }}}
+                {{{Button
+                  onClick=hendleSubmitForm
+                  textBtn="Сохранить"
+                  classes="button_page_edit-profile"
+                  type="submit"
+                }}}
               </ul>
             </form>
           </li>
         </ul>
-        {{{Popup title="Загрузите файл" textBtn="Поменять" classesPopup="popup_change-avatar" isDefault=false}}}
+        {{{Popup
+           title="Загрузите файл"
+           textBtn="Поменять"
+           classesPopup="popup_change-avatar"
+           isDefault=false
+          }}}
       </div>
     `;
   }

@@ -68,7 +68,10 @@ export class ChatPage extends Block {
           <li class="chat__column chat__column-dialog chat__column_is-hidden">
             <div class="chat__header">
               <div class="chat__inner">
-                {{{Avatar srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt" userName="Вадим"}}}
+                {{{Avatar
+                  srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt"
+                  userName="Вадим"
+                }}}
                 <p class="chat__user-name">Вадим</p>
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}

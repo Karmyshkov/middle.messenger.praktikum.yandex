@@ -2,10 +2,11 @@ import Block from 'core/Block';
 import './inputProfileWrapper.css';
 import { InputProfileWrapperProps } from './types';
 import { toggleBtnState } from 'utils/functions';
-import { config, EDIT_PROFILE_FORM } from 'utils/constants';
+import { config } from 'utils/constants';
 
 export class InputProfileWrapper extends Block {
   constructor({
+    formName,
     name,
     minlength,
     maxlength,
@@ -14,6 +15,7 @@ export class InputProfileWrapper extends Block {
     helperText,
   }: InputProfileWrapperProps) {
     super({
+      formName,
       name,
       minlength,
       maxlength,
@@ -24,6 +26,7 @@ export class InputProfileWrapper extends Block {
   }
   protected getStateFromProps(props: InputProfileWrapperProps): void {
     this.state = {
+      formName: props.formName,
       name: props.name,
       minlength: props.minlength,
       maxlength: props.maxlength,
@@ -32,8 +35,7 @@ export class InputProfileWrapper extends Block {
       helperText: props.helperText,
 
       handleChangeInput: () => {
-        console.log('asd');
-        toggleBtnState(EDIT_PROFILE_FORM, config.btnSubmitFormSelector);
+        toggleBtnState(this.state.formName, config.btnSubmitFormSelector);
       },
     };
   }
