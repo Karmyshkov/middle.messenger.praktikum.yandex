@@ -73,6 +73,14 @@ export class FormValidator extends View {
     }
   };
 
+  private _checkValidFieldsWithCustomRules = () => {
+    if (this._isValidFieldWithCustomRules) {
+      return Object.values(this._isValidFieldWithCustomRules).find(
+        (element) => element === true
+      );
+    }
+  };
+
   public handleFieldValidation(evt: Event) {
     const element = evt.target;
 
@@ -129,11 +137,5 @@ export class FormValidator extends View {
       ?.classList.add(this._isDisableBtnSubmitSelector);
   };
 
-  public isValidFieldWithCustomRules = () => {
-    if (this._isValidFieldWithCustomRules) {
-      return Object.values(this._isValidFieldWithCustomRules).find(
-        (element) => element === true
-      );
-    }
-  };
+  public isValidFieldWithCustomRules = () => this._checkValidFieldsWithCustomRules();
 }
