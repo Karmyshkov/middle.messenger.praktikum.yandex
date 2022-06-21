@@ -1,9 +1,8 @@
 import Block from 'core/Block';
 import './popup.css';
 import { PopupProps } from './types';
-import { Input } from 'utils/classes/Input';
 import { config } from 'utils/constants';
-import { handleSubmitForm } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
 
 export class Popup extends Block {
   constructor({
@@ -37,9 +36,7 @@ export class Popup extends Block {
       helperText: props.helperText,
       textBtn: props.textBtn,
 
-      handleChangeInput: (evt: Event) => {
-        evt.target && new Input(config, evt.target).checkOnValueInput();
-      },
+      handleChangeInput: (evt: Event) => checkOnValueInput(evt),
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         handleSubmitForm(this.state.name, config.inputSelector, this.element);

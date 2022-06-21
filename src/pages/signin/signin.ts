@@ -1,15 +1,12 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
-import { Input } from 'utils/classes/Input';
 import { config, SIGNIN_FORM } from 'utils/constants';
-import { handleSubmitForm } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
 
 export class SigninPage extends Block {
   protected getStateFromProps() {
     this.state = {
-      handleChangeInput: (evt: Event) => {
-        evt.target && new Input(config, evt.target).checkOnValueInput();
-      },
+      handleChangeInput: (evt: Event) => checkOnValueInput(evt),
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         handleSubmitForm(SIGNIN_FORM, config.inputSelector, this.element);
