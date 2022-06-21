@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
 import { Popup } from 'utils/classes/Popup';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { config } from 'utils/constants';
+import { config, EDIT_PASSWORD_FORM } from 'utils/constants';
+import { handleSubmitForm } from 'utils/functions';
 import dataProfile from 'data/profile.json';
 
 export class EditPasswordPage extends Block {
@@ -10,25 +10,15 @@ export class EditPasswordPage extends Block {
     this.state = {
       handleEditAvatar: () => {
         new Popup(
-          'popup_change-avatar',
-          'edit-avatar',
-          'popup_opened',
+          config.popupChangeAvatarSelector,
+          config.editAvatarSelector,
+          config.isOpenPopupSelecot,
           config
         ).handleOpenPopup();
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-
-        if (FormValidator.checkStateForm('edit-password')) {
-          const inputs = this.element?.querySelectorAll('.input-profile__input');
-          let dataForm = {};
-
-          inputs?.forEach((input) => {
-            const inputElement = input as HTMLInputElement;
-            dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
-          });
-          console.log(dataForm);
-        }
+        handleSubmitForm(EDIT_PASSWORD_FORM, config.inputProfileSelector, this.element);
       },
     };
   }

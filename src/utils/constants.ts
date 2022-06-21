@@ -33,11 +33,22 @@ const config = {
   menuBtnSelector: 'menu-button',
   searchInputByChatsSelector: 'input-chat',
   imgFromSearchInputByChatsSelector: 'search-chat__img',
+  inputProfileSelector: 'input-profile__input',
 };
 
 const ADD_USER_FORM = 'add-user';
 const DELETE_USER_FORM = 'delete-user';
 const SIGNIN_FORM = 'signin';
 const SIGNUP_FORM = 'signup';
+const EDIT_PASSWORD_FORM = 'edit-password';
+const EDIT_PROFILE_FORM = 'edit-profile';
 
-export { config, ADD_USER_FORM, DELETE_USER_FORM, SIGNIN_FORM, SIGNUP_FORM };
+export {
+  config,
+  ADD_USER_FORM,
+  DELETE_USER_FORM,
+  SIGNIN_FORM,
+  SIGNUP_FORM,
+  EDIT_PASSWORD_FORM,
+  EDIT_PROFILE_FORM,
+};

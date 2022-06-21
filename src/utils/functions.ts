@@ -7,6 +7,7 @@ export const handleSubmitForm = (
   inputSelector: string,
   element: HTMLElement | null
 ) => {
+  console.log(FormValidator.checkStateForm(nameForm));
   if (FormValidator.checkStateForm(nameForm)) {
     const inputs = element?.querySelectorAll(`.${inputSelector}`);
     let dataForm = {};
