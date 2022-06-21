@@ -31,7 +31,7 @@ export class SignupPage extends Block {
     return `
       <div class="page">
         <main class="page__form">
-          <form class="signup" name="signup">
+          <form class="signup" name="signup" novalidate>
             <h1 class="signup__title">Регистрация</h1>
             {{{InputWrapper onInput=handleChangeInput type="email" helperText="Почта" name="email"}}}
             {{{InputWrapper onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20" name="login"}}}

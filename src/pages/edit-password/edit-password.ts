@@ -1,6 +1,7 @@
 import Block from 'core/Block';
 import './edit-password.css';
 import { Popup } from 'utils/Popup';
+import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
 import dataProfile from 'data/profile.json';
 
@@ -15,6 +16,20 @@ export class EditPasswordPage extends Block {
           config
         ).handleOpenPopup();
       },
+      hendleSubmitForm: (evt: Event) => {
+        evt.preventDefault();
+
+        if (FormValidator.checkStateForm('edit-password')) {
+          const inputs = this.element?.querySelectorAll('.input-profile__input');
+          let dataForm = {};
+
+          inputs?.forEach((input) => {
+            const inputElement = input as HTMLInputElement;
+            dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
+          });
+          console.log(dataForm);
+        }
+      },
     };
   }
   render() {
@@ -24,14 +39,14 @@ export class EditPasswordPage extends Block {
         <ul class="profile__wrapper">
           {{{BtnBackProfile href="/profile"}}}
           <li class="edit-profile__column">
-            <form class="edit-profile__form">
+            <form class="edit-profile__form" name="edit-password" novalidate>
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="edit-profile__list">
-                {{{InputProfile type="password" helperText="Старый пароль" value="${dataProfile.payload.password}"}}}
-                {{{InputProfile type="password" helperText="Новый пароль" value="1234"}}}
-                {{{InputProfile type="password" helperText="Повторите новый пароль" value="1234"}}}
-                {{{Button textBtn="Сохранить" classes="button_page_edit-password" type="submit"}}}
+                {{{InputProfile type="password" helperText="Старый пароль" value="${dataProfile.payload.password}" minlength="8" maxlength="40" name="oldPassword"}}}
+                {{{InputProfile type="password" helperText="Новый пароль" value="1234" minlength="8" maxlength="40" name="newPassword"}}}
+                {{{InputProfile type="password" helperText="Повторите новый пароль" value="1234" minlength="8" maxlength="40" name="repeatPassword"}}}
+                {{{Button onClick=hendleSubmitForm textBtn="Сохранить" classes="button_page_edit-password" type="submit"}}}
               </ul>
             </form>
           </li>
