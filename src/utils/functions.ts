@@ -6,9 +6,10 @@ export const handleSubmitForm = (
   stateForm: boolean,
   inputSelector: string,
   formSelector: string,
-  { disableBtn, addErors }: any
+  { disableBtn, addErors }: any,
+  isValidField: boolean | undefined = undefined
 ) => {
-  if (stateForm) {
+  if (stateForm && isValidField === undefined) {
     const form = document.querySelector(`.${formSelector}`);
     if (form) {
       const inputs = form.querySelectorAll(`.${inputSelector}`);

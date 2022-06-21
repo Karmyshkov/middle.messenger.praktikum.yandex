@@ -56,4 +56,5 @@ export abstract class View {
   protected _form!: Nullable<HTMLFormElement>;
   protected _btnSubmit!: Nullable<HTMLElement>;
   protected _errorContainer: Element | null | undefined;
+  public _isValidFieldWithCustomRules!: Record<string, boolean> | null;
 }

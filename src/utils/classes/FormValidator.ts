@@ -24,6 +24,7 @@ export class FormValidator extends View {
     this._isShowHelperTextSelector = isShowHelperTextSelector;
     this._isDisableBtnSubmitSelector = config.isDisableBtnSubmitSelector;
     this._errorContainer = null;
+    this._isValidFieldWithCustomRules = null;
   }
 
   private _closeErrorMessage() {
@@ -57,10 +58,18 @@ export class FormValidator extends View {
     ) {
       const isValidValue = this._checkExpressionByRegExp(/^[A-Z | А-Я | -]/, input.value);
       isValidValue && this._showErrorMessage(CUSTOM_ERROR_FOR_NAME_AND_LASTNAME);
+      this._isValidFieldWithCustomRules = {
+        ...this._isValidFieldWithCustomRules,
+        [input.name]: isValidValue,
+      };
     }
     if (input && input.name === PHONE_USER_FIELD) {
-      this._checkExpressionByRegExp(/^[\d|+]\d{9,15}/, input.value) &&
-        this._showErrorMessage(CUSTOM_ERROR_FOR_PHONE_FILED);
+      const isValidValue = this._checkExpressionByRegExp(/^[\d|+]\d{9,15}/, input.value);
+      isValidValue && this._showErrorMessage(CUSTOM_ERROR_FOR_PHONE_FILED);
+      this._isValidFieldWithCustomRules = {
+        ...this._isValidFieldWithCustomRules,
+        [input.name]: isValidValue,
+      };
     }
   };
 
@@ -118,5 +127,13 @@ export class FormValidator extends View {
     document
       .querySelector(`.${this._btnSelector}`)
       ?.classList.add(this._isDisableBtnSubmitSelector);
+  };
+
+  public isValidFieldWithCustomRules = () => {
+    if (this._isValidFieldWithCustomRules) {
+      return Object.values(this._isValidFieldWithCustomRules).find(
+        (element) => element === true
+      );
+    }
   };
 }

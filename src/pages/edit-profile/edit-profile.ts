@@ -34,6 +34,7 @@ export class EditProfilePage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
+        const isValidField = editProfileformValidator.isValidFieldWithCustomRules();
         handleSubmitForm(
           editProfileformValidator.checkStateForm(),
           config.inputProfileSelector,
@@ -41,7 +42,8 @@ export class EditProfilePage extends Block {
           {
             disableBtn: editProfileformValidator.disableBtn,
             addErors: editProfileformValidator.addErrorsForInput,
-          }
+          },
+          isValidField
         );
       },
       handleValidateInput: (evt: Event) =>
