@@ -6,7 +6,23 @@ import messages from 'data/messages.json';
 import { ChatType } from 'types';
 import { Chat } from 'utils/classes/Chat';
 import { Popup } from 'utils/classes/Popup';
-import { config } from 'utils/constants';
+import { FormValidator } from 'utils/classes/FormValidator';
+import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+
+const addUserFormValidator = new FormValidator(
+  config,
+  ADD_USER_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector
+);
+
+const deleteUserFormValidator = new FormValidator(
+  config,
+  DELETE_USER_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector
+);
 
 export class ChatPage extends Block {
   protected getStateFromProps() {
@@ -32,6 +48,48 @@ export class ChatPage extends Block {
           config.isShowMenuSelecor,
           config
         ).handleOpenPopup();
+      },
+
+      handleChangeAddUserInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        addUserFormValidator.clearError();
+        addUserFormValidator.toggleBtnState();
+      },
+      hendleSubmitAddUserForm: (evt: Event) => {
+        evt.preventDefault();
+        handleSubmitForm(
+          addUserFormValidator.checkStateForm(),
+          config.inputSelector,
+          this.element,
+          {
+            disableBtn: addUserFormValidator.disableBtn,
+            addErors: addUserFormValidator.addErors,
+          }
+        );
+      },
+      handleValidateAddUserInput: (evt: Event) => {
+        addUserFormValidator.handleFieldValidation(evt);
+      },
+
+      handleChangeDeleteUserInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        deleteUserFormValidator.clearError();
+        deleteUserFormValidator.toggleBtnState();
+      },
+      hendleSubmitDeleteUserForm: (evt: Event) => {
+        evt.preventDefault();
+        handleSubmitForm(
+          deleteUserFormValidator.checkStateForm(),
+          config.inputSelector,
+          this.element,
+          {
+            disableBtn: deleteUserFormValidator.disableBtn,
+            addErors: deleteUserFormValidator.addErors,
+          }
+        );
+      },
+      handleValidateDeleteUserInput: (evt: Event) => {
+        deleteUserFormValidator.handleFieldValidation(evt);
       },
     };
   }
@@ -97,6 +155,10 @@ export class ChatPage extends Block {
         {{{Menu isUser=true}}}
         {{{Menu isUser=false}}}
         {{{Popup
+          onClick=hendleSubmitAddUserForm
+          onInput=handleChangeAddUserInput
+          onFocus=handleValidateAddUserInput
+          onBlur=handleValidateAddUserInput
           title="Добавить пользователя"
           helperText="Логин"
           textBtn="Добавить"
@@ -106,6 +168,10 @@ export class ChatPage extends Block {
           name="popup__form_add-user"
         }}}
         {{{Popup
+          onClick=hendleSubmitDeleteUserForm
+          onInput=handleChangeDeleteUserInput
+          onFocus=handleValidateDeleteUserInput
+          onBlur=handleValidateDeleteUserInput
           title="Удалить пользователя"
           helperText="Логин"
           textBtn="Удалить"

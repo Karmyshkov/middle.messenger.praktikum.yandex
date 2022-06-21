@@ -1,5 +1,8 @@
 export interface PopupProps {
-  onClick: () => void;
+  onClick?: () => void;
+  onInput?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
   classesPopup?: string;
   classesForm?: string;
   name: string;

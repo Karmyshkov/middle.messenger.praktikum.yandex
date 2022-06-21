@@ -1,24 +1,38 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
+import { FormValidator } from 'utils/classes/FormValidator';
 import { config, AUTH_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput, toggleBtnState } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+
+const formValidator = new FormValidator(
+  config,
+  AUTH_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector
+);
 
 export class SignupPage extends Block {
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
         checkOnValueInput(evt);
-        //toggleBtnState(AUTH_FORM, config.btnSubmitFormSelector);
+        formValidator.clearError();
+        formValidator.toggleBtnState();
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        // handleSubmitForm(
-        //   AUTH_FORM,
-        //   config.inputSelector,
-        //   config.btnSubmitFormSelector,
-        //   this.element
-        // );
+
+        handleSubmitForm(
+          formValidator.checkStateForm(),
+          config.inputSelector,
+          this.element,
+          {
+            disableBtn: formValidator.disableBtn,
+            addErors: formValidator.addErors,
+          }
+        );
       },
+      handleValidateInput: (evt: Event) => formValidator.handleFieldValidation(evt),
     };
   }
   render() {
@@ -30,12 +44,16 @@ export class SignupPage extends Block {
             <h1 class="auth__title">Регистрация</h1>
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="email"
               helperText="Почта"
               name="email"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="text"
               helperText="Логин"
               minlength="3"
@@ -44,6 +62,8 @@ export class SignupPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="text"
               helperText="Имя"
               minlength="1"
@@ -52,6 +72,8 @@ export class SignupPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="text"
               helperText="Фамилия"
               minlength="1"
@@ -60,6 +82,8 @@ export class SignupPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="tel"
               helperText="Телефон"
               minlength="10"
@@ -68,6 +92,8 @@ export class SignupPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="password"
               helperText="Пароль"
               minlength="8"
@@ -76,6 +102,8 @@ export class SignupPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
+              onFocus=handleValidateInput
+              onBlur=handleValidateInput
               type="password"
               helperText="Пароль (ещё раз)"
               minlength="8"

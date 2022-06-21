@@ -11,8 +11,6 @@ const formValidator = new FormValidator(
   config.btnSubmitFormSelector
 );
 
-formValidator.disableBtn;
-
 export class SigninPage extends Block {
   protected getStateFromProps() {
     this.state = {

@@ -1,8 +1,6 @@
 import Block from 'core/Block';
 import './popup.css';
 import { PopupProps } from './types';
-import { config } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput, toggleBtnState } from 'utils/functions';
 
 export class Popup extends Block {
   constructor({
@@ -13,6 +11,9 @@ export class Popup extends Block {
     isDefault,
     helperText,
     textBtn,
+    onInput,
+    onFocus,
+    onBlur,
     onClick,
   }: PopupProps) {
     super({
@@ -23,7 +24,10 @@ export class Popup extends Block {
       isDefault,
       helperText,
       textBtn,
-      events: { click: onClick },
+      onInput,
+      onFocus,
+      onBlur,
+      onClick,
     });
   }
   protected getStateFromProps(props: PopupProps): void {
@@ -35,20 +39,10 @@ export class Popup extends Block {
       isDefault: props.isDefault,
       helperText: props.helperText,
       textBtn: props.textBtn,
-
-      handleChangeInput: (evt: Event) => {
-        checkOnValueInput(evt);
-        toggleBtnState(this.state.name, config.btnSubmitFormSelector);
-      },
-      hendleSubmitForm: (evt: Event) => {
-        evt.preventDefault();
-        handleSubmitForm(
-          this.state.name,
-          config.inputSelector,
-          config.btnSubmitFormSelector,
-          this.element
-        );
-      },
+      onClick: props.onClick,
+      onInput: props.onInput,
+      onFocus: onfocus,
+      onBlur: onblur,
     };
   }
 
@@ -66,12 +60,28 @@ export class Popup extends Block {
             ${
               isDefault
                 ? `
-                    {{{InputWrapper onInput=handleChangeInput type="text" helperText="${helperText}" minlength="5" maxlength="20" name="login"}}}
-                    {{{Button onClick=hendleSubmitForm textBtn="${textBtn}" type="submit"}}}
+                  {{{InputWrapper
+                    onInput=onInput
+                    onFocus=onFocus
+                    onBlur=onBlur
+                    type="text"
+                    helperText="${helperText}"
+                    minlength="5"
+                    maxlength="20"
+                    name="login"
+                  }}}
+                  {{{Button
+                    onClick=onClick
+                    textBtn="${textBtn}"
+                    type="submit"
+                  }}}
                   `
                 : `
-                    {{{InputFile}}}
-                    {{{Button textBtn="${textBtn}" type="submit"}}}
+                  {{{InputFile}}}
+                  {{{Button
+                    textBtn="${textBtn}"
+                    type="submit"
+                  }}}
                   `
             }
           </form>

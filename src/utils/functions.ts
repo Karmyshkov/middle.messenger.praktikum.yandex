@@ -1,4 +1,5 @@
 import { Input } from 'utils/classes/Input';
+import { Popup } from './classes/Popup';
 import { config } from 'utils/constants';
 
 export const handleSubmitForm = (
@@ -16,6 +17,8 @@ export const handleSubmitForm = (
       dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
     });
     console.log(dataForm);
+
+    Popup.handleClosePopup(config.isOpenPopupSelecot);
   } else {
     disableBtn();
     addErors();
