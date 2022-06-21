@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
 import { Input } from 'utils/classes/Input';
-import { FormValidator } from 'utils/classes/FormValidator';
 import { config } from 'utils/constants';
+import { handleSubmitForm } from 'utils/functions';
 
 export class SigninPage extends Block {
   protected getStateFromProps() {
@@ -12,17 +12,7 @@ export class SigninPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-
-        if (FormValidator.checkStateForm('signin')) {
-          const inputs = this.element?.querySelectorAll('.input__text-field');
-          let dataForm = {};
-
-          inputs?.forEach((input) => {
-            const inputElement = input as HTMLInputElement;
-            dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
-          });
-          console.log(dataForm);
-        }
+        handleSubmitForm('signin', 'input__text-field', this.element);
       },
     };
   }

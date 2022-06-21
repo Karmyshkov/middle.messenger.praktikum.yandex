@@ -2,9 +2,8 @@ import Block from 'core/Block';
 import './popup.css';
 import { PopupProps } from './types';
 import { Input } from 'utils/classes/Input';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { Popup as PopupClass } from 'utils/classes/Popup';
 import { config } from 'utils/constants';
+import { handleSubmitForm } from 'utils/functions';
 
 export class Popup extends Block {
   constructor({
@@ -43,22 +42,7 @@ export class Popup extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-
-        if (
-          FormValidator.checkStateForm(
-            evt.target.textContent === 'Добавить' ? 'add-user' : 'delete-user'
-          )
-        ) {
-          const inputs = this.element?.querySelectorAll('.input__text-field');
-          let dataForm = {};
-
-          inputs?.forEach((input) => {
-            const inputElement = input as HTMLInputElement;
-            dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
-          });
-          console.log(dataForm);
-          PopupClass.handleClosePopup('popup_opened');
-        }
+        handleSubmitForm(this.state.name, 'input__text-field', this.element);
       },
     };
   }
