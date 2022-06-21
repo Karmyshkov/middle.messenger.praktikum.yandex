@@ -40,7 +40,7 @@ export class SignupPage extends Block {
             {{{InputWrapper onInput=handleChangeInput type="text" helperText="Телефон" minlength="10" maxlength="15" name="phone"}}}
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" name="password"}}}
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль (ещё раз)" minlength="8" maxlength="40" classes="input_is-auth" name="repeatPassword"}}}
-            {{{Button onClick=hendleSubmitForm textBtn="Зарегистрироваться" type="submit"}}}
+            {{{Button onClick=hendleSubmitForm textBtn="Зарегистрироваться" type="submit" classes="button_is-auth"}}}
             <a class="signup__link" href="/">Войти</a>
           </form>
         </main>

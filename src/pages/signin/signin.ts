@@ -35,7 +35,7 @@ export class SigninPage extends Block {
             <h1 class="signin__title">Вход</h1>
             {{{InputWrapper onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20" name="login"}}}
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" classes="input_is-auth" name="password"}}}
-            {{{Button onClick=hendleSubmitForm textBtn="Авторизоваться" type="submit"}}}
+            {{{Button onClick=hendleSubmitForm textBtn="Авторизоваться" type="submit" classes="button_is-auth"}}}
             <a class="signin__link" href="/signup">Нет аккаунта?</a>
           </form>
         </main>
