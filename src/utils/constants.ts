@@ -49,7 +49,10 @@ const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
 const AUTH_FORM = 'auth';
 const USER_NAME_FIELD = 'name';
 const LAST_NAME_USER_FIELD = 'lastName';
-const CUSTOM_ERROR = 'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
+const PHONE_USER_FIELD = 'phone';
+const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
+  'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
+const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
 
 export {
   config,
@@ -62,5 +65,7 @@ export {
   AUTH_FORM,
   USER_NAME_FIELD,
   LAST_NAME_USER_FIELD,
-  CUSTOM_ERROR,
+  PHONE_USER_FIELD,
+  CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
+  CUSTOM_ERROR_FOR_PHONE_FILED,
 };

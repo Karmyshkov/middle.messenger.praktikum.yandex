@@ -1,5 +1,11 @@
 import { View } from './View';
-import { USER_NAME_FIELD, LAST_NAME_USER_FIELD, CUSTOM_ERROR } from 'utils/constants';
+import {
+  USER_NAME_FIELD,
+  LAST_NAME_USER_FIELD,
+  PHONE_USER_FIELD,
+  CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
+  CUSTOM_ERROR_FOR_PHONE_FILED,
+} from 'utils/constants';
 
 export class FormValidator extends View {
   constructor(
@@ -50,7 +56,11 @@ export class FormValidator extends View {
       (input.name === USER_NAME_FIELD || input.name === LAST_NAME_USER_FIELD)
     ) {
       this._checkExpressionByRegExp(/^[A-Z | А-Я | -]/, input.value) &&
-        this._showErrorMessage(CUSTOM_ERROR);
+        this._showErrorMessage(CUSTOM_ERROR_FOR_NAME_AND_LASTNAME);
+    }
+    if (input && input.name === PHONE_USER_FIELD) {
+      this._checkExpressionByRegExp(/^[\d|+]\d{9,15}/, input.value) &&
+        this._showErrorMessage(CUSTOM_ERROR_FOR_PHONE_FILED);
     }
   };
 
