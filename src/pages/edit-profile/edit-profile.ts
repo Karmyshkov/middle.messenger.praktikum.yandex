@@ -38,7 +38,6 @@ export class EditProfilePage extends Block {
           <li class="profile__column">
             <form
               class="profile__form profile__form_el_edit-form"
-              name="edit-profile"
               novalidate
             >
               {{{EditAvatar onClick=handleEditAvatar}}}
@@ -49,7 +48,7 @@ export class EditProfilePage extends Block {
                   helperText="Почта"
                   value="${email}"
                   name="email"
-                  formName="edit-profile"
+                  formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
@@ -58,7 +57,7 @@ export class EditProfilePage extends Block {
                   minlength="3"
                   maxlength="20"
                   name="login"
-                  formName="edit-profile"
+                  formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
@@ -67,7 +66,7 @@ export class EditProfilePage extends Block {
                   minlength="1"
                   maxlength="50"
                   name="name"
-                  formName="edit-profile"
+                  formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
@@ -76,7 +75,7 @@ export class EditProfilePage extends Block {
                   minlength="1"
                   maxlength="50"
                   name="lastName"
-                  formName="edit-profile"
+                  formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
                   type="tel"
@@ -85,7 +84,7 @@ export class EditProfilePage extends Block {
                   minlength="10"
                   maxlength="15"
                   name="phone"
-                  formName="edit-profile"
+                  formName="profile__form_el_edit-form"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
@@ -94,7 +93,7 @@ export class EditProfilePage extends Block {
                   minlength="1"
                   maxlength="50"
                   name="chatName"
-                  formName="edit-profile"
+                  formName="profile__form_el_edit-form"
                 }}}
                 {{{Button
                   onClick=hendleSubmitForm

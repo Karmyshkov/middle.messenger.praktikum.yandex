@@ -3,8 +3,9 @@ import { Popup } from 'utils/classes/Popup';
 import { Input } from 'utils/classes/Input';
 import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 
-const checkStateForm = (nameForm: string) => {
-  return document.forms[nameForm].checkValidity();
+const checkStateForm = (formSelector: string) => {
+  const form = document.querySelector(`.${formSelector}`) as HTMLInputElement;
+  return form.checkValidity();
 };
 
 const disableBtn = (buttonSelector: string) => {
@@ -41,9 +42,11 @@ export const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
 };
 
-export const toggleBtnState = (nameForm: string, btnSelector: string) => {
-  const btn = document.forms[nameForm].querySelector(`.${btnSelector}`);
-  checkStateForm(nameForm)
-    ? btn.classList.remove(config.isDisableBtnSubmitSelector)
-    : btn.classList.add(config.isDisableBtnSubmitSelector);
+export const toggleBtnState = (formSelector: string, btnSelector: string) => {
+  const btn = document.querySelector(`.${btnSelector}`);
+  if (btn) {
+    checkStateForm(formSelector)
+      ? btn.classList.remove(config.isDisableBtnSubmitSelector)
+      : btn.classList.add(config.isDisableBtnSubmitSelector);
+  }
 };

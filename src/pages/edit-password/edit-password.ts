@@ -36,7 +36,6 @@ export class EditPasswordPage extends Block {
           <li class="profile__column">
             <form
               class="profile__form profile__form_el_edit-password-form"
-              name="edit-password"
               novalidate
             >
               {{{EditAvatar onClick=handleEditAvatar}}}
@@ -49,7 +48,7 @@ export class EditPasswordPage extends Block {
                   minlength="8"
                   maxlength="40"
                   name="oldPassword"
-                  formName="edit-password"
+                  formName="profile__form_el_edit-password-form"
                 }}}
                 {{{InputProfileWrapper
                   type="password"
@@ -58,7 +57,7 @@ export class EditPasswordPage extends Block {
                   minlength="8"
                   maxlength="40"
                   name="newPassword"
-                  formName="edit-password"
+                  formName="profile__form_el_edit-password-form"
                 }}}
                 {{{InputProfileWrapper
                   type="password"
@@ -66,7 +65,7 @@ export class EditPasswordPage extends Block {
                   value="12341234" minlength="8"
                   maxlength="40"
                   name="repeatPassword"
-                  formName="edit-password"
+                  formName="profile__form_el_edit-password-form"
                 }}}
                 {{{Button
                   onClick=hendleSubmitForm

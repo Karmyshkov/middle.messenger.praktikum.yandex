@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
-import { config, SIGNUP_FORM, AUTH_FORM } from 'utils/constants';
+import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput, toggleBtnState } from 'utils/functions';
 
 export class SignupPage extends Block {
@@ -8,7 +8,7 @@ export class SignupPage extends Block {
     this.state = {
       handleChangeInput: (evt: Event) => {
         checkOnValueInput(evt);
-        toggleBtnState(SIGNUP_FORM, config.btnSubmitFormSelector);
+        toggleBtnState(AUTH_FORM, config.btnSubmitFormSelector);
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
