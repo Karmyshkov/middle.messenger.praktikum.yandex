@@ -1,5 +1,6 @@
 import { FormValidator } from 'utils/classes/FormValidator';
 import { Popup } from 'utils/classes/Popup';
+import { Input } from 'utils/classes/Input';
 import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 
 export const handleSubmitForm = (
@@ -7,7 +8,6 @@ export const handleSubmitForm = (
   inputSelector: string,
   element: HTMLElement | null
 ) => {
-  console.log(FormValidator.checkStateForm(nameForm));
   if (FormValidator.checkStateForm(nameForm)) {
     const inputs = element?.querySelectorAll(`.${inputSelector}`);
     let dataForm = {};
@@ -22,4 +22,8 @@ export const handleSubmitForm = (
       Popup.handleClosePopup(config.isOpenPopupSelecot);
     }
   }
+};
+
+export const checkOnValueInput = (evt: Event) => {
+  evt.target && new Input(config, evt.target).checkOnValueInput();
 };
