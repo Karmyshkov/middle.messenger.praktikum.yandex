@@ -1,4 +1,5 @@
 import { View } from './View';
+import { USER_NAME_FIELD, LAST_NAME_USER_FIELD, CUSTOM_ERROR } from 'utils/constants';
 
 export class FormValidator extends View {
   constructor(
@@ -38,6 +39,21 @@ export class FormValidator extends View {
     return form.querySelectorAll(`.${this._inputSelector}`);
   };
 
+  private _checkFirstSymbol = (value: string) => {
+    const regexp = /^[A-Z | А-Я | -]/;
+    return !regexp.test(value);
+  };
+
+  private _checkNameAndLastName = (element: EventTarget | null) => {
+    const input = element as HTMLFormElement;
+    if (
+      input &&
+      (input.name === USER_NAME_FIELD || input.name === LAST_NAME_USER_FIELD)
+    ) {
+      this._checkFirstSymbol(input.value) && this._showErrorMessage(CUSTOM_ERROR);
+    }
+  };
+
   public handleFieldValidation(evt: Event) {
     const element = evt.target;
 
@@ -48,6 +64,8 @@ export class FormValidator extends View {
     !(<HTMLFormElement>element).validity.valid
       ? this._showErrorMessage((<HTMLFormElement>element).validationMessage)
       : this._closeErrorMessage();
+
+    this._checkNameAndLastName(element);
   }
 
   public clearError() {
