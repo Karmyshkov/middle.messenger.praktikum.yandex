@@ -1,9 +1,9 @@
 import Block from 'core/Block';
 import './popup.css';
 import { PopupProps } from './types';
-import { Input } from 'utils/Input';
-import { FormValidator } from 'utils/FormValidator';
-import { Popup as PopupClass } from 'utils/Popup';
+import { Input } from 'utils/classes/Input';
+import { FormValidator } from 'utils/classes/FormValidator';
+import { Popup as PopupClass } from 'utils/classes/Popup';
 import { config } from 'utils/constants';
 
 export class Popup extends Block {

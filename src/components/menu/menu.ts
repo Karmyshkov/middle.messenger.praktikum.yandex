@@ -6,7 +6,7 @@ import close from 'img/close.svg';
 import photo from 'img/photo.svg';
 import file from 'img/file.svg';
 import location from 'img/location.svg';
-import { Popup } from 'utils/Popup';
+import { Popup } from 'utils/classes/Popup';
 import { config } from 'utils/constants';
 
 export class Menu extends Block {

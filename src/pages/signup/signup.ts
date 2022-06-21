@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
-import { Input } from 'utils/Input';
-import { FormValidator } from 'utils/FormValidator';
+import { Input } from 'utils/classes/Input';
+import { FormValidator } from 'utils/classes/FormValidator';
 import { config } from 'utils/constants';
 
 export class SignupPage extends Block {

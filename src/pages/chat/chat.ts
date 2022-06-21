@@ -4,8 +4,8 @@ import right_arrow from 'img/right-arrow.svg';
 import chats from 'data/chats.json';
 import messages from 'data/messages.json';
 import { ChatType } from 'types';
-import { Chat } from 'utils/Chat';
-import { Popup } from 'utils/Popup';
+import { Chat } from 'utils/classes/Chat';
+import { Popup } from 'utils/classes/Popup';
 import { config } from 'utils/constants';
 
 export class ChatPage extends Block {

@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import './inputWrapper.css';
 import { InputWrapperProps } from './types';
-import { FormValidator } from 'utils/FormValidator';
+import { FormValidator } from 'utils/classes/FormValidator';
 import { config } from 'utils/constants';
 
 const formValidator = new FormValidator(config);

@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
 import dataProfile from 'data/profile.json';
-import { Popup } from 'utils/Popup';
+import { Popup } from 'utils/classes/Popup';
 import { config } from 'utils/constants';
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;

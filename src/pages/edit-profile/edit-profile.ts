@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
-import { Popup } from 'utils/Popup';
-import { FormValidator } from 'utils/FormValidator';
+import { Popup } from 'utils/classes/Popup';
+import { FormValidator } from 'utils/classes/FormValidator';
 import { config } from 'utils/constants';
 import dataProfile from 'data/profile.json';
 
