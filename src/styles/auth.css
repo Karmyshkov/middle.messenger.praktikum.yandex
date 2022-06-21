@@ -1,11 +1,11 @@
-.signup {
+.signin {
   font-family: inherit;
   box-sizing: border-box;
   max-width: 340px;
   width: 100%;
   padding: 50px 30px 30px;
   flex-direction: column;
-  box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
+  box-shadow: 0 0 6px 0 var(--shadow);
   border-radius: 12px;
 
   @media screen and (max-width: 425px) {

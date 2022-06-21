@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import './signup.css';
+import 'styles/auth.css';
 import { Input } from 'utils/Input';
 import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
