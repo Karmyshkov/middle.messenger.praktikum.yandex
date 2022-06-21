@@ -39,8 +39,7 @@ export class FormValidator extends View {
     return form.querySelectorAll(`.${this._inputSelector}`);
   };
 
-  private _checkFirstSymbol = (value: string) => {
-    const regexp = /^[A-Z | А-Я | -]/;
+  private _checkExpressionByRegExp = (regexp: RegExp, value: string) => {
     return !regexp.test(value);
   };
 
@@ -50,7 +49,8 @@ export class FormValidator extends View {
       input &&
       (input.name === USER_NAME_FIELD || input.name === LAST_NAME_USER_FIELD)
     ) {
-      this._checkFirstSymbol(input.value) && this._showErrorMessage(CUSTOM_ERROR);
+      this._checkExpressionByRegExp(/^[A-Z | А-Я | -]/, input.value) &&
+        this._showErrorMessage(CUSTOM_ERROR);
     }
   };
 
