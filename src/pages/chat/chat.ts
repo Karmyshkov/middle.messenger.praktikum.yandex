@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import './chat.css';
+import 'styles/chat.css';
 import right_arrow from 'img/right-arrow.svg';
 import chats from 'data/chats.json';
 import messages from 'data/messages.json';
