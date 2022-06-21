@@ -18,7 +18,12 @@ export class EditPasswordPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(EDIT_PASSWORD_FORM, config.inputProfileSelector, this.element);
+        handleSubmitForm(
+          EDIT_PASSWORD_FORM,
+          config.inputProfileSelector,
+          config.btnSubmitFormSelector,
+          this.element
+        );
       },
     };
   }

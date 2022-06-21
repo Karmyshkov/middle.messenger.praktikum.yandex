@@ -42,7 +42,12 @@ export class Popup extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(this.state.name, config.inputSelector, this.element);
+        handleSubmitForm(
+          this.state.name,
+          config.inputSelector,
+          config.btnSubmitFormSelector,
+          this.element
+        );
       },
     };
   }

@@ -3,9 +3,20 @@ import { Popup } from 'utils/classes/Popup';
 import { Input } from 'utils/classes/Input';
 import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 
+const checkStateForm = (nameForm: string) => {
+  return document.forms[nameForm].checkValidity();
+};
+
+const disableBtn = (buttonSelector: string) => {
+  document
+    .querySelector(`.${buttonSelector}`)
+    ?.classList.add(config.isDisableBtnSubmitSelector);
+};
+
 export const handleSubmitForm = (
   nameForm: string,
   inputSelector: string,
+  buttonSelector: string,
   element: HTMLElement | null
 ) => {
   if (FormValidator.checkStateForm(nameForm)) {
@@ -21,15 +32,13 @@ export const handleSubmitForm = (
     if (nameForm === ADD_USER_FORM || nameForm === DELETE_USER_FORM) {
       Popup.handleClosePopup(config.isOpenPopupSelecot);
     }
+  } else {
+    disableBtn(buttonSelector);
   }
 };
 
 export const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
-};
-
-const checkStateForm = (nameForm: string) => {
-  return document.forms[nameForm].checkValidity();
 };
 
 export const toggleBtnState = (nameForm: string, btnSelector: string) => {

@@ -12,7 +12,12 @@ export class SignupPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(SIGNUP_FORM, config.inputSelector, this.element);
+        handleSubmitForm(
+          SIGNUP_FORM,
+          config.inputSelector,
+          config.btnSubmitFormSelector,
+          this.element
+        );
       },
     };
   }

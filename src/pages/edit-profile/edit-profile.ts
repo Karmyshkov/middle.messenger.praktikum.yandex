@@ -20,7 +20,12 @@ export class EditProfilePage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(EDIT_PROFILE_FORM, config.inputProfileSelector, this.element);
+        handleSubmitForm(
+          EDIT_PROFILE_FORM,
+          config.inputProfileSelector,
+          config.btnSubmitFormSelector,
+          this.element
+        );
       },
     };
   }
