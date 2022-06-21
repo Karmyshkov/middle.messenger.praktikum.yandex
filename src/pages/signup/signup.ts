@@ -28,7 +28,7 @@ export class SignupPage extends Block {
           this.element,
           {
             disableBtn: formValidator.disableBtn,
-            addErors: formValidator.addErors,
+            addErors: formValidator.addErorsForDefaultForm,
           }
         );
       },

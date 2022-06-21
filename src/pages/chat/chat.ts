@@ -63,7 +63,7 @@ export class ChatPage extends Block {
           this.element,
           {
             disableBtn: addUserFormValidator.disableBtn,
-            addErors: addUserFormValidator.addErors,
+            addErors: addUserFormValidator.addErorsForDefaultForm,
           }
         );
       },
@@ -84,7 +84,7 @@ export class ChatPage extends Block {
           this.element,
           {
             disableBtn: deleteUserFormValidator.disableBtn,
-            addErors: deleteUserFormValidator.addErors,
+            addErors: deleteUserFormValidator.addErorsForDefaultForm,
           }
         );
       },

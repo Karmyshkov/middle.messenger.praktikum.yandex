@@ -1,6 +1,7 @@
 import { InputType } from 'types';
 
 export interface InputProfileWrapperProps {
+  onInput?: () => void;
   formName: string;
   name: string;
   minlength: string;

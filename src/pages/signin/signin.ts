@@ -21,14 +21,13 @@ export class SigninPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-
         handleSubmitForm(
           formValidator.checkStateForm(),
           config.inputSelector,
           this.element,
           {
             disableBtn: formValidator.disableBtn,
-            addErors: formValidator.addErors,
+            addErors: formValidator.addErorsForDefaultForm,
           }
         );
       },

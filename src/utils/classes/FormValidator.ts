@@ -52,7 +52,7 @@ export class FormValidator extends View {
     return form.checkValidity();
   }
 
-  public addErors = () => {
+  public addErorsForDefaultForm = () => {
     const form = document.querySelector(`.${this._formSelector}`) as HTMLFormElement;
     form.querySelectorAll(`.${this._inputSelector}`).forEach((input) => {
       const inputElement = input as HTMLFormElement;

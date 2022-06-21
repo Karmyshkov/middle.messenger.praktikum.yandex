@@ -1,9 +1,17 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
 import { Popup } from 'utils/classes/Popup';
+import { FormValidator } from 'utils/classes/FormValidator';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
-import { handleSubmitForm } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
 import dataProfile from 'data/profile.json';
+
+const editProfileformValidator = new FormValidator(
+  config,
+  EDIT_PROFILE_FORM,
+  config.inputProfileSelector,
+  config.btnSubmitFormSelector
+);
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
@@ -18,13 +26,20 @@ export class EditProfilePage extends Block {
           config
         ).handleOpenPopup();
       },
+      handleChangeInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        editProfileformValidator.toggleBtnState();
+      },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         handleSubmitForm(
-          EDIT_PROFILE_FORM,
+          editProfileformValidator.checkStateForm(),
           config.inputProfileSelector,
-          config.btnSubmitFormSelector,
-          this.element
+          this.element,
+          {
+            disableBtn: editProfileformValidator.disableBtn,
+            addErors: editProfileformValidator.addErorsForDefaultForm,
+          }
         );
       },
     };
@@ -44,6 +59,7 @@ export class EditProfilePage extends Block {
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
+                  onInput=handleChangeInput
                   type="email"
                   helperText="Почта"
                   value="${email}"

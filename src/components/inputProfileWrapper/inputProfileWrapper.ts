@@ -1,8 +1,6 @@
 import Block from 'core/Block';
 import './inputProfileWrapper.css';
 import { InputProfileWrapperProps } from './types';
-import { toggleBtnState } from 'utils/functions';
-import { config } from 'utils/constants';
 
 export class InputProfileWrapper extends Block {
   constructor({
@@ -13,6 +11,7 @@ export class InputProfileWrapper extends Block {
     type,
     value,
     helperText,
+    onInput,
   }: InputProfileWrapperProps) {
     super({
       formName,
@@ -22,6 +21,7 @@ export class InputProfileWrapper extends Block {
       type,
       value,
       helperText,
+      onInput,
     });
   }
   protected getStateFromProps(props: InputProfileWrapperProps): void {
@@ -33,10 +33,7 @@ export class InputProfileWrapper extends Block {
       type: props.type,
       value: props.value,
       helperText: props.helperText,
-
-      handleChangeInput: () => {
-        toggleBtnState(this.state.formName, config.btnSubmitFormSelector);
-      },
+      onInput: props.onInput,
     };
   }
   protected render(): string {
@@ -46,7 +43,7 @@ export class InputProfileWrapper extends Block {
       <li class="input-profile-wrapper">
         <label class="input-profile-wrapper__label">
           {{{InputProfile
-            onInput=handleChangeInput
+            onInput=onInput
             type="${type}"
             value="${value}"
             name="${name}"
