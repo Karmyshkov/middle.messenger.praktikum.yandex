@@ -5,6 +5,8 @@ import {
   PHONE_USER_FIELD,
   CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
   CUSTOM_ERROR_FOR_PHONE_FILED,
+  REGEXP_FOR_NAME_AND_LASTNAME,
+  REGEXP_FOR_PHONE,
 } from 'utils/constants';
 
 export class FormValidator extends View {
@@ -56,7 +58,10 @@ export class FormValidator extends View {
       input &&
       (input.name === USER_NAME_FIELD || input.name === LAST_NAME_USER_FIELD)
     ) {
-      const isValidValue = this._checkExpressionByRegExp(/^[A-Z | А-Я | -]/, input.value);
+      const isValidValue = this._checkExpressionByRegExp(
+        REGEXP_FOR_NAME_AND_LASTNAME,
+        input.value
+      );
       isValidValue && this._showErrorMessage(CUSTOM_ERROR_FOR_NAME_AND_LASTNAME);
       this._isValidFieldWithCustomRules = {
         ...this._isValidFieldWithCustomRules,
@@ -64,7 +69,7 @@ export class FormValidator extends View {
       };
     }
     if (input && input.name === PHONE_USER_FIELD) {
-      const isValidValue = this._checkExpressionByRegExp(/^[\d|+]\d{9,15}/, input.value);
+      const isValidValue = this._checkExpressionByRegExp(REGEXP_FOR_PHONE, input.value);
       isValidValue && this._showErrorMessage(CUSTOM_ERROR_FOR_PHONE_FILED);
       this._isValidFieldWithCustomRules = {
         ...this._isValidFieldWithCustomRules,

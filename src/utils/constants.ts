@@ -40,6 +40,9 @@ const config = {
   isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
 };
 
+const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
+const REGEXP_FOR_PHONE = /^[\d|+]\d{9,15}/;
+
 const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
 const SIGNIN_FORM = 'signin';
@@ -68,4 +71,6 @@ export {
   PHONE_USER_FIELD,
   CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
   CUSTOM_ERROR_FOR_PHONE_FILED,
+  REGEXP_FOR_NAME_AND_LASTNAME,
+  REGEXP_FOR_PHONE,
 };
