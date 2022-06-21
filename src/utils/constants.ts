@@ -35,5 +35,7 @@ const config = {
 
 const ADD_USER_FORM = 'add-user';
 const DELETE_USER_FORM = 'delete-user';
+const SIGNIN_FORM = 'signin';
+const SIGNUP_FORM = 'signup';
 
-export { config, ADD_USER_FORM, DELETE_USER_FORM };
+export { config, ADD_USER_FORM, DELETE_USER_FORM, SIGNIN_FORM, SIGNUP_FORM };

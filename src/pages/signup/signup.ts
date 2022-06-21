@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
 import { Input } from 'utils/classes/Input';
-import { config } from 'utils/constants';
+import { config, SIGNUP_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils/functions';
 
 export class SignupPage extends Block {
@@ -12,7 +12,7 @@ export class SignupPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm('signup', 'input__text-field', this.element);
+        handleSubmitForm(SIGNUP_FORM, config.inputSelector, this.element);
       },
     };
   }
