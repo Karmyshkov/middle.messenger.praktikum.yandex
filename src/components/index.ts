@@ -5,7 +5,7 @@ import Button from './button';
 import Error from './error';
 import BtnBackProfile from './btnBackProfile';
 import EditAvatar from './editAvatar';
-import InputProfile from './inputProfile';
+import InputProfileWrapper from './inputProfileWrapper';
 import BtnProfile from './btnProfile';
 import SearchChat from './searchChat';
 import ListItem from './listItem';
@@ -18,6 +18,7 @@ import Menu from './menu';
 import MenuButton from './menuButton';
 import Popup from './popup';
 import InputFile from './inputFile';
+import InputProfile from './inputProfile';
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -26,7 +27,7 @@ export const components: BlockConstructable<any>[] = [
   Error,
   BtnBackProfile,
   EditAvatar,
-  InputProfile,
+  InputProfileWrapper,
   BtnProfile,
   SearchChat,
   ListItem,
@@ -39,4 +40,5 @@ export const components: BlockConstructable<any>[] = [
   MenuButton,
   Popup,
   InputFile,
+  InputProfile,
 ];
