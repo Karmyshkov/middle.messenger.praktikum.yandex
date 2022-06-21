@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import './edit-profile.css';
+import 'styles/profile.css';
 import { Popup } from 'utils/Popup';
 import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
@@ -40,11 +40,11 @@ export class EditProfilePage extends Block {
       <div class="profile">
         <ul class="profile__wrapper">
           {{{BtnBackProfile href="/profile"}}}
-          <li class="edit-profile__column">
-            <form class="edit-profile__form" name="edit-profile" novalidate>
+          <li class="profile__column">
+            <form class="profile__form" name="edit-profile" novalidate>
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
-              <ul class="edit-profile__list">
+              <ul class="profile__list">
                 {{{InputProfile type="email" helperText="Почта" value="${email}" name="email"}}}
                 {{{InputProfile type="text" helperText="Логин" value="${login}" minlength="3" maxlength="20" name="login"}}}
                 {{{InputProfile type="text" helperText="Имя" value="${name}" minlength="1" maxlength="50" name="name"}}}

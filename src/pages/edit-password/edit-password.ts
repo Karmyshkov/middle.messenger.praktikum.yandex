@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import './edit-password.css';
+import 'styles/profile.css';
 import { Popup } from 'utils/Popup';
 import { FormValidator } from 'utils/FormValidator';
 import { config } from 'utils/constants';
@@ -38,11 +38,11 @@ export class EditPasswordPage extends Block {
       <div class="profile">
         <ul class="profile__wrapper">
           {{{BtnBackProfile href="/profile"}}}
-          <li class="edit-profile__column">
-            <form class="edit-profile__form" name="edit-password" novalidate>
+          <li class="profile__column">
+            <form class="profile__form" name="edit-password" novalidate>
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
-              <ul class="edit-profile__list">
+              <ul class="profile__list">
                 {{{InputProfile type="password" helperText="Старый пароль" value="${dataProfile.payload.password}" minlength="8" maxlength="40" name="oldPassword"}}}
                 {{{InputProfile type="password" helperText="Новый пароль" value="1234" minlength="8" maxlength="40" name="newPassword"}}}
                 {{{InputProfile type="password" helperText="Повторите новый пароль" value="1234" minlength="8" maxlength="40" name="repeatPassword"}}}

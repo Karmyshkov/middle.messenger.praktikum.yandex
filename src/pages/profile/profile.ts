@@ -1,5 +1,5 @@
 import Block from 'core/Block';
-import './profile.css';
+import 'styles/profile.css';
 import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/Popup';
 import { config } from 'utils/constants';
