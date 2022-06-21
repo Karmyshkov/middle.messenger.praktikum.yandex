@@ -33,9 +33,9 @@ export class EditPasswordPage extends Block {
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
-                {{{InputProfile type="password" helperText="Старый пароль" value="${dataProfile.payload.password}" minlength="8" maxlength="40" name="oldPassword"}}}
-                {{{InputProfile type="password" helperText="Новый пароль" value="1234" minlength="8" maxlength="40" name="newPassword"}}}
-                {{{InputProfile type="password" helperText="Повторите новый пароль" value="1234" minlength="8" maxlength="40" name="repeatPassword"}}}
+                {{{InputProfileWrapper type="password" helperText="Старый пароль" value="${dataProfile.payload.password}" minlength="8" maxlength="40" name="oldPassword"}}}
+                {{{InputProfileWrapper type="password" helperText="Новый пароль" value="1234" minlength="8" maxlength="40" name="newPassword"}}}
+                {{{InputProfileWrapper type="password" helperText="Повторите новый пароль" value="1234" minlength="8" maxlength="40" name="repeatPassword"}}}
                 {{{Button onClick=hendleSubmitForm textBtn="Сохранить" classes="button_page_edit-password" type="submit"}}}
               </ul>
             </form>

@@ -35,12 +35,12 @@ export class EditProfilePage extends Block {
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
-                {{{InputProfile type="email" helperText="Почта" value="${email}" name="email"}}}
-                {{{InputProfile type="text" helperText="Логин" value="${login}" minlength="3" maxlength="20" name="login"}}}
-                {{{InputProfile type="text" helperText="Имя" value="${name}" minlength="1" maxlength="50" name="name"}}}
-                {{{InputProfile type="text" helperText="Фамилия" value="${lastName}" minlength="1" maxlength="50" name="lastName"}}}
-                {{{InputProfile type="phone" helperText="Телефон" value="${phone}" minlength="10" maxlength="15" name="phone"}}}
-                {{{InputProfile type="text" helperText="Имя в чате" value="${chatName}" minlength="1" maxlength="50" name="chatName"}}}
+                {{{InputProfileWrapper type="email" helperText="Почта" value="${email}" name="email"}}}
+                {{{InputProfileWrapper type="text" helperText="Логин" value="${login}" minlength="3" maxlength="20" name="login"}}}
+                {{{InputProfileWrapper type="text" helperText="Имя" value="${name}" minlength="1" maxlength="50" name="name"}}}
+                {{{InputProfileWrapper type="text" helperText="Фамилия" value="${lastName}" minlength="1" maxlength="50" name="lastName"}}}
+                {{{InputProfileWrapper type="phone" helperText="Телефон" value="${phone}" minlength="10" maxlength="15" name="phone"}}}
+                {{{InputProfileWrapper type="text" helperText="Имя в чате" value="${chatName}" minlength="1" maxlength="50" name="chatName"}}}
                 {{{Button onClick=hendleSubmitForm textBtn="Сохранить" classes="button_page_edit-profile" type="submit"}}}
               </ul>
             </form>

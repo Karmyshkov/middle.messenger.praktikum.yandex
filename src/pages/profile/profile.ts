@@ -30,12 +30,12 @@ export class ProfilePage extends Block {
               {{{EditAvatar onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
-                {{{InputProfile type="email" helperText="Почта" value="${email}"}}}
-                {{{InputProfile type="text" helperText="Логин" value="${login}"}}}
-                {{{InputProfile type="text" helperText="Имя" value="${name}"}}}
-                {{{InputProfile type="text" helperText="Фамилия" value="${lastName}"}}}
-                {{{InputProfile type="text" helperText="Имя в чате" value="${chatName}"}}}
-                {{{InputProfile type="phone" helperText="Телефон" value="${phone}"}}}
+                {{{InputProfileWrapper type="email" helperText="Почта" value="${email}"}}}
+                {{{InputProfileWrapper type="text" helperText="Логин" value="${login}"}}}
+                {{{InputProfileWrapper type="text" helperText="Имя" value="${name}"}}}
+                {{{InputProfileWrapper type="text" helperText="Фамилия" value="${lastName}"}}}
+                {{{InputProfileWrapper type="text" helperText="Имя в чате" value="${chatName}"}}}
+                {{{InputProfileWrapper type="phone" helperText="Телефон" value="${phone}"}}}
               </ul>
               <ul class="profile__list">
                 {{{BtnProfile href="/edit-profile"  text="Изменить данные" classes="btn-profile__link_color_red"}}}
