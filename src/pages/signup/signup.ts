@@ -31,8 +31,8 @@ export class SignupPage extends Block {
     return `
       <div class="page">
         <main class="page__form">
-          <form class="signup" name="signup" novalidate>
-            <h1 class="signup__title">Регистрация</h1>
+          <form class="auth" name="signup" novalidate>
+            <h1 class="auth__title">Регистрация</h1>
             {{{InputWrapper onInput=handleChangeInput type="email" helperText="Почта" name="email"}}}
             {{{InputWrapper onInput=handleChangeInput type="text" helperText="Логин" minlength="3" maxlength="20" name="login"}}}
             {{{InputWrapper onInput=handleChangeInput type="text" helperText="Имя" minlength="1" maxlength="50" name="name"}}}
@@ -41,7 +41,7 @@ export class SignupPage extends Block {
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль" minlength="8" maxlength="40" name="password"}}}
             {{{InputWrapper onInput=handleChangeInput type="password" helperText="Пароль (ещё раз)" minlength="8" maxlength="40" classes="input_is-auth" name="repeatPassword"}}}
             {{{Button onClick=hendleSubmitForm textBtn="Зарегистрироваться" type="submit" classes="button_is-auth"}}}
-            <a class="signup__link" href="/">Войти</a>
+            <a class="auth__link" href="/">Войти</a>
           </form>
         </main>
       </div>
