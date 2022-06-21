@@ -33,7 +33,7 @@ const config = {
   menuBtnSelector: 'menu-button',
   searchInputByChatsSelector: 'input-chat',
   imgFromSearchInputByChatsSelector: 'search-chat__img',
-  inputProfileSelector: 'input-profile__input',
+  inputProfileSelector: 'input-profile',
   menuBtnAddUserSelector: 'menu__btn_add-user',
   menuBtnDeleteUserSelector: 'menu__btn_delete-user',
 };

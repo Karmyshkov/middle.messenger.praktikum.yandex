@@ -55,7 +55,7 @@ export class SignupPage extends Block {
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
-              type="text"
+              type="tel"
               helperText="Телефон"
               minlength="10"
               maxlength="15"

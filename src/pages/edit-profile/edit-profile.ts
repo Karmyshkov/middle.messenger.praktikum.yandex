@@ -70,7 +70,7 @@ export class EditProfilePage extends Block {
                   formName="edit-profile"
                 }}}
                 {{{InputProfileWrapper
-                  type="phone"
+                  type="tel"
                   helperText="Телефон"
                   value="${phone}"
                   minlength="10"

@@ -56,7 +56,7 @@ export class ProfilePage extends Block {
                   value="${chatName}"
                 }}}
                 {{{InputProfileWrapper
-                  type="phone"
+                  type="tel"
                   helperText="Телефон"
                   value="${phone}"
                 }}}
