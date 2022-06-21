@@ -43,7 +43,7 @@ export class FormValidator extends View {
     return !regexp.test(value);
   };
 
-  private _checkNameAndLastName = (element: EventTarget | null) => {
+  private _checkFieldByCustomRules = (element: EventTarget | null) => {
     const input = element as HTMLFormElement;
     if (
       input &&
@@ -65,7 +65,7 @@ export class FormValidator extends View {
       ? this._showErrorMessage((<HTMLFormElement>element).validationMessage)
       : this._closeErrorMessage();
 
-    this._checkNameAndLastName(element);
+    this._checkFieldByCustomRules(element);
   }
 
   public clearError() {
