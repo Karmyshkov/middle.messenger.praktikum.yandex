@@ -55,8 +55,8 @@ export class FormValidator extends View {
       input &&
       (input.name === USER_NAME_FIELD || input.name === LAST_NAME_USER_FIELD)
     ) {
-      this._checkExpressionByRegExp(/^[A-Z | А-Я | -]/, input.value) &&
-        this._showErrorMessage(CUSTOM_ERROR_FOR_NAME_AND_LASTNAME);
+      const isValidValue = this._checkExpressionByRegExp(/^[A-Z | А-Я | -]/, input.value);
+      isValidValue && this._showErrorMessage(CUSTOM_ERROR_FOR_NAME_AND_LASTNAME);
     }
     if (input && input.name === PHONE_USER_FIELD) {
       this._checkExpressionByRegExp(/^[\d|+]\d{9,15}/, input.value) &&
