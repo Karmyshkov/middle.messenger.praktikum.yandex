@@ -23,16 +23,6 @@ export class Chat extends View {
     );
   }
 
-  public addActiveClassName(evt: Event) {
-    this._removeActiveClassName();
-    this._element = evt.currentTarget as Element;
-    this._element.classList.add(this._isActiveChatSelector);
-    if (this._contentDefault && this._contentDialod) {
-      this._contentDefault.classList.add(this._hiddenChatSelecor);
-      this._contentDialod.classList.remove(this._hiddenChatSelecor);
-    }
-  }
-
   private _removeActiveClassName = () => {
     document
       .querySelector(`.${this._isActiveChatSelector}`)
@@ -50,6 +40,16 @@ export class Chat extends View {
       this._imgFromSearchInputByChats.style.display = 'block';
     }
   };
+
+  public addActiveClassName(evt: Event) {
+    this._removeActiveClassName();
+    this._element = evt.currentTarget as Element;
+    this._element.classList.add(this._isActiveChatSelector);
+    if (this._contentDefault && this._contentDialod) {
+      this._contentDefault.classList.add(this._hiddenChatSelecor);
+      this._contentDialod.classList.remove(this._hiddenChatSelecor);
+    }
+  }
 
   public toggleStateImg = () => {
     if (this._searchInputByChats) {

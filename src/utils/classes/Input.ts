@@ -8,15 +8,15 @@ export class Input extends View {
     this._isValuelabelTextSelector = config.isValuelabelTextSelector;
   }
 
-  _addClassNameToHelperText(helperText: Element | null | undefined) {
+  private _addClassNameToHelperText(helperText: Element | null | undefined) {
     helperText && helperText.classList.add(this._isValuelabelTextSelector);
   }
 
-  _removeClassNameToHelperText(helperText: Element | null | undefined) {
+  private _removeClassNameToHelperText(helperText: Element | null | undefined) {
     helperText && helperText.classList.remove(this._isValuelabelTextSelector);
   }
 
-  checkOnValueInput() {
+  public checkOnValueInput() {
     const input = this._inputElement as HTMLInputElement;
     const helperText = input.parentElement?.querySelector(`.${this._labelTextSelector}`);
     input.value.length === 0

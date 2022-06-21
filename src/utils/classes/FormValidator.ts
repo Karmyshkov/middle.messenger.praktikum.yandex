@@ -9,10 +9,6 @@ export class FormValidator extends View {
     this._errorContainer = null;
   }
 
-  public static checkStateForm(formSelector: string) {
-    return document.forms[formSelector].checkValidity();
-  }
-
   private _closeErrorMessage() {
     if (this._errorContainer) {
       this._errorContainer.textContent = '';
@@ -41,5 +37,9 @@ export class FormValidator extends View {
 
   public clearError() {
     this._closeErrorMessage();
+  }
+
+  public static checkStateForm(formSelector: string) {
+    return document.forms[formSelector].checkValidity();
   }
 }

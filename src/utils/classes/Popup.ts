@@ -41,12 +41,6 @@ export class Popup extends View {
     this._menuItems = document.querySelectorAll(`.${this._menuItemSelector}`);
   }
 
-  public static handleClosePopup(isOpenPopupSelector: string) {
-    document
-      .querySelector(`.${isOpenPopupSelector}`)
-      ?.classList.remove(isOpenPopupSelector);
-  }
-
   private _disabledScroll(element: HTMLElement | null) {
     if (element) {
       element.style.overflowY = 'hidden';
@@ -66,16 +60,6 @@ export class Popup extends View {
   private _removeClassForUserMenu() {
     this._btnMenu && this._btnMenu.classList.remove(this._isActiveBurgerMenuSelector);
   }
-
-  public handleOpenPopup = () => {
-    if (this._menu) {
-      document.addEventListener('click', this._closeByOutsideZone);
-      this._disabledScroll(this._contentDialod);
-      this._menu.classList.add(this._isOpenPopupSelector);
-      this._menuSelector === this._menuListElementUserSelector &&
-        this._addClassForUserMenu();
-    }
-  };
 
   private _handleClosePopup() {
     if (this._menu) {
@@ -137,4 +121,20 @@ export class Popup extends View {
         this._closeByOutsideZonePopup(popupContainer, this._editAvatarSelector, evt);
     }
   };
+
+  public handleOpenPopup = () => {
+    if (this._menu) {
+      document.addEventListener('click', this._closeByOutsideZone);
+      this._disabledScroll(this._contentDialod);
+      this._menu.classList.add(this._isOpenPopupSelector);
+      this._menuSelector === this._menuListElementUserSelector &&
+        this._addClassForUserMenu();
+    }
+  };
+
+  public static handleClosePopup(isOpenPopupSelector: string) {
+    document
+      .querySelector(`.${isOpenPopupSelector}`)
+      ?.classList.remove(isOpenPopupSelector);
+  }
 }

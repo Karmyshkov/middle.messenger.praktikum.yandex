@@ -11,9 +11,9 @@ export class ProfilePage extends Block {
     this.state = {
       handleEditAvatar: () => {
         new Popup(
-          'popup_change-avatar',
-          'edit-avatar',
-          'popup_opened',
+          config.popupChangeAvatarSelector,
+          config.editAvatarSelector,
+          config.isOpenPopupSelecot,
           config
         ).handleOpenPopup();
       },
