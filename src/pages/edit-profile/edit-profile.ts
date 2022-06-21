@@ -35,7 +35,7 @@ export class EditProfilePage extends Block {
         handleSubmitForm(
           editProfileformValidator.checkStateForm(),
           config.inputProfileSelector,
-          this.element,
+          EDIT_PROFILE_FORM,
           {
             disableBtn: editProfileformValidator.disableBtn,
             addErors: editProfileformValidator.addErorsForDefaultForm,

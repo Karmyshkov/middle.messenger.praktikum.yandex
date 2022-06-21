@@ -25,7 +25,7 @@ export class SignupPage extends Block {
         handleSubmitForm(
           formValidator.checkStateForm(),
           config.inputSelector,
-          this.element,
+          AUTH_FORM,
           {
             disableBtn: formValidator.disableBtn,
             addErors: formValidator.addErorsForDefaultForm,

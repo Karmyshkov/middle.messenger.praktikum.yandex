@@ -5,20 +5,23 @@ import { config } from 'utils/constants';
 export const handleSubmitForm = (
   stateForm: boolean,
   inputSelector: string,
-  element: HTMLElement | null,
+  formSelector: string,
   { disableBtn, addErors }: any
 ) => {
   if (stateForm) {
-    const inputs = element?.querySelectorAll(`.${inputSelector}`);
-    let dataForm = {};
+    const form = document.querySelector(`.${formSelector}`);
+    if (form) {
+      const inputs = form.querySelectorAll(`.${inputSelector}`);
+      let dataForm = {};
 
-    inputs?.forEach((input) => {
-      const inputElement = input as HTMLInputElement;
-      dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
-    });
-    console.log(dataForm);
+      inputs?.forEach((input) => {
+        const inputElement = input as HTMLInputElement;
+        dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
+      });
+      console.log(dataForm);
 
-    Popup.handleClosePopup(config.isOpenPopupSelecot);
+      Popup.handleClosePopup(config.isOpenPopupSelecot);
+    }
   } else {
     disableBtn();
     addErors();

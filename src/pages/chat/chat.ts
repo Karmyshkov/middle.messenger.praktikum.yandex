@@ -60,7 +60,7 @@ export class ChatPage extends Block {
         handleSubmitForm(
           addUserFormValidator.checkStateForm(),
           config.inputSelector,
-          this.element,
+          ADD_USER_FORM,
           {
             disableBtn: addUserFormValidator.disableBtn,
             addErors: addUserFormValidator.addErorsForDefaultForm,
@@ -81,7 +81,7 @@ export class ChatPage extends Block {
         handleSubmitForm(
           deleteUserFormValidator.checkStateForm(),
           config.inputSelector,
-          this.element,
+          DELETE_USER_FORM,
           {
             disableBtn: deleteUserFormValidator.disableBtn,
             addErors: deleteUserFormValidator.addErorsForDefaultForm,
