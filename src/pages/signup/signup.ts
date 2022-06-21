@@ -35,7 +35,9 @@ export class SignupPage extends Block {
           isValidField
         );
       },
-      handleValidateInput: (evt: Event) => signupFormValidator.handleFieldValidation(evt),
+      handleValidateInput: (evt: Event) => {
+        signupFormValidator.handleFieldValidation(evt);
+      },
     };
   }
   render() {

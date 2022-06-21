@@ -98,6 +98,8 @@ export class FormValidator extends View {
       : this._closeErrorMessage();
 
     this._checkFieldByCustomRules(element);
+
+    this._checkValidFieldsWithCustomRules() && this.disableBtn();
   }
 
   public clearError() {
@@ -138,7 +140,8 @@ export class FormValidator extends View {
 
   public disableBtn = () => {
     document
-      .querySelector(`.${this._btnSelector}`)
+      .querySelector(`.${this._formSelector}`)
+      ?.querySelector(`.${this._btnSelector}`)
       ?.classList.add(this._isDisableBtnSubmitSelector);
   };
 
