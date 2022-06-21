@@ -1,4 +1,4 @@
-export const config = {
+const config = {
   inputSelector: 'input__text-field',
   inputPasswordSelector: "input[type='password']",
   inputErrorSelector: 'input__text_error',
@@ -32,3 +32,8 @@ export const config = {
   searchInputByChatsSelector: 'input-chat',
   imgFromSearchInputByChatsSelector: 'search-chat__img',
 };
+
+const ADD_USER_FORM = 'add-user';
+const DELETE_USER_FORM = 'delete-user';
+
+export { config, ADD_USER_FORM, DELETE_USER_FORM };
