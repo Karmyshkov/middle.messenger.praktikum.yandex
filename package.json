@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "build": "parcel build ./src/pages/index.hbs --no-cache --public-url ./",
+    "build": "parcel build ./src/index.html",
     "dev": "parcel src/index.html --no-source-maps",
     "start": "node ./api/server.js",
     "lint:ts": "npx eslint .",
