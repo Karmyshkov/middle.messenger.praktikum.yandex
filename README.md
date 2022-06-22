@@ -10,6 +10,8 @@ https://mellifluous-bunny-f4b9fb.netlify.app
 
 https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/1
 
+https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/2
+
 ### Сборка и запуск
 
 Проект собирается в [Parcel](https://parceljs.org/):
