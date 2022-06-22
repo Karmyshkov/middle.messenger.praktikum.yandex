@@ -11,7 +11,7 @@ export default class EventBus<
       this.listeners[event] = [];
     }
 
-    this.listeners[event]!.push(callback);
+    this.listeners[event]?.push(callback);
   }
 
   off(event: E, callback: Listener<M[E]>) {
@@ -19,7 +19,7 @@ export default class EventBus<
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = this.listeners[event]!.filter(
+    this.listeners[event] = this.listeners[event]?.filter(
       (listener) => listener !== callback
     );
   }
@@ -27,10 +27,9 @@ export default class EventBus<
   emit(event: E, ...args: M[E]) {
     if (!this.listeners[event]) {
       return;
-      // throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event]!.forEach(function (listener) {
+    this.listeners[event]?.forEach(function (listener) {
       listener(...args);
     });
   }
