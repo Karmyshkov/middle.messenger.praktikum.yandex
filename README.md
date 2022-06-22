@@ -1,8 +1,10 @@
 ## Проект: Messenger
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8d2019e6-98b7-43d0-8cad-a2d86bee843b/deploy-status)](https://app.netlify.com/sites/mellifluous-bunny-f4b9fb/deploys)
+
 ### Ссылка на проект
 
-https://zingy-sunshine-a87938.netlify.app/index.html
+https://mellifluous-bunny-f4b9fb.netlify.app
 
 ### Ссылка на PR
 
@@ -32,7 +34,7 @@ npm run dev
 
 - HTML
 - CSS (PostCSS)
-- JavaScript
+- TypeScript
 - Parcel
 - Handlebars
 - Express
