@@ -61,15 +61,13 @@ export class ChatPage extends Block {
       },
       hendleSubmitAddUserForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(
-          addUserFormValidator.checkStateForm(),
-          config.inputSelector,
-          ADD_USER_FORM,
-          {
-            disableBtn: addUserFormValidator.disableBtn,
-            addErors: addUserFormValidator.addErrorsForInput,
-          }
-        );
+        handleSubmitForm({
+          stateForm: addUserFormValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: ADD_USER_FORM,
+          disableBtn: addUserFormValidator.disableBtn,
+          addErors: addUserFormValidator.addErrorsForInput,
+        });
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
@@ -82,15 +80,13 @@ export class ChatPage extends Block {
       },
       hendleSubmitDeleteUserForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(
-          deleteUserFormValidator.checkStateForm(),
-          config.inputSelector,
-          DELETE_USER_FORM,
-          {
-            disableBtn: deleteUserFormValidator.disableBtn,
-            addErors: deleteUserFormValidator.addErrorsForInput,
-          }
-        );
+        handleSubmitForm({
+          stateForm: deleteUserFormValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: DELETE_USER_FORM,
+          disableBtn: deleteUserFormValidator.disableBtn,
+          addErors: deleteUserFormValidator.addErrorsForInput,
+        });
       },
       handleValidateDeleteUserInput: (evt: Event) => {
         deleteUserFormValidator.handleFieldValidation(evt);

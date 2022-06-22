@@ -24,16 +24,14 @@ export class SignupPage extends Block {
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
         const isValidField = signupFormValidator.isValidFieldWithCustomRules();
-        handleSubmitForm(
-          signupFormValidator.checkStateForm(),
-          config.inputSelector,
-          AUTH_FORM,
-          {
-            disableBtn: signupFormValidator.disableBtn,
-            addErors: signupFormValidator.addErrorsForInput,
-          },
-          isValidField
-        );
+        handleSubmitForm({
+          stateForm: signupFormValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: AUTH_FORM,
+          disableBtn: signupFormValidator.disableBtn,
+          addErors: signupFormValidator.addErrorsForInput,
+          isValidField,
+        });
       },
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);

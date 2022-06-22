@@ -2,13 +2,23 @@ import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
 import { config } from 'utils/constants';
 
-export const handleSubmitForm = (
-  stateForm: boolean,
-  inputSelector: string,
-  formSelector: string,
-  { disableBtn, addErors }: any,
-  isValidField: boolean | undefined = undefined
-) => {
+interface SubmitFormProps {
+  disableBtn: () => void;
+  addErors: () => void;
+  stateForm: boolean;
+  inputSelector: string;
+  formSelector: string;
+  isValidField?: boolean | undefined;
+}
+
+export const handleSubmitForm = ({
+  stateForm,
+  inputSelector,
+  formSelector,
+  disableBtn,
+  addErors,
+  isValidField = undefined,
+}: SubmitFormProps) => {
   if (stateForm && isValidField === undefined) {
     const form = document.querySelector(`.${formSelector}`);
     if (form) {

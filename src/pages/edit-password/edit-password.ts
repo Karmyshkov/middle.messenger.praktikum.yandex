@@ -32,15 +32,13 @@ export class EditPasswordPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(
-          editPassowrdformValidator.checkStateForm(),
-          config.inputProfileSelector,
-          EDIT_PASSWORD_FORM,
-          {
-            disableBtn: editPassowrdformValidator.disableBtn,
-            addErors: editPassowrdformValidator.addErrorsForInput,
-          }
-        );
+        handleSubmitForm({
+          stateForm: editPassowrdformValidator.checkStateForm(),
+          inputSelector: config.inputProfileSelector,
+          formSelector: EDIT_PASSWORD_FORM,
+          disableBtn: editPassowrdformValidator.disableBtn,
+          addErors: editPassowrdformValidator.addErrorsForInput,
+        });
       },
       handleValidateInput: (evt: Event) =>
         editPassowrdformValidator.handleFieldValidation(evt),

@@ -23,15 +23,13 @@ export class SigninPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm(
-          signinFormValidator.checkStateForm(),
-          config.inputSelector,
-          AUTH_FORM,
-          {
-            disableBtn: signinFormValidator.disableBtn,
-            addErors: signinFormValidator.addErrorsForInput,
-          }
-        );
+        handleSubmitForm({
+          stateForm: signinFormValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: AUTH_FORM,
+          disableBtn: signinFormValidator.disableBtn,
+          addErors: signinFormValidator.addErrorsForInput,
+        });
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
     };
