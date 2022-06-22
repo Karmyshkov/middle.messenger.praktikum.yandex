@@ -10,6 +10,7 @@ import file from 'img/file.svg';
 import location from 'img/location.svg';
 
 export class Menu extends Block {
+  static componentName = 'Menu';
   constructor({ isUser }: MenuProps) {
     super({ isUser });
   }

@@ -3,6 +3,7 @@ import './error.css';
 import { ErrorProps } from './types';
 
 export class Error extends Block {
+  static componentName = 'Error';
   constructor({ title, subtitle }: ErrorProps) {
     super({ title, subtitle });
   }

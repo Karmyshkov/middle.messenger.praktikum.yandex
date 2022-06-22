@@ -3,6 +3,7 @@ import './inputChat.css';
 import { InputChatProps } from './types';
 
 export class InputChat extends Block {
+  static componentName = 'InputChat';
   constructor({ onInput, placeholder = 'Поиск' }: InputChatProps) {
     super({ placeholder, events: { input: onInput } });
   }

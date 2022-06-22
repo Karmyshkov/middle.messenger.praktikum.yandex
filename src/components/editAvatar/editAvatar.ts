@@ -4,6 +4,7 @@ import { EditAvatarProps } from './types';
 import avatar from 'img/avatar.svg';
 
 export class EditAvatar extends Block {
+  static componentName = 'EditAvatar';
   constructor({ onClick }: EditAvatarProps) {
     super({ events: { click: onClick } });
   }

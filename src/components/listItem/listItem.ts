@@ -4,6 +4,7 @@ import { ListItemProps } from './types';
 import { ChatType } from 'types';
 
 export class ListItem extends Block {
+  static componentName = 'ListItem';
   constructor({
     userName,
     lastMessage,

@@ -3,6 +3,7 @@ import './inputProfile.css';
 import { InputProfileProps } from './types';
 
 export class InputProfile extends Block {
+  static componentName = 'InputProfile';
   constructor({
     name,
     minlength,

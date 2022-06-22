@@ -3,6 +3,7 @@ import './avatar.css';
 import { AvatarProps } from './types';
 
 export class Avatar extends Block {
+  static componentName = 'Avatar';
   constructor({ srcAvatar, userName }: AvatarProps) {
     super({ srcAvatar, userName });
   }

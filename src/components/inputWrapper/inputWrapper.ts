@@ -3,6 +3,7 @@ import './inputWrapper.css';
 import { InputWrapperProps } from './types';
 
 export class InputWrapper extends Block {
+  static componentName = 'InputWrapper';
   constructor({
     name,
     type,

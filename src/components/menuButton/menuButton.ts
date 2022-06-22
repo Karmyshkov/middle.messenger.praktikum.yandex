@@ -3,6 +3,7 @@ import './menuButton.css';
 import { MenuButtonProps } from './types';
 
 export class MenuButton extends Block {
+  static componentName = 'MenuButton';
   constructor({ text, icon, alt, classes, type, onClick }: MenuButtonProps) {
     super({ text, icon, alt, classes, type, events: { click: onClick } });
   }

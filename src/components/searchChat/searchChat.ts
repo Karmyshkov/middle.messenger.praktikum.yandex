@@ -4,6 +4,7 @@ import { SearchChatProps } from './types';
 import search from 'img/search.svg';
 
 export class SearchChat extends Block {
+  static componentName = 'SearchChat';
   constructor({ onSearchByChats }: SearchChatProps) {
     super({ onSearchByChats });
   }

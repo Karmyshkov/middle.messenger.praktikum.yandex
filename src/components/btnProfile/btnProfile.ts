@@ -3,6 +3,7 @@ import './btnProfile.css';
 import { BtnProfileProps } from './types';
 
 export class BtnProfile extends Block {
+  static componentName = 'BtnProfile';
   constructor({ text, classes, href }: BtnProfileProps) {
     super({ text, classes, href });
   }

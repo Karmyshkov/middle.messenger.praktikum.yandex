@@ -28,6 +28,8 @@ export default class Block<P = any> {
   protected state: any = {};
   protected refs: { [key: string]: HTMLElement } = {};
 
+  static componentName: string;
+
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
 

@@ -2,6 +2,7 @@ import Block from 'core/Block';
 import './inputFile.css';
 
 export class InputFile extends Block {
+  static componentName = 'InputFile';
   protected render(): string {
     // language=hbs
     return `

@@ -3,6 +3,7 @@ import './button.css';
 import { ButtonProps } from './types';
 
 export class Button extends Block {
+  static componentName = 'Button';
   constructor({ textBtn, type, classes, onClick }: ButtonProps) {
     super({ textBtn, type, classes, events: { click: onClick } });
   }

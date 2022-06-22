@@ -3,6 +3,7 @@ import './message.css';
 import { MessageProps } from 'types';
 
 export class Message extends Block {
+  static componentName = 'Message';
   constructor({ owner, text, time, srcImg, isRead }: MessageProps) {
     super({ owner, text, time, srcImg, isRead });
   }
