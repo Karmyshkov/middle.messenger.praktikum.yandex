@@ -1,8 +1,6 @@
 .button {
   cursor: pointer;
-  text-decoration: none;
-  display: block;
-  cursor: pointer;
+  border: none;
   background-color: var(--color-secondary);
   width: 100%;
   padding: 12px 0;
@@ -12,7 +10,6 @@
   font-weight: 500;
   line-height: 13px;
   text-align: center;
-  margin-bottom: 14px;
   transition: 0.3s opacity;
 
   @media screen and (max-width: 425px) {
@@ -22,6 +19,10 @@
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &_is-auth {
+    margin-bottom: 14px;
   }
 
   &_page_edit-profile {

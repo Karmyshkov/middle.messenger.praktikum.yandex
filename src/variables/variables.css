@@ -13,9 +13,9 @@
   --color-menu-btn: #f5f5f5;
   --color-bg-message-me: #f8f8f8;
   --color-bg-message-friend: #e4edfd;
-  --color-bg-popap: rgba(0, 0, 0, 0.4);
+  --color-bg-popap: rgb(0 0 0 / 40%);
   --color-bg-time: #a9a9a9;
-  --color-overlay-avatar: rgba(0, 0, 0, 0.5);
-  --color-link-red: #ff0000;
-  --shadow: rgba(0, 0, 0, 0.14);
+  --color-overlay-avatar: rgb(0 0 0 / 50%);
+  --color-link-red: #f00;
+  --shadow: rgb(0 0 0 / 14%);
 }

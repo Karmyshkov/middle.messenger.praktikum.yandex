@@ -17,15 +17,6 @@
     opacity: 1;
   }
 
-  &_add-user {
-  }
-
-  &_delete-user {
-  }
-
-  &_change-avatar {
-  }
-
   &__container {
     background-color: var(--color-third);
     box-sizing: border-box;
@@ -47,11 +38,5 @@
 
   &__form {
     font-family: inherit;
-  }
-
-  &__form_add-user {
-  }
-
-  &__form_delete-user {
   }
 }

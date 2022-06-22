@@ -1,0 +1,28 @@
+[build]
+  direction = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/signup"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/chat"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/profile"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/edit-profile"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/edit-password"
+  to = "/"
+  status = 200

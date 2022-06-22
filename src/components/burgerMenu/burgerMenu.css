@@ -8,15 +8,16 @@
   align-items: center;
   transition: 0.3s background-color;
 
-  &:hover {
+  &_active {
     background-color: var(--color-menu-btn);
   }
 
-  &:hover > &__btn-icon {
-    fill: var(--color-secondary);
+  &__btn-icon {
+    fill: var(--color-primaty);
+    transition: 0.3s fill;
   }
 
-  &_active {
+  &:hover {
     background-color: var(--color-menu-btn);
   }
 
@@ -24,8 +25,7 @@
     fill: var(--color-secondary);
   }
 
-  &__btn-icon {
-    fill: var(--color-primaty);
-    transition: 0.3s fill;
+  &:hover > &__btn-icon {
+    fill: var(--color-secondary);
   }
 }

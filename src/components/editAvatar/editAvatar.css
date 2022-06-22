@@ -3,6 +3,7 @@
   position: relative;
   cursor: pointer;
   margin-bottom: 21px;
+
   &::before {
     content: "";
     display: inline-block;
@@ -17,17 +18,6 @@
     transition: 0.3s opacity;
   }
 
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &:hover > &__span {
-    opacity: 1;
-  }
-
-  &__img {
-  }
-
   &__span {
     opacity: 0;
     position: absolute;
@@ -39,5 +29,13 @@
     color: var(--color-third);
     font-weight: 500;
     line-height: 14px;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &:hover > &__span {
+    opacity: 1;
   }
 }

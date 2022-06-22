@@ -1,0 +1,31 @@
+.input-chat {
+  box-sizing: border-box;
+  outline: none;
+  border-color: transparent;
+  border-width: 1px;
+  width: 100%;
+  font-size: 12px;
+  color: var(--color-primaty);
+  font-weight: 500;
+  line-height: 12px;
+  padding: 9px;
+  background-color: var(--color-light-grey);
+  border-radius: 5px;
+  transition: 0.3s border-color;
+
+  &:hover {
+    border-color: var(--color-grey);
+  }
+
+  &:focus {
+    border-color: var(--color-grey);
+  }
+
+  &::placeholder {
+    font-size: 12px;
+    color: var(--color-grey);
+    font-weight: 500;
+    line-height: 12px;
+    text-align: center;
+  }
+}

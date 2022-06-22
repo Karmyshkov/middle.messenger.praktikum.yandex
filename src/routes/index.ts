@@ -1,0 +1,1 @@
+export { getCurrentPage } from './routes';
