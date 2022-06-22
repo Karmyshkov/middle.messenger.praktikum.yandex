@@ -4,6 +4,7 @@ export abstract class View {
   protected _contentDialodSelector!: string;
   protected _contentDialod!: Nullable<HTMLElement>;
   // Chat
+  protected _element!: Element;
   protected _messagesSelector!: string;
   protected _contentDefaultSelector!: string;
   protected _searchInputByChatsSelector!: string;
@@ -45,6 +46,7 @@ export abstract class View {
   protected _popover!: Nullable<HTMLElement>;
   protected _btnAttach!: Nullable<HTMLElement>;
   protected _menuItems!: NodeList;
+  protected _editAvatarTextSelector!: string;
   //FormValidator
   protected _formSelector!: string;
   protected _btnSelector!: string;

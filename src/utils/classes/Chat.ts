@@ -1,8 +1,6 @@
 import { View } from './View';
 
 export class Chat extends View {
-  private _element!: Element;
-
   constructor(config: Record<string, string>) {
     super();
     this._messagesSelector = config.messagesSelector;

@@ -29,6 +29,7 @@ export class Popup extends View {
     this._menuClassSelector = config.menuClassSelector;
     this._isShowMenuSelecor = config.isShowMenuSelecor;
     this._menuBtnSelector = config.menuBtnSelector;
+    this._editAvatarTextSelector = config.editAvatarTextSelector;
     this._editAvatar = document.querySelector(`.${this._editAvatarSelector}`);
     this._editAvatarText = document.querySelector(`.${this.editAvatarTextSelector}`);
     this._contentDialod = document.querySelector(`.${this._contentDialodSelector}`);
@@ -119,7 +120,7 @@ export class Popup extends View {
 
       if (
         isEditAvatar &&
-        !Array.from(element.classList).includes('edit-avatar__span') &&
+        !Array.from(element.classList).includes(this._editAvatarTextSelector) &&
         popupContainer
       ) {
         this._closeByOutsideZonePopup(popupContainer, this._editAvatarSelector, evt);
