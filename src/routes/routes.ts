@@ -8,7 +8,7 @@ import NotFoundPage from 'pages/not-found';
 
 export const getCurrentPage = () => {
   const path = document.location.pathname;
-  let app = {};
+  let app = new SigninPage({});
   switch (path) {
     case '/':
       return (app = new SigninPage({}));
