@@ -8,22 +8,20 @@ import NotFoundPage from 'pages/not-found';
 
 export const getCurrentPage = () => {
   const path = document.location.pathname;
-  let app = new SigninPage({});
   switch (path) {
     case '/':
-      return (app = new SigninPage({}));
+      return new SigninPage({});
     case '/signup':
-      return (app = new SignupPage({}));
+      return new SignupPage({});
     case '/chat':
-      return (app = new ChatPage({}));
+      return new ChatPage({});
     case '/profile':
-      return (app = new ProfilePage({}));
+      return new ProfilePage({});
     case '/edit-profile':
-      return (app = new EditProfilePage({}));
+      return new EditProfilePage({});
     case '/edit-password':
-      return (app = new EditPasswordPage({}));
+      return new EditPasswordPage({});
     default:
-      app = new NotFoundPage({});
+      return new NotFoundPage({});
   }
-  return app;
 };
