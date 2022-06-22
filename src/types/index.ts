@@ -1,1 +1,1 @@
-export { InputType, ButtonType, ChatType } from './types';
+export { InputType, ButtonType, ChatType, MessageProps } from './types';

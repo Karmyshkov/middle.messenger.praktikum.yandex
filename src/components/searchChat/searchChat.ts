@@ -1,9 +1,10 @@
 import Block from 'core/Block';
 import './searchChat.css';
+import { SearchChatProps } from './types';
 import search from 'img/search.svg';
 
 export class SearchChat extends Block {
-  constructor({ onSearchByChats }: any) {
+  constructor({ onSearchByChats }: SearchChatProps) {
     super({ onSearchByChats });
   }
   protected render(): string {

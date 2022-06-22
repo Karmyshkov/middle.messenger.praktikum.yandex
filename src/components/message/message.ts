@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 import './message.css';
-import { MessageProps } from './types';
+import { MessageProps } from 'types';
 
 export class Message extends Block {
   constructor({ owner, text, time, srcImg, isRead }: MessageProps) {

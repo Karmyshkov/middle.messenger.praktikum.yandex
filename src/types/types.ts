@@ -19,4 +19,12 @@ type ChatType = {
   srcAvatar: string;
 };
 
-export { InputType, ButtonType, ChatType };
+interface MessageProps {
+  owner: boolean;
+  text?: string;
+  time: string;
+  srcImg?: string;
+  isRead?: boolean;
+}
+
+export { InputType, ButtonType, ChatType, MessageProps };
