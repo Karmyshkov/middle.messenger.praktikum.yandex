@@ -21,7 +21,10 @@ enum ButtonType {
 enum Screens {
   Signin = 'signin',
   Signup = 'signup',
-  Profile = 'profile',
+  Messenger = 'messenger',
+  Profile = 'settings',
+  EditProfle = 'edit-settings',
+  EditPassword = 'edit-password',
 }
 
 type ChatType = {
