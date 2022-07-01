@@ -11,6 +11,12 @@ enum ButtonType {
   'submit',
 }
 
+enum Screens {
+  Signin = 'signin',
+  Signup = 'signup',
+  Profile = 'profile',
+}
+
 type ChatType = {
   userName: string;
   lastMessage: string;
@@ -27,4 +33,4 @@ interface MessageProps {
   isRead?: boolean;
 }
 
-export { InputType, ButtonType, ChatType, MessageProps };
+export { InputType, ButtonType, Screens, ChatType, MessageProps };
