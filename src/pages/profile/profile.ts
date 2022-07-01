@@ -63,7 +63,7 @@ export class ProfilePage extends Block {
               </ul>
               <ul class="profile__list">
                 {{{BtnProfile
-                  href="/edit-profile"
+                  href="/edit-settings"
                   text="Изменить данные"
                   classes="btn-profile__link_color_red"
                 }}}

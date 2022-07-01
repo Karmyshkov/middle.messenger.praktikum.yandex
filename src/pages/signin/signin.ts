@@ -68,7 +68,7 @@ export class SigninPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/signup">Нет аккаунта?</a>
+            <a class="auth__link" href="/sign-up">Нет аккаунта?</a>
           </form>
         </main>
       </div>

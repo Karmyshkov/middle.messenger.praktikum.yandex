@@ -99,7 +99,7 @@ export class ChatPage extends Block {
       <div class="page">
         <ul class="chat">
           <li class="chat__column chat__column_left">
-            <a class="chat__link-profile page__link-profile" href="/profile">
+            <a class="chat__link-profile page__link-profile" href="/settings">
               <span class="chat__link-text">Профиль</span>
               <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
             </a>
