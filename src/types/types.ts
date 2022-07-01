@@ -40,4 +40,6 @@ interface MessageProps {
   isRead?: boolean;
 }
 
-export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps };
+type props = Record<string, any>;
+
+export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps, props };

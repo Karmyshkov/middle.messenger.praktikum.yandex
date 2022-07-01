@@ -5,4 +5,5 @@ export {
   Screens,
   ChatType,
   MessageProps,
+  props,
 } from './types';
