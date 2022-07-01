@@ -1,3 +1,10 @@
+import { Block } from 'core';
+
+interface BlockClass<P> extends Function {
+  new (props: P): Block<P>;
+  componentName?: string;
+}
+
 enum InputType {
   'text',
   'email',
@@ -33,4 +40,4 @@ interface MessageProps {
   isRead?: boolean;
 }
 
-export { InputType, ButtonType, Screens, ChatType, MessageProps };
+export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps };

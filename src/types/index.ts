@@ -1,1 +1,8 @@
-export { InputType, ButtonType, ChatType, MessageProps } from './types';
+export {
+  BlockClass,
+  InputType,
+  ButtonType,
+  Screens,
+  ChatType,
+  MessageProps,
+} from './types';
