@@ -1,9 +1,9 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
-import { Popup } from 'utils/classes/Popup';
-import { FormValidator } from 'utils/classes/FormValidator';
+import { Popup } from 'utils/classes';
+import { FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
-import { handleSubmitForm } from 'utils/functions';
+import { handleSubmitForm } from 'utils';
 import dataProfile from 'data/profile.json';
 
 const editProfileformValidator = new FormValidator(

@@ -4,11 +4,11 @@ import right_arrow from 'img/right-arrow.svg';
 import chats from 'data/chats.json';
 import messages from 'data/messages.json';
 import { ChatType, MessageProps } from 'types';
-import { Chat } from 'utils/classes/Chat';
-import { Popup } from 'utils/classes/Popup';
-import { FormValidator } from 'utils/classes/FormValidator';
+import { Chat } from 'utils/classes';
+import { Popup } from 'utils/classes';
+import { FormValidator } from 'utils/classes';
 import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils';
 
 const addUserFormValidator = new FormValidator(
   config,

@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import 'styles/auth.css';
-import { FormValidator } from 'utils/classes/FormValidator';
+import { FormValidator } from 'utils/classes';
 import { config, AUTH_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import { handleSubmitForm, checkOnValueInput } from 'utils';
 
 const signupFormValidator = new FormValidator(
   config,
