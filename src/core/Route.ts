@@ -2,6 +2,7 @@ import { BlockClass, props } from 'types';
 import renderDOM from './renderDOM';
 import Block from 'core/Block';
 import { isEqual } from 'utils';
+import { REGEXP_REPLACE_PATHNAME, REGEXP_REPLACE_ID } from 'utils/constants';
 
 export class Route<P = any> {
   private pathname: string;
@@ -28,12 +29,12 @@ export class Route<P = any> {
   }
   match(pathname: string) {
     if (this.isPrefixId) {
-      pathname = pathname.replace(/\/\d+/, '');
+      pathname = pathname.replace(REGEXP_REPLACE_PATHNAME, '');
     }
     return isEqual(pathname, this.pathname);
   }
   private prefixHandler() {
-    const id = Number(window.location.pathname.replace(/[a-zA-Z/]+/, ''));
+    const id = Number(window.location.pathname.replace(REGEXP_REPLACE_ID, ''));
     return { id };
   }
   render() {
