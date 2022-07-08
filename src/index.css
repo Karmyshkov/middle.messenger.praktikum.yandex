@@ -42,6 +42,7 @@ body {
 }
 
 .tooltip {
+  cursor: pointer;
   position: absolute;
   bottom: 40px;
   left: 40px;
@@ -51,6 +52,11 @@ body {
   color: var(--color-primaty);
   font-weight: 500;
   line-height: 18px;
+  transition: 0.3s opacity;
+
+  &:hover {
+    opacity: 0.8;
+  }
 
   &_is-success {
     background-color: var(--color-success);
