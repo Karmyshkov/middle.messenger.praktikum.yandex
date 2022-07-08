@@ -60,6 +60,7 @@ const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
+const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
 
 export {
   config,
@@ -81,4 +82,5 @@ export {
   REGEXP_REPLACE_ID,
   BASE_URL,
   BASE_HEADERS,
+  SUCCESS_SIGNUP_MESSAGE,
 };
