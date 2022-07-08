@@ -11,7 +11,12 @@ function showTooltip({ text, type }: TooltipProp) {
   tooltip.classList.add(type === 'success' ? 'tooltip_is-success' : 'tooltip_is-error');
   document.body.append(tooltip);
 
-  setTimeout(() => document.body.removeChild(tooltip), 5000);
+  setTimeout(() => {
+    tooltip.classList.remove(
+      type === 'success' ? 'tooltip_is-success' : 'tooltip_is-error'
+    );
+    document.body.removeChild(tooltip);
+  }, 5000);
 }
 
 export { showTooltip };
