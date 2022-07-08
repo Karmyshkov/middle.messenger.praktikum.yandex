@@ -52,8 +52,8 @@ const SIGNUP_FORM = 'signup';
 const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
 const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
 const AUTH_FORM = 'auth';
-const USER_NAME_FIELD = 'name';
-const LAST_NAME_USER_FIELD = 'lastName';
+const USER_NAME_FIELD = 'first_name';
+const LAST_NAME_USER_FIELD = 'second_name';
 const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
