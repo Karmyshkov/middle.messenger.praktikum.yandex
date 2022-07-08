@@ -29,9 +29,10 @@ const handleSubmitForm = ({
         const inputElement = input as HTMLInputElement;
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
-      console.log(dataForm);
 
       Popup.handleClosePopup(config.isOpenPopupSelecot);
+
+      return dataForm;
     }
   } else {
     disableBtn();
