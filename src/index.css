@@ -40,3 +40,23 @@ body {
     margin: 21px 10px 23px 0;
   }
 }
+
+.tooltip {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  padding: 14px 40px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: var(--color-primaty);
+  font-weight: 500;
+  line-height: 18px;
+
+  &_is-success {
+    background-color: var(--color-success);
+  }
+
+  &_is-error {
+    background-color: var(--color-error);
+  }
+}

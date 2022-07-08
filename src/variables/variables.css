@@ -1,11 +1,12 @@
 :root {
-  --ff: "Inter", "Arial", sans-serif;
+  --ff: 'Inter', 'Arial', sans-serif;
   --color-primaty: #1e1e1e;
   --color-secondary: #3369f3;
   --color-third: #fff;
   --color-grey: #999;
   --color-light-grey: #efefef;
   --color-error: #ff2f2f;
+  --color-success: #0efd2e;
   --color-line: #eaeaea;
   --color-dark-line: #e5e5e5;
   --color-light-blue: #e4edfd;
