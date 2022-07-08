@@ -1,7 +1,7 @@
 import { BaseAPI } from './BaseAPI';
 import { SignupType } from 'types';
 
-export class AuthAPI extends BaseAPI {
+class AuthAPI extends BaseAPI {
   constructor() {
     super({ path: '/auth' });
   }
@@ -13,6 +13,10 @@ export class AuthAPI extends BaseAPI {
       second_name,
       phone,
       password,
-    });
+    })
+      .then((response) => alert(response))
+      .catch((error) => alert(error));
   }
 }
+
+export default new AuthAPI();

@@ -3,7 +3,7 @@ import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
 import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
-import { AuthAPI } from 'api/AuthAPI';
+import { authService } from 'services';
 import { SignupType } from 'types';
 
 const signupFormValidator = new FormValidator(
@@ -34,7 +34,7 @@ export class SignupPage extends Block {
           isValidField: signupFormValidator.isValidFieldWithCustomRules(),
         });
 
-        dataForm && new AuthAPI().signup(dataForm as SignupType);
+        dataForm && authService.signup(dataForm as SignupType);
       },
 
       handleValidateInput: (evt: Event) => {
