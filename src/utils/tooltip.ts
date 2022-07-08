@@ -15,7 +15,7 @@ function showTooltip({ text, type }: TooltipProp) {
     tooltip.classList.remove(
       type === 'success' ? 'tooltip_is-success' : 'tooltip_is-error'
     );
-    document.body.removeChild(tooltip);
+    document.body.contains(tooltip) && document.body.removeChild(tooltip);
   }, 5000);
 }
 
