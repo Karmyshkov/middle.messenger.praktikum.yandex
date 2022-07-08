@@ -45,4 +45,22 @@ interface MessageProps {
 
 type props = Record<string, any>;
 
-export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps, props };
+interface SignupType {
+  email: string;
+  login: string;
+  first_name: string;
+  second_name: string;
+  phone: string;
+  password: string;
+}
+
+export {
+  BlockClass,
+  InputType,
+  ButtonType,
+  Screens,
+  ChatType,
+  MessageProps,
+  props,
+  SignupType,
+};

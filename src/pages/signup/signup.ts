@@ -3,6 +3,8 @@ import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
 import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { AuthAPI } from 'api/AuthAPI';
+import { SignupType } from 'types';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -23,7 +25,7 @@ export class SignupPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: signupFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: AUTH_FORM,
@@ -31,7 +33,10 @@ export class SignupPage extends Block {
           addErors: signupFormValidator.addErrorsForInput,
           isValidField: signupFormValidator.isValidFieldWithCustomRules(),
         });
+
+        dataForm && new AuthAPI().signup(dataForm as SignupType);
       },
+
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);
       },
@@ -70,7 +75,7 @@ export class SignupPage extends Block {
               helperText="Имя"
               minlength="1"
               maxlength="50"
-              name="name"
+              name="first_name"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput
@@ -80,7 +85,7 @@ export class SignupPage extends Block {
               helperText="Фамилия"
               minlength="1"
               maxlength="50"
-              name="lastName"
+              name="second_name"
             }}}
             {{{InputWrapper
               onInput=handleChangeInput

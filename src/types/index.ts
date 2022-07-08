@@ -6,4 +6,5 @@ export {
   ChatType,
   MessageProps,
   props,
+  SignupType,
 } from './types';
