@@ -58,7 +58,8 @@ const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
-const NOT_IMPLEMENTED_ERROR = 'Not implemented';
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+const BASE_HEADERS = { 'Content-Type': 'application/json' };
 
 export {
   config,
@@ -78,5 +79,6 @@ export {
   REGEXP_FOR_PHONE,
   REGEXP_REPLACE_PATHNAME,
   REGEXP_REPLACE_ID,
-  NOT_IMPLEMENTED_ERROR,
+  BASE_URL,
+  BASE_HEADERS,
 };
