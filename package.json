@@ -20,7 +20,8 @@
     "vendor": "./src/vendor",
     "variables": "./src/variables",
     "utils": "./src/utils",
-    "styles": "./src/styles"
+    "styles": "./src/styles",
+    "api": "./src/api"
   },
   "repository": {
     "type": "git",
