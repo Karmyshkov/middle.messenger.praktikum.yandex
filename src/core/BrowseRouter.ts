@@ -1,7 +1,7 @@
 import { BlockClass, props } from 'types';
 import { Route } from './Route';
 
-export default class BrowseRouter {
+class BrowseRouter {
   static __instance: BrowseRouter;
   private routers: Array<Route> = [];
   private history: History = window.history;
@@ -63,3 +63,5 @@ export default class BrowseRouter {
     return router || this.routers.find((route) => route.match('*'));
   }
 }
+
+export default new BrowseRouter();

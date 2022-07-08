@@ -1,5 +1,6 @@
 import { BaseAPI } from './BaseAPI';
 import { SignupType } from 'types';
+import { BrowseRouter as router } from 'core';
 
 class AuthAPI extends BaseAPI {
   constructor() {
@@ -14,7 +15,7 @@ class AuthAPI extends BaseAPI {
       phone,
       password,
     })
-      .then((response) => alert(response))
+      .then((response) => router.go('/'))
       .catch((error) => alert(error));
   }
 }

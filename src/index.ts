@@ -1,4 +1,4 @@
-import { registerComponent, BrowseRouter } from 'core';
+import { registerComponent, BrowseRouter as router } from 'core';
 import { getScreenComponent } from './utils/screenList';
 import { Screens } from 'types';
 import { components } from 'components';
@@ -8,8 +8,6 @@ components.forEach((component) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const router = new BrowseRouter();
-
   router
     .use('/', getScreenComponent(Screens.Signin))
     .use('/sign-up', getScreenComponent(Screens.Signup))
