@@ -58,6 +58,7 @@ const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
+const NOT_IMPLEMENTED_ERROR = 'Not implemented';
 
 export {
   config,
@@ -77,4 +78,5 @@ export {
   REGEXP_FOR_PHONE,
   REGEXP_REPLACE_PATHNAME,
   REGEXP_REPLACE_ID,
+  NOT_IMPLEMENTED_ERROR,
 };
