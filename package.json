@@ -21,7 +21,8 @@
     "variables": "./src/variables",
     "utils": "./src/utils",
     "styles": "./src/styles",
-    "api": "./src/api"
+    "api": "./src/api",
+    "services": "./src/services"
   },
   "repository": {
     "type": "git",
