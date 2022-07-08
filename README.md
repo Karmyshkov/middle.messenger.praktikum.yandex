@@ -14,7 +14,7 @@ https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/2
 
 ### Сборка и запуск
 
-Для запуска проекта нажна NodeJS >= 16, сменить версию можно с помощью:
+Для запуска проекта требуется NodeJS >= 16, сменить версию можно с помощью:
 
 ```bash
 nvm use
