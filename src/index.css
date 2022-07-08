@@ -1,6 +1,6 @@
-@import "vendor/normalize.css";
-@import "vendor/fonts.css";
-@import "variables/variables.css";
+@import 'vendor/normalize.css';
+@import 'vendor/fonts.css';
+@import 'variables/variables.css';
 
 body {
   &::-webkit-scrollbar {
