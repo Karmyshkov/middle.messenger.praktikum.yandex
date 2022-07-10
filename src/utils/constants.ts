@@ -41,7 +41,7 @@ const config = {
 };
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
-const REGEXP_FOR_PHONE = /^[\d|+]\d{9,15}/;
+const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
 const REGEXP_REPLACE_ID = /[a-z/]+/i;
 

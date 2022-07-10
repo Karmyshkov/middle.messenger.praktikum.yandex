@@ -33,4 +33,8 @@ class AuthAPI extends BaseAPI {
   }
 }
 
+//добавить loader из mesto по аналогии с tooltip
+
+// стили для тултип взять тз material ui, хотябы цвета
+
 export default new AuthAPI();
