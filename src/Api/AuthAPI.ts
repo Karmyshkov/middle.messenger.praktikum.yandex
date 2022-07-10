@@ -1,8 +1,5 @@
 import { BaseAPI } from './BaseAPI';
 import { SignupType } from 'types';
-import { BrowseRouter as router } from 'core';
-import { showTooltip, getMessageFromResponse } from 'utils';
-import { SUCCESS_SIGNUP_MESSAGE } from 'utils/constants';
 
 class AuthAPI extends BaseAPI {
   constructor() {
@@ -16,25 +13,8 @@ class AuthAPI extends BaseAPI {
       second_name,
       phone,
       password,
-    })
-      .then(() => {
-        router.go('/');
-        showTooltip({
-          text: SUCCESS_SIGNUP_MESSAGE,
-          type: 'success',
-        });
-      })
-      .catch((err) => {
-        showTooltip({
-          text: getMessageFromResponse(err.responseText) as string,
-          type: 'error',
-        });
-      });
+    });
   }
 }
-
-//добавить loader из mesto по аналогии с tooltip
-
-// стили для тултип взять тз material ui, хотябы цвета
 
 export default new AuthAPI();
