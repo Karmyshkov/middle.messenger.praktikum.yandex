@@ -3,6 +3,9 @@ import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
 import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { authService } from 'services';
+import { SigninType } from 'types';
+import { signinStore, STORE_EVENTS } from 'core';
 
 const signinFormValidator = new FormValidator(
   config,
@@ -14,6 +17,14 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
+  constructor() {
+    super();
+
+    signinStore.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(signinStore.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
@@ -23,13 +34,15 @@ export class SigninPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: signinFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: AUTH_FORM,
           disableBtn: signinFormValidator.disableBtn,
           addErors: signinFormValidator.addErrorsForInput,
         });
+
+        dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
     };

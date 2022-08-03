@@ -7,4 +7,9 @@ interface SignupType {
   password: string;
 }
 
-export { SignupType };
+interface SigninType {
+  login: string;
+  password: string;
+}
+
+export { SignupType, SigninType };

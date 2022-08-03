@@ -5,6 +5,7 @@ import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SignupType } from 'types';
+import { signupStore, STORE_EVENTS } from 'core';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -16,6 +17,14 @@ const signupFormValidator = new FormValidator(
 );
 
 export class SignupPage extends Block {
+  constructor() {
+    super();
+
+    signupStore.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(signupStore.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
@@ -42,6 +51,7 @@ export class SignupPage extends Block {
       },
     };
   }
+
   render() {
     // language=hbs
     return `
