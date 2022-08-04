@@ -13,6 +13,7 @@ type RequestOptions = {
   headers?: Record<string, string>;
   timeout?: number;
   data?: unknown;
+  withCredentials?: boolean;
 };
 
 function queryStringify(data: RequestData) {
@@ -44,7 +45,13 @@ export class HTTPTransport {
     this.request(url, { ...options, method: METHODS.DELETE });
 
   private request = (url: string, options: RequestOptions) => {
-    const { method = METHODS.GET, headers = {}, data, timeout = 5000 } = options;
+    const {
+      method = METHODS.GET,
+      headers = {},
+      data,
+      timeout = 5000,
+      withCredentials = true,
+    } = options;
 
     const query = method === METHODS.GET ? queryStringify(data as RequestData) : '';
 
@@ -52,6 +59,10 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest();
 
       xhr.open(method, `${url}${query}`);
+
+      if (withCredentials) {
+        xhr.withCredentials = true;
+      }
 
       Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value));
 
@@ -66,3 +77,5 @@ export class HTTPTransport {
     });
   };
 }
+
+//credentials: 'include',
