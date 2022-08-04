@@ -7,8 +7,17 @@ import { ChatType, MessageProps } from 'types';
 import { Chat } from 'utils/classes';
 import { Popup } from 'utils/classes';
 import { FormValidator } from 'utils/classes';
-import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
+import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
+
+const addChatFromValidator = new FormValidator(
+  config,
+  ADD_CHAT_FORM,
+  config.inputSelector,
+  config.btnSubmitFormSelector,
+  config.inputHelperTextSelector,
+  config.isShowHelperTextSelector
+);
 
 const addUserFormValidator = new FormValidator(
   config,
@@ -54,6 +63,31 @@ export class ChatPage extends Block {
         ).handleOpenPopup();
       },
 
+      //add chat
+
+      handleChangeAddChatInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        addChatFromValidator.clearError();
+        addChatFromValidator.toggleBtnState();
+      },
+      hendleSubmitAddChatForm: (evt: Event) => {
+        evt.preventDefault();
+        const dataForm = handleSubmitForm({
+          stateForm: addChatFromValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: ADD_CHAT_FORM,
+          disableBtn: addChatFromValidator.disableBtn,
+          addErors: addChatFromValidator.addErrorsForInput,
+        });
+
+        console.log(dataForm);
+      },
+      handleValidateAddChatInput: (evt: Event) => {
+        addChatFromValidator.handleFieldValidation(evt);
+      },
+
+      // add user
+
       handleChangeAddUserInput: (evt: Event) => {
         checkOnValueInput(evt);
         addUserFormValidator.clearError();
@@ -61,17 +95,21 @@ export class ChatPage extends Block {
       },
       hendleSubmitAddUserForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: addUserFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
           addErors: addUserFormValidator.addErrorsForInput,
         });
+
+        console.log(dataForm);
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
       },
+
+      // delete user
 
       handleChangeDeleteUserInput: (evt: Event) => {
         checkOnValueInput(evt);
@@ -80,13 +118,15 @@ export class ChatPage extends Block {
       },
       hendleSubmitDeleteUserForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: deleteUserFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
           formSelector: DELETE_USER_FORM,
           disableBtn: deleteUserFormValidator.disableBtn,
           addErors: deleteUserFormValidator.addErrorsForInput,
         });
+
+        console.log(dataForm);
       },
       handleValidateDeleteUserInput: (evt: Event) => {
         deleteUserFormValidator.handleFieldValidation(evt);
@@ -155,10 +195,10 @@ export class ChatPage extends Block {
         {{{Menu isUser=true}}}
         {{{Menu isUser=false}}}
         {{{Popup
-          onClick=hendleSubmitDeleteUserForm
-          onInput=handleChangeDeleteUserInput
-          onFocus=handleValidateDeleteUserInput
-          onBlur=handleValidateDeleteUserInput
+          onClick=hendleSubmitAddChatForm
+          onInput=handleChangeAddChatInput
+          onFocus=handleValidateAddChatInput
+          onBlur=handleValidateAddChatInput
           title="Создать чат"
           helperText="Название"
           textBtn="Создать"
@@ -166,6 +206,7 @@ export class ChatPage extends Block {
           classesForm="popup__form_add-chat"
           isDefault=true
           name="popup__form_add-chat"
+          fieldName="title"
         }}}
         {{{Popup
           onClick=hendleSubmitAddUserForm
@@ -179,6 +220,7 @@ export class ChatPage extends Block {
           classesForm="popup__form_add-user"
           isDefault=true
           name="popup__form_add-user"
+          fieldName="login"
         }}}
         {{{Popup
           onClick=hendleSubmitDeleteUserForm
@@ -192,6 +234,7 @@ export class ChatPage extends Block {
           classesForm="popup__form_delete-user"
           isDefault=true
           name="popup__form_delete-user"
+          fieldName="login"
         }}}
       </div>
     `;

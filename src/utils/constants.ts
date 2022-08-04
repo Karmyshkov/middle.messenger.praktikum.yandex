@@ -47,6 +47,7 @@ const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
 const REGEXP_REPLACE_ID = /[a-z/]+/i;
 
+const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
 const SIGNIN_FORM = 'signin';
@@ -67,6 +68,7 @@ const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложе
 
 export {
   config,
+  ADD_CHAT_FORM,
   ADD_USER_FORM,
   DELETE_USER_FORM,
   SIGNIN_FORM,
