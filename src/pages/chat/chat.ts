@@ -3,12 +3,14 @@ import 'styles/chat.css';
 import right_arrow from 'img/right-arrow.svg';
 import chats from 'data/chats.json';
 import messages from 'data/messages.json';
-import { ChatType, MessageProps } from 'types';
+import { ChatType, MessageProps, CreateChatType } from 'types';
 import { Chat } from 'utils/classes';
 import { Popup } from 'utils/classes';
 import { FormValidator } from 'utils/classes';
 import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { signinStore, STORE_EVENTS } from 'core';
+import { chatService } from 'services';
 
 const addChatFromValidator = new FormValidator(
   config,
@@ -38,6 +40,14 @@ const deleteUserFormValidator = new FormValidator(
 );
 
 export class ChatPage extends Block {
+  constructor() {
+    super();
+
+    signinStore.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(signinStore.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       addClassForActiveElement: (evt: Event) => {
@@ -79,6 +89,8 @@ export class ChatPage extends Block {
           disableBtn: addChatFromValidator.disableBtn,
           addErors: addChatFromValidator.addErrorsForInput,
         });
+
+        dataForm && chatService.createChat(dataForm as CreateChatType);
 
         console.log(dataForm);
       },

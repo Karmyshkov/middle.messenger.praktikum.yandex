@@ -6,7 +6,7 @@ import { SUCCESS_CREATE_MESSAGE } from 'utils/constants';
 import { signupStore } from 'core/Store';
 
 class AuthService {
-  public signup({ title }: CreateChatType) {
+  public createChat({ title }: CreateChatType) {
     chatApi
       .createChat({ title })
       .then((data) => {
