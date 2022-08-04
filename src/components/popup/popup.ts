@@ -8,6 +8,7 @@ export class Popup extends Block {
     classesPopup,
     classesForm,
     name,
+    fieldName,
     title,
     isDefault,
     helperText,
@@ -22,6 +23,7 @@ export class Popup extends Block {
       classesForm,
       name,
       title,
+      fieldName,
       isDefault,
       helperText,
       textBtn,
@@ -36,6 +38,7 @@ export class Popup extends Block {
       classesPopup: props.classesPopup,
       classesForm: props.classesForm,
       name: props.name,
+      fieldName: props.fieldName,
       title: props.title,
       isDefault: props.isDefault,
       helperText: props.helperText,
@@ -48,8 +51,16 @@ export class Popup extends Block {
   }
 
   protected render(): string {
-    const { classesPopup, classesForm, name, title, isDefault, helperText, textBtn } =
-      this.state;
+    const {
+      classesPopup,
+      classesForm,
+      name,
+      fieldName,
+      title,
+      isDefault,
+      helperText,
+      textBtn,
+    } = this.state;
     // language=hbs
     return `
       <div class="popup ${classesPopup ? classesPopup : ''}">
@@ -69,7 +80,7 @@ export class Popup extends Block {
                     helperText="${helperText}"
                     minlength="5"
                     maxlength="20"
-                    name="login"
+                    name="${fieldName}"
                   }}}
                   {{{Button
                     onClick=onClick
