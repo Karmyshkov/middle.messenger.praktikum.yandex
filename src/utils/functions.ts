@@ -1,6 +1,7 @@
 import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
 import { config } from 'utils/constants';
+import { showTooltip } from 'utils';
 
 interface SubmitFormProps {
   disableBtn: () => void;
@@ -52,4 +53,11 @@ function getMessageFromResponse(errText: string) {
   return Object.values(JSON.parse(errText))[0];
 }
 
-export { handleSubmitForm, checkOnValueInput, isEqual, getMessageFromResponse };
+function showError(err: string) {
+  showTooltip({
+    text: getMessageFromResponse(err) as string,
+    type: 'error',
+  });
+}
+
+export { handleSubmitForm, checkOnValueInput, isEqual, showError };

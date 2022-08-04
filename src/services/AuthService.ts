@@ -1,7 +1,7 @@
 import authAPI from 'api/AuthAPI';
 import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router } from 'core';
-import { showTooltip, getMessageFromResponse } from 'utils';
+import { showTooltip, showError } from 'utils';
 import { SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE } from 'utils/constants';
 import { signupStore, signinStore } from 'core/Store';
 
@@ -17,12 +17,7 @@ class AuthService {
         });
         router.go('/messenger');
       })
-      .catch((err) => {
-        showTooltip({
-          text: getMessageFromResponse(err.responseText) as string,
-          type: 'error',
-        });
-      });
+      .catch((err) => showError(err.responseText));
   }
 
   public signin({ login, password }: SigninType) {
@@ -36,12 +31,7 @@ class AuthService {
         });
         router.go('/messenger');
       })
-      .catch((err) => {
-        showTooltip({
-          text: getMessageFromResponse(err.responseText) as string,
-          type: 'error',
-        });
-      });
+      .catch((err) => showError(err.responseText));
   }
 
   public signout() {
@@ -50,12 +40,7 @@ class AuthService {
       .then((data) => {
         console.log(data);
       })
-      .catch((err) => {
-        showTooltip({
-          text: getMessageFromResponse(err.responseText) as string,
-          type: 'error',
-        });
-      });
+      .catch((err) => showError(err.responseText));
   }
 }
 
