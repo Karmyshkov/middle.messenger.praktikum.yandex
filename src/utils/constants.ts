@@ -65,6 +65,7 @@ const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_HEADERS = { credentials: 'include', 'Content-Type': 'application/json' };
 const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
 const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
+const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
 
 export {
   config,
@@ -89,4 +90,5 @@ export {
   BASE_HEADERS,
   SUCCESS_SIGNUP_MESSAGE,
   SUCCESS_SIGNIN_MESSAGE,
+  SUCCESS_CREATE_MESSAGE,
 };
