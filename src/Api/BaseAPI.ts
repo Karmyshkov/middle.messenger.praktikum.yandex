@@ -1,4 +1,4 @@
-import { HTTPTransport } from 'utils/classes/HTTPTransport';
+import { HTTPTransport } from 'utils/classes';
 import { BASE_URL, BASE_HEADERS } from 'utils/constants';
 
 export abstract class BaseAPI {

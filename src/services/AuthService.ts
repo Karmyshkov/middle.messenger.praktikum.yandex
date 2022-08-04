@@ -43,6 +43,20 @@ class AuthService {
         });
       });
   }
+
+  public signout() {
+    authAPI
+      .signout()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        showTooltip({
+          text: getMessageFromResponse(err.responseText) as string,
+          type: 'error',
+        });
+      });
+  }
 }
 
 export default new AuthService();

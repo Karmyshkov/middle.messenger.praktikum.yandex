@@ -3,6 +3,7 @@ import 'styles/profile.css';
 import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
 import { config } from 'utils/constants';
+import { authService } from 'services';
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
@@ -19,7 +20,7 @@ export class ProfilePage extends Block {
       },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();
-        console.log('logout');
+        authService.signout();
       },
     };
   }

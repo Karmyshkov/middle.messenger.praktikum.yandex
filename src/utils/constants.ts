@@ -62,7 +62,7 @@ const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
-const BASE_HEADERS = { 'Content-Type': 'application/json' };
+const BASE_HEADERS = { credentials: 'include', 'Content-Type': 'application/json' };
 const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
 const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
 
