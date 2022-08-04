@@ -66,16 +66,18 @@ export class ProfilePage extends Block {
                   href="/edit-settings"
                   text="Изменить данные"
                   classes="btn-profile__link_color_red"
+                  type="link"
                 }}}
                 {{{BtnProfile
                   href="/edit-password"
                   text="Изменить пароль"
                   classes="btn-profile__link_color_red"
+                  type="link"
                 }}}
                 {{{BtnProfile
-                  href="/"
                   text="Выйти"
                   classes="btn-profile__link_color_blue"
+                  type="button"
                 }}}
               </ul>
             </form>
