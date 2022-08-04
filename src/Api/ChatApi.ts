@@ -9,6 +9,10 @@ class ChatApi extends BaseAPI {
   public createChat({ title }: CreateChatType) {
     return this.post('', { title });
   }
+
+  public getChats() {
+    return this.get('');
+  }
 }
 
 export default new ChatApi();

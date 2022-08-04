@@ -3,14 +3,14 @@ import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router } from 'core';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE } from 'utils/constants';
-import { signupStore, signinStore } from 'core/Store';
+import store from 'core/Store';
 
 class AuthService {
   public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
     authAPI
       .signup({ email, login, first_name, second_name, phone, password })
       .then((data) => {
-        signupStore.setState(data);
+        store.setState(data);
         showTooltip({
           text: SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
@@ -24,7 +24,7 @@ class AuthService {
     authAPI
       .signin({ login, password })
       .then((data) => {
-        signinStore.setState(data);
+        store.setState(data);
         showTooltip({
           text: SUCCESS_SIGNIN_MESSAGE,
           type: 'success',

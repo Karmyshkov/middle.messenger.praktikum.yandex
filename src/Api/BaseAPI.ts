@@ -11,11 +11,13 @@ export abstract class BaseAPI {
     this._headers = BASE_HEADERS;
   }
 
-  post(url: string, data: any) {
+  post(url: string, data: unknown) {
     return this._http.post(`${this._baseUrl}/${url}`, { data, headers: this._headers });
   }
 
-  get() {}
+  get(url: string) {
+    return this._http.get(`${this._baseUrl}/${url}`, { headers: this._headers });
+  }
 
   put() {}
 

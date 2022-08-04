@@ -1,15 +1,15 @@
 import Block from 'core/Block';
 import 'styles/chat.css';
 import right_arrow from 'img/right-arrow.svg';
-import chats from 'data/chats.json';
+//import chats from 'data/chats.json';
 import messages from 'data/messages.json';
-import { ChatType, MessageProps, CreateChatType } from 'types';
+import { ChatType, MessageProps, CreateChatType, ChatsType, ChatsDTO } from 'types';
 import { Chat } from 'utils/classes';
 import { Popup } from 'utils/classes';
 import { FormValidator } from 'utils/classes';
 import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
-import { signinStore, STORE_EVENTS } from 'core';
+import store, { STORE_EVENTS } from 'core/Store';
 import { chatService } from 'services';
 
 const addChatFromValidator = new FormValidator(
@@ -40,16 +40,20 @@ const deleteUserFormValidator = new FormValidator(
 );
 
 export class ChatPage extends Block {
-  constructor() {
-    super();
+  constructor(...args: any) {
+    super(args);
 
-    signinStore.on(STORE_EVENTS.UPDATE, () => {
-      this.setProps(signinStore.getState());
+    chatService.getChats();
+
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
     });
   }
 
-  protected getStateFromProps() {
+  protected getStateFromProps(props: ChatsDTO) {
     this.state = {
+      chats: props,
+
       addClassForActiveElement: (evt: Event) => {
         new Chat(config).addActiveClassName(evt);
       },
@@ -91,8 +95,6 @@ export class ChatPage extends Block {
         });
 
         dataForm && chatService.createChat(dataForm as CreateChatType);
-
-        console.log(dataForm);
       },
       handleValidateAddChatInput: (evt: Event) => {
         addChatFromValidator.handleFieldValidation(evt);
@@ -146,6 +148,7 @@ export class ChatPage extends Block {
     };
   }
   render() {
+    const { chats } = this.state;
     // language=hbs
     return `
       <div class="page">
@@ -157,15 +160,16 @@ export class ChatPage extends Block {
             </a>
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
-              ${chats.payload
+              ${chats
                 .map(
-                  (chat: ChatType) =>
+                  (chat: ChatsType) =>
                     `{{{ListItem
-                      userName="${chat.userName}"
-                      lastMessage="${chat.lastMessage}"
-                      time="${chat.time}"
-                      countNotReadMessage="${chat.countNotReadMessage}"
-                      srcAvatar="${chat.srcAvatar}"
+                      id="${chat.id}"
+                      userName="${chat.title}"
+                      lastMessage="${chat.last_message}"
+                      time="${chat.created_by}"
+                      countNotReadMessage="${chat.unread_count}"
+                      srcAvatar="${chat.avatar}"
                       onClick=addClassForActiveElement
                     }}}`
                 )

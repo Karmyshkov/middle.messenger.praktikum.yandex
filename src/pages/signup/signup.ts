@@ -5,7 +5,7 @@ import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SignupType } from 'types';
-import { signupStore, STORE_EVENTS } from 'core';
+import store, { STORE_EVENTS } from 'core/Store';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -20,8 +20,8 @@ export class SignupPage extends Block {
   constructor() {
     super();
 
-    signupStore.on(STORE_EVENTS.UPDATE, () => {
-      this.setProps(signupStore.getState());
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
     });
   }
 

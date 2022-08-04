@@ -76,4 +76,12 @@
   &__count-message_is-show {
     display: block;
   }
+
+  &__plug-avatar {
+    margin-right: 10px;
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    background-color: var(--color-light-grey);
+  }
 }
