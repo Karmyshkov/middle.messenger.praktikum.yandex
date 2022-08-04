@@ -155,6 +155,19 @@ export class ChatPage extends Block {
         {{{Menu isUser=true}}}
         {{{Menu isUser=false}}}
         {{{Popup
+          onClick=hendleSubmitDeleteUserForm
+          onInput=handleChangeDeleteUserInput
+          onFocus=handleValidateDeleteUserInput
+          onBlur=handleValidateDeleteUserInput
+          title="Создать чат"
+          helperText="Название"
+          textBtn="Создать"
+          classesPopup="popup_add-chat"
+          classesForm="popup__form_add-chat"
+          isDefault=true
+          name="popup__form_add-chat"
+        }}}
+        {{{Popup
           onClick=hendleSubmitAddUserForm
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput

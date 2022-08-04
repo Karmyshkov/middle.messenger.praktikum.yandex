@@ -17,8 +17,8 @@ export class Button extends Block {
   protected render(): string {
     const { textBtn, type, classes } = this.state;
     // language=hbs
-    return `<Button class="button ${
-      classes ? classes : ''
-    }" type="${type}">${textBtn}</Button>`;
+    return `<Button class="button ${classes ? classes : ''}" type="${type}">${
+      textBtn ? textBtn : ''
+    }</Button>`;
   }
 }

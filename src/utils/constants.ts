@@ -14,6 +14,7 @@ const config = {
   popupAddUserSelector: 'popup_add-user',
   popupDeleteUserSelector: 'popup_delete-user',
   popupChangeAvatarSelector: 'popup_change-avatar',
+  popupAddChatSelector: 'popup_add-chat',
   isActiveChatSelector: 'chat_is-active',
   hiddenChatSelecor: 'chat__column_is-hidden',
   burgerMenuSelector: 'burger-menu',
@@ -38,6 +39,7 @@ const config = {
   menuBtnDeleteUserSelector: 'menu__btn_delete-user',
   inputProfileHelperTextSelector: 'input-profile-wrapper__error',
   isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
+  addChatBtnSelector: 'search-chat__btn',
 };
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
