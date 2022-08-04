@@ -17,6 +17,10 @@ export class ProfilePage extends Block {
           config
         ).handleOpenPopup();
       },
+      handleSignOut: (evt: Event) => {
+        evt.preventDefault();
+        console.log('logout');
+      },
     };
   }
   render() {
@@ -75,6 +79,7 @@ export class ProfilePage extends Block {
                   type="link"
                 }}}
                 {{{BtnProfile
+                  onClick=handleSignOut
                   text="Выйти"
                   classes="btn-profile__link_color_blue"
                   type="button"

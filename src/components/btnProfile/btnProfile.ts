@@ -4,8 +4,8 @@ import { BtnProfileProps } from './types';
 
 export class BtnProfile extends Block {
   static componentName = 'BtnProfile';
-  constructor({ text, classes, href, type }: BtnProfileProps) {
-    super({ text, classes, href, type });
+  constructor({ onClick, text, classes, href, type }: BtnProfileProps) {
+    super({ text, classes, href, type, events: { click: onClick } });
   }
   protected getStateFromProps(props: BtnProfileProps): void {
     this.state = {
