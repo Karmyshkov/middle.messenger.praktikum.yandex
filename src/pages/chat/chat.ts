@@ -215,7 +215,7 @@ export class ChatPage extends Block {
         {{{Menu isUser=true}}}
         {{{Menu isUser=false}}}
         {{{Popup
-          onClick=hendleSubmitAddChatForm
+          onSubmit=hendleSubmitAddChatForm
           onInput=handleChangeAddChatInput
           onFocus=handleValidateAddChatInput
           onBlur=handleValidateAddChatInput

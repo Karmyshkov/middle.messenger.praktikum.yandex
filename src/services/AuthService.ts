@@ -46,7 +46,9 @@ class AuthService {
   public getInfo() {
     authAPI
       .getInfo()
-      .then((userInfo: any) => store.setState(JSON.parse(userInfo.response)))
+      .then((userInfo: any) =>
+        store.setState({ userInfo: JSON.parse(userInfo.response) })
+      )
       .catch((err) => showError(err.responseText));
   }
 }
