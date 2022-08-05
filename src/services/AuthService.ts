@@ -38,8 +38,15 @@ class AuthService {
     authAPI
       .signout()
       .then((data) => {
-        console.log(data);
+        console.log(data); // доработать
       })
+      .catch((err) => showError(err.responseText));
+  }
+
+  public getInfo() {
+    authAPI
+      .getInfo()
+      .then((userInfo: any) => store.setState(JSON.parse(userInfo.response)))
       .catch((err) => showError(err.responseText));
   }
 }

@@ -3,12 +3,23 @@ import 'styles/profile.css';
 import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
 import { config } from 'utils/constants';
+import store, { STORE_EVENTS } from 'core/Store';
 import { authService } from 'services';
 
 const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
 
 export class ProfilePage extends Block {
-  protected getStateFromProps() {
+  constructor(...args: any) {
+    super(args);
+
+    authService.getInfo();
+
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+  }
+
+  protected getStateFromProps(props: any) {
     this.state = {
       handleEditAvatar: () => {
         new Popup(

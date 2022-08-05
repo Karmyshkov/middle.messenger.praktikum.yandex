@@ -41,7 +41,7 @@ const deleteUserFormValidator = new FormValidator(
 
 export class ChatPage extends Block {
   constructor(...args: any) {
-    super(args);
+    super(...args);
 
     chatService.getChats();
 
@@ -50,36 +50,16 @@ export class ChatPage extends Block {
     });
   }
 
-  protected getStateFromProps(props: any) {
+  protected getStateFromProps() {
     this.state = {
-      chats: props,
-      filteredCards: props,
-      search: '',
-
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
         const currentListItemId = element.getAttribute('data-item-id');
         console.log(currentListItemId);
         new Chat(config).addActiveClassName(evt);
       },
-      handleSearchByChats: (evt: Event) => {
+      handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
-        const search = evt.target as HTMLInputElement;
-
-        const filteredCards = this.state.chats.filter((chat: ChatsType) =>
-          chat.title.match(new RegExp(search.value, 'ig'))
-        );
-        this.setState({ search: search.value });
-
-        //this.setState({ filteredCards });
-
-        // this.setState({
-        //   filteredCards: this.state.chats.filter((chat: ChatsType) =>
-        //     chat.title.match(new RegExp(search.value, 'ig'))
-        //   ),
-        // });
-
-        // console.log(this.state.filteredCards);
       },
       handleOpenUserMenu: () => {
         new Popup(
@@ -169,7 +149,7 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { filteredCards, search } = this.state;
+    const { chats } = this.props;
     // language=hbs
     return `
       <div class="page">
@@ -179,12 +159,14 @@ export class ChatPage extends Block {
               <span class="chat__link-text">Профиль</span>
               <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
             </a>
-            {{{SearchChat searchQ="${search}" onSearchByChats=handleSearchByChats }}}
+            {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
-              ${filteredCards
-                ?.map(
-                  (chat: ChatsType) =>
-                    `{{{ListItem
+              ${
+                chats &&
+                Object.values(chats)
+                  ?.map(
+                    (chat: any) =>
+                      `{{{ListItem
                       id="${chat.id}"
                       userName="${chat.title}"
                       lastMessage="${chat.last_message}"
@@ -193,8 +175,9 @@ export class ChatPage extends Block {
                       srcAvatar="${chat.avatar}"
                       onClick=addClassForActiveElement
                     }}}`
-                )
-                .join('')}
+                  )
+                  .join('')
+              }
             </ul>
           </li>
           <li class="chat__column chat__column-default">

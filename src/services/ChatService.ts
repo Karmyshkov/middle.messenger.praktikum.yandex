@@ -21,9 +21,7 @@ class AuthService {
   public getChats() {
     chatApi
       .getChats()
-      .then((chats: any) => {
-        store.setState(JSON.parse(chats.response));
-      })
+      .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
       .catch((err) => showError(err.responseText));
   }
 }

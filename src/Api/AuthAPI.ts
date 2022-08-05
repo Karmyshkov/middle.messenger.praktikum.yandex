@@ -26,6 +26,10 @@ class AuthAPI extends BaseAPI {
   public signout() {
     return this.post('logout', {});
   }
+
+  public getInfo() {
+    return this.get('user');
+  }
 }
 
 export default new AuthAPI();
