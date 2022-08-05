@@ -46,6 +46,7 @@ const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
 const REGEXP_REPLACE_ID = /[a-z/]+/i;
+const REGEXP_IS_NOT_INPUT_AVATAR = /input-file|input-file__span/;
 
 const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
@@ -86,6 +87,7 @@ export {
   REGEXP_FOR_PHONE,
   REGEXP_REPLACE_PATHNAME,
   REGEXP_REPLACE_ID,
+  REGEXP_IS_NOT_INPUT_AVATAR,
   BASE_URL,
   BASE_HEADERS,
   SUCCESS_SIGNUP_MESSAGE,

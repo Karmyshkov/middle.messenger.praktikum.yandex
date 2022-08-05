@@ -2,7 +2,7 @@ import Block from 'core/Block';
 import 'styles/profile.css';
 //import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
-import { config } from 'utils/constants';
+import { config, REGEXP_IS_NOT_INPUT_AVATAR } from 'utils/constants';
 import store, { STORE_EVENTS } from 'core/Store';
 import { authService } from 'services';
 
@@ -30,7 +30,14 @@ export class ProfilePage extends Block {
         ).handleOpenPopup();
       },
       handleSubmitEditAvatarForm: (evt: Event) => {
-        evt.preventDefault();
+        const target = evt.target as HTMLInputElement;
+        if (
+          !Array.from(target.classList).some((element) =>
+            REGEXP_IS_NOT_INPUT_AVATAR.test(element)
+          )
+        ) {
+          evt.preventDefault();
+        }
       },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();
