@@ -149,7 +149,7 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats } = this.props;
+    const { chats = [] } = this.props;
     // language=hbs
     return `
       <div class="page">
