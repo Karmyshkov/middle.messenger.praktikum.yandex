@@ -50,15 +50,31 @@ export class ChatPage extends Block {
     });
   }
 
-  protected getStateFromProps(props: ChatsDTO) {
+  protected getStateFromProps(props: any) {
     this.state = {
       chats: props,
+      filteredCards: [],
+      search: '',
 
       addClassForActiveElement: (evt: Event) => {
+        const element = evt.currentTarget as HTMLElement;
+        const currentListItemId = element.getAttribute('data-item-id');
+        console.log(currentListItemId);
         new Chat(config).addActiveClassName(evt);
       },
-      handleSearchByChats: () => {
+      handleSearchByChats: (evt: Event) => {
         new Chat(config).toggleStateImg();
+        const search = evt.target as HTMLInputElement;
+
+        //setTimeout(() => this.setState({ search: search.value }), 200);
+
+        // this.setState({
+        //   filteredCards: this.state.chats.filter((chat: ChatsType) =>
+        //     chat.title.match(new RegExp(search.value, 'ig'))
+        //   ),
+        // });
+
+        // console.log(this.state.filteredCards);
       },
       handleOpenUserMenu: () => {
         new Popup(
@@ -149,6 +165,7 @@ export class ChatPage extends Block {
   }
   render() {
     const { chats } = this.state;
+
     // language=hbs
     return `
       <div class="page">
@@ -161,7 +178,7 @@ export class ChatPage extends Block {
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
               ${chats
-                .map(
+                ?.map(
                   (chat: ChatsType) =>
                     `{{{ListItem
                       id="${chat.id}"

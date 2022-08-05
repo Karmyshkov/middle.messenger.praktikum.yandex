@@ -35,10 +35,11 @@ export class ListItem extends Block {
     };
   }
   protected render(): string {
-    const { userName, lastMessage, time, countNotReadMessage, srcAvatar } = this.state;
+    const { id, userName, lastMessage, time, countNotReadMessage, srcAvatar } =
+      this.state;
     // language=hbs
     return `
-      <li class="list-item">
+      <li class="list-item" data-item-id="${id}">
         <div class="list-item__container">
           ${
             srcAvatar
