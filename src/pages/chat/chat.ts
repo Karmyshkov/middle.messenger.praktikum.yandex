@@ -53,7 +53,7 @@ export class ChatPage extends Block {
   protected getStateFromProps(props: any) {
     this.state = {
       chats: props,
-      filteredCards: [],
+      filteredCards: props,
       search: '',
 
       addClassForActiveElement: (evt: Event) => {
@@ -66,7 +66,12 @@ export class ChatPage extends Block {
         new Chat(config).toggleStateImg();
         const search = evt.target as HTMLInputElement;
 
-        //setTimeout(() => this.setState({ search: search.value }), 200);
+        const filteredCards = this.state.chats.filter((chat: ChatsType) =>
+          chat.title.match(new RegExp(search.value, 'ig'))
+        );
+        this.setState({ search: search.value });
+
+        //this.setState({ filteredCards });
 
         // this.setState({
         //   filteredCards: this.state.chats.filter((chat: ChatsType) =>
@@ -164,8 +169,7 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats } = this.state;
-
+    const { filteredCards, search } = this.state;
     // language=hbs
     return `
       <div class="page">
@@ -175,9 +179,9 @@ export class ChatPage extends Block {
               <span class="chat__link-text">Профиль</span>
               <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
             </a>
-            {{{SearchChat onSearchByChats=handleSearchByChats }}}
+            {{{SearchChat searchQ="${search}" onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
-              ${chats
+              ${filteredCards
                 ?.map(
                   (chat: ChatsType) =>
                     `{{{ListItem
