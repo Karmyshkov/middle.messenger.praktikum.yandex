@@ -32,13 +32,13 @@ export class FormPopup extends Block {
       textBtn: props.textBtn,
     };
   }
-
   protected render(): string {
     const { classesForm, name, isDefault, helperText, fieldName, textBtn } = this.state;
+
     // language=hbs
     return `
           <form class="formPopup ${
-            classesForm ? classesForm : ''
+            classesForm !== 'undefined' ? classesForm : ''
           }" name="${name}" novalidate>
             ${
               isDefault

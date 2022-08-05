@@ -31,7 +31,6 @@ export class ProfilePage extends Block {
       },
       handleSubmitEditAvatarForm: (evt: Event) => {
         evt.preventDefault();
-        console.log('test');
       },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();
@@ -113,6 +112,7 @@ export class ProfilePage extends Block {
           textBtn="Поменять"
           classesPopup="popup_change-avatar"
           isDefault=false
+          name="EditAvatar"
         }}}
       </div>
     `;
