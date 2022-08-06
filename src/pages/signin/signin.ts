@@ -5,7 +5,6 @@ import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
-import store, { STORE_EVENTS } from 'core/Store';
 
 const signinFormValidator = new FormValidator(
   config,
@@ -17,14 +16,6 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
-  constructor() {
-    super();
-
-    store.on(STORE_EVENTS.UPDATE, () => {
-      this.setProps(store.getState());
-    });
-  }
-
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
