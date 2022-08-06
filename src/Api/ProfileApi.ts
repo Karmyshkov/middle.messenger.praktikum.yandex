@@ -5,8 +5,8 @@ class ProfileApi extends BaseAPI {
     super({ path: '/user/profile' });
   }
 
-  public changeAvatar({ file }: any) {
-    return this.put('avatar', { file });
+  public changeAvatar(avatar: FormData) {
+    return this.put('avatar', avatar, {});
   }
 }
 
