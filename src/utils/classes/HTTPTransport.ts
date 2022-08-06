@@ -77,5 +77,3 @@ export class HTTPTransport {
     });
   };
 }
-
-//credentials: 'include',
