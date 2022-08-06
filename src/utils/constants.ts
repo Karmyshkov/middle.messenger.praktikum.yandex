@@ -46,7 +46,7 @@ const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
 const REGEXP_REPLACE_ID = /[a-z/]+/i;
-const REGEXP_IS_NOT_INPUT_AVATAR = /input-file|input-file__span/;
+const REGEXP_IS_NOT_INPUT_AVATAR = /input-file|input-file__span|formPopup/;
 
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
