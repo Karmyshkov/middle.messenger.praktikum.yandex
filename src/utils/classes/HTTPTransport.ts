@@ -73,7 +73,7 @@ export class HTTPTransport {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      method === METHODS.GET || !data ? xhr.send() : xhr.send(JSON.stringify(data));
+      method === METHODS.GET || !data ? xhr.send() : xhr.send(data as any);
     });
   };
 }
