@@ -1,0 +1,16 @@
+.auth-link {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  font-size: 11px;
+  color: var(--color-secondary);
+  font-weight: 500;
+  line-height: 11px;
+  transition: 0.3s opacity;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
