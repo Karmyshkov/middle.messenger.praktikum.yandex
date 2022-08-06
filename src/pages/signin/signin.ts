@@ -5,6 +5,7 @@ import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
+import { BrowseRouter as router } from 'core';
 
 const signinFormValidator = new FormValidator(
   config,
@@ -36,6 +37,7 @@ export class SigninPage extends Block {
         dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
+      handleLinkBtn: () => router.go('/sign-up'),
     };
   }
   render() {
@@ -72,7 +74,10 @@ export class SigninPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/sign-up">Нет аккаунта?</a>
+            {{{AuthLink
+              onClick=handleLinkBtn
+              text="Нет аккаунта?"
+            }}}
           </form>
         </main>
       </div>
