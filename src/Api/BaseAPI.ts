@@ -12,15 +12,18 @@ export abstract class BaseAPI {
   }
 
   post(url: string, data: unknown) {
-    return this._http.post(`${this._baseUrl}/${url}`, { data, headers: this._headers });
+    return this._http.post(`${this._baseUrl}/${url}`, { headers: this._headers, data });
   }
 
   get(url: string) {
     return this._http.get(`${this._baseUrl}/${url}`, { headers: this._headers });
   }
 
-  put(url: string, data: unknown) {
-    return this._http.put(`${this._baseUrl}/${url}`, { data, headers: this._headers });
+  put(url: string, data: unknown, headers?: any) {
+    return this._http.put(`${this._baseUrl}/${url}`, {
+      headers: headers ? headers : this._headers,
+      data,
+    });
   }
 
   delete() {}
