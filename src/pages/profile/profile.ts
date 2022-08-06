@@ -1,12 +1,9 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
-//import dataProfile from 'data/profile.json';
 import { Popup } from 'utils/classes';
 import { config, REGEXP_IS_NOT_INPUT_AVATAR } from 'utils/constants';
 import store, { STORE_EVENTS } from 'core/Store';
-import { authService } from 'services';
-
-//const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
+import { authService, profileService } from 'services';
 
 export class ProfilePage extends Block {
   constructor(...args: any) {
@@ -37,6 +34,10 @@ export class ProfilePage extends Block {
           )
         ) {
           evt.preventDefault();
+
+          const editForm = document.forms[1];
+          const formData = new FormData(editForm);
+          profileService.changeAvatar(formData);
         }
       },
       handleSignOut: (evt: Event) => {
@@ -119,7 +120,7 @@ export class ProfilePage extends Block {
           textBtn="Поменять"
           classesPopup="popup_change-avatar"
           isDefault=false
-          name="EditAvatar"
+          name="editAvatar"
         }}}
       </div>
     `;
