@@ -53,9 +53,9 @@ function getMessageFromResponse(errText: string) {
   return Object.values(JSON.parse(errText))[0];
 }
 
-function showError(err: string) {
+function showError(err: any) {
   showTooltip({
-    text: getMessageFromResponse(err) as string,
+    text: getMessageFromResponse(err.responseText) as string,
     type: 'error',
   });
 }

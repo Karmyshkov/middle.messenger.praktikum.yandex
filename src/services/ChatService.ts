@@ -15,14 +15,14 @@ class AuthService {
           type: 'success',
         });
       })
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 
   public getChats() {
     chatApi
       .getChats()
       .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 }
 

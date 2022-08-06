@@ -14,7 +14,7 @@ class ProfileService {
           type: 'success',
         });
       })
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 }
 

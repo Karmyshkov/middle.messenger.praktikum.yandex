@@ -16,7 +16,7 @@ class AuthService {
         });
         router.go('/messenger');
       })
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 
   public signin({ login, password }: SigninType) {
@@ -29,14 +29,14 @@ class AuthService {
         });
         router.go('/messenger');
       })
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 
   public signout() {
     authAPI
       .signout()
       .then(() => router.go('/'))
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 
   public getInfo() {
@@ -45,7 +45,7 @@ class AuthService {
       .then((userInfo: any) =>
         store.setState({ userInfo: JSON.parse(userInfo.response) })
       )
-      .catch((err) => showError(err.responseText));
+      .catch(showError);
   }
 }
 
