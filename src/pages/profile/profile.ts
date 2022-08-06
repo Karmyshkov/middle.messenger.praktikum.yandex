@@ -28,6 +28,7 @@ export class ProfilePage extends Block {
       },
       handleSubmitEditAvatarForm: (evt: Event) => {
         const target = evt.target as HTMLInputElement;
+        const editForm = document.forms[1];
         if (
           !Array.from(target.classList).some((element) =>
             REGEXP_IS_NOT_INPUT_AVATAR.test(element)
@@ -35,7 +36,6 @@ export class ProfilePage extends Block {
         ) {
           evt.preventDefault();
 
-          const editForm = document.forms[1];
           const formData = new FormData(editForm);
           profileService.changeAvatar(formData);
         }
