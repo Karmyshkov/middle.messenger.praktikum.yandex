@@ -5,6 +5,7 @@ import { config, AUTH_FORM } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SignupType } from 'types';
+import { BrowseRouter as router } from 'core';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -40,6 +41,7 @@ export class SignupPage extends Block {
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);
       },
+      handleLinkBtn: () => router.go('/'),
     };
   }
 
@@ -125,7 +127,10 @@ export class SignupPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/">Войти</a>
+            {{{AuthLink
+              onClick=handleLinkBtn
+              text="Войти?"
+            }}}
           </form>
         </main>
       </div>
