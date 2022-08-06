@@ -1,6 +1,6 @@
 import { profileApi } from 'api';
 import { showTooltip, showError } from 'utils';
-import {} from 'utils/constants';
+import { SUCCESS_CHANGE_AVATAR_MESSAGE } from 'utils/constants';
 import store from 'core/Store';
 
 class ProfileService {
@@ -10,7 +10,7 @@ class ProfileService {
       .then((data) => {
         store.setState(data);
         showTooltip({
-          text: 'Аватар изменен',
+          text: SUCCESS_CHANGE_AVATAR_MESSAGE,
           type: 'success',
         });
       })

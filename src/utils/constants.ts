@@ -68,6 +68,7 @@ const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
 const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
 const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
 const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
+const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
 
 export {
   config,
@@ -94,4 +95,5 @@ export {
   SUCCESS_SIGNUP_MESSAGE,
   SUCCESS_SIGNIN_MESSAGE,
   SUCCESS_CREATE_MESSAGE,
+  SUCCESS_CHANGE_AVATAR_MESSAGE,
 };
