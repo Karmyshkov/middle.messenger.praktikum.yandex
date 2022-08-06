@@ -48,6 +48,9 @@ const REGEXP_REPLACE_PATHNAME = /\/\d+/;
 const REGEXP_REPLACE_ID = /[a-z/]+/i;
 const REGEXP_IS_NOT_INPUT_AVATAR = /input-file|input-file__span/;
 
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+const BASE_HEADERS = { 'Content-Type': 'application/json' };
+
 const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
 const DELETE_USER_FORM = 'popup__form_delete-user';
@@ -62,8 +65,6 @@ const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
-const BASE_URL = 'https://ya-praktikum.tech/api/v2';
-const BASE_HEADERS = { 'Content-Type': 'application/json' };
 const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
 const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
 const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
