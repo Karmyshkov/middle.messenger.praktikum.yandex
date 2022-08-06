@@ -1,8 +1,13 @@
 .input-file {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 45px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 
   &__input {
     display: none;
@@ -17,9 +22,5 @@
     font-weight: 500;
     line-height: 16px;
     text-align: center;
-  }
-
-  &__span:hover {
-    opacity: 0.8;
   }
 }
