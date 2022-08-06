@@ -7,8 +7,8 @@ class ProfileService {
   public changeAvatar(avatar: FormData) {
     profileApi
       .changeAvatar(avatar)
-      .then((data) => {
-        store.setState(data);
+      .then((userInfo: any) => {
+        store.setState({ userInfo: JSON.parse(userInfo.response) });
         showTooltip({
           text: SUCCESS_CHANGE_AVATAR_MESSAGE,
           type: 'success',
