@@ -9,8 +9,7 @@ class AuthService {
   public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
     authAPI
       .signup({ email, login, first_name, second_name, phone, password })
-      .then((data) => {
-        store.setState(data);
+      .then(() => {
         showTooltip({
           text: SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
@@ -23,8 +22,7 @@ class AuthService {
   public signin({ login, password }: SigninType) {
     authAPI
       .signin({ login, password })
-      .then((data) => {
-        store.setState(data);
+      .then(() => {
         showTooltip({
           text: SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
@@ -37,9 +35,7 @@ class AuthService {
   public signout() {
     authAPI
       .signout()
-      .then((data) => {
-        console.log(data); // доработать
-      })
+      .then(() => router.go('/'))
       .catch((err) => showError(err.responseText));
   }
 
