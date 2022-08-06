@@ -2,6 +2,7 @@ import Block from 'core/Block';
 import './editAvatar.css';
 import { EditAvatarProps } from './types';
 import defaultIcon from 'img/avatar.svg';
+import { BASE_URL_RESOURCES } from 'utils/constants';
 
 export class EditAvatar extends Block {
   static componentName = 'EditAvatar';
@@ -19,7 +20,7 @@ export class EditAvatar extends Block {
     return `
       <div class="edit-avatar">
         <img class="edit-avatar__img" src="${
-          avatar ? defaultIcon : avatar
+          avatar !== 'undefined' ? BASE_URL_RESOURCES + avatar : defaultIcon
         }" alt="Аватар по умолчанию" />
         <span class="edit-avatar__span">Поменять аватар</span>
       </div>
