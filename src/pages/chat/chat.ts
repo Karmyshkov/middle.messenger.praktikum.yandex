@@ -232,7 +232,7 @@ export class ChatPage extends Block {
           fieldName="title"
         }}}
         {{{Popup
-          onClick=hendleSubmitAddUserForm
+          onSubmit=hendleSubmitAddUserForm
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput
           onBlur=handleValidateAddUserInput
@@ -246,7 +246,7 @@ export class ChatPage extends Block {
           fieldName="login"
         }}}
         {{{Popup
-          onClick=hendleSubmitDeleteUserForm
+          onSubmit=hendleSubmitDeleteUserForm
           onInput=handleChangeDeleteUserInput
           onFocus=handleValidateDeleteUserInput
           onBlur=handleValidateDeleteUserInput
