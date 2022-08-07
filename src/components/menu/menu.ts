@@ -8,6 +8,7 @@ import close from 'img/close.svg';
 import photo from 'img/photo.svg';
 import file from 'img/file.svg';
 import location from 'img/location.svg';
+import { chatService } from 'services';
 
 export class Menu extends Block {
   static componentName = 'Menu';
@@ -35,7 +36,8 @@ export class Menu extends Block {
           config
         ).handleOpenPopup();
       },
-      handleRemoveChat: () => console.log(this.state.chatItemId),
+      handleRemoveChat: () =>
+        chatService.removeChatById({ chatId: this.state.chatItemId }),
     };
   }
   protected render(): string {

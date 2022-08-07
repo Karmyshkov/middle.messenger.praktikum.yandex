@@ -71,6 +71,7 @@ const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложе
 const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
 const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
 const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
+const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
 
 export {
   config,
@@ -100,4 +101,5 @@ export {
   SUCCESS_CREATE_MESSAGE,
   SUCCESS_CHANGE_AVATAR_MESSAGE,
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
+  SUCCESS_REMOVE_CHAT_MESSAGE,
 };

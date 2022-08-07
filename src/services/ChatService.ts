@@ -1,7 +1,7 @@
 import { chatApi } from 'api';
 import { CreateChatType, RemoveChatType } from 'types';
 import { showTooltip, showError } from 'utils';
-import { SUCCESS_CREATE_MESSAGE } from 'utils/constants';
+import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
 import store from 'core/Store';
 
 class AuthService {
@@ -26,7 +26,12 @@ class AuthService {
   public removeChatById({ chatId }: RemoveChatType) {
     chatApi
       .removeChatById({ chatId })
-      .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
+      .then(() =>
+        showTooltip({
+          text: SUCCESS_REMOVE_CHAT_MESSAGE,
+          type: 'success',
+        })
+      )
       .catch(showError);
   }
 }

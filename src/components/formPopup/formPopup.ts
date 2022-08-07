@@ -11,6 +11,9 @@ export class FormPopup extends Block {
     fieldName,
     textBtn,
     onSubmit,
+    onInput,
+    onFocus,
+    onBlur,
   }: any) {
     super({
       classesForm,
@@ -19,6 +22,9 @@ export class FormPopup extends Block {
       helperText,
       fieldName,
       textBtn,
+      onInput,
+      onFocus,
+      onBlur,
       events: { click: onSubmit },
     });
   }
@@ -30,6 +36,9 @@ export class FormPopup extends Block {
       helperText: props.helperText,
       fieldName: props.fieldName,
       textBtn: props.textBtn,
+      onInput: props.onInput,
+      onFocus: props.onFocus,
+      onBlur: props.onblur,
     };
   }
   protected render(): string {
