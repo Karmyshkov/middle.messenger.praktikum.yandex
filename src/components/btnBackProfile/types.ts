@@ -1,3 +1,3 @@
 export interface BtnBackProfileProps {
-  href: string;
+  onClick: () => void;
 }
