@@ -70,6 +70,7 @@ const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрирова
 const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
 const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
 const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
+const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
 
 export {
   config,
@@ -98,4 +99,5 @@ export {
   SUCCESS_SIGNIN_MESSAGE,
   SUCCESS_CREATE_MESSAGE,
   SUCCESS_CHANGE_AVATAR_MESSAGE,
+  SUCCESS_CHANGE_USER_INFO_MESSAGE,
 };

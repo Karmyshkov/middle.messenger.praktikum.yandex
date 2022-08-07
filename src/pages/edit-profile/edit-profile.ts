@@ -5,8 +5,9 @@ import { FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
 import store, { STORE_EVENTS } from 'core/Store';
-import { authService } from 'services';
+import { authService, profileService } from 'services';
 import { BrowseRouter as router } from 'core';
+import { UserInfoDTO, UserInfoType } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,
@@ -44,7 +45,7 @@ export class EditProfilePage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: editProfileformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
           formSelector: EDIT_PROFILE_FORM,
@@ -52,6 +53,21 @@ export class EditProfilePage extends Block {
           addErors: editProfileformValidator.addErrorsForInput,
           isValidField: editProfileformValidator.isValidFieldWithCustomRules(),
         });
+
+        if (dataForm) {
+          const { chatName, email, lastName, login, name, phone } =
+            dataForm as UserInfoType;
+
+          dataForm &&
+            profileService.changeUserInfo({
+              first_name: name,
+              second_name: lastName,
+              display_name: chatName,
+              login,
+              email,
+              phone,
+            } as UserInfoDTO);
+        }
       },
       handleValidateInput: (evt: Event) =>
         editProfileformValidator.handleFieldValidation(evt),

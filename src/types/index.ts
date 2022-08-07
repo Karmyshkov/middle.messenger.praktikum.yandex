@@ -7,7 +7,6 @@ export {
   MessageProps,
   props,
 } from './types';
-
 export { SignupType, SigninType } from './authTypes';
-
 export { CreateChatType } from './chatTypes';
+export { UserInfoDTO, UserInfoType } from './profileTypes';

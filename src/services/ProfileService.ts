@@ -1,7 +1,11 @@
 import { profileApi } from 'api';
 import { showTooltip, showError } from 'utils';
-import { SUCCESS_CHANGE_AVATAR_MESSAGE } from 'utils/constants';
+import {
+  SUCCESS_CHANGE_AVATAR_MESSAGE,
+  SUCCESS_CHANGE_USER_INFO_MESSAGE,
+} from 'utils/constants';
 import store from 'core/Store';
+import { UserInfoDTO } from 'types';
 
 class ProfileService {
   public changeAvatar(avatar: FormData) {
@@ -11,6 +15,18 @@ class ProfileService {
         store.setState({ userInfo: JSON.parse(userInfo.response) });
         showTooltip({
           text: SUCCESS_CHANGE_AVATAR_MESSAGE,
+          type: 'success',
+        });
+      })
+      .catch(showError);
+  }
+  public changeUserInfo(userInfo: UserInfoDTO) {
+    profileApi
+      .changeUserInfo(userInfo)
+      .then((userInfo: any) => {
+        store.setState({ userInfo: JSON.parse(userInfo.response) });
+        showTooltip({
+          text: SUCCESS_CHANGE_USER_INFO_MESSAGE,
           type: 'success',
         });
       })

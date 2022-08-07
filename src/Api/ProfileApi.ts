@@ -1,4 +1,5 @@
 import { BaseAPI } from './BaseAPI';
+import { UserInfoDTO } from 'types';
 
 class ProfileApi extends BaseAPI {
   constructor() {
@@ -7,6 +8,10 @@ class ProfileApi extends BaseAPI {
 
   public changeAvatar(avatar: FormData) {
     return this.put('avatar', avatar, {});
+  }
+
+  public changeUserInfo(userInfo: UserInfoDTO) {
+    return this.put('', userInfo);
   }
 }
 
