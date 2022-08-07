@@ -12,7 +12,10 @@
   }
 
   &__link {
-    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
