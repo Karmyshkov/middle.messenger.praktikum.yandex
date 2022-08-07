@@ -1,11 +1,10 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM } from 'utils/constants';
+import { config, AUTH_FORM, SIGNIN_PATH } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SignupType } from 'types';
-import { BrowseRouter as router } from 'core';
 
 const signupFormValidator = new FormValidator(
   config,
@@ -41,7 +40,7 @@ export class SignupPage extends Block {
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);
       },
-      handleLinkBtn: () => router.go('/'),
+      handleLinkBtn: () => router.go(SIGNIN_PATH),
     };
   }
 

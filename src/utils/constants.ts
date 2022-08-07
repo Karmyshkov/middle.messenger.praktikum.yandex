@@ -51,6 +51,7 @@ const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
 
+const SIGNIN_PATH = '/';
 const SIGNUP_PATH = '/sign-up';
 
 const ADD_CHAT_FORM = 'popup__form_add-chat';
@@ -102,5 +103,6 @@ export {
   SUCCESS_CHANGE_AVATAR_MESSAGE,
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
   SUCCESS_REMOVE_CHAT_MESSAGE,
+  SIGNIN_PATH,
   SIGNUP_PATH,
 };
