@@ -5,6 +5,7 @@ import { FormValidator } from 'utils/classes';
 import { config, EDIT_PASSWORD_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
 import dataProfile from 'data/profile.json';
+import { BrowseRouter as router } from 'core';
 
 const editPassowrdformValidator = new FormValidator(
   config,
@@ -42,6 +43,7 @@ export class EditPasswordPage extends Block {
       },
       handleValidateInput: (evt: Event) =>
         editPassowrdformValidator.handleFieldValidation(evt),
+      handleBackBtn: () => router.back(),
     };
   }
   render() {
@@ -49,7 +51,7 @@ export class EditPasswordPage extends Block {
     return `
       <div class="profile">
         <ul class="profile__wrapper">
-          {{{BtnBackProfile href="/profile"}}}
+        {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form
               class="profile__form profile__form_el_edit-password-form"

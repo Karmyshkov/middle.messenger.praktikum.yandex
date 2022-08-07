@@ -5,6 +5,7 @@ import { FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
 import dataProfile from 'data/profile.json';
+import { BrowseRouter as router } from 'core';
 
 const editProfileformValidator = new FormValidator(
   config,
@@ -45,6 +46,7 @@ export class EditProfilePage extends Block {
       },
       handleValidateInput: (evt: Event) =>
         editProfileformValidator.handleFieldValidation(evt),
+      handleBackBtn: () => router.back(),
     };
   }
   render() {
@@ -52,7 +54,7 @@ export class EditProfilePage extends Block {
     return `
       <div class="profile">
         <ul class="profile__wrapper">
-          {{{BtnBackProfile href="/profile"}}}
+          {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form
               class="profile__form profile__form_el_edit-form"
