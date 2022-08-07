@@ -4,7 +4,8 @@ import { Popup } from 'utils/classes';
 import { FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
-import dataProfile from 'data/profile.json';
+import store, { STORE_EVENTS } from 'core/Store';
+import { authService } from 'services';
 import { BrowseRouter as router } from 'core';
 
 const editProfileformValidator = new FormValidator(
@@ -16,9 +17,17 @@ const editProfileformValidator = new FormValidator(
   config.isShowInputProfileHelperTextSelector
 );
 
-const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
-
 export class EditProfilePage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.getInfo();
+
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleEditAvatar: () => {
@@ -50,6 +59,9 @@ export class EditProfilePage extends Block {
     };
   }
   render() {
+    const { userInfo = [] } = this.props;
+    const { avatar, display_name, email, first_name, id, login, phone, second_name } =
+      userInfo;
     // language=hbs
     return `
       <div class="profile">
@@ -60,7 +72,7 @@ export class EditProfilePage extends Block {
               class="profile__form profile__form_el_edit-form"
               novalidate
             >
-              {{{EditAvatar onClick=handleEditAvatar}}}
+            {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
@@ -91,7 +103,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя"
-                  value="${name}"
+                  value="${first_name}"
                   minlength="1"
                   maxlength="50"
                   name="name"
@@ -103,7 +115,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Фамилия"
-                  value="${lastName}"
+                  value="${second_name}"
                   minlength="1"
                   maxlength="50"
                   name="lastName"
@@ -127,7 +139,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя в чате"
-                  value="${chatName}"
+                  value="${display_name ? display_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="chatName"
