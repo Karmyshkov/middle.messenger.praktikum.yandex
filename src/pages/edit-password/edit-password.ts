@@ -56,11 +56,10 @@ export class EditPasswordPage extends Block {
         if (dataForm) {
           const { newPassword, oldPassword, repeatPassword } =
             dataForm as UserPasswordType;
-          dataForm &&
-            profileService.changeUserPassword({
-              newPassword,
-              oldPassword,
-            } as UserPasswordType);
+          profileService.changeUserPassword({
+            newPassword,
+            oldPassword,
+          } as UserPasswordType);
         }
       },
       handleValidateInput: (evt: Event) =>
@@ -70,6 +69,7 @@ export class EditPasswordPage extends Block {
   }
   render() {
     const { userInfo = [] } = this.props;
+    const { avatar, display_name } = userInfo;
     // language=hbs
     return `
       <div class="profile">
@@ -80,8 +80,8 @@ export class EditPasswordPage extends Block {
               class="profile__form profile__form_el_edit-password-form"
               novalidate
             >
-              {{{EditAvatar avatar="${userInfo.avatar}" onClick=handleEditAvatar}}}
-              <p class="profile__user-name">Иван</p>
+              {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
+              <p class="profile__user-name">${display_name}</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
