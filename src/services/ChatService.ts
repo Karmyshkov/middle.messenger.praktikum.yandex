@@ -1,5 +1,5 @@
 import { chatApi } from 'api';
-import { CreateChatType } from 'types';
+import { CreateChatType, RemoveChatType } from 'types';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_CREATE_MESSAGE } from 'utils/constants';
 import store from 'core/Store';
@@ -17,10 +17,15 @@ class AuthService {
       })
       .catch(showError);
   }
-
   public getChats() {
     chatApi
       .getChats()
+      .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
+      .catch(showError);
+  }
+  public removeChatById({ chatId }: RemoveChatType) {
+    chatApi
+      .removeChatById({ chatId })
       .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
       .catch(showError);
   }

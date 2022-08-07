@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI';
-import { CreateChatType } from 'types';
+import { CreateChatType, RemoveChatType } from 'types';
 
 class ChatApi extends BaseAPI {
   constructor() {
@@ -12,6 +12,10 @@ class ChatApi extends BaseAPI {
 
   public getChats() {
     return this.get('');
+  }
+
+  public removeChatById({ chatId }: RemoveChatType) {
+    return this.delete('', { chatId });
   }
 }
 

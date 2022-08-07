@@ -2,4 +2,8 @@ interface CreateChatType {
   title: string;
 }
 
-export { CreateChatType };
+interface RemoveChatType {
+  chatId: string;
+}
+
+export { CreateChatType, RemoveChatType };
