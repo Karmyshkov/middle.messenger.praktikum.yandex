@@ -16,4 +16,9 @@ interface UserInfoType {
   phone: string;
 }
 
-export { UserInfoDTO, UserInfoType };
+interface UserPasswordDTO {
+  oldPassword: string;
+  newPassword: string;
+}
+
+export { UserInfoDTO, UserInfoType, UserPasswordDTO };
