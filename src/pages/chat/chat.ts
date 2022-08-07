@@ -156,7 +156,6 @@ export class ChatPage extends Block {
   }
   render() {
     const { chats = [], chatItemId } = this.props;
-    console.log(Object.values(chats));
     // language=hbs
     return `
       <div class="page">

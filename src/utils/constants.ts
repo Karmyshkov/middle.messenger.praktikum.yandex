@@ -54,6 +54,8 @@ const BASE_HEADERS = { 'Content-Type': 'application/json' };
 const SIGNIN_PATH = '/';
 const SIGNUP_PATH = '/sign-up';
 const SETTINGS_PATH = '/settings';
+const EDIT_SETTINGS_PATH = 'edit-settings';
+const EDIT_PASSWORD_PATH = 'edit-password';
 
 const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
@@ -109,4 +111,6 @@ export {
   SIGNUP_PATH,
   DATA_ATTRIBUTE_CHAT_ID,
   SETTINGS_PATH,
+  EDIT_SETTINGS_PATH,
+  EDIT_PASSWORD_PATH,
 };

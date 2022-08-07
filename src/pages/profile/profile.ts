@@ -1,10 +1,8 @@
-import Block from 'core/Block';
+import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup } from 'utils/classes';
-import { config } from 'utils/constants';
-import store, { STORE_EVENTS } from 'core/Store';
+import { config, EDIT_SETTINGS_PATH, EDIT_PASSWORD_PATH } from 'utils/constants';
 import { authService, profileService } from 'services';
-import { BrowseRouter as router } from 'core';
 
 export class ProfilePage extends Block {
   constructor(...args: any) {
@@ -39,8 +37,8 @@ export class ProfilePage extends Block {
         authService.signout();
       },
       handleBackBtn: () => router.back(),
-      handleLinkToChangeProfile: () => router.go('/edit-settings'),
-      handleLinkToChangePassword: () => router.go('/edit-password'),
+      handleLinkToChangeProfile: () => router.go(EDIT_SETTINGS_PATH),
+      handleLinkToChangePassword: () => router.go(EDIT_PASSWORD_PATH),
     };
   }
   render() {
