@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI';
-import { CreateChatType, RemoveChatType } from 'types';
+import { CreateChatType, RemoveChatType, SearchUserByLoginType } from 'types';
 
 class ChatApi extends BaseAPI {
   constructor() {
@@ -16,6 +16,10 @@ class ChatApi extends BaseAPI {
 
   public removeChatById({ chatId }: RemoveChatType) {
     return this.delete('', { chatId });
+  }
+
+  public searchUserByLogin({ login }: SearchUserByLoginType) {
+    return this.post('', { login });
   }
 }
 

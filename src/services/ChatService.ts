@@ -1,5 +1,5 @@
 import { chatApi } from 'api';
-import { CreateChatType, RemoveChatType } from 'types';
+import { CreateChatType, RemoveChatType, SearchUserByLoginType } from 'types';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
 import { store } from 'core';
@@ -32,6 +32,12 @@ class AuthService {
           type: 'success',
         })
       )
+      .catch(showError);
+  }
+  public searchUserByLogin({ login }: SearchUserByLoginType) {
+    chatApi
+      .searchUserByLogin({ login })
+      .then((user: any) => store.setState({ user: JSON.parse(user.response) }))
       .catch(showError);
   }
 }

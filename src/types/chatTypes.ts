@@ -6,4 +6,8 @@ interface RemoveChatType {
   chatId: string;
 }
 
-export { CreateChatType, RemoveChatType };
+interface SearchUserByLoginType {
+  login: string;
+}
+
+export { CreateChatType, RemoveChatType, SearchUserByLoginType };
