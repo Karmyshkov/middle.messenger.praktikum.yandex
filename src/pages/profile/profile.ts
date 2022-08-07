@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import 'styles/profile.css';
 import { Popup } from 'utils/classes';
-import { config, REGEXP_IS_NOT_INPUT_AVATAR } from 'utils/constants';
+import { config } from 'utils/constants';
 import store, { STORE_EVENTS } from 'core/Store';
 import { authService, profileService } from 'services';
 import { BrowseRouter as router } from 'core';
@@ -28,19 +28,11 @@ export class ProfilePage extends Block {
         ).handleOpenPopup();
       },
       handleSubmitEditAvatarForm: (evt: Event) => {
-        const target = evt.target as HTMLInputElement;
+        evt.preventDefault();
 
-        if (
-          !Array.from(target.classList).some((element) =>
-            REGEXP_IS_NOT_INPUT_AVATAR.test(element)
-          )
-        ) {
-          evt.preventDefault();
-
-          const editForm = document.forms[1];
-          const formData = new FormData(editForm);
-          profileService.changeAvatar(formData);
-        }
+        const editForm = document.forms[1];
+        const formData = new FormData(editForm);
+        profileService.changeAvatar(formData);
       },
       handleSignOut: (evt: Event) => {
         evt.preventDefault();

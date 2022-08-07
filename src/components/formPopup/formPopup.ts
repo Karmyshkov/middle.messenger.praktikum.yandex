@@ -25,7 +25,7 @@ export class FormPopup extends Block {
       onInput,
       onFocus,
       onBlur,
-      events: { click: onSubmit },
+      events: { submit: onSubmit },
     });
   }
   protected getStateFromProps(props: any): void {
