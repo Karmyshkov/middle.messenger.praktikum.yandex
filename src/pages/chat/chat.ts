@@ -1,15 +1,18 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router, STORE_EVENTS, store } from 'core';
 import 'styles/chat.css';
 import messages from 'data/messages.json';
 import { MessageProps, CreateChatType } from 'types';
-import { Chat } from 'utils/classes';
-import { Popup } from 'utils/classes';
-import { FormValidator } from 'utils/classes';
-import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
+import { Chat, Popup, FormValidator } from 'utils/classes';
+import {
+  config,
+  ADD_CHAT_FORM,
+  ADD_USER_FORM,
+  DELETE_USER_FORM,
+  DATA_ATTRIBUTE_CHAT_ID,
+  SETTINGS_PATH,
+} from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
-import store, { STORE_EVENTS } from 'core/Store';
 import { chatService } from 'services';
-import { BrowseRouter as router } from 'core';
 
 const addChatFromValidator = new FormValidator(
   config,
@@ -53,7 +56,7 @@ export class ChatPage extends Block {
     this.state = {
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
-        const chatItemId = element.getAttribute('data-item-id');
+        const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
         this.setProps({ chatItemId });
         new Chat(config).addActiveClassName(evt);
       },
@@ -148,11 +151,12 @@ export class ChatPage extends Block {
 
       // ###
 
-      handleLinkBtn: () => router.go('/settings'),
+      handleLinkBtn: () => router.go(SETTINGS_PATH),
     };
   }
   render() {
     const { chats = [], chatItemId } = this.props;
+    console.log(Object.values(chats));
     // language=hbs
     return `
       <div class="page">
@@ -167,14 +171,14 @@ export class ChatPage extends Block {
                   ?.map(
                     (chat: any) =>
                       `{{{ListItem
-                      id="${chat.id}"
-                      userName="${chat.title}"
-                      lastMessage="${chat.last_message}"
-                      time="${chat.created_by}"
-                      countNotReadMessage="${chat.unread_count}"
-                      srcAvatar="${chat.avatar}"
-                      onClick=addClassForActiveElement
-                    }}}`
+                        id="${chat.id}"
+                        userName="${chat.title}"
+                        lastMessage="${chat.last_message}"
+                        time="${chat.created_by}"
+                        countNotReadMessage="${chat.unread_count}"
+                        srcAvatar="${chat.avatar}"
+                        onClick=addClassForActiveElement
+                      }}}`
                   )
                   .join('')
               }

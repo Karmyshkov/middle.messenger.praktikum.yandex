@@ -53,6 +53,7 @@ const BASE_HEADERS = { 'Content-Type': 'application/json' };
 
 const SIGNIN_PATH = '/';
 const SIGNUP_PATH = '/sign-up';
+const SETTINGS_PATH = '/settings';
 
 const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
@@ -74,6 +75,7 @@ const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
 const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
 const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
 const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
+const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
 
 export {
   config,
@@ -105,4 +107,6 @@ export {
   SUCCESS_REMOVE_CHAT_MESSAGE,
   SIGNIN_PATH,
   SIGNUP_PATH,
+  DATA_ATTRIBUTE_CHAT_ID,
+  SETTINGS_PATH,
 };

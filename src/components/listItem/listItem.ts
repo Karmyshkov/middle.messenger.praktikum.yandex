@@ -39,7 +39,7 @@ export class ListItem extends Block {
       this.state;
     // language=hbs
     return `
-      <li class="list-item" data-item-id="${id}">
+      <li class="list-item" data-chat-id="${id}">
         <div class="list-item__container">
           ${
             srcAvatar
