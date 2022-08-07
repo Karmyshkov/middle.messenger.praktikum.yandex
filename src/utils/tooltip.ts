@@ -18,7 +18,7 @@ function showTooltip({ text, type }: TooltipProp) {
       type === 'success' ? 'tooltip_is-success' : 'tooltip_is-error'
     );
     document.body.contains(tooltip) && document.body.removeChild(tooltip);
-  }, 5000);
+  }, 3000);
 }
 
 function handleCloseTooltip() {

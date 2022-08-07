@@ -24,7 +24,7 @@ export class Menu extends Block {
         new Popup(
           config.popupAddUserSelector,
           config.menuBtnAddUserSelector,
-          config.isOpenPopupSelecot,
+          config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
       },
@@ -32,12 +32,14 @@ export class Menu extends Block {
         new Popup(
           config.popupDeleteUserSelector,
           config.menuBtnDeleteUserSelector,
-          config.isOpenPopupSelecot,
+          config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
       },
-      handleRemoveChat: () =>
-        chatService.removeChatById({ chatId: this.state.chatItemId }),
+      handleRemoveChat: () => {
+        chatService.removeChatById({ chatId: this.state.chatItemId });
+        Popup.handleClosePopup(config.isShowMenuSelecor);
+      },
     };
   }
   protected render(): string {

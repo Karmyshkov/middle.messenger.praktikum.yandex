@@ -17,7 +17,7 @@ export class SearchChat extends Block {
         new Popup(
           config.popupAddChatSelector,
           config.addChatBtnSelector,
-          config.isOpenPopupSelecot,
+          config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
       },

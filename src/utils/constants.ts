@@ -19,7 +19,7 @@ const config = {
   hiddenChatSelecor: 'chat__column_is-hidden',
   burgerMenuSelector: 'burger-menu',
   isActiveBurgerMenuSelector: 'burger-menu_active',
-  isOpenPopupSelecot: 'popup_opened',
+  isOpenPopupSelector: 'popup_opened',
   popoverSelector: 'popover',
   btnAttachSelector: 'chat-footer__btn-attach',
   isShowPopoverSelector: 'popover_is-show',

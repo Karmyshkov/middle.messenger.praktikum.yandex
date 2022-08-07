@@ -31,7 +31,7 @@ const handleSubmitForm = ({
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
 
-      Popup.handleClosePopup(config.isOpenPopupSelecot);
+      Popup.handleClosePopup(config.isOpenPopupSelector);
 
       return dataForm;
     }
