@@ -39,4 +39,9 @@
     opacity: 0.8;
     cursor: default;
   }
+
+  &_el_remove-item {
+    padding: 8px 0;
+    margin-top: 10px;
+  }
 }

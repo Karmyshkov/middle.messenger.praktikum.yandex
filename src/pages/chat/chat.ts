@@ -53,8 +53,8 @@ export class ChatPage extends Block {
     this.state = {
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
-        const currentListItemId = element.getAttribute('data-item-id');
-        console.log(currentListItemId);
+        const chatItemId = element.getAttribute('data-item-id');
+        this.setProps({ chatItemId });
         new Chat(config).addActiveClassName(evt);
       },
       handleSearchByChats: () => {
@@ -152,7 +152,7 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats = [] } = this.props;
+    const { chats = [], chatItemId } = this.props;
     // language=hbs
     return `
       <div class="page">
@@ -212,7 +212,7 @@ export class ChatPage extends Block {
             {{{ChatFooter onClick=handleOpenFileMenu}}}
           </li>
         </ul>
-        {{{Menu isUser=true}}}
+        {{{Menu isUser=true chatItemId="${chatItemId}"}}}
         {{{Menu isUser=false}}}
         {{{Popup
           onSubmit=hendleSubmitAddChatForm

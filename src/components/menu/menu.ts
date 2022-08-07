@@ -11,12 +11,13 @@ import location from 'img/location.svg';
 
 export class Menu extends Block {
   static componentName = 'Menu';
-  constructor({ isUser }: MenuProps) {
-    super({ isUser });
+  constructor({ isUser, chatItemId }: MenuProps) {
+    super({ isUser, chatItemId });
   }
   protected getStateFromProps(props: MenuProps): void {
     this.state = {
       isUser: props.isUser,
+      chatItemId: props.chatItemId,
 
       handleAddUserPopup: () => {
         new Popup(
@@ -34,6 +35,7 @@ export class Menu extends Block {
           config
         ).handleOpenPopup();
       },
+      handleRemoveChat: () => console.log(this.state.chatItemId),
     };
   }
   protected render(): string {
@@ -61,6 +63,14 @@ export class Menu extends Block {
                 type="button"
                 onClick=handleDeleteUserPopup
               }}}
+            </li>
+            <li class="menu__item">
+            {{{Button
+              onClick=handleRemoveChat
+              textBtn="Удалить чат"
+              type="button"
+              classes="button_el_remove-item"
+            }}}
             </li>
           </ul>
         </nav>
