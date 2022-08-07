@@ -3,7 +3,7 @@ import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router } from 'core';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE } from 'utils/constants';
-import store from 'core/Store';
+import { store } from 'core';
 
 class AuthService {
   public signup({ email, login, first_name, second_name, phone, password }: SignupType) {

@@ -4,7 +4,7 @@ import {
   SUCCESS_CHANGE_AVATAR_MESSAGE,
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
 } from 'utils/constants';
-import store from 'core/Store';
+import { store } from 'core';
 import { UserInfoDTO, UserPasswordDTO } from 'types';
 
 class ProfileService {

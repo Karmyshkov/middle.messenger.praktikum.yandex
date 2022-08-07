@@ -2,7 +2,7 @@ import { chatApi } from 'api';
 import { CreateChatType, RemoveChatType } from 'types';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
-import store from 'core/Store';
+import { store } from 'core';
 
 class AuthService {
   public createChat({ title }: CreateChatType) {
