@@ -1,7 +1,7 @@
 import { Block, BrowseRouter as router, STORE_EVENTS, store } from 'core';
 import 'styles/chat.css';
 import messages from 'data/messages.json';
-import { MessageProps, CreateChatType } from 'types';
+import { MessageProps, CreateChatType, SearchUserByLoginType } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
   config,
@@ -120,7 +120,8 @@ export class ChatPage extends Block {
           addErors: addUserFormValidator.addErrorsForInput,
         });
 
-        console.log(dataForm);
+        dataForm &&
+          chatService.searchUserByLogin({ login: dataForm } as SearchUserByLoginType);
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
