@@ -72,7 +72,7 @@ export class EditProfilePage extends Block {
               class="profile__form profile__form_el_edit-form"
               novalidate
             >
-            {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
+            {{{EditAvatar avatar="${avatar ? avatar : ''}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
@@ -81,7 +81,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="email"
                   helperText="Почта"
-                  value="${email}"
+                  value="${email ? email : ''}"
                   name="email"
                   formName="profile__form_el_edit-form"
                 }}}
@@ -91,7 +91,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Логин"
-                  value="${login}"
+                  value="${login ? login : ''}"
                   minlength="3"
                   maxlength="20"
                   name="login"
@@ -103,7 +103,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя"
-                  value="${first_name}"
+                  value="${first_name ? first_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="name"
@@ -115,7 +115,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Фамилия"
-                  value="${second_name}"
+                  value="${second_name ? second_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="lastName"
@@ -127,7 +127,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="tel"
                   helperText="Телефон"
-                  value="${phone}"
+                  value="${phone ? phone : ''}"
                   minlength="10"
                   maxlength="15"
                   name="phone"

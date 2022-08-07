@@ -62,28 +62,28 @@ export class ProfilePage extends Block {
           {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form class="profile__form">
-              {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
+              {{{EditAvatar avatar="${avatar ? avatar : ''}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   type="email"
                   helperText="Почта"
-                  value="${email}"
+                  value="${email ? email : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Логин"
-                  value="${login}"
+                  value="${login ? login : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Имя"
-                  value="${first_name}"
+                  value="${first_name ? first_name : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
                   helperText="Фамилия"
-                  value="${second_name}"
+                  value="${second_name ? second_name : ''}"
                 }}}
                 {{{InputProfileWrapper
                   type="text"
@@ -93,7 +93,7 @@ export class ProfilePage extends Block {
                 {{{InputProfileWrapper
                   type="tel"
                   helperText="Телефон"
-                  value="${phone}"
+                  value="${phone ? phone : ''}"
                 }}}
               </ul>
               <ul class="profile__list">
