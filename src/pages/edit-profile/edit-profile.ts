@@ -72,7 +72,7 @@ export class EditProfilePage extends Block {
               class="profile__form profile__form_el_edit-form"
               novalidate
             >
-            {{{EditAvatar avatar="${avatar ? avatar : ''}" onClick=handleEditAvatar}}}
+            {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper

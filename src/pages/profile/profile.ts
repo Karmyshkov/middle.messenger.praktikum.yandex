@@ -62,7 +62,7 @@ export class ProfilePage extends Block {
           {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form class="profile__form">
-              {{{EditAvatar avatar="${avatar ? avatar : ''}" onClick=handleEditAvatar}}}
+              {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
