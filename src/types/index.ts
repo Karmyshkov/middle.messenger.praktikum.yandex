@@ -9,4 +9,9 @@ export {
 } from './types';
 export { SignupType, SigninType } from './authTypes';
 export { CreateChatType } from './chatTypes';
-export { UserInfoDTO, UserInfoType, UserPasswordDTO } from './profileTypes';
+export {
+  UserInfoDTO,
+  UserInfoType,
+  UserPasswordDTO,
+  UserPasswordType,
+} from './profileTypes';

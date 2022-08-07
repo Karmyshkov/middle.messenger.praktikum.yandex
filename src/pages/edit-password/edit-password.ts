@@ -5,8 +5,9 @@ import { FormValidator } from 'utils/classes';
 import { config, EDIT_PASSWORD_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
 import store, { STORE_EVENTS } from 'core/Store';
-import { authService } from 'services';
+import { authService, profileService } from 'services';
 import { BrowseRouter as router } from 'core';
+import { UserPasswordType } from 'types';
 
 const editPassowrdformValidator = new FormValidator(
   config,
@@ -44,13 +45,23 @@ export class EditPasswordPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: editPassowrdformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
           formSelector: EDIT_PASSWORD_FORM,
           disableBtn: editPassowrdformValidator.disableBtn,
           addErors: editPassowrdformValidator.addErrorsForInput,
         });
+
+        if (dataForm) {
+          const { newPassword, oldPassword, repeatPassword } =
+            dataForm as UserPasswordType;
+          dataForm &&
+            profileService.changeUserPassword({
+              newPassword,
+              oldPassword,
+            } as UserPasswordType);
+        }
       },
       handleValidateInput: (evt: Event) =>
         editPassowrdformValidator.handleFieldValidation(evt),

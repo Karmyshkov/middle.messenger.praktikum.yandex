@@ -21,4 +21,9 @@ interface UserPasswordDTO {
   newPassword: string;
 }
 
-export { UserInfoDTO, UserInfoType, UserPasswordDTO };
+interface UserPasswordType {
+  oldPassword: string;
+  newPassword: string;
+}
+
+export { UserInfoDTO, UserInfoType, UserPasswordDTO, UserPasswordType };

@@ -15,7 +15,7 @@ class ProfileApi extends BaseAPI {
   }
 
   public changeUserPassword(userPassword: UserPasswordDTO) {
-    return this.put('profile/password', userPassword);
+    return this.put('/password', userPassword);
   }
 }
 
