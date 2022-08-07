@@ -145,6 +145,9 @@ export class ChatPage extends Block {
       handleValidateDeleteUserInput: (evt: Event) => {
         deleteUserFormValidator.handleFieldValidation(evt);
       },
+
+      // ###
+
       handleLinkBtn: () => router.go('/settings'),
     };
   }
