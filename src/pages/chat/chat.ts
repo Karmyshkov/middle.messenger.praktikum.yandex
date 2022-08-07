@@ -1,7 +1,5 @@
 import Block from 'core/Block';
 import 'styles/chat.css';
-import right_arrow from 'img/right-arrow.svg';
-//import chats from 'data/chats.json';
 import messages from 'data/messages.json';
 import { ChatType, MessageProps, CreateChatType, ChatsType, ChatsDTO } from 'types';
 import { Chat } from 'utils/classes';
@@ -11,6 +9,7 @@ import { config, ADD_CHAT_FORM, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/co
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import store, { STORE_EVENTS } from 'core/Store';
 import { chatService } from 'services';
+import { BrowseRouter as router } from 'core';
 
 const addChatFromValidator = new FormValidator(
   config,
@@ -146,6 +145,7 @@ export class ChatPage extends Block {
       handleValidateDeleteUserInput: (evt: Event) => {
         deleteUserFormValidator.handleFieldValidation(evt);
       },
+      handleLinkBtn: () => router.go('/settings'),
     };
   }
   render() {
@@ -155,10 +155,7 @@ export class ChatPage extends Block {
       <div class="page">
         <ul class="chat">
           <li class="chat__column chat__column_left">
-            <a class="chat__link-profile page__link-profile" href="/settings">
-              <span class="chat__link-text">Профиль</span>
-              <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
-            </a>
+            {{{ChatLink onClick=handleLinkBtn}}}
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
               ${

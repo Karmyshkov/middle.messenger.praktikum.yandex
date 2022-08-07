@@ -45,24 +45,6 @@
     display: none;
   }
 
-  &__link-profile {
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.3s opacity;
-  }
-
-  &__link-profile:hover {
-    opacity: 0.7;
-  }
-
-  &__link-text {
-    font-size: 12px;
-    color: var(--color-grey);
-    font-weight: 500;
-    line-height: 12px;
-    margin-right: 8px;
-  }
-
   &__list {
     margin: 0;
     padding: 0;
