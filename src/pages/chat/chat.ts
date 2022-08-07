@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import 'styles/chat.css';
 import messages from 'data/messages.json';
-import { ChatType, MessageProps, CreateChatType, ChatsType, ChatsDTO } from 'types';
+import { MessageProps, CreateChatType } from 'types';
 import { Chat } from 'utils/classes';
 import { Popup } from 'utils/classes';
 import { FormValidator } from 'utils/classes';
