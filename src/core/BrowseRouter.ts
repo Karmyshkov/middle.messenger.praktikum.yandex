@@ -33,6 +33,7 @@ class BrowseRouter {
 
   _onRoute(pathname: string) {
     let route = this.getRoute(pathname);
+
     if (!route) {
       return;
     }
@@ -60,6 +61,9 @@ class BrowseRouter {
 
   getRoute(pathname: string): Route | undefined {
     const router = this.routers.find((route) => route.match(pathname));
+    if (router && router['block'] !== null) {
+      router['block'] = null;
+    }
     return router || this.routers.find((route) => route.match('*'));
   }
 }
