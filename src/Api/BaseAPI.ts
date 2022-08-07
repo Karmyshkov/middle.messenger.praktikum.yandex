@@ -26,5 +26,7 @@ export abstract class BaseAPI {
     });
   }
 
-  delete() {}
+  delete(url: string, data: unknown) {
+    return this._http.delete(`${this._baseUrl}/${url}`, { headers: this._headers, data });
+  }
 }
