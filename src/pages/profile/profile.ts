@@ -4,6 +4,7 @@ import { Popup } from 'utils/classes';
 import { config, REGEXP_IS_NOT_INPUT_AVATAR } from 'utils/constants';
 import store, { STORE_EVENTS } from 'core/Store';
 import { authService, profileService } from 'services';
+import { BrowseRouter as router } from 'core';
 
 export class ProfilePage extends Block {
   constructor(...args: any) {
@@ -45,6 +46,7 @@ export class ProfilePage extends Block {
         evt.preventDefault();
         authService.signout();
       },
+      handleBackBtn: () => router.back(),
     };
   }
   render() {
@@ -55,7 +57,7 @@ export class ProfilePage extends Block {
     return `
       <div class="profile">
         <ul class="profile__wrapper">
-          {{{BtnBackProfile href="/chat"}}}
+          {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form class="profile__form">
               {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
