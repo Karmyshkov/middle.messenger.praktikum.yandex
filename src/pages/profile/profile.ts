@@ -47,6 +47,8 @@ export class ProfilePage extends Block {
         authService.signout();
       },
       handleBackBtn: () => router.back(),
+      handleLinkToChangeProfile: () => router.go('/edit-settings'),
+      handleLinkToChangePassword: () => router.go('/edit-password'),
     };
   }
   render() {
@@ -96,13 +98,13 @@ export class ProfilePage extends Block {
               </ul>
               <ul class="profile__list">
                 {{{BtnProfile
-                  href="/edit-settings"
+                  onClick=handleLinkToChangeProfile
                   text="Изменить данные"
                   classes="btn-profile__link_color_red"
                   type="link"
                 }}}
                 {{{BtnProfile
-                  href="/edit-password"
+                  onClick=handleLinkToChangePassword
                   text="Изменить пароль"
                   classes="btn-profile__link_color_red"
                   type="link"
