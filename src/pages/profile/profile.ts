@@ -51,9 +51,9 @@ export class ProfilePage extends Block {
         <ul class="profile__wrapper">
           {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
-            <form class="profile__form">
+            <form class="profile__form" novalidate>
               {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
-              <p class="profile__user-name">${display_name}</p>
+              <p class="profile__user-name">${display_name ? display_name : ''}</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   type="email"

@@ -120,8 +120,7 @@ export class ChatPage extends Block {
           addErors: addUserFormValidator.addErrorsForInput,
         });
 
-        dataForm &&
-          chatService.searchUserByLogin({ login: dataForm } as SearchUserByLoginType);
+        dataForm && chatService.searchUserByLogin(dataForm as SearchUserByLoginType);
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);

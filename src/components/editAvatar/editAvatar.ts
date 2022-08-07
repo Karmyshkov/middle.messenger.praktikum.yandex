@@ -20,7 +20,9 @@ export class EditAvatar extends Block {
     return `
       <div class="edit-avatar">
         <img class="edit-avatar__img" src="${
-          avatar !== 'undefined' ? BASE_URL_RESOURCES + avatar : defaultIcon
+          avatar !== 'undefined' && avatar !== 'null'
+            ? BASE_URL_RESOURCES + avatar
+            : defaultIcon
         }" alt="Аватар по умолчанию" />
         <span class="edit-avatar__span">Поменять аватар</span>
       </div>
