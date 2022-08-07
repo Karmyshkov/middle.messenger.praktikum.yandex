@@ -4,7 +4,8 @@ import { Popup } from 'utils/classes';
 import { FormValidator } from 'utils/classes';
 import { config, EDIT_PASSWORD_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
-import dataProfile from 'data/profile.json';
+import store, { STORE_EVENTS } from 'core/Store';
+import { authService } from 'services';
 import { BrowseRouter as router } from 'core';
 
 const editPassowrdformValidator = new FormValidator(
@@ -17,6 +18,16 @@ const editPassowrdformValidator = new FormValidator(
 );
 
 export class EditPasswordPage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.getInfo();
+
+    store.on(STORE_EVENTS.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleEditAvatar: () => {
@@ -47,6 +58,7 @@ export class EditPasswordPage extends Block {
     };
   }
   render() {
+    const { userInfo = [] } = this.props;
     // language=hbs
     return `
       <div class="profile">
@@ -57,7 +69,7 @@ export class EditPasswordPage extends Block {
               class="profile__form profile__form_el_edit-password-form"
               novalidate
             >
-              {{{EditAvatar onClick=handleEditAvatar}}}
+              {{{EditAvatar avatar="${userInfo.avatar}" onClick=handleEditAvatar}}}
               <p class="profile__user-name">Иван</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
@@ -66,7 +78,7 @@ export class EditPasswordPage extends Block {
                   onBlur=handleValidateInput
                   type="password"
                   helperText="Старый пароль"
-                  value="${dataProfile.payload.password}"
+                  value=""
                   minlength="8"
                   maxlength="40"
                   name="oldPassword"
@@ -78,7 +90,7 @@ export class EditPasswordPage extends Block {
                   onBlur=handleValidateInput
                   type="password"
                   helperText="Новый пароль"
-                  value="12341234"
+                  value=""
                   minlength="8"
                   maxlength="40"
                   name="newPassword"
@@ -90,7 +102,7 @@ export class EditPasswordPage extends Block {
                   onBlur=handleValidateInput
                   type="password"
                   helperText="Повторите новый пароль"
-                  value="12341234" minlength="8"
+                  value="" minlength="8"
                   maxlength="40"
                   name="repeatPassword"
                   formName="profile__form_el_edit-password-form"
