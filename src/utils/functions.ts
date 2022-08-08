@@ -10,6 +10,7 @@ interface SubmitFormProps {
   inputSelector: string;
   formSelector: string;
   isValidField?: boolean | undefined;
+  isNotCloseBySbmit?: boolean;
 }
 
 const handleSubmitForm = ({
@@ -19,6 +20,7 @@ const handleSubmitForm = ({
   disableBtn,
   addErors,
   isValidField = undefined,
+  isNotCloseBySbmit,
 }: SubmitFormProps) => {
   if (stateForm && isValidField === undefined) {
     const form = document.querySelector(`.${formSelector}`);
@@ -31,7 +33,7 @@ const handleSubmitForm = ({
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
 
-      Popup.handleClosePopup(config.isOpenPopupSelector);
+      isNotCloseBySbmit && Popup.handleClosePopup(config.isOpenPopupSelector);
 
       return dataForm;
     }

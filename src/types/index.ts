@@ -8,7 +8,12 @@ export {
   props,
 } from './types';
 export { SignupType, SigninType } from './authTypes';
-export { CreateChatType, RemoveChatType, SearchUserByLoginType } from './chatTypes';
+export {
+  CreateChatType,
+  RemoveChatType,
+  SearchUserByLoginType,
+  AddUserToChat,
+} from './chatTypes';
 export {
   UserInfoDTO,
   UserInfoType,

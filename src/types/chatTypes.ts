@@ -8,6 +8,12 @@ interface RemoveChatType {
 
 interface SearchUserByLoginType {
   login: string;
+  form?: Element | null;
 }
 
-export { CreateChatType, RemoveChatType, SearchUserByLoginType };
+interface AddUserToChat {
+  users: Record<number, number>[];
+  chatId: number;
+}
+
+export { CreateChatType, RemoveChatType, SearchUserByLoginType, AddUserToChat };

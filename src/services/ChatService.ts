@@ -14,7 +14,7 @@ import {
 import { store } from 'core';
 import defaultIcon from 'img/avatar.svg';
 
-class AuthService {
+class ChatService {
   public createChat({ title }: CreateChatType) {
     chatApi
       .createChat({ title })
@@ -100,4 +100,4 @@ class AuthService {
   }
 }
 
-export default new AuthService();
+export default new ChatService();
