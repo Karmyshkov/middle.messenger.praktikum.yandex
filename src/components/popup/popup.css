@@ -21,7 +21,7 @@
     background-color: var(--color-third);
     box-sizing: border-box;
     padding: 40px 30px;
-    max-width: 340px;
+    max-width: 380px;
     width: 100%;
     border-radius: 12px;
   }
@@ -38,5 +38,84 @@
 
   &__form {
     font-family: inherit;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    max-height: 160px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 35px;
+  }
+
+  &__list::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &__list::-webkit-scrollbar-track {
+    background: var(--color-light-grey);
+  }
+
+  &__list::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey);
+    border-radius: 20px;
+  }
+
+  &__item {
+    list-style: none;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 0 14px;
+  }
+
+  &__item:last-of-type {
+    margin: 0;
+  }
+
+  &__wrapper {
+    max-width: 212px;
+    overflow: hidden;
+  }
+
+  &__text-login {
+    margin: 0;
+    font-size: 16px;
+    color: var(--color-primaty);
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &__text-email {
+    margin: 0;
+    font-size: 13px;
+    color: var(--color-primaty);
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  &__avatar {
+    max-height: 44px;
+    max-width: 44px;
+    border-radius: 50%;
+  }
+
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--color-secondary);
+    border-radius: 50%;
+    align-self: center;
+    margin-left: auto;
+    margin-right: 5px;
+    font-size: 20px;
+    color: var(--color-primaty);
+    font-weight: 500;
+    transition: 0.3s background-color, 0.3s color;
+  }
+
+  &__btn:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-third);
   }
 }
