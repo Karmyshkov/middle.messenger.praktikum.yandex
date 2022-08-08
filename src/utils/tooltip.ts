@@ -1,22 +1,24 @@
+import { config, TAG_NAME_DIV } from 'utils/constants';
+
 type TooltipProp = {
   text: string;
   type: 'error' | 'success';
 };
 
-const tooltip = document.createElement('div');
-tooltip.classList.add('tooltip');
+const tooltip = document.createElement(TAG_NAME_DIV);
+tooltip.classList.add(config.tooltipSelector);
 
 function showTooltip({ text, type }: TooltipProp) {
+  const classes =
+    type === 'success' ? config.tooltipIsSuccessSelector : config.tooltipIsErrorSelector;
   tooltip.textContent = text;
-  tooltip.classList.add(type === 'success' ? 'tooltip_is-success' : 'tooltip_is-error');
+  tooltip.classList.add(classes);
   document.body.append(tooltip);
 
   tooltip.addEventListener('click', handleCloseTooltip);
 
   setTimeout(() => {
-    tooltip.classList.remove(
-      type === 'success' ? 'tooltip_is-success' : 'tooltip_is-error'
-    );
+    tooltip.classList.remove(classes);
     document.body.contains(tooltip) && document.body.removeChild(tooltip);
   }, 3000);
 }

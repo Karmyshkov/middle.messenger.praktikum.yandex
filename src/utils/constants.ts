@@ -47,6 +47,9 @@ const config = {
   popupTextLoginSelector: 'popup__text-login',
   popupTextEmailSelector: 'popup__text-email',
   popupBtnSelector: 'popup__btn',
+  tooltipSelector: 'tooltip',
+  tooltipIsSuccessSelector: 'tooltip_is-success',
+  tooltipIsErrorSelector: 'tooltip_is-error',
 };
 
 const TAG_NAME_UL = 'ul';
