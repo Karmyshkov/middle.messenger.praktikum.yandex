@@ -89,6 +89,7 @@ class ChatService {
           login.textContent = user.login;
           email.textContent = user.email;
           btn.textContent = '+';
+          btn.type = 'button';
 
           li.appendChild(avatar);
           wrapper.appendChild(login);
