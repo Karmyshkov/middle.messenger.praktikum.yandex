@@ -57,9 +57,6 @@ class ChatService {
     chatApi
       .searchUserByLogin({ login })
       .then((users: any) => {
-        const popupList = form?.querySelector('.popup__list');
-        popupList && form?.removeChild(popupList);
-
         const fragment = document.createDocumentFragment();
         const ul = document.createElement('ul');
         ul.classList.add('popup__list');
