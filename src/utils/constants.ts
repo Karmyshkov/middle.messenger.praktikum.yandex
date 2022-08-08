@@ -40,7 +40,21 @@ const config = {
   inputProfileHelperTextSelector: 'input-profile-wrapper__error',
   isShowInputProfileHelperTextSelector: 'input-profile-wrapper__error_is-show',
   addChatBtnSelector: 'search-chat__btn',
+  popupListSelector: 'popup__list',
+  popupItemSelector: 'popup__item',
+  popupWrapperSelector: 'popup__wrapper',
+  popupAvatarSelector: 'popup__avatar',
+  popupTextLoginSelector: 'popup__text-login',
+  popupTextEmailSelector: 'popup__text-email',
+  popupBtnSelector: 'popup__btn',
 };
+
+const TAG_NAME_UL = 'ul';
+const TAG_NAME_LI = 'li';
+const TAG_NAME_DIV = 'div';
+const TAG_NAME_IMG = 'img';
+const TAG_NAME_P = 'p';
+const TAG_NAME_BUTTON = 'button';
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
@@ -113,4 +127,10 @@ export {
   SETTINGS_PATH,
   EDIT_SETTINGS_PATH,
   EDIT_PASSWORD_PATH,
+  TAG_NAME_UL,
+  TAG_NAME_LI,
+  TAG_NAME_DIV,
+  TAG_NAME_IMG,
+  TAG_NAME_P,
+  TAG_NAME_BUTTON,
 };

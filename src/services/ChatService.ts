@@ -13,6 +13,15 @@ import {
 } from 'utils/constants';
 import { store } from 'core';
 import defaultIcon from 'img/avatar.svg';
+import {
+  config,
+  TAG_NAME_UL,
+  TAG_NAME_LI,
+  TAG_NAME_DIV,
+  TAG_NAME_IMG,
+  TAG_NAME_P,
+  TAG_NAME_BUTTON,
+} from 'utils/constants';
 
 class ChatService {
   public createChat({ title }: CreateChatType) {
@@ -58,23 +67,23 @@ class ChatService {
       .searchUserByLogin({ login })
       .then((users: any) => {
         const fragment = document.createDocumentFragment();
-        const ul = document.createElement('ul');
-        ul.classList.add('popup__list');
+        const ul = document.createElement(TAG_NAME_UL);
+        ul.classList.add(config.popupListSelector);
 
         JSON.parse(users.response).map((user: any) => {
-          const li = document.createElement('li');
-          const wrapper = document.createElement('div');
-          const avatar = document.createElement('img');
-          const login = document.createElement('p');
-          const email = document.createElement('p');
-          const btn = document.createElement('button');
+          const li = document.createElement(TAG_NAME_LI);
+          const wrapper = document.createElement(TAG_NAME_DIV);
+          const avatar = document.createElement(TAG_NAME_IMG);
+          const login = document.createElement(TAG_NAME_P);
+          const email = document.createElement(TAG_NAME_P);
+          const btn = document.createElement(TAG_NAME_BUTTON);
 
-          li.classList.add('popup__item');
-          wrapper.classList.add('popup__wrapper');
-          avatar.classList.add('popup__avatar');
-          login.classList.add('popup__text-login');
-          email.classList.add('popup__text-email');
-          btn.classList.add('popup__btn');
+          li.classList.add(config.popupItemSelector);
+          wrapper.classList.add(config.popupWrapperSelector);
+          avatar.classList.add(config.popupAvatarSelector);
+          login.classList.add(config.popupTextLoginSelector);
+          email.classList.add(config.popupTextEmailSelector);
+          btn.classList.add(config.popupBtnSelector);
 
           avatar.src = user.avatar ? `${BASE_URL_RESOURCES}${user.avatar}` : defaultIcon;
           login.textContent = user.login;
