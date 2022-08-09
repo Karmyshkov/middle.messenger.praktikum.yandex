@@ -6,4 +6,5 @@ export interface FormPopupProps {
   isDefault: boolean;
   helperText?: Text;
   textBtn: string;
+  users?: any;
 }

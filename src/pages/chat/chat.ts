@@ -112,7 +112,7 @@ export class ChatPage extends Block {
         addUserFormValidator.clearError();
         addUserFormValidator.toggleBtnState();
       },
-      hendleSubmitAddUserForm: (evt: Event) => {
+      hendleFindUserByLogin: (evt: Event) => {
         evt.preventDefault();
         const dataForm = handleSubmitForm({
           stateForm: addUserFormValidator.checkStateForm(),
@@ -120,20 +120,21 @@ export class ChatPage extends Block {
           formSelector: ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
           addErors: addUserFormValidator.addErrorsForInput,
-          isNotCloseBySbmit: false,
         });
 
         const target = evt.target as HTMLInputElement;
         const form = target.closest(`.${ADD_USER_FORM}`);
 
         if (form && dataForm) {
-          chatService.searchUserByLogin({
-            login: dataForm,
-            form,
-          } as SearchUserByLoginType);
-        }
+          chatService
+            .searchUserByLogin({
+              login: dataForm,
+              form,
+            } as SearchUserByLoginType)
+            .then((users) => this.setProps({ users }));
 
-        // console.log(this.state.chatItemId);
+          //chatService.addUserToChat({ users: [], chatId: this.state.chatItemId });
+        }
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
@@ -168,8 +169,9 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats = [] } = this.props;
+    const { chats = [], users = [] } = this.props;
     const { chatItemId } = this.state;
+
     // language=hbs
     return `
       <div class="page">
@@ -246,7 +248,7 @@ export class ChatPage extends Block {
           fieldName="title"
         }}}
         {{{Popup
-          onSubmit=hendleSubmitAddUserForm
+          onSubmit=hendleFindUserByLogin
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput
           onBlur=handleValidateAddUserInput
@@ -258,6 +260,7 @@ export class ChatPage extends Block {
           isDefault=true
           name="popup__form_add-user"
           fieldName="login"
+          users='${users}'
         }}}
         {{{Popup
           onSubmit=hendleSubmitDeleteUserForm

@@ -13,6 +13,7 @@ export class Popup extends Block {
     isDefault,
     helperText,
     textBtn,
+    users,
     onInput,
     onFocus,
     onBlur,
@@ -27,6 +28,7 @@ export class Popup extends Block {
       isDefault,
       helperText,
       textBtn,
+      users,
       onInput,
       onFocus,
       onBlur,
@@ -43,6 +45,7 @@ export class Popup extends Block {
       isDefault: props.isDefault,
       helperText: props.helperText,
       textBtn: props.textBtn,
+      users: props.users,
       onSubmit: props.onSubmit,
       onInput: props.onInput,
       onFocus: onfocus,
@@ -60,6 +63,7 @@ export class Popup extends Block {
       isDefault,
       helperText,
       textBtn,
+      users,
     } = this.state;
     // language=hbs
     return `
@@ -77,6 +81,7 @@ export class Popup extends Block {
             isDefault=${isDefault}
             helperText="${helperText}"
             textBtn="${textBtn}"
+            users='${users}'
           }}}
         </div>
       </div>

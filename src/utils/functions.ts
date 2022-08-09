@@ -20,7 +20,6 @@ const handleSubmitForm = ({
   disableBtn,
   addErors,
   isValidField = undefined,
-  isNotCloseBySbmit,
 }: SubmitFormProps) => {
   if (stateForm && isValidField === undefined) {
     const form = document.querySelector(`.${formSelector}`);
@@ -33,7 +32,7 @@ const handleSubmitForm = ({
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
 
-      isNotCloseBySbmit && Popup.handleClosePopup(config.isOpenPopupSelector);
+      Popup.handleClosePopup(config.isOpenPopupSelector);
 
       return dataForm;
     }
@@ -56,10 +55,11 @@ function getMessageFromResponse(errText: string) {
 }
 
 function showError(err: any) {
-  showTooltip({
-    text: getMessageFromResponse(err.responseText) as string,
-    type: 'error',
-  });
+  err.responseText &&
+    showTooltip({
+      text: getMessageFromResponse(err.responseText) as string,
+      type: 'error',
+    });
 }
 
 export { handleSubmitForm, checkOnValueInput, isEqual, showError };

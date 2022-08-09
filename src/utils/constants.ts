@@ -52,13 +52,6 @@ const config = {
   tooltipIsErrorSelector: 'tooltip_is-error',
 };
 
-const TAG_NAME_UL = 'ul';
-const TAG_NAME_LI = 'li';
-const TAG_NAME_DIV = 'div';
-const TAG_NAME_IMG = 'img';
-const TAG_NAME_P = 'p';
-const TAG_NAME_BUTTON = 'button';
-
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
@@ -130,10 +123,4 @@ export {
   SETTINGS_PATH,
   EDIT_SETTINGS_PATH,
   EDIT_PASSWORD_PATH,
-  TAG_NAME_UL,
-  TAG_NAME_LI,
-  TAG_NAME_DIV,
-  TAG_NAME_IMG,
-  TAG_NAME_P,
-  TAG_NAME_BUTTON,
 };

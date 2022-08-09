@@ -6,9 +6,10 @@ export interface PopupProps {
   classesPopup?: string;
   classesForm?: string;
   name: string;
-  fieldName: string;
+  fieldName?: string;
   title: string;
-  isDefault: boolean;
+  isDefault?: boolean;
   helperText?: Text;
-  textBtn: string;
+  textBtn?: string;
+  users?: any;
 }
