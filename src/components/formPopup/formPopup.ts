@@ -15,6 +15,7 @@ export class FormPopup extends Block {
     onInput,
     onFocus,
     onBlur,
+    onClick,
   }: any) {
     super({
       classesForm,
@@ -27,6 +28,7 @@ export class FormPopup extends Block {
       onInput,
       onFocus,
       onBlur,
+      onClick,
       events: { submit: onSubmit },
     });
   }
@@ -41,7 +43,8 @@ export class FormPopup extends Block {
       users: props.users,
       onInput: props.onInput,
       onFocus: props.onFocus,
-      onBlur: props.onblur,
+      onBlur: props.onBlur,
+      onClick: props.onClick,
     };
   }
   protected render(): string {
@@ -67,7 +70,6 @@ export class FormPopup extends Block {
                     name="${fieldName}"
                   }}}
                   {{{Button
-                    onClick=onClick
                     textBtn="${textBtn}"
                     type="submit"
                   }}}
@@ -80,7 +82,7 @@ export class FormPopup extends Block {
                   }}}
                   `
             }
-            ${users !== 'undefined' ? `{{{Users users='${users}'}}}` : ''}
+            ${users !== 'undefined' ? `{{{Users users='${users}' onClick=onClick}}}` : ''}
           </form>
     `;
   }
