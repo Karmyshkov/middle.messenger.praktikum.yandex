@@ -136,11 +136,13 @@ export class ChatPage extends Block {
                 config
               ).handleOpenPopup();
             });
-
-        //chatService.addUserToChat({ users: [], chatId: this.state.chatItemId });
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
+      },
+      handleAddUserToChat: () => {
+        console.log(this.state.chatItemId);
+        //chatService.addUserToChat({ users: [], chatId: this.state.chatItemId });
       },
 
       // delete user
@@ -255,6 +257,7 @@ export class ChatPage extends Block {
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput
           onBlur=handleValidateAddUserInput
+          onClick=handleAddUserToChat
           title="Добавить пользователя"
           helperText="Логин"
           textBtn="Найти"

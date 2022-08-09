@@ -18,6 +18,7 @@ export class Popup extends Block {
     onFocus,
     onBlur,
     onSubmit,
+    onClick,
   }: PopupProps) {
     super({
       classesPopup,
@@ -33,6 +34,7 @@ export class Popup extends Block {
       onFocus,
       onBlur,
       onSubmit,
+      onClick,
     });
   }
   protected getStateFromProps(props: PopupProps): void {
@@ -48,8 +50,9 @@ export class Popup extends Block {
       users: props.users,
       onSubmit: props.onSubmit,
       onInput: props.onInput,
-      onFocus: onfocus,
-      onBlur: onblur,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
+      onClick: props.onClick,
     };
   }
 
@@ -75,6 +78,7 @@ export class Popup extends Block {
             onInput=onInput
             onFocus=onFocus
             onBlur=onBlur
+            onClick=onClick
             classesForm="${classesForm}"
             name="${name}"
             fieldName="${fieldName}"

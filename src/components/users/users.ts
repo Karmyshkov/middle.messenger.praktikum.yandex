@@ -5,7 +5,7 @@ import { UsersProps } from './types';
 export class Users extends Block {
   static componentName = 'Users';
   constructor({ users, onClick }: UsersProps) {
-    super({ users, events: { click: onClick } });
+    super({ users, onClick });
   }
 
   protected getStateFromProps(props: any): void {
@@ -14,6 +14,7 @@ export class Users extends Block {
         props.users !== 'undefined' && props.users.length > 0
           ? JSON.parse(props.users)
           : [],
+      onClick: props.onClick,
     };
   }
   protected render(): string {
@@ -28,6 +29,7 @@ export class Users extends Block {
             .map(
               (user: any) =>
                 `{{{UserItem
+                  onClick=onClick
                   id=${user.id}
                   avatar="${user.avatar}"
                   login="${user.login}"
