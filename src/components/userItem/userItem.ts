@@ -23,15 +23,15 @@ export class UserItem extends Block {
 
     // language=hbs
     return `
-      <li class="popup__item">
-        <img class="popup__avatar" src="${
+      <li class="user-item">
+        <img class="user-item__avatar" src="${
           avatar && avatar !== 'null' ? `${BASE_URL_RESOURCES}${avatar}` : defaultIcon
         }" alt="Аватар">
-        <div class="popup__wrapper">
-          <p class="popup__text-login">${login}</p>
-          <p class="popup__text-email">${email}</p>
+        <div class="user-item__wrapper">
+          <p class="user-item__text-login">${login}</p>
+          <p class="user-item__text-email">${email}</p>
         </div>
-        <button class="popup__btn" type="button">+</button>
+        <button class="user-item__btn" type="button">+</button>
       </li>
     `;
   }
