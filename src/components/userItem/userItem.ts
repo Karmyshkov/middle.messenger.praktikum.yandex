@@ -23,7 +23,7 @@ export class UserItem extends Block {
 
     // language=hbs
     return `
-      <li class="user-item">
+      <li class="user-item" data-user-id="${id}">
         <img class="user-item__avatar" src="${
           avatar && avatar !== 'null' ? `${BASE_URL_RESOURCES}${avatar}` : defaultIcon
         }" alt="Аватар">
