@@ -59,13 +59,12 @@ export class ChatPage extends Block {
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
-        Promise.resolve(() => this.setState({ chatItemId })).then(() =>
-          new Chat(config).addActiveClassName(evt)
-        );
+        this.setState({ chatItemId });
         const state = store.getState() as any;
         this.setProps({
           currentChat: state?.chats.filter((chat: any) => chat.id === Number(chatItemId)),
         });
+        new Chat(config).addActiveClassName(evt);
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
@@ -149,10 +148,9 @@ export class ChatPage extends Block {
         const target = evt.target as HTMLElement;
         const userItem = target.closest(`.${config.userItemSelector}`);
         const userId = userItem?.getAttribute('data-user-id');
-        console.log(this.state.chatItemId, userId);
         chatService.addUserToChat({
-          users: [userId ? userId : 0],
-          chatId: this.state.chatItemId,
+          users: [userId ? Number(userId) : 0],
+          chatId: Number(this.state.chatItemId),
         });
       },
 
