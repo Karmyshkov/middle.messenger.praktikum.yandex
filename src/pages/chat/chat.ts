@@ -188,11 +188,6 @@ export class ChatPage extends Block {
     const { chats = [], users = [], currentChat } = this.props;
     const { chatItemId } = this.state;
 
-    //console.log(currentChat && currentChat.forEach((elem) => console.log(elem)));
-
-    // const currentChat = chats.filter((chat: any) => chat.id === Number(chatItemId));
-    // const { avatar, title } = currentChat;
-
     // language=hbs
     return `
       <div class="page">
