@@ -8,7 +8,6 @@ interface RemoveChatType {
 
 interface SearchUserByLoginType {
   login: string;
-  form?: Element | null;
 }
 
 interface AddUserToChat {

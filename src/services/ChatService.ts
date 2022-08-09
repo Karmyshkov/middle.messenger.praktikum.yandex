@@ -48,7 +48,7 @@ class ChatService {
       })
       .catch(showError);
   }
-  public searchUserByLogin({ login, form }: SearchUserByLoginType) {
+  public searchUserByLogin({ login }: SearchUserByLoginType) {
     return chatApi
       .searchUserByLogin({ login })
       .then((users: any) => users.response)

@@ -122,19 +122,22 @@ export class ChatPage extends Block {
           addErors: addUserFormValidator.addErrorsForInput,
         });
 
-        const target = evt.target as HTMLInputElement;
-        const form = target.closest(`.${ADD_USER_FORM}`);
-
-        if (form && dataForm) {
+        dataForm &&
           chatService
             .searchUserByLogin({
               login: dataForm,
-              form,
             } as SearchUserByLoginType)
-            .then((users) => this.setProps({ users }));
+            .then((users) => {
+              this.setProps({ users });
+              new Popup(
+                config.popupAddUserSelector,
+                config.btnSubmitFormSelector,
+                config.isOpenPopupSelector,
+                config
+              ).handleOpenPopup();
+            });
 
-          //chatService.addUserToChat({ users: [], chatId: this.state.chatItemId });
-        }
+        //chatService.addUserToChat({ users: [], chatId: this.state.chatItemId });
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);

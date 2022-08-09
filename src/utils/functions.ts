@@ -1,6 +1,6 @@
 import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
-import { config } from 'utils/constants';
+import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
 import { showTooltip } from 'utils';
 
 interface SubmitFormProps {
@@ -22,7 +22,8 @@ const handleSubmitForm = ({
   isValidField = undefined,
 }: SubmitFormProps) => {
   if (stateForm && isValidField === undefined) {
-    const form = document.querySelector(`.${formSelector}`);
+    const form = document.querySelector(`.${formSelector}`) as HTMLFormElement;
+
     if (form) {
       const inputs = form.querySelectorAll(`.${inputSelector}`);
       let dataForm = {};
@@ -32,7 +33,9 @@ const handleSubmitForm = ({
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
 
-      Popup.handleClosePopup(config.isOpenPopupSelector);
+      if (form.name !== ADD_USER_FORM && form.name !== DELETE_USER_FORM) {
+        Popup.handleClosePopup(config.isOpenPopupSelector);
+      }
 
       return dataForm;
     }
