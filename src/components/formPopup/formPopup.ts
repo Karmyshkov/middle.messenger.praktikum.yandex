@@ -80,7 +80,7 @@ export class FormPopup extends Block {
                   }}}
                   `
             }
-            {{{Users users='${users}'}}}
+            ${users !== 'undefined' ? `{{{Users users='${users}'}}}` : ''}
           </form>
     `;
   }
