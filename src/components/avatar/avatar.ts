@@ -17,6 +17,7 @@ export class Avatar extends Block {
   }
   protected render(): string {
     const { userName, srcAvatar } = this.state;
+
     // language=hbs
     return `
       <img

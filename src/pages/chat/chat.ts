@@ -62,6 +62,10 @@ export class ChatPage extends Block {
         Promise.resolve(() => this.setState({ chatItemId })).then(() =>
           new Chat(config).addActiveClassName(evt)
         );
+        const state = store.getState() as any;
+        this.setProps({
+          currentChat: state?.chats.filter((chat: any) => chat.id === Number(chatItemId)),
+        });
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
@@ -181,8 +185,11 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats = [], users = [] } = this.props;
-    const { chatItemId, avatar, title } = this.state;
+    const { chats = [], users = [], currentChat } = this.props;
+    const { chatItemId } = this.state;
+
+    //console.log(currentChat && currentChat.forEach((elem) => console.log(elem)));
+
     // const currentChat = chats.filter((chat: any) => chat.id === Number(chatItemId));
     // const { avatar, title } = currentChat;
 
@@ -219,11 +226,18 @@ export class ChatPage extends Block {
           <li class="chat__column chat__column-dialog chat__column_is-hidden">
             <div class="chat__header">
               <div class="chat__inner">
-                {{{Avatar
-                  srcAvatar="${avatar}"
-                  userName="${title}"
-                }}}
-                <p class="chat__user-name">${title}</p>
+              ${
+                currentChat &&
+                currentChat.map((chat: any) => {
+                  return `
+                    {{{Avatar
+                      srcAvatar="${chat.avatar}"
+                      userName="${chat.title}"
+                    }}}
+                    <p class="chat__user-name">${chat.title}</p>
+                `;
+                })
+              }
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
