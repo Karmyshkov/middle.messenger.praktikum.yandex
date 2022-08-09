@@ -40,28 +40,6 @@
     font-family: inherit;
   }
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    max-height: 160px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-top: 35px;
-  }
-
-  &__list::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &__list::-webkit-scrollbar-track {
-    background: var(--color-light-grey);
-  }
-
-  &__list::-webkit-scrollbar-thumb {
-    background-color: var(--color-grey);
-    border-radius: 20px;
-  }
-
   &__item {
     list-style: none;
     margin-bottom: 12px;

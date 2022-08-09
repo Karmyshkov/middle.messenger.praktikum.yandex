@@ -10,7 +10,10 @@ export class Users extends Block {
 
   protected getStateFromProps(props: any): void {
     this.state = {
-      users: !props.users && props.users.length > 0 ? JSON.parse(props.users) : [],
+      users:
+        props.users !== 'undefined' && props.users.length > 0
+          ? JSON.parse(props.users)
+          : [],
     };
   }
   protected render(): string {
@@ -18,7 +21,7 @@ export class Users extends Block {
 
     // language=hbs
     return `
-      <ul class="popup__list">
+      <ul class="users">
         ${
           users &&
           users
