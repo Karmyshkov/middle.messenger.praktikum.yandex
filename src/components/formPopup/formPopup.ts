@@ -51,7 +51,7 @@ export class FormPopup extends Block {
     // language=hbs
     return `
           <form class="formPopup ${
-            classesForm !== 'undefined' ? classesForm : ''
+            !classesForm ? classesForm : ''
           }" name="${name}" novalidate>
             ${
               isDefault
@@ -80,7 +80,7 @@ export class FormPopup extends Block {
                   }}}
                   `
             }
-            ${users !== 'undefined' ? `{{{Users users='${users}'}}}` : ''}
+            ${!users ? `{{{Users users='${users}'}}}` : ''}
           </form>
     `;
   }

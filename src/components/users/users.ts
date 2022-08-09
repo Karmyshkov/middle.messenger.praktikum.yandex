@@ -10,10 +10,7 @@ export class Users extends Block {
 
   protected getStateFromProps(props: any): void {
     this.state = {
-      users:
-        props.users !== 'undefined' && props.users.length > 0
-          ? JSON.parse(props.users)
-          : [],
+      users: !props.users && props.users.length > 0 ? JSON.parse(props.users) : [],
     };
   }
   protected render(): string {
