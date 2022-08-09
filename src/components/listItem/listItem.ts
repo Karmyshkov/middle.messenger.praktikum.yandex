@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './listItem.css';
 import { ListItemProps } from './types';
 import { ChatType } from 'types';

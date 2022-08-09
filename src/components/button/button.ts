@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './button.css';
 import { ButtonProps } from './types';
 

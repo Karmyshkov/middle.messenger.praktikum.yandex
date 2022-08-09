@@ -1,9 +1,8 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './searchChat.css';
 import { SearchChatProps } from './types';
 import search from 'img/search.svg';
-import { Popup } from 'utils/classes';
-import { config } from 'utils/constants';
+import { config, Popup } from 'utils';
 
 export class SearchChat extends Block {
   static componentName = 'SearchChat';

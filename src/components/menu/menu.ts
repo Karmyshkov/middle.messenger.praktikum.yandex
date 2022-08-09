@@ -1,8 +1,7 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './menu.css';
 import { MenuProps } from './types';
-import { Popup } from 'utils/classes/Popup';
-import { config } from 'utils/constants';
+import { config, Popup } from 'utils';
 import plus from 'img/plus.svg';
 import close from 'img/close.svg';
 import photo from 'img/photo.svg';

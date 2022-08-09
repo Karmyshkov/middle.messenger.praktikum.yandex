@@ -1,8 +1,8 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './editAvatar.css';
 import { EditAvatarProps } from './types';
 import defaultIcon from 'img/avatar.svg';
-import { BASE_URL_RESOURCES } from 'utils/constants';
+import { BASE_URL_RESOURCES } from 'utils';
 
 export class EditAvatar extends Block {
   static componentName = 'EditAvatar';

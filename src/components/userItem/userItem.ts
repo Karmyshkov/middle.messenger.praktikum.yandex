@@ -1,7 +1,7 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './userItem.css';
 import { UserItemProps } from './types';
-import { BASE_URL_RESOURCES } from 'utils/constants';
+import { BASE_URL_RESOURCES } from 'utils';
 import defaultIcon from 'img/avatar.svg';
 
 export class UserItem extends Block {

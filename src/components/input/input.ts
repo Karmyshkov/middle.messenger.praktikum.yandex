@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './input.css';
 import { InputProps } from './types';
 

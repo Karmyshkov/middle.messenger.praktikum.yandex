@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './btnBackProfile.css';
 import { BtnBackProfileProps } from './types';
 import left_arrow from 'img/left-arrow.svg';

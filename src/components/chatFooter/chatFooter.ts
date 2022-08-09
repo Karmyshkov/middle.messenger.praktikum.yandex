@@ -1,8 +1,8 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './chatFooter.css';
 import { ChatFooterProps } from './types';
-import attach_btn from 'img/attach-btn.svg';
-import send_btn from 'img/send-btn.svg';
+import attachBtn from 'img/attach-btn.svg';
+import sendBtn from 'img/send-btn.svg';
 
 export class ChatFooter extends Block {
   static componentName = 'ChatFooter';
@@ -17,7 +17,7 @@ export class ChatFooter extends Block {
           <button class="chat-footer__btn-attach" type="button" aria-label="Прирепить файл">
             <img
               class="chat-footer__icon-attach"
-              src="${attach_btn}"
+              src="${attachBtn}"
               alt="Иконка прирепить файл"
             />
           </button>
@@ -25,7 +25,7 @@ export class ChatFooter extends Block {
           <button class="chat-footer__btn-send" type="submit" aria-label="Отправить сообщение">
             <img
               class="chat-footer__icon-send"
-              src="${send_btn}"
+              src="${sendBtn}"
               alt="Иконка отправить сообщение"
             />
           </button>

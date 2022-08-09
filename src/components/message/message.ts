@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './message.css';
 import { MessageProps } from 'types';
 

@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './inputWrapper.css';
 import { InputWrapperProps } from './types';
 

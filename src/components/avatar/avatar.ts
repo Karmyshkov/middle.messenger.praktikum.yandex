@@ -1,8 +1,8 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './avatar.css';
 import { AvatarProps } from './types';
 import defaultIcon from 'img/avatar.svg';
-import { BASE_URL_RESOURCES } from 'utils/constants';
+import { BASE_URL_RESOURCES } from 'utils';
 
 export class Avatar extends Block {
   static componentName = 'Avatar';

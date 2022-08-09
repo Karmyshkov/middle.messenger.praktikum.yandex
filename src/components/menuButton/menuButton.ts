@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './menuButton.css';
 import { MenuButtonProps } from './types';
 
