@@ -4,7 +4,6 @@
   max-height: 160px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 35px;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -17,5 +16,9 @@
   &::-webkit-scrollbar-thumb {
     background-color: var(--color-grey);
     border-radius: 20px;
+  }
+
+  &_is-margin {
+    margin-top: 35px;
   }
 }

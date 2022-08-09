@@ -21,7 +21,7 @@ export class Users extends Block {
 
     // language=hbs
     return `
-      <ul class="users">
+      <ul class="users ${users?.length !== 0 ? 'users_is-margin' : ''}">
         ${
           users &&
           users
