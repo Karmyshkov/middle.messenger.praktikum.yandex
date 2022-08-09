@@ -59,6 +59,7 @@ const REGEXP_REPLACE_ID = /[a-z/]+/i;
 
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
+const BASE_URL_WSS = 'wss://ya-praktikum.tech/ws/chats';
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
 
 const SIGNIN_PATH = '/';
@@ -123,4 +124,5 @@ export {
   SETTINGS_PATH,
   EDIT_SETTINGS_PATH,
   EDIT_PASSWORD_PATH,
+  BASE_URL_WSS,
 };
