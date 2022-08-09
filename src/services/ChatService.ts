@@ -39,13 +39,10 @@ class ChatService {
       )
       .catch(showError);
   }
-  public addUserToChat({ users, chatId }: AddUserToChat) {
+  public addUserToChat({ users, chatId }: any) {
     chatApi
       .addUserToChat({ users, chatId })
-      .then((user: any) => {
-        console.log(user);
-        store.setState({ users: JSON.parse(user.response) });
-      })
+      .then((user: any) => store.setState({ users: JSON.parse(user.response) }))
       .catch(showError);
   }
   public searchUserByLogin({ login }: SearchUserByLoginType) {

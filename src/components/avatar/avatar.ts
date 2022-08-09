@@ -1,6 +1,8 @@
 import Block from 'core/Block';
 import './avatar.css';
 import { AvatarProps } from './types';
+import defaultIcon from 'img/avatar.svg';
+import { BASE_URL_RESOURCES } from 'utils/constants';
 
 export class Avatar extends Block {
   static componentName = 'Avatar';
@@ -19,7 +21,11 @@ export class Avatar extends Block {
     return `
       <img
         class="avatar"
-        src="${srcAvatar}"
+        src="${
+          srcAvatar !== 'undefined' && srcAvatar !== 'null'
+            ? `${BASE_URL_RESOURCES}${srcAvatar}`
+            : defaultIcon
+        }"
         alt="Аватар пользователя ${userName}"
       />
     `;

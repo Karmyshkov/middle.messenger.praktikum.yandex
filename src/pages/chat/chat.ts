@@ -59,8 +59,9 @@ export class ChatPage extends Block {
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
-        this.setState({ chatItemId });
-        new Chat(config).addActiveClassName(evt);
+        Promise.resolve(() => this.setState({ chatItemId })).then(() =>
+          new Chat(config).addActiveClassName(evt)
+        );
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
@@ -140,9 +141,15 @@ export class ChatPage extends Block {
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
       },
-      handleAddUserToChat: () => {
-        console.log(this.state.chatItemId);
-        //chatService.addUserToChat({ users: [], chatId: this.state.chatItemId });
+      handleAddUserToChat: (evt: Event) => {
+        const target = evt.target as HTMLElement;
+        const userItem = target.closest(`.${config.userItemSelector}`);
+        const userId = userItem?.getAttribute('data-user-id');
+        console.log(this.state.chatItemId, userId);
+        chatService.addUserToChat({
+          users: [userId ? userId : 0],
+          chatId: this.state.chatItemId,
+        });
       },
 
       // delete user
@@ -175,7 +182,9 @@ export class ChatPage extends Block {
   }
   render() {
     const { chats = [], users = [] } = this.props;
-    const { chatItemId } = this.state;
+    const { chatItemId, avatar, title } = this.state;
+    // const currentChat = chats.filter((chat: any) => chat.id === Number(chatItemId));
+    // const { avatar, title } = currentChat;
 
     // language=hbs
     return `
@@ -211,10 +220,10 @@ export class ChatPage extends Block {
             <div class="chat__header">
               <div class="chat__inner">
                 {{{Avatar
-                  srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt"
-                  userName="Вадим"
+                  srcAvatar="${avatar}"
+                  userName="${title}"
                 }}}
-                <p class="chat__user-name">Вадим</p>
+                <p class="chat__user-name">${title}</p>
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>

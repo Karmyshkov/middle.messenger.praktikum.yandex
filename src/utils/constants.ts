@@ -15,7 +15,7 @@ const config = {
   popupDeleteUserSelector: 'popup_delete-user',
   popupChangeAvatarSelector: 'popup_change-avatar',
   popupAddChatSelector: 'popup_add-chat',
-  isActiveChatSelector: 'chat_is-active',
+  isActiveChatSelector: 'list-item_is-active',
   hiddenChatSelecor: 'chat__column_is-hidden',
   burgerMenuSelector: 'burger-menu',
   isActiveBurgerMenuSelector: 'burger-menu_active',

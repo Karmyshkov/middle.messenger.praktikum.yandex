@@ -5,10 +5,6 @@
   grid-template-columns: 310px 1fr;
   height: 100%;
 
-  &_is-active {
-    background-color: var(--color-light-blue);
-  }
-
   &__column {
     list-style: none;
   }

@@ -3,6 +3,10 @@
   transition: 0.3s background-color;
   text-align: left;
 
+  &_is-active {
+    background-color: var(--color-light-blue);
+  }
+
   &:hover {
     cursor: pointer;
     background-color: var(--color-light-blue);
