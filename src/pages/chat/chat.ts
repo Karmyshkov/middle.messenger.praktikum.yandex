@@ -1,7 +1,7 @@
 import { Block, BrowseRouter as router, STORE_EVENTS, store } from 'core';
 import 'styles/chat.css';
 import messages from 'data/messages.json';
-import { MessageProps, CreateChatType, SearchUserByLoginType } from 'types';
+import { MessageProps, CreateChatType, SearchUserByLoginType, GetChatToken } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
   config,
@@ -12,7 +12,7 @@ import {
   SETTINGS_PATH,
 } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
-import { chatService } from 'services';
+import { chatService, messagesService } from 'services';
 
 const addChatFromValidator = new FormValidator(
   config,
@@ -59,6 +59,8 @@ export class ChatPage extends Block {
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
+        chatItemId &&
+          chatService.getChatToken({ chatId: Number(chatItemId) } as GetChatToken);
         this.setState({ chatItemId });
         const state = store.getState() as any;
         this.setProps({
