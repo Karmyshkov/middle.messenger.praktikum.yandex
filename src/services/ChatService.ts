@@ -4,6 +4,7 @@ import {
   RemoveChatType,
   SearchUserByLoginType,
   AddUserToChat,
+  GetChatToken,
 } from 'types';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
@@ -49,6 +50,12 @@ class ChatService {
     return chatApi
       .searchUserByLogin({ login })
       .then((users: any) => users.response)
+      .catch(showError);
+  }
+  public getChatToken({ chatId }: GetChatToken) {
+    return chatApi
+      .getChatToken({ chatId })
+      .then((token: any) => console.log(token))
       .catch(showError);
   }
 }
