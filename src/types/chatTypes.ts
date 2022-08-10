@@ -15,4 +15,14 @@ interface AddUserToChat {
   chatId: number;
 }
 
-export { CreateChatType, RemoveChatType, SearchUserByLoginType, AddUserToChat };
+interface GetChatToken {
+  chatId: number;
+}
+
+export {
+  CreateChatType,
+  RemoveChatType,
+  SearchUserByLoginType,
+  AddUserToChat,
+  GetChatToken,
+};

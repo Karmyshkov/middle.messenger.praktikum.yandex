@@ -13,6 +13,7 @@ export {
   RemoveChatType,
   SearchUserByLoginType,
   AddUserToChat,
+  GetChatToken,
 } from './chatTypes';
 export {
   UserInfoDTO,
