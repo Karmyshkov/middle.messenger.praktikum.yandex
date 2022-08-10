@@ -4,6 +4,7 @@ import {
   RemoveChatType,
   SearchUserByLoginType,
   AddUserToChat,
+  GetChatToken,
 } from 'types';
 
 class ChatApi extends BaseAPI {
@@ -29,6 +30,9 @@ class ChatApi extends BaseAPI {
 
   public searchUserByLogin({ login }: SearchUserByLoginType) {
     return this.post('user/search', login);
+  }
+  public getChatToken({ chatId }: GetChatToken) {
+    return this.post(`chats/token/${chatId}`, {});
   }
 }
 
