@@ -1,26 +1,13 @@
-import { store } from 'core';
 import { BASE_URL_WSS } from 'utils/constants';
 
-interface MessagesServiceProps {
-  userID: number | string;
-  chatId: number | string;
-  token: string;
-}
+class MessagesService {
+  private _userID!: string | number;
+  private _chatId!: string | number;
+  private _token!: string;
+  private _wss!: WebSocket;
+  private _ping!: any;
 
-export class MessagesService {
-  private _userID: string | number;
-  private _chatId: string | number;
-  private _token: string;
-  private _wss: WebSocket;
-
-  constructor({ userID, chatId, token }: MessagesServiceProps) {
-    this._userID = userID;
-    this._chatId = chatId;
-    this._token = token;
-    this._wss = new WebSocket(
-      `${BASE_URL_WSS}/${this._userID}/${this._chatId}/${this._token}`
-    );
-
+  constructor() {
     this._handleOpen = this._handleOpen.bind(this);
     this._handleMessage = this._handleMessage.bind(this);
     this._handleError = this._handleError.bind(this);
@@ -41,13 +28,62 @@ export class MessagesService {
     this._wss.removeEventListener('error', this._handleError);
   }
 
-  private _handleOpen() {}
+  private _handleOpen() {
+    this.getMessages(0);
+    this._ping = setInterval(() => this._wss.send(''), 15000);
+  }
 
-  private _handleClose() {}
+  private _handleClose(evt: any) {
+    this._removeListeners();
+    if (evt.wasClean) {
+      // shackbar
+    } else {
+      // shackbar
+    }
+  }
 
-  private _handleMessage() {}
+  private _handleMessage(evt: any) {
+    const data = JSON.parse(evt.data);
+    console.log(data);
+  }
 
-  private _handleError() {}
+  private _handleError(evt: any) {
+    console.log(evt); // использовать shackbar
+  }
+
+  public connect({ userID, chatId, token }: any) {
+    this._userID = userID;
+    this._chatId = chatId;
+    this._token = token;
+    this._wss = new WebSocket(
+      `${BASE_URL_WSS}/${this._userID}/${this._chatId}/${this._token}`
+    );
+    this._setListeners();
+  }
+
+  public getMessages(offset: number) {
+    this._wss.send(
+      JSON.stringify({
+        content: offset.toString(),
+        type: 'get old',
+      })
+    );
+  }
+
+  public leave() {
+    clearInterval(this._ping);
+    this._wss.close();
+    this._removeListeners();
+  }
+
+  public sendMessage(message: string) {
+    this._wss.send(
+      JSON.stringify({
+        content: message,
+        type: 'message',
+      })
+    );
+  }
 }
 
-const messagesService = new MessagesService({ userID: 1, chatId: 1, token: '1' });
+export default new MessagesService();
