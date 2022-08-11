@@ -62,7 +62,7 @@ interface GetChatToken {
   chatId: number;
 }
 
-interface UserInfo {
+interface UserInfoDTO {
   first_name: string;
   second_name: string;
   display_name: string;
@@ -120,7 +120,7 @@ export {
   SearchUserByLoginType,
   AddUserToChat,
   GetChatToken,
-  UserInfo,
+  UserInfoDTO,
   UserInfoType,
   UserPassword,
 };

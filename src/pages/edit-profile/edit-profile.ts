@@ -4,7 +4,7 @@ import { Popup, FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
 import { authService, profileService } from 'services';
-import { UserInfo, UserInfoType } from 'types';
+import { UserInfoDTO, UserInfoType } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,
@@ -63,7 +63,7 @@ export class EditProfilePage extends Block {
               login,
               email,
               phone,
-            } as UserInfo);
+            } as UserInfoDTO);
         }
       },
       handleValidateInput: (evt: Event) =>

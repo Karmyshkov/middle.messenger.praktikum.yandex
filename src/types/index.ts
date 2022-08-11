@@ -13,7 +13,7 @@ export {
   SearchUserByLoginType,
   AddUserToChat,
   GetChatToken,
-  UserInfo,
+  UserInfoDTO,
   UserInfoType,
   UserPassword,
 } from './types';
