@@ -14,7 +14,7 @@ enum Screens {
   EditPassword = 'edit-password',
 }
 
-enum InputEnum { // переименовать на enum
+enum InputEnum {
   'text',
   'email',
   'password',
