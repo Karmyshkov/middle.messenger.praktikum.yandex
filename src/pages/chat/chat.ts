@@ -74,15 +74,18 @@ export class ChatPage extends Block {
         });
 
         if (chatItemId) {
-          chatService
-            .getChatToken({ chatId: Number(chatItemId) } as GetChatTokenType)
-            .then(({ token }) =>
-              messagesService.connect({
-                userId: 42059,
-                chatId: Number(chatItemId),
-                token,
-              })
-            );
+          chatService.getChatToken({ chatId: Number(chatItemId) } as GetChatTokenType);
+
+          store.on(STORE_EVENTS.UPDATE, () => {
+            const state = store.getState();
+            const { token } = state;
+
+            messagesService.connect({
+              userId: 42059,
+              chatId: Number(chatItemId),
+              token,
+            });
+          });
         }
 
         store.on(STORE_EVENTS.UPDATE, () => new Chat(config).addActiveClassName(evt));
@@ -215,7 +218,7 @@ export class ChatPage extends Block {
   render() {
     const { chats = [], users = [], messages = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-
+    console.log(messages);
     // language=hbs
     return `
       <div class="page">

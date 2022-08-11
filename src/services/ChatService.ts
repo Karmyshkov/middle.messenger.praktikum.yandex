@@ -52,9 +52,9 @@ class ChatService {
   }
 
   public getChatToken({ chatId }: GetChatTokenType) {
-    return chatApi
+    chatApi
       .getChatToken({ chatId })
-      .then(({ response }: any) => JSON.parse(response))
+      .then(({ response }: any) => store.setState(JSON.parse(response)))
       .catch(showError);
   }
 }

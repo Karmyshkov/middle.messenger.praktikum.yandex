@@ -62,13 +62,15 @@ class MessagesService {
   }
 
   public connect({ userId, chatId, token }: any) {
-    this._userId = userId;
-    this._chatId = chatId;
-    this._token = token;
-    this._wss = new WebSocket(
-      `${BASE_URL_WSS}/${this._userId}/${this._chatId}/${this._token}`
-    );
-    this._setListeners();
+    if (this._chatId !== chatId) {
+      this._userId = userId;
+      this._chatId = chatId;
+      this._token = token;
+      this._wss = new WebSocket(
+        `${BASE_URL_WSS}/${this._userId}/${this._chatId}/${this._token}`
+      );
+      this._setListeners();
+    }
   }
 
   public getMessages() {
