@@ -16,7 +16,6 @@
     "img": "./src/image",
     "routes": "./src/routes",
     "types": "./src/types",
-    "data": "./src/data",
     "vendor": "./src/vendor",
     "variables": "./src/variables",
     "utils": "./src/utils",
