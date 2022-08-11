@@ -83,6 +83,7 @@ interface UserInfoType {
 interface UserPasswordType {
   oldPassword: string;
   newPassword: string;
+  repeatPassword?: string;
 }
 
 type ChatType = {

@@ -30,6 +30,7 @@ export class ProfilePage extends Block {
 
         const editForm = document.forms[1];
         const formData = new FormData(editForm);
+
         profileService.changeAvatar(formData);
       },
       handleSignOut: (evt: Event) => {
@@ -43,8 +44,9 @@ export class ProfilePage extends Block {
   }
   render() {
     const { userInfo = [] } = this.props;
-    const { avatar, display_name, email, first_name, id, login, phone, second_name } =
+    const { avatar, display_name, email, first_name, login, phone, second_name } =
       userInfo;
+
     // language=hbs
     return `
       <div class="profile">

@@ -73,7 +73,7 @@ export class EditProfilePage extends Block {
   }
   render() {
     const { userInfo = [] } = this.props;
-    const { avatar, display_name, email, first_name, id, login, phone, second_name } =
+    const { avatar, display_name, email, first_name, login, phone, second_name } =
       userInfo;
     // language=hbs
     return `

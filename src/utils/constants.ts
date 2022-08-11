@@ -91,6 +91,7 @@ const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользова�
 const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
 const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
 const CONNECTION_PROBLEMS = 'Проблемы с подключением';
+const IS_NOT_MATCHED_PASSWORD_MESSAGE = 'Пароли не совпадают!';
 
 export {
   config,
@@ -129,4 +130,5 @@ export {
   BASE_URL_WSS,
   DATA_ATTRIBUTE_CHAT_ID,
   CONNECTION_PROBLEMS,
+  IS_NOT_MATCHED_PASSWORD_MESSAGE,
 };
