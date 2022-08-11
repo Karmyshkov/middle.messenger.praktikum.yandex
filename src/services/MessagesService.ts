@@ -1,7 +1,7 @@
-import { BASE_URL_WSS } from 'utils/constants';
+import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
 
 class MessagesService {
-  private _userID!: string | number;
+  private _userId!: string | number;
   private _chatId!: string | number;
   private _token!: string;
   private _wss!: WebSocket;
@@ -30,33 +30,51 @@ class MessagesService {
 
   private _handleOpen() {
     this.getMessages(0);
-    this._ping = setInterval(() => this._wss.send(''), 15000);
+    this._ping = setInterval(() => {
+      this._wss.send(JSON.stringify({ type: 'ping' }));
+    }, 5000);
   }
 
   private _handleClose(evt: any) {
     this._removeListeners();
-    if (evt.wasClean) {
-      // shackbar
-    } else {
-      // shackbar
+    if (!evt.wasClean) {
+      showTooltip({
+        text: CONNECTION_PROBLEMS,
+        type: 'error',
+      });
+    }
+    if (evt.code === 1006) {
+      this._reconnection();
     }
   }
 
   private _handleMessage(evt: any) {
     const data = JSON.parse(evt.data);
     console.log(data);
+    //console.log(data);
   }
 
   private _handleError(evt: any) {
-    console.log(evt); // использовать shackbar
+    showTooltip({
+      text: evt.message,
+      type: 'error',
+    });
   }
 
-  public connect({ userID, chatId, token }: any) {
-    this._userID = userID;
+  private _reconnection() {
+    this.connect({
+      userId: this._userId,
+      chatId: this._chatId,
+      token: this._token,
+    });
+  }
+
+  public connect({ userId, chatId, token }: any) {
+    this._userId = userId;
     this._chatId = chatId;
     this._token = token;
     this._wss = new WebSocket(
-      `${BASE_URL_WSS}/${this._userID}/${this._chatId}/${this._token}`
+      `${BASE_URL_WSS}/${this._userId}/${this._chatId}/${this._token}`
     );
     this._setListeners();
   }

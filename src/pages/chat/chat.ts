@@ -8,11 +8,11 @@ import {
   ADD_CHAT_FORM,
   ADD_USER_FORM,
   DELETE_USER_FORM,
-  DATA_ATTRIBUTE_CHAT_ID,
   SETTINGS_PATH,
+  DATA_ATTRIBUTE_CHAT_ID,
 } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
-import { chatService, messagesService } from 'services';
+import { chatService, messagesService, profileService } from 'services';
 
 const addChatFromValidator = new FormValidator(
   config,
@@ -59,13 +59,25 @@ export class ChatPage extends Block {
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
+
         chatItemId &&
-          chatService.getChatToken({ chatId: Number(chatItemId) } as GetChatToken);
+          chatService
+            .getChatToken({ chatId: Number(chatItemId) } as GetChatToken)
+            .then(({ token }) =>
+              messagesService.connect({
+                userId: 42059,
+                chatId: Number(chatItemId),
+                token,
+              })
+            );
+
         this.setState({ chatItemId });
         const state = store.getState() as any;
+
         this.setProps({
           currentChat: state?.chats.filter((chat: any) => chat.id === Number(chatItemId)),
         });
+
         new Chat(config).addActiveClassName(evt);
       },
       handleSearchByChats: () => {
@@ -129,7 +141,7 @@ export class ChatPage extends Block {
         });
 
         dataForm &&
-          chatService
+          profileService
             .searchUserByLogin({
               login: dataForm,
             } as SearchUserByLoginType)
@@ -182,6 +194,17 @@ export class ChatPage extends Block {
       // ###
 
       handleLinkBtn: () => router.go(SETTINGS_PATH),
+
+      // send message
+
+      handleSendMessage: (evt: Event) => {
+        evt.preventDefault();
+        const target = evt.target as HTMLFormElement;
+        const input = target.querySelector('.chat-footer__input') as HTMLFormElement;
+        messagesService.sendMessage(input.value);
+
+        //console.log(messagesService.getMessages(5));
+      },
     };
   }
   render() {
@@ -251,7 +274,7 @@ export class ChatPage extends Block {
                 )
                 .join('')}
             </ul>
-            {{{ChatFooter onClick=handleOpenFileMenu}}}
+            {{{ChatFooter onSubmit=handleSendMessage onClick=handleOpenFileMenu}}}
           </li>
         </ul>
         {{{Menu isUser=true chatItemId="${chatItemId}"}}}

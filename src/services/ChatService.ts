@@ -1,11 +1,5 @@
 import { chatApi } from 'api';
-import {
-  CreateChatType,
-  RemoveChatType,
-  SearchUserByLoginType,
-  AddUserToChat,
-  GetChatToken,
-} from 'types';
+import { CreateChatType, RemoveChatType, AddUserToChat, GetChatToken } from 'types';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
 import { store } from 'core';
@@ -46,16 +40,11 @@ class ChatService {
       .then((user: any) => store.setState({ users: JSON.parse(user.response) }))
       .catch(showError);
   }
-  public searchUserByLogin({ login }: SearchUserByLoginType) {
-    return chatApi
-      .searchUserByLogin({ login })
-      .then((users: any) => users.response)
-      .catch(showError);
-  }
+
   public getChatToken({ chatId }: GetChatToken) {
     return chatApi
       .getChatToken({ chatId })
-      .then((token: any) => console.log(token))
+      .then((token: any) => JSON.parse(token.response))
       .catch(showError);
   }
 }

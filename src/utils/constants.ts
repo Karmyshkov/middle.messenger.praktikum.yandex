@@ -89,6 +89,7 @@ const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
 const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
 const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
 const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
+const CONNECTION_PROBLEMS = 'Проблемы с подключением';
 
 export {
   config,
@@ -120,9 +121,10 @@ export {
   SUCCESS_REMOVE_CHAT_MESSAGE,
   SIGNIN_PATH,
   SIGNUP_PATH,
-  DATA_ATTRIBUTE_CHAT_ID,
   SETTINGS_PATH,
   EDIT_SETTINGS_PATH,
   EDIT_PASSWORD_PATH,
   BASE_URL_WSS,
+  DATA_ATTRIBUTE_CHAT_ID,
+  CONNECTION_PROBLEMS,
 };

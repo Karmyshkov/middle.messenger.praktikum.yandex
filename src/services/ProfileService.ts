@@ -5,7 +5,7 @@ import {
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
 } from 'utils/constants';
 import { store } from 'core';
-import { UserInfoDTO, UserPasswordDTO } from 'types';
+import { UserInfo, UserPassword, SearchUserByLoginType } from 'types';
 
 class ProfileService {
   public changeAvatar(avatar: FormData) {
@@ -20,7 +20,7 @@ class ProfileService {
       })
       .catch(showError);
   }
-  public changeUserInfo(userInfo: UserInfoDTO) {
+  public changeUserInfo(userInfo: UserInfo) {
     profileApi
       .changeUserInfo(userInfo)
       .then((userInfo: any) => {
@@ -32,7 +32,7 @@ class ProfileService {
       })
       .catch(showError);
   }
-  public changeUserPassword(userPassword: UserPasswordDTO) {
+  public changeUserPassword(userPassword: UserPassword) {
     profileApi
       .changeUserPassword(userPassword)
       .then(() =>
@@ -41,6 +41,13 @@ class ProfileService {
           type: 'success',
         })
       )
+      .catch(showError);
+  }
+
+  public searchUserByLogin({ login }: SearchUserByLoginType) {
+    return profileApi
+      .searchUserByLogin({ login })
+      .then((users: any) => users.response)
       .catch(showError);
   }
 }

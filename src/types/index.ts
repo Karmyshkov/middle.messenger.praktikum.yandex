@@ -1,4 +1,6 @@
 export {
+  SignupType,
+  SigninType,
   BlockClass,
   InputType,
   ButtonType,
@@ -6,18 +8,12 @@ export {
   ChatType,
   MessageProps,
   props,
-} from './types';
-export { SignupType, SigninType } from './authTypes';
-export {
   CreateChatType,
   RemoveChatType,
   SearchUserByLoginType,
   AddUserToChat,
   GetChatToken,
-} from './chatTypes';
-export {
-  UserInfoDTO,
+  UserInfo,
   UserInfoType,
-  UserPasswordDTO,
-  UserPasswordType,
-} from './profileTypes';
+  UserPassword,
+} from './types';

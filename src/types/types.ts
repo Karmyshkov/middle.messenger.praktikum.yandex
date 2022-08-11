@@ -5,7 +5,16 @@ interface BlockClass<P> extends Function {
   componentName?: string;
 }
 
-enum InputType {
+enum Screens {
+  Signin = 'signin',
+  Signup = 'signup',
+  Messenger = 'messenger',
+  Profile = 'settings',
+  EditProfle = 'edit-settings',
+  EditPassword = 'edit-password',
+}
+
+enum InputType { // переименовать на enum
   'text',
   'email',
   'password',
@@ -18,14 +27,65 @@ enum ButtonType {
   'submit',
 }
 
-enum Screens {
-  Signin = 'signin',
-  Signup = 'signup',
-  Messenger = 'messenger',
-  Profile = 'settings',
-  EditProfle = 'edit-settings',
-  EditPassword = 'edit-password',
+interface SignupType {
+  email: string;
+  login: string;
+  first_name: string;
+  second_name: string;
+  phone: string;
+  password: string;
 }
+
+interface SigninType {
+  login: string;
+  password: string;
+}
+
+interface CreateChatType {
+  title: string;
+}
+
+interface RemoveChatType {
+  chatId: string;
+}
+
+interface SearchUserByLoginType {
+  login: string;
+}
+
+interface AddUserToChat {
+  users: Record<number, number>[];
+  chatId: number;
+}
+
+interface GetChatToken {
+  chatId: number;
+}
+
+interface UserInfo {
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  login: string;
+  email: string;
+  phone: string;
+}
+
+interface UserInfoType {
+  chatName: string;
+  email: string;
+  lastName: string;
+  login: string;
+  name: string;
+  phone: string;
+}
+
+interface UserPassword {
+  oldPassword: string;
+  newPassword: string;
+}
+
+//###
 
 type ChatType = {
   userName: string;
@@ -45,4 +105,22 @@ interface MessageProps {
 
 type props = Record<string, any>;
 
-export { BlockClass, InputType, ButtonType, Screens, ChatType, MessageProps, props };
+export {
+  SignupType,
+  SigninType,
+  BlockClass,
+  InputType,
+  ButtonType,
+  Screens,
+  ChatType,
+  MessageProps,
+  props,
+  CreateChatType,
+  RemoveChatType,
+  SearchUserByLoginType,
+  AddUserToChat,
+  GetChatToken,
+  UserInfo,
+  UserInfoType,
+  UserPassword,
+};
