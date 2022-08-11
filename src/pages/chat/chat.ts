@@ -150,20 +150,20 @@ export class ChatPage extends Block {
           addErors: addUserFormValidator.addErrorsForInput,
         });
 
-        dataForm &&
-          profileService
-            .searchUserByLogin({
-              login: dataForm,
-            } as SearchUserByLoginType)
-            .then((users) => {
-              this.setProps({ users });
-              new Popup(
-                config.popupAddUserSelector,
-                config.btnSubmitFormSelector,
-                config.isOpenPopupSelector,
-                config
-              ).handleOpenPopup();
-            });
+        if (dataForm) {
+          profileService.searchUserByLogin({
+            login: dataForm,
+          } as SearchUserByLoginType);
+        }
+
+        store.on(STORE_EVENTS.UPDATE, () => {
+          new Popup(
+            config.popupAddUserSelector,
+            config.btnSubmitFormSelector,
+            config.isOpenPopupSelector,
+            config
+          ).handleOpenPopup();
+        });
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);

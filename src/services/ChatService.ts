@@ -44,7 +44,6 @@ class ChatService {
       .catch(showError);
   }
   public addUserToChat({ users, chatId }: AddUserToChatType) {
-    console.log(users, chatId);
     chatApi
       .addUserToChat({ users, chatId })
       .then(({ response }: any) => store.setState({ users: JSON.parse(response) }))

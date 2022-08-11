@@ -48,7 +48,7 @@ class ProfileService {
   public searchUserByLogin({ login }: SearchUserByLoginType) {
     return profileApi
       .searchUserByLogin({ login })
-      .then(({ response }: any) => response)
+      .then(({ response }: any) => store.setState({ users: response }))
       .catch(showError);
   }
 }
