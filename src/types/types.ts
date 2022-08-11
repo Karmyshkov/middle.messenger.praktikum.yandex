@@ -14,7 +14,7 @@ enum Screens {
   EditPassword = 'edit-password',
 }
 
-enum InputType { // переименовать на enum
+enum InputEnum { // переименовать на enum
   'text',
   'email',
   'password',
@@ -22,7 +22,7 @@ enum InputType { // переименовать на enum
   'number',
 }
 
-enum ButtonType {
+enum ButtonEnum {
   'button',
   'submit',
 }
@@ -109,8 +109,8 @@ export {
   SignupType,
   SigninType,
   BlockClass,
-  InputType,
-  ButtonType,
+  InputEnum,
+  ButtonEnum,
   Screens,
   ChatType,
   MessageProps,

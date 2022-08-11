@@ -1,11 +1,11 @@
-import { InputType } from 'types';
+import { InputEnum } from 'types';
 
 export interface InputProps {
   onInput?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
   name: string;
-  type: InputType;
+  type: InputEnum;
   minlength?: string;
   maxlength?: string;
 }
