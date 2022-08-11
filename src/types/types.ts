@@ -53,12 +53,12 @@ interface SearchUserByLoginType {
   login: string;
 }
 
-interface AddUserToChat {
+interface AddUserToChatType {
   users: Record<number, number>[];
   chatId: number;
 }
 
-interface GetChatToken {
+interface GetChatTokenType {
   chatId: number;
 }
 
@@ -80,12 +80,10 @@ interface UserInfoType {
   phone: string;
 }
 
-interface UserPassword {
+interface UserPasswordType {
   oldPassword: string;
   newPassword: string;
 }
-
-//###
 
 type ChatType = {
   userName: string;
@@ -118,9 +116,9 @@ export {
   CreateChatType,
   RemoveChatType,
   SearchUserByLoginType,
-  AddUserToChat,
-  GetChatToken,
+  AddUserToChatType,
+  GetChatTokenType,
   UserInfoDTO,
   UserInfoType,
-  UserPassword,
+  UserPasswordType,
 };

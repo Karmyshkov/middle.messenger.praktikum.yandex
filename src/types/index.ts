@@ -11,9 +11,9 @@ export {
   CreateChatType,
   RemoveChatType,
   SearchUserByLoginType,
-  AddUserToChat,
-  GetChatToken,
+  AddUserToChatType,
+  GetChatTokenType,
   UserInfoDTO,
   UserInfoType,
-  UserPassword,
+  UserPasswordType,
 } from './types';

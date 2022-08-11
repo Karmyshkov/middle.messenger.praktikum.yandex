@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI';
-import { UserInfoDTO, UserPassword, SearchUserByLoginType } from 'types';
+import { UserInfoDTO, UserPasswordType, SearchUserByLoginType } from 'types';
 
 class ProfileApi extends BaseAPI {
   constructor() {
@@ -14,7 +14,7 @@ class ProfileApi extends BaseAPI {
     return this.put('/profile', userInfo);
   }
 
-  public changeUserPassword(userPassword: UserPassword) {
+  public changeUserPassword(userPassword: UserPasswordType) {
     return this.put('/password', userPassword);
   }
 

@@ -1,5 +1,10 @@
 import { BaseAPI } from './BaseAPI';
-import { CreateChatType, RemoveChatType, AddUserToChat, GetChatToken } from 'types';
+import {
+  CreateChatType,
+  RemoveChatType,
+  AddUserToChatType,
+  GetChatTokenType,
+} from 'types';
 
 class ChatApi extends BaseAPI {
   constructor() {
@@ -18,11 +23,11 @@ class ChatApi extends BaseAPI {
     return this.delete('', { chatId });
   }
 
-  public addUserToChat({ users, chatId }: AddUserToChat) {
+  public addUserToChat({ users, chatId }: AddUserToChatType) {
     return this.put('/users', { users, chatId });
   }
 
-  public getChatToken({ chatId }: GetChatToken) {
+  public getChatToken({ chatId }: GetChatTokenType) {
     return this.post(`/token/${chatId}`, {});
   }
 }

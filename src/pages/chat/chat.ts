@@ -1,7 +1,12 @@
 import { Block, BrowseRouter as router, STORE_EVENTS, store } from 'core';
 import 'styles/chat.css';
 import messages from 'data/messages.json';
-import { MessageProps, CreateChatType, SearchUserByLoginType, GetChatToken } from 'types';
+import {
+  MessageProps,
+  CreateChatType,
+  SearchUserByLoginType,
+  GetChatTokenType,
+} from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
   config,
@@ -62,7 +67,7 @@ export class ChatPage extends Block {
 
         chatItemId &&
           chatService
-            .getChatToken({ chatId: Number(chatItemId) } as GetChatToken)
+            .getChatToken({ chatId: Number(chatItemId) } as GetChatTokenType)
             .then(({ token }) =>
               messagesService.connect({
                 userId: 42059,

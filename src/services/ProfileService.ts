@@ -5,7 +5,7 @@ import {
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
 } from 'utils/constants';
 import { store } from 'core';
-import { UserInfoDTO, UserPassword, SearchUserByLoginType } from 'types';
+import { UserInfoDTO, UserPasswordType, SearchUserByLoginType } from 'types';
 
 class ProfileService {
   public changeAvatar(avatar: FormData) {
@@ -32,7 +32,7 @@ class ProfileService {
       })
       .catch(showError);
   }
-  public changeUserPassword(userPassword: UserPassword) {
+  public changeUserPassword(userPassword: UserPasswordType) {
     profileApi
       .changeUserPassword(userPassword)
       .then(() =>

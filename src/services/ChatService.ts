@@ -1,5 +1,5 @@
 import { chatApi } from 'api';
-import { CreateChatType, RemoveChatType, AddUserToChat, GetChatToken } from 'types';
+import { CreateChatType, RemoveChatType, AddUserToChat, GetChatTokenType } from 'types';
 import { showTooltip, showError } from 'utils';
 import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
 import { store } from 'core';
@@ -41,7 +41,7 @@ class ChatService {
       .catch(showError);
   }
 
-  public getChatToken({ chatId }: GetChatToken) {
+  public getChatToken({ chatId }: GetChatTokenType) {
     return chatApi
       .getChatToken({ chatId })
       .then((token: any) => JSON.parse(token.response))
