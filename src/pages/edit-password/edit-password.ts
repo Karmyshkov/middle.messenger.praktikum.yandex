@@ -1,8 +1,12 @@
 import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
-import { config, EDIT_PASSWORD_FORM } from 'utils/constants';
-import { handleSubmitForm } from 'utils';
+import {
+  config,
+  EDIT_PASSWORD_FORM,
+  IS_NOT_MATCHED_PASSWORD_MESSAGE,
+} from 'utils/constants';
+import { handleSubmitForm, showTooltip } from 'utils';
 import { authService, profileService } from 'services';
 import { UserPasswordType } from 'types';
 
@@ -51,12 +55,18 @@ export class EditPasswordPage extends Block {
         });
 
         if (dataForm) {
-          const { newPassword, oldPassword, repeatPassword } =
+          const { oldPassword, newPassword, repeatPassword } =
             dataForm as UserPasswordType;
-          profileService.changeUserPassword({
-            newPassword,
-            oldPassword,
-          } as UserPasswordType);
+
+          newPassword !== repeatPassword
+            ? showTooltip({
+                text: IS_NOT_MATCHED_PASSWORD_MESSAGE,
+                type: 'error',
+              })
+            : profileService.changeUserPassword({
+                newPassword,
+                oldPassword,
+              } as UserPasswordType);
         }
       },
       handleValidateInput: (evt: Event) => {
