@@ -19,7 +19,7 @@ export abstract class BaseAPI {
     return this._http.get(`${this._baseUrl}/${url}`, { headers: this._headers });
   }
 
-  put(url: string, data: unknown, headers?: any) {
+  put(url: string, data: unknown, headers?: unknown) {
     return this._http.put(`${this._baseUrl}/${url}`, {
       headers: headers ? headers : this._headers,
       data,
