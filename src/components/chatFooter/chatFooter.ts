@@ -6,8 +6,8 @@ import sendBtn from 'img/send-btn.svg';
 
 export class ChatFooter extends Block {
   static componentName = 'ChatFooter';
-  constructor({ onClick }: ChatFooterProps) {
-    super({ events: { click: onClick } });
+  constructor({ onSubmit, onClick }: ChatFooterProps) {
+    super({ events: { submit: onSubmit, click: onClick } });
   }
   protected render(): string {
     // language=hbs
