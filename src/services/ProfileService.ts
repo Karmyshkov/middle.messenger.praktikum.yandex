@@ -1,9 +1,10 @@
 import { profileApi } from 'api';
-import { showTooltip, showError } from 'utils';
 import {
+  showTooltip,
+  showError,
   SUCCESS_CHANGE_AVATAR_MESSAGE,
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
-} from 'utils/constants';
+} from 'utils';
 import { store } from 'core';
 import { UserInfoDTO, UserPasswordType, SearchUserByLoginType } from 'types';
 
@@ -11,8 +12,8 @@ class ProfileService {
   public changeAvatar(avatar: FormData) {
     profileApi
       .changeAvatar(avatar)
-      .then((userInfo: any) => {
-        store.setState({ userInfo: JSON.parse(userInfo.response) });
+      .then(({ response }: any) => {
+        store.setState({ userInfo: JSON.parse(response) });
         showTooltip({
           text: SUCCESS_CHANGE_AVATAR_MESSAGE,
           type: 'success',
@@ -23,8 +24,8 @@ class ProfileService {
   public changeUserInfo(userInfo: UserInfoDTO) {
     profileApi
       .changeUserInfo(userInfo)
-      .then((userInfo: any) => {
-        store.setState({ userInfo: JSON.parse(userInfo.response) });
+      .then(({ response }: any) => {
+        store.setState({ userInfo: JSON.parse(response) });
         showTooltip({
           text: SUCCESS_CHANGE_USER_INFO_MESSAGE,
           type: 'success',
@@ -47,7 +48,7 @@ class ProfileService {
   public searchUserByLogin({ login }: SearchUserByLoginType) {
     return profileApi
       .searchUserByLogin({ login })
-      .then((users: any) => users.response)
+      .then(({ response }: any) => response)
       .catch(showError);
   }
 }
