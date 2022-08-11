@@ -1,7 +1,16 @@
 import { chatApi } from 'api';
-import { CreateChatType, RemoveChatType, AddUserToChat, GetChatTokenType } from 'types';
-import { showTooltip, showError } from 'utils';
-import { SUCCESS_CREATE_MESSAGE, SUCCESS_REMOVE_CHAT_MESSAGE } from 'utils/constants';
+import {
+  CreateChatType,
+  RemoveChatType,
+  AddUserToChatType,
+  GetChatTokenType,
+} from 'types';
+import {
+  showTooltip,
+  showError,
+  SUCCESS_CREATE_MESSAGE,
+  SUCCESS_REMOVE_CHAT_MESSAGE,
+} from 'utils';
 import { store } from 'core';
 
 class ChatService {
@@ -20,7 +29,7 @@ class ChatService {
   public getChats() {
     chatApi
       .getChats()
-      .then((chats: any) => store.setState({ chats: JSON.parse(chats.response) }))
+      .then(({ response }: any) => store.setState({ chats: JSON.parse(response) }))
       .catch(showError);
   }
   public removeChatById({ chatId }: RemoveChatType) {
@@ -34,17 +43,18 @@ class ChatService {
       )
       .catch(showError);
   }
-  public addUserToChat({ users, chatId }: any) {
+  public addUserToChat({ users, chatId }: AddUserToChatType) {
+    console.log(users, chatId);
     chatApi
       .addUserToChat({ users, chatId })
-      .then((user: any) => store.setState({ users: JSON.parse(user.response) }))
+      .then(({ response }: any) => store.setState({ users: JSON.parse(response) }))
       .catch(showError);
   }
 
   public getChatToken({ chatId }: GetChatTokenType) {
     return chatApi
       .getChatToken({ chatId })
-      .then((token: any) => JSON.parse(token.response))
+      .then(({ response }: any) => JSON.parse(response))
       .catch(showError);
   }
 }

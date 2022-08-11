@@ -54,7 +54,7 @@ interface SearchUserByLoginType {
 }
 
 interface AddUserToChatType {
-  users: Record<number, number>[];
+  users: number[];
   chatId: number;
 }
 
