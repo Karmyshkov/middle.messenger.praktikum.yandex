@@ -104,6 +104,10 @@ interface MessageProps {
 
 type props = Record<string, any>;
 
+enum STORE_EVENTS {
+  UPDATE = 'update',
+}
+
 export {
   SignupType,
   SigninType,
@@ -122,4 +126,5 @@ export {
   UserInfoDTO,
   UserInfoType,
   UserPasswordType,
+  STORE_EVENTS,
 };

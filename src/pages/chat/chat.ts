@@ -1,11 +1,11 @@
-import { Block, BrowseRouter as router, STORE_EVENTS, store } from 'core';
+import { Block, BrowseRouter as router, store } from 'core';
 import 'styles/chat.css';
-import messages from 'data/messages.json';
 import {
   MessageProps,
   CreateChatType,
   SearchUserByLoginType,
   GetChatTokenType,
+  STORE_EVENTS,
 } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
@@ -51,6 +51,7 @@ export class ChatPage extends Block {
     super(...args);
 
     chatService.getChats();
+    messagesService.getMessages();
 
     store.on(STORE_EVENTS.UPDATE, () => {
       this.setProps(store.getState());
@@ -65,7 +66,14 @@ export class ChatPage extends Block {
         const element = evt.currentTarget as HTMLElement;
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
 
-        chatItemId &&
+        this.setState({ chatItemId });
+        const state = store.getState() as any;
+
+        this.setState({
+          currentChat: state?.chats.filter((chat: any) => chat.id === Number(chatItemId)),
+        });
+
+        if (chatItemId) {
           chatService
             .getChatToken({ chatId: Number(chatItemId) } as GetChatTokenType)
             .then(({ token }) =>
@@ -75,15 +83,9 @@ export class ChatPage extends Block {
                 token,
               })
             );
+        }
 
-        this.setState({ chatItemId });
-        const state = store.getState() as any;
-
-        this.setProps({
-          currentChat: state?.chats.filter((chat: any) => chat.id === Number(chatItemId)),
-        });
-
-        new Chat(config).addActiveClassName(evt);
+        store.on(STORE_EVENTS.UPDATE, () => new Chat(config).addActiveClassName(evt));
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
@@ -207,14 +209,12 @@ export class ChatPage extends Block {
         const target = evt.target as HTMLFormElement;
         const input = target.querySelector('.chat-footer__input') as HTMLFormElement;
         messagesService.sendMessage(input.value);
-
-        //console.log(messagesService.getMessages(5));
       },
     };
   }
   render() {
-    const { chats = [], users = [], currentChat } = this.props;
-    const { chatItemId } = this.state;
+    const { chats = [], users = [], messages = [] } = this.props;
+    const { chatItemId, currentChat } = this.state;
 
     // language=hbs
     return `
@@ -266,7 +266,7 @@ export class ChatPage extends Block {
             </div>
             <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
-              ${messages.payload
+              ${messages
                 .map(
                   (message: MessageProps) =>
                     `{{{Message

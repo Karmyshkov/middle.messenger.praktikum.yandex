@@ -1,3 +1,4 @@
+import { store } from 'core';
 import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
 
 class MessagesService {
@@ -29,7 +30,7 @@ class MessagesService {
   }
 
   private _handleOpen() {
-    this.getMessages(0);
+    this.getMessages();
     this._ping = setInterval(() => {
       this._wss.send(JSON.stringify({ type: 'ping' }));
     }, 5000);
@@ -43,29 +44,20 @@ class MessagesService {
         type: 'error',
       });
     }
-    if (evt.code === 1006) {
-      this._reconnection();
-    }
   }
 
   private _handleMessage(evt: any) {
-    const data = JSON.parse(evt.data);
-    console.log(data);
-    //console.log(data);
+    const messages = JSON.parse(evt.data);
+
+    if (!('type' in messages)) {
+      store.setState({ messages });
+    }
   }
 
   private _handleError(evt: any) {
     showTooltip({
       text: evt.message,
       type: 'error',
-    });
-  }
-
-  private _reconnection() {
-    this.connect({
-      userId: this._userId,
-      chatId: this._chatId,
-      token: this._token,
     });
   }
 
@@ -79,19 +71,23 @@ class MessagesService {
     this._setListeners();
   }
 
-  public getMessages(offset: number) {
-    this._wss.send(
-      JSON.stringify({
-        content: offset.toString(),
-        type: 'get old',
-      })
-    );
+  public getMessages() {
+    if (this._wss) {
+      this._wss.send(
+        JSON.stringify({
+          content: '0',
+          type: 'get old',
+        })
+      );
+    }
   }
 
   public leave() {
-    clearInterval(this._ping);
-    this._wss.close();
-    this._removeListeners();
+    if (this._wss) {
+      clearInterval(this._ping);
+      this._wss.close();
+      this._removeListeners();
+    }
   }
 
   public sendMessage(message: string) {

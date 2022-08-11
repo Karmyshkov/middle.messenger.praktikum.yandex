@@ -1,8 +1,5 @@
 import EventBus from './EventBus';
-
-export enum STORE_EVENTS {
-  UPDATE = 'update',
-}
+import { STORE_EVENTS } from 'types';
 
 class Store<T> extends EventBus {
   state: T | null;

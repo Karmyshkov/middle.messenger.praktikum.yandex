@@ -16,4 +16,5 @@ export {
   UserInfoDTO,
   UserInfoType,
   UserPasswordType,
+  STORE_EVENTS,
 } from './types';
