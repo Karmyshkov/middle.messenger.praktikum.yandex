@@ -51,9 +51,9 @@ class ChatService {
   }
 
   public getChatToken({ chatId }: GetChatTokenType) {
-    chatApi
+    return chatApi
       .getChatToken({ chatId })
-      .then(({ response }: any) => store.setState(JSON.parse(response)))
+      .then(({ response }: any) => JSON.parse(response))
       .catch(showError);
   }
 }
