@@ -63,10 +63,11 @@ const BASE_URL_WSS = 'wss://ya-praktikum.tech/ws/chats';
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
 
 const SIGNIN_PATH = '/';
+const MESSAGER_PATH = '/messenger';
 const SIGNUP_PATH = '/sign-up';
 const SETTINGS_PATH = '/settings';
-const EDIT_SETTINGS_PATH = 'edit-settings';
-const EDIT_PASSWORD_PATH = 'edit-password';
+const EDIT_SETTINGS_PATH = '/edit-settings';
+const EDIT_PASSWORD_PATH = '/edit-password';
 
 const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
@@ -120,6 +121,7 @@ export {
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
   SUCCESS_REMOVE_CHAT_MESSAGE,
   SIGNIN_PATH,
+  MESSAGER_PATH,
   SIGNUP_PATH,
   SETTINGS_PATH,
   EDIT_SETTINGS_PATH,

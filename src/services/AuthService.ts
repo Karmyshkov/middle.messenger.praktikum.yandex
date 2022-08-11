@@ -1,9 +1,14 @@
 import { authAPI } from 'api';
 import { SignupType, SigninType } from 'types';
-import { BrowseRouter as router } from 'core';
-import { showTooltip, showError } from 'utils';
-import { SUCCESS_SIGNUP_MESSAGE, SUCCESS_SIGNIN_MESSAGE } from 'utils/constants';
-import { store } from 'core';
+import { BrowseRouter as router, store } from 'core';
+import {
+  showTooltip,
+  showError,
+  SUCCESS_SIGNUP_MESSAGE,
+  SUCCESS_SIGNIN_MESSAGE,
+  MESSAGER_PATH,
+  SIGNIN_PATH,
+} from 'utils';
 
 class AuthService {
   public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
@@ -14,7 +19,7 @@ class AuthService {
           text: SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
         });
-        router.go('/messenger');
+        router.go(MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -27,7 +32,7 @@ class AuthService {
           text: SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
         });
-        router.go('/messenger');
+        router.go(MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -35,16 +40,16 @@ class AuthService {
   public signout() {
     authAPI
       .signout()
-      .then(() => router.go('/'))
+      .then(() => router.go(SIGNIN_PATH))
       .catch(showError);
   }
 
   public getInfo() {
     authAPI
       .getInfo()
-      .then((userInfo: any) =>
-        store.setState({ userInfo: JSON.parse(userInfo.response) })
-      )
+      .then(({ response }: any) => {
+        store.setState({ userInfo: JSON.parse(response) });
+      })
       .catch(showError);
   }
 }
