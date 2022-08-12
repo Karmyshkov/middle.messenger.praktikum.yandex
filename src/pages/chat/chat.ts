@@ -227,7 +227,6 @@ export class ChatPage extends Block {
           const chat = document.querySelector('.chat__column-dialog');
 
           if (chat) {
-            console.log(chat.scrollHeight);
             chat.scrollTop = chat.scrollHeight;
           }
         });
