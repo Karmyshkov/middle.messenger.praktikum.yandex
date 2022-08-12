@@ -1,16 +1,18 @@
 .message {
   box-sizing: border-box;
   list-style: none;
-  max-width: 402px;
   margin-bottom: 10px;
   overflow: hidden;
+  width: 100%;
 
   &:last-of-type {
     margin-bottom: 30px;
   }
 
   &_is-not-owner {
-    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   &_is-img {
@@ -28,6 +30,8 @@
     color: var(--color-primaty);
     font-weight: 500;
     line-height: 15px;
+    max-width: 402px;
+    overflow: hidden;
   }
 
   &__text_is-me {
@@ -56,11 +60,11 @@
   }
 
   &__time_is-read::before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 10px;
     height: 4px;
-    background-image: url("../../image/isRead.svg");
+    background-image: url('../../image/isRead.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -70,11 +74,11 @@
   }
 
   &__time_is-not-read::before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 10px;
     height: 4px;
-    background-image: url("../../image/isNotRead.svg");
+    background-image: url('../../image/isNotRead.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
