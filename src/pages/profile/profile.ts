@@ -1,8 +1,9 @@
-import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
+import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup } from 'utils/classes';
 import { config, EDIT_SETTINGS_PATH, EDIT_PASSWORD_PATH } from 'utils/constants';
 import { authService, profileService } from 'services';
+import { STORE_EVENTS } from 'types';
 
 export class ProfilePage extends Block {
   constructor(...args: any) {

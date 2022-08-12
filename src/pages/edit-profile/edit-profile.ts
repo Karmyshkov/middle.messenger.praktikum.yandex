@@ -1,10 +1,10 @@
-import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
+import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm } from 'utils';
 import { authService, profileService } from 'services';
-import { UserInfoDTO, UserInfoType } from 'types';
+import { UserInfoDTO, UserInfoType, STORE_EVENTS } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,

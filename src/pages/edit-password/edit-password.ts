@@ -1,4 +1,4 @@
-import { Block, STORE_EVENTS, store, BrowseRouter as router } from 'core';
+import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
 import {
@@ -8,7 +8,7 @@ import {
 } from 'utils/constants';
 import { handleSubmitForm, showTooltip } from 'utils';
 import { authService, profileService } from 'services';
-import { UserPasswordType } from 'types';
+import { UserPasswordType, STORE_EVENTS } from 'types';
 
 const editPassowrdformValidator = new FormValidator(
   config,
