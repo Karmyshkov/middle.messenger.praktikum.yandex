@@ -17,8 +17,22 @@ class ChatService {
   public createChat({ title }: CreateChatType) {
     chatApi
       .createChat({ title })
-      .then((chat) => {
-        store.setState(chat);
+      .then(({ response }: any) => {
+        const state = store.getState();
+
+        const chat = {
+          0: {
+            avatar: null,
+            id: JSON.parse(response).id,
+            last_message: null,
+            title: title,
+            unread_count: 0,
+            created_by: null,
+          },
+        };
+
+        store.setState({ chats: Object.assign(state.chats, chat) });
+
         showTooltip({
           text: SUCCESS_CREATE_MESSAGE,
           type: 'success',

@@ -85,7 +85,9 @@ export class ChatPage extends Block {
             );
         }
 
-        store.on(STORE_EVENTS.UPDATE, () => new Chat(config).addActiveClassName(evt));
+        store.on(STORE_EVENTS.UPDATE, () => {
+          new Chat(config).addActiveClassName(evt);
+        });
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
@@ -125,6 +127,11 @@ export class ChatPage extends Block {
         });
 
         dataForm && chatService.createChat(dataForm as CreateChatType);
+
+        store.on(STORE_EVENTS.UPDATE, () => {
+          const state = store.getState();
+          this.setProps({ chats: state.chats });
+        });
       },
       handleValidateAddChatInput: (evt: Event) => {
         addChatFromValidator.handleFieldValidation(evt);
@@ -215,7 +222,7 @@ export class ChatPage extends Block {
   render() {
     const { chats = [], users = [], messages = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-    console.log(messages);
+
     // language=hbs
     return `
       <div class="page">
