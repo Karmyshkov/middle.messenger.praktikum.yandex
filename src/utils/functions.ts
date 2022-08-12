@@ -68,9 +68,10 @@ function showError(err: any) {
 function getDate(time: string) {
   const date = new Date(time);
   return {
-    day: date.getDay(),
-    hour: date.getHours(),
     minute: date.getMinutes(),
+    hour: date.getHours(),
+    day: date.getDay(),
+    month: date.getMonth(),
   };
 }
 
@@ -82,6 +83,31 @@ function fixedBottomScroll() {
   }
 }
 
+function getUniqDateFromMessages(messages: any) {
+  return Array.from(
+    new Set(
+      messages.map((message) => {
+        const date = getDate(message.time);
+        return date.day;
+      })
+    )
+  );
+}
+
+function getIdUniqDates(messages: any) {
+  const uniqDates = getUniqDateFromMessages(messages);
+
+  return uniqDates.map((uniqDate) => {
+    return messages.find((message) => {
+      const date = getDate(message.time);
+
+      if (date.day === uniqDate) {
+        return message;
+      }
+    });
+  });
+}
+
 export {
   handleSubmitForm,
   checkOnValueInput,
@@ -89,4 +115,5 @@ export {
   showError,
   getDate,
   fixedBottomScroll,
+  getIdUniqDates,
 };
