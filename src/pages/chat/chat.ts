@@ -18,7 +18,13 @@ import {
   DATA_ATTRIBUTE_CHAT_ID,
   DATA_ATTRIBUTE_USER_ID,
 } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput, fixedBottomScroll } from 'utils';
+import {
+  handleSubmitForm,
+  checkOnValueInput,
+  fixedBottomScroll,
+  getDate,
+  getIdUniqDates,
+} from 'utils';
 import { chatService, messagesService, profileService, authService } from 'services';
 
 const addChatFromValidator = new FormValidator(
@@ -235,6 +241,8 @@ export class ChatPage extends Block {
     const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
 
+    const uniqMessages = getIdUniqDates(messages);
+
     // language=hbs
     return `
       <div class="page">
@@ -290,18 +298,21 @@ export class ChatPage extends Block {
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
-            <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
               ${messages
-                .map(
-                  (message: MessageDTO) =>
-                    `{{{Message
+                .map((message: MessageDTO) => {
+                  const isUniqCurrentMessage = uniqMessages.find(
+                    (uniqMessage) => uniqMessage.id === message.id
+                  );
+                  return `
+                    {{{Message
                       owner=${message.user_id === userInfo.id}
                       content="${message.content}"
                       time="${message.time}"
                       isRead=${message.is_read}
-                    }}}`
-                )
+                      isFirstUniqMessage=${isUniqCurrentMessage ? true : false}
+                    }}}`;
+                })
                 .join('')}
             </ul>
             {{{ChatFooter onSubmit=handleSendMessage onClick=handleOpenFileMenu}}}

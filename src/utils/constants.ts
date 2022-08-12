@@ -54,6 +54,20 @@ const config = {
 };
 
 const DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+const MONTH = [
+  'января',
+  'февраля',
+  'марта',
+  'апреля',
+  'мая',
+  'июня',
+  'июля',
+  'августа',
+  'сентебря',
+  'октября',
+  'ноября',
+  'декабря',
+];
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
@@ -137,4 +151,5 @@ export {
   CONNECTION_PROBLEMS,
   IS_NOT_MATCHED_PASSWORD_MESSAGE,
   DAYS,
+  MONTH,
 };

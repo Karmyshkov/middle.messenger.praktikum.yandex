@@ -1,6 +1,5 @@
 import { store } from 'core';
 import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
-import { STORE_EVENTS } from 'utils/constants';
 
 class MessagesService {
   private _userId!: string | number;

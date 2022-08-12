@@ -1,12 +1,12 @@
 import { Block } from 'core';
 import './message.css';
 import { MessageProps } from 'types';
-import { getDate } from 'utils';
+import { getDate, MONTH } from 'utils';
 
 export class Message extends Block {
   static componentName = 'Message';
-  constructor({ owner, content, time, isRead }: MessageProps) {
-    super({ owner, content, time, isRead });
+  constructor({ owner, content, time, isRead, isFirstUniqMessage }: MessageProps) {
+    super({ owner, content, time, isRead, isFirstUniqMessage });
   }
   protected getStateFromProps(props: MessageProps): void {
     this.state = {
@@ -14,10 +14,11 @@ export class Message extends Block {
       content: props.content,
       time: props.time,
       isRead: props.isRead,
+      isFirstUniqMessage: props.isFirstUniqMessage,
     };
   }
   protected render(): string {
-    const { owner, content, time, srcImg, isRead } = this.state;
+    const { owner, content, time, srcImg, isRead, isFirstUniqMessage } = this.state;
 
     const date = getDate(time);
 
@@ -31,14 +32,19 @@ export class Message extends Block {
     // language=hbs
     return `
       <li class="message ${classesForTitle}">
-          <p class="message__text ${classesForText}">
-            ${content}
-            ${
-              owner
-                ? `<time class="message__time">${date.hour}:${date.minute}</time>`
-                : `<time class="message__time ${classesForTime}">${date.hour}:${date.minute}</time>`
-            }
-          </p>
+        ${
+          isFirstUniqMessage
+            ? `<p class="chat__text-date">${date.day} ${MONTH[date.month]}</p>`
+            : ''
+        }
+        <p class="message__text ${classesForText}">
+          ${content}
+          ${
+            owner
+              ? `<time class="message__time">${date.hour}:${date.minute}</time>`
+              : `<time class="message__time ${classesForTime}">${date.hour}:${date.minute}</time>`
+          }
+        </p>
       </li>
     `;
   }

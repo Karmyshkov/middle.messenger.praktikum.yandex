@@ -82,6 +82,7 @@
     line-height: 12px;
     text-align: center;
     margin: 48px 0 30px;
+    width: 100%;
   }
 
   &__messages {
