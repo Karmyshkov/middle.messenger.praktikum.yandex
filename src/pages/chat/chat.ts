@@ -219,8 +219,18 @@ export class ChatPage extends Block {
         evt.preventDefault();
         const target = evt.target as HTMLFormElement;
         const input = target.querySelector('.chat-footer__input') as HTMLFormElement;
+
         messagesService.sendMessage(input.value);
         input.value = '';
+
+        store.on(STORE_EVENTS.UPDATE, () => {
+          const chat = document.querySelector('.chat__column-dialog');
+
+          if (chat) {
+            console.log(chat.scrollHeight);
+            chat.scrollTop = chat.scrollHeight;
+          }
+        });
       },
     };
   }
