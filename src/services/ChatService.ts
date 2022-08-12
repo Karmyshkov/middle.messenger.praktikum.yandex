@@ -80,9 +80,11 @@ class ChatService {
   }
 
   public getUserForChat({ chatId }: GetUserForChatType) {
-    return chatApi
+    chatApi
       .getUserForChat({ chatId })
-      .then(({ response }: any) => console.log(response))
+      .then(({ response }: any) => {
+        store.setState({ usersFromChats: response });
+      })
       .catch(showError);
   }
 }

@@ -84,15 +84,15 @@ export class ChatPage extends Block {
         });
 
         if (chatItemId) {
-          chatService
-            .getChatToken({ chatId: Number(chatItemId) } as GetChatTokenType)
-            .then(({ token }) =>
-              messagesService.connect({
-                userId: userInfo.id,
-                chatId: Number(chatItemId),
-                token,
-              })
-            );
+          chatService.getChatToken({ chatId: Number(chatItemId) }).then(({ token }) =>
+            messagesService.connect({
+              userId: userInfo.id,
+              chatId: Number(chatItemId),
+              token,
+            })
+          );
+
+          chatService.getUserForChat({ chatId: Number(chatItemId) });
         }
 
         store.on(STORE_EVENTS.UPDATE, () => {
@@ -237,7 +237,13 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
+    const {
+      chats = [],
+      users = [],
+      messages = [],
+      userInfo = [],
+      usersFromChats = [],
+    } = this.props;
     const { chatItemId, currentChat } = this.state;
 
     const uniqMessages = getIdUniqDates(messages);
@@ -362,6 +368,7 @@ export class ChatPage extends Block {
           isDefault=true
           name="popup__form_delete-user"
           fieldName="login"
+          users='${usersFromChats}'
         }}}
       </div>
     `;
