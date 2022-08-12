@@ -57,7 +57,7 @@ class MessagesService {
     const messages = JSON.parse(evt.data);
 
     if (!('type' in messages)) {
-      store.setState({ messages });
+      store.setState({ messages: messages.reverse() });
     }
   }
 

@@ -17,7 +17,7 @@ import {
   DATA_ATTRIBUTE_CHAT_ID,
 } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
-import { chatService, messagesService, profileService } from 'services';
+import { chatService, messagesService, profileService, authService } from 'services';
 
 const addChatFromValidator = new FormValidator(
   config,
@@ -51,6 +51,7 @@ export class ChatPage extends Block {
     super(...args);
 
     chatService.getChats();
+    authService.getInfo();
     messagesService.getMessages();
 
     store.on(STORE_EVENTS.UPDATE, () => {
@@ -67,10 +68,12 @@ export class ChatPage extends Block {
         const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
 
         this.setState({ chatItemId });
+
         const state = store.getState() as any;
+        const { chats, userInfo } = state;
 
         this.setState({
-          currentChat: state?.chats.filter((chat: any) => chat.id === Number(chatItemId)),
+          currentChat: chats.filter((chat: any) => chat.id === Number(chatItemId)),
         });
 
         if (chatItemId) {
@@ -78,7 +81,7 @@ export class ChatPage extends Block {
             .getChatToken({ chatId: Number(chatItemId) } as GetChatTokenType)
             .then(({ token }) =>
               messagesService.connect({
-                userId: 42059,
+                userId: userInfo.id,
                 chatId: Number(chatItemId),
                 token,
               })
@@ -220,9 +223,9 @@ export class ChatPage extends Block {
     };
   }
   render() {
-    const { chats = [], users = [], messages = [] } = this.props;
+    const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-
+    //console.log(messages);
     // language=hbs
     return `
       <div class="page">
@@ -277,11 +280,11 @@ export class ChatPage extends Block {
                 .map(
                   (message: MessageProps) =>
                     `{{{Message
-                      owner=${message.owner}
-                      text="${message.text ? message.text : ''}"
+                      owner=${message.user_id === userInfo.id}
+                      text="${message.content}"
                       time="${message.time}"
                       srcImg="${message.srcImg ? message.srcImg : ''}"
-                      isRead=${message.isRead ? true : false}
+                      isRead=${message.is_read}
                     }}}`
                 )
                 .join('')}
