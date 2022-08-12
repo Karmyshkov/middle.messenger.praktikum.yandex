@@ -13,6 +13,7 @@ export {
   SearchUserByLoginType,
   AddUserToChatType,
   GetChatTokenType,
+  GetUserForChatType,
   UserInfoDTO,
   UserInfoType,
   UserPasswordType,

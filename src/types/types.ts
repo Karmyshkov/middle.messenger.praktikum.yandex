@@ -62,6 +62,10 @@ interface GetChatTokenType {
   chatId: number;
 }
 
+interface GetUserForChatType {
+  chatId: number;
+}
+
 interface UserInfoDTO {
   first_name: string;
   second_name: string;
@@ -133,6 +137,7 @@ export {
   SearchUserByLoginType,
   AddUserToChatType,
   GetChatTokenType,
+  GetUserForChatType,
   UserInfoDTO,
   UserInfoType,
   UserPasswordType,

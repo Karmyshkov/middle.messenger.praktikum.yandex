@@ -4,6 +4,7 @@ import {
   RemoveChatType,
   AddUserToChatType,
   GetChatTokenType,
+  GetUserForChatType,
 } from 'types';
 import {
   showTooltip,
@@ -75,6 +76,13 @@ class ChatService {
     return chatApi
       .getChatToken({ chatId })
       .then(({ response }: any) => JSON.parse(response))
+      .catch(showError);
+  }
+
+  public getUserForChat({ chatId }: GetUserForChatType) {
+    return chatApi
+      .getUserForChat({ chatId })
+      .then(({ response }: any) => console.log(response))
       .catch(showError);
   }
 }
