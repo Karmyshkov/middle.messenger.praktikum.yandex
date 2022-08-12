@@ -1,14 +1,21 @@
 import { Block } from 'core';
 import './message.css';
 import { MessageProps } from 'types';
+import { MessageType } from './types';
 import { getDate, MONTH } from 'utils';
 
 export class Message extends Block {
   static componentName = 'Message';
-  constructor({ owner, content, time, isRead, isFirstUniqMessage }: MessageProps) {
+  constructor({
+    owner,
+    content,
+    time,
+    isRead,
+    isFirstUniqMessage,
+  }: MessageProps & MessageType) {
     super({ owner, content, time, isRead, isFirstUniqMessage });
   }
-  protected getStateFromProps(props: MessageProps): void {
+  protected getStateFromProps(props: MessageProps & MessageType): void {
     this.state = {
       owner: props.owner,
       content: props.content,
