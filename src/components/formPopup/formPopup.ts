@@ -51,38 +51,52 @@ export class FormPopup extends Block {
     const { classesForm, name, isDefault, helperText, fieldName, textBtn, users } =
       this.state;
 
+    const renderFormElement = () => {
+      if (classesForm !== 'popup__form_delete-user') {
+        return isDefault
+          ? `
+            {{{InputWrapper
+              onInput=onInput
+              onFocus=onFocus
+              onBlur=onBlur
+              type="text"
+              helperText="${helperText}"
+              minlength="5"
+              maxlength="20"
+              name="${fieldName}"
+            }}}
+            {{{Button
+              textBtn="${textBtn}"
+              type="submit"
+            }}}
+            `
+          : `
+            {{{InputFile}}}
+            {{{Button
+              textBtn="${textBtn}"
+              type="submit"
+            }}}
+          `;
+      }
+      return '';
+    };
+
     // language=hbs
     return `
           <form class="formPopup ${
             classesForm !== 'undefined' ? classesForm : ''
           }" name="${name}" novalidate>
+            ${renderFormElement()}
             ${
-              isDefault
+              users !== 'undefined'
                 ? `
-                  {{{InputWrapper
-                    onInput=onInput
-                    onFocus=onFocus
-                    onBlur=onBlur
-                    type="text"
-                    helperText="${helperText}"
-                    minlength="5"
-                    maxlength="20"
-                    name="${fieldName}"
-                  }}}
-                  {{{Button
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
-                : `
-                  {{{InputFile}}}
-                  {{{Button
-                    textBtn="${textBtn}"
-                    type="submit"
-                  }}}
-                  `
+                {{{Users
+                  users='${users}'
+                  onClick=onClick
+                  type="${classesForm === 'popup__form_delete-user' ? 'delete' : 'add'}"
+                }}}`
+                : ''
             }
-            ${users !== 'undefined' ? `{{{Users users='${users}' onClick=onClick}}}` : ''}
           </form>
     `;
   }

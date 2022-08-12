@@ -4,8 +4,8 @@ import { UsersProps } from './types';
 
 export class Users extends Block {
   static componentName = 'Users';
-  constructor({ users, onClick }: UsersProps) {
-    super({ users, onClick });
+  constructor({ users, type, onClick }: UsersProps) {
+    super({ users, type, onClick });
   }
 
   protected getStateFromProps(props: any): void {
@@ -14,11 +14,12 @@ export class Users extends Block {
         props.users !== 'undefined' && props.users.length > 0
           ? JSON.parse(props.users)
           : [],
+      type: props.type,
       onClick: props.onClick,
     };
   }
   protected render(): string {
-    const { users } = this.state;
+    const { users, type } = this.state;
 
     // language=hbs
     return `
@@ -34,6 +35,7 @@ export class Users extends Block {
                   avatar="${user.avatar}"
                   login="${user.login}"
                   email="${user.email}"
+                  type="${type}"
                 }}}`
             )
             .join('')

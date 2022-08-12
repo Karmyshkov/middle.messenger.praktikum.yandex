@@ -46,6 +46,7 @@
     font-size: 20px;
     color: var(--color-primaty);
     font-weight: 500;
+    width: 27px;
     transition: 0.3s background-color, 0.3s color;
   }
 

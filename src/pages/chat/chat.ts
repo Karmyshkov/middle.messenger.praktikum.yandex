@@ -356,13 +356,7 @@ export class ChatPage extends Block {
           users='${users}'
         }}}
         {{{Popup
-          onSubmit=hendleSubmitDeleteUserForm
-          onInput=handleChangeDeleteUserInput
-          onFocus=handleValidateDeleteUserInput
-          onBlur=handleValidateDeleteUserInput
           title="Удалить пользователя"
-          helperText="Логин"
-          textBtn="Удалить"
           classesPopup="popup_delete-user"
           classesForm="popup__form_delete-user"
           isDefault=true

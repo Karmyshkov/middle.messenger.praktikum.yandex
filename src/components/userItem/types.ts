@@ -4,4 +4,5 @@ export interface UserItemProps {
   avatar: string;
   login: string;
   email: string;
+  type: 'delete' | 'add';
 }

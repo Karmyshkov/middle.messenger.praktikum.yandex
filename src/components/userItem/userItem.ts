@@ -6,8 +6,8 @@ import defaultIcon from 'img/avatar.svg';
 
 export class UserItem extends Block {
   static componentName = 'UserItem';
-  constructor({ id, avatar, login, email, onClick }: UserItemProps) {
-    super({ id, avatar, login, email, events: { click: onClick } });
+  constructor({ id, avatar, login, email, type, onClick }: UserItemProps) {
+    super({ id, avatar, login, email, type, events: { click: onClick } });
   }
 
   protected getStateFromProps(props: any): void {
@@ -16,10 +16,11 @@ export class UserItem extends Block {
       avatar: props.avatar,
       login: props.login,
       email: props.email,
+      type: props.type,
     };
   }
   protected render(): string {
-    const { id, avatar, login, email } = this.state;
+    const { id, avatar, login, email, type } = this.state;
 
     // language=hbs
     return `
@@ -31,7 +32,9 @@ export class UserItem extends Block {
           <p class="user-item__text-login">${login}</p>
           <p class="user-item__text-email">${email}</p>
         </div>
-        <button class="user-item__btn" type="button">+</button>
+        <button class="user-item__btn" type="button">
+          ${type === 'add' ? '+' : '-'}
+        </button>
       </li>
     `;
   }
