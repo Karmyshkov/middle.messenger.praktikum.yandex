@@ -190,12 +190,19 @@ export class ChatPage extends Block {
         });
 
         store.on(STORE_EVENTS.UPDATE, () => {
-          new Popup(
-            config.popupDeleteUserSelector,
-            config.btnSubmitFormSelector,
-            config.isOpenPopupSelector,
-            config
-          ).handleOpenPopup();
+          const state = store.getState();
+          const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
+
+          if (usersFromChatsLength > 0) {
+            new Popup(
+              config.popupDeleteUserSelector,
+              config.btnSubmitFormSelector,
+              config.isOpenPopupSelector,
+              config
+            ).handleOpenPopup();
+          } else {
+            Popup.handleClosePopup(config.isOpenPopupSelector);
+          }
         });
       },
 

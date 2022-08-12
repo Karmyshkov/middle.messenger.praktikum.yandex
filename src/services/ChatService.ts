@@ -107,6 +107,8 @@ class ChatService {
             usersFromChats.filter((user) => user.id !== users[0])
           ),
         });
+
+        store.setState({ chats: state.chats.filter((chat) => chat.id !== chatId) });
       })
       .catch(showError);
   }
