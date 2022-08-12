@@ -5,10 +5,11 @@ class MessagesService {
   private _userId!: string | number;
   private _chatId!: string | number;
   private _token!: string;
-  private _wss!: WebSocket;
+  private _wss!: WebSocket | null;
   private _ping!: any;
 
   constructor() {
+    this._wss = null;
     this._handleOpen = this._handleOpen.bind(this);
     this._handleMessage = this._handleMessage.bind(this);
     this._handleError = this._handleError.bind(this);
@@ -16,24 +17,30 @@ class MessagesService {
   }
 
   private _setListeners() {
-    this._wss.addEventListener('open', this._handleOpen);
-    this._wss.addEventListener('close', this._handleClose);
-    this._wss.addEventListener('message', this._handleMessage);
-    this._wss.addEventListener('error', this._handleError);
+    if (this._wss) {
+      this._wss.addEventListener('open', this._handleOpen);
+      this._wss.addEventListener('close', this._handleClose);
+      this._wss.addEventListener('message', this._handleMessage);
+      this._wss.addEventListener('error', this._handleError);
+    }
   }
 
   private _removeListeners() {
-    this._wss.removeEventListener('open', this._handleOpen);
-    this._wss.removeEventListener('close', this._handleClose);
-    this._wss.removeEventListener('message', this._handleMessage);
-    this._wss.removeEventListener('error', this._handleError);
+    if (this._wss) {
+      this._wss.removeEventListener('open', this._handleOpen);
+      this._wss.removeEventListener('close', this._handleClose);
+      this._wss.removeEventListener('message', this._handleMessage);
+      this._wss.removeEventListener('error', this._handleError);
+    }
   }
 
   private _handleOpen() {
-    this.getMessages();
-    this._ping = setInterval(() => {
-      this._wss.send(JSON.stringify({ type: 'ping' }));
-    }, 5000);
+    if (this._wss) {
+      this.getMessages();
+      this._ping = setInterval(() => {
+        this._wss?.send(JSON.stringify({ type: 'ping' }));
+      }, 5000);
+    }
   }
 
   private _handleClose(evt: any) {
@@ -93,12 +100,14 @@ class MessagesService {
   }
 
   public sendMessage(message: string) {
-    this._wss.send(
-      JSON.stringify({
-        content: message,
-        type: 'message',
-      })
-    );
+    if (this._wss) {
+      this._wss?.send(
+        JSON.stringify({
+          content: message,
+          type: 'message',
+        })
+      );
+    }
   }
 }
 
