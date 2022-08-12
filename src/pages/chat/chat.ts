@@ -22,7 +22,6 @@ import {
   handleSubmitForm,
   checkOnValueInput,
   fixedBottomScroll,
-  getDate,
   getIdUniqDates,
 } from 'utils';
 import { chatService, messagesService, profileService, authService } from 'services';

@@ -10,6 +10,7 @@ import {
   showError,
   SUCCESS_CREATE_MESSAGE,
   SUCCESS_REMOVE_CHAT_MESSAGE,
+  SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
 } from 'utils';
 import { store } from 'core';
 
@@ -60,7 +61,13 @@ class ChatService {
   public addUserToChat({ users, chatId }: AddUserToChatType) {
     chatApi
       .addUserToChat({ users, chatId })
-      .then(({ response }: any) => store.setState({ users: JSON.parse(response) }))
+      .then(({ response }: any) => {
+        showTooltip({
+          text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+          type: 'success',
+        });
+        store.setState({ users: JSON.parse(response) });
+      })
       .catch(showError);
   }
 
