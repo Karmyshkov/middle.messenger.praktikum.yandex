@@ -220,13 +220,14 @@ export class ChatPage extends Block {
         const target = evt.target as HTMLFormElement;
         const input = target.querySelector('.chat-footer__input') as HTMLFormElement;
         messagesService.sendMessage(input.value);
+        input.value = '';
       },
     };
   }
   render() {
     const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-
+    console.log(messages);
     // language=hbs
     return `
       <div class="page">

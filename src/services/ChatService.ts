@@ -21,7 +21,7 @@ class ChatService {
         const state = store.getState();
 
         const chat = {
-          0: {
+          [state.chats.length]: {
             avatar: null,
             id: JSON.parse(response).id,
             last_message: null,

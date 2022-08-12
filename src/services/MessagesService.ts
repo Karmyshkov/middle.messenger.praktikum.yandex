@@ -1,5 +1,6 @@
 import { store } from 'core';
 import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
+import { STORE_EVENTS } from 'utils/constants';
 
 class MessagesService {
   private _userId!: string | number;
@@ -56,8 +57,18 @@ class MessagesService {
   private _handleMessage(evt: any) {
     const messages = JSON.parse(evt.data);
 
-    if (!('type' in messages)) {
-      store.setState({ messages: messages.reverse() });
+    if (messages.type !== 'pong') {
+      if (Array.isArray(messages)) {
+        store.setState({
+          messages: messages.reverse(),
+        });
+      } else {
+        const state = store.getState();
+
+        store.setState({
+          messages: Object.assign(state.messages, { [state.messages.length]: messages }),
+        });
+      }
     }
   }
 
