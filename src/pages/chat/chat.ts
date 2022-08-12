@@ -188,7 +188,7 @@ export class ChatPage extends Block {
         const userItem = target.closest(`.${config.userItemSelector}`);
         const userId = userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID);
         chatService.addUserToChat({
-          users: [userId ? Number(userId) : 0],
+          users: [Number(userId)],
           chatId: Number(this.state.chatItemId),
         });
       },
