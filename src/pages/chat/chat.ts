@@ -6,6 +6,7 @@ import {
   SearchUserByLoginType,
   GetChatTokenType,
   STORE_EVENTS,
+  MessageDTO,
 } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
@@ -225,7 +226,7 @@ export class ChatPage extends Block {
   render() {
     const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-    //console.log(messages);
+
     // language=hbs
     return `
       <div class="page">
@@ -278,12 +279,11 @@ export class ChatPage extends Block {
             <ul class="chat__messages">
               ${messages
                 .map(
-                  (message: MessageProps) =>
+                  (message: MessageDTO) =>
                     `{{{Message
                       owner=${message.user_id === userInfo.id}
-                      text="${message.content}"
+                      content="${message.content}"
                       time="${message.time}"
-                      srcImg="${message.srcImg ? message.srcImg : ''}"
                       isRead=${message.is_read}
                     }}}`
                 )

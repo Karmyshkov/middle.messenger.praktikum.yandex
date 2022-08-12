@@ -17,4 +17,5 @@ export {
   UserInfoType,
   UserPasswordType,
   STORE_EVENTS,
+  MessageDTO,
 } from './types';

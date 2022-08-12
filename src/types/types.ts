@@ -96,10 +96,20 @@ type ChatType = {
 
 interface MessageProps {
   owner: boolean;
-  text?: string;
+  content: string;
   time: string;
-  srcImg?: string;
   isRead?: boolean;
+}
+
+interface MessageDTO {
+  chat_id: number;
+  content: string;
+  file: null | File;
+  id: number;
+  is_read: boolean;
+  time: string;
+  type: string;
+  user_id: number;
 }
 
 type props = Record<string, any>;
@@ -127,4 +137,5 @@ export {
   UserInfoType,
   UserPasswordType,
   STORE_EVENTS,
+  MessageDTO,
 };
