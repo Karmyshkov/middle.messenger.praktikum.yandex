@@ -227,7 +227,7 @@ export class ChatPage extends Block {
   render() {
     const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-    console.log(messages);
+
     // language=hbs
     return `
       <div class="page">
