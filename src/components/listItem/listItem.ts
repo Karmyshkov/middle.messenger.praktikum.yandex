@@ -2,7 +2,7 @@ import { Block } from 'core';
 import './listItem.css';
 import { ListItemProps } from './types';
 import { ChatType } from 'types';
-import { getDate, DAYS } from 'utils';
+import { getDate, DAYS, DATA_ATTRIBUTE_CHAT_ID } from 'utils';
 
 export class ListItem extends Block {
   static componentName = 'ListItem';
@@ -58,7 +58,7 @@ export class ListItem extends Block {
 
     // language=hbs
     return `
-      <li class="list-item" data-chat-id="${id}">
+      <li class="list-item" ${DATA_ATTRIBUTE_CHAT_ID}="${id}">
         <div class="list-item__container">
           ${
             srcAvatar

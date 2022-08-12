@@ -74,4 +74,19 @@ function getDate(time: string) {
   };
 }
 
-export { handleSubmitForm, checkOnValueInput, isEqual, showError, getDate };
+function fixedBottomScroll() {
+  const chat = document.querySelector(`.${config.contentDialodSelector}`);
+
+  if (chat) {
+    chat.scrollTop = chat.scrollHeight;
+  }
+}
+
+export {
+  handleSubmitForm,
+  checkOnValueInput,
+  isEqual,
+  showError,
+  getDate,
+  fixedBottomScroll,
+};

@@ -16,8 +16,9 @@ import {
   DELETE_USER_FORM,
   SETTINGS_PATH,
   DATA_ATTRIBUTE_CHAT_ID,
+  DATA_ATTRIBUTE_USER_ID,
 } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { handleSubmitForm, checkOnValueInput, fixedBottomScroll } from 'utils';
 import { chatService, messagesService, profileService, authService } from 'services';
 
 const addChatFromValidator = new FormValidator(
@@ -91,6 +92,7 @@ export class ChatPage extends Block {
 
         store.on(STORE_EVENTS.UPDATE, () => {
           new Chat(config).addActiveClassName(evt);
+          fixedBottomScroll();
         });
       },
       handleSearchByChats: () => {
@@ -179,7 +181,7 @@ export class ChatPage extends Block {
       handleAddUserToChat: (evt: Event) => {
         const target = evt.target as HTMLElement;
         const userItem = target.closest(`.${config.userItemSelector}`);
-        const userId = userItem?.getAttribute('data-user-id');
+        const userId = userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID);
         chatService.addUserToChat({
           users: [userId ? Number(userId) : 0],
           chatId: Number(this.state.chatItemId),
@@ -218,18 +220,14 @@ export class ChatPage extends Block {
       handleSendMessage: (evt: Event) => {
         evt.preventDefault();
         const target = evt.target as HTMLFormElement;
-        const input = target.querySelector('.chat-footer__input') as HTMLFormElement;
+        const input = target.querySelector(
+          `.${config.chatFooterInputSelector}`
+        ) as HTMLFormElement;
 
         messagesService.sendMessage(input.value);
         input.value = '';
 
-        store.on(STORE_EVENTS.UPDATE, () => {
-          const chat = document.querySelector('.chat__column-dialog');
-
-          if (chat) {
-            chat.scrollTop = chat.scrollHeight;
-          }
-        });
+        store.on(STORE_EVENTS.UPDATE, () => fixedBottomScroll());
       },
     };
   }

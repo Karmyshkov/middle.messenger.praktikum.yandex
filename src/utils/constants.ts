@@ -50,6 +50,7 @@ const config = {
   tooltipSelector: 'tooltip',
   tooltipIsSuccessSelector: 'tooltip_is-success',
   tooltipIsErrorSelector: 'tooltip_is-error',
+  chatFooterInputSelector: 'chat-footer__input',
 };
 
 const DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
@@ -92,6 +93,7 @@ const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
 const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
 const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
 const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
+const DATA_ATTRIBUTE_USER_ID = 'data-user-id';
 const CONNECTION_PROBLEMS = 'Проблемы с подключением';
 const IS_NOT_MATCHED_PASSWORD_MESSAGE = 'Пароли не совпадают!';
 
@@ -131,6 +133,7 @@ export {
   EDIT_PASSWORD_PATH,
   BASE_URL_WSS,
   DATA_ATTRIBUTE_CHAT_ID,
+  DATA_ATTRIBUTE_USER_ID,
   CONNECTION_PROBLEMS,
   IS_NOT_MATCHED_PASSWORD_MESSAGE,
   DAYS,
