@@ -29,7 +29,7 @@
     color: var(--color-primaty);
     font-weight: 600;
     line-height: 13px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   &__message {
