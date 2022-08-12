@@ -226,7 +226,7 @@ export class ChatPage extends Block {
   render() {
     const { chats = [], users = [], messages = [], userInfo = [] } = this.props;
     const { chatItemId, currentChat } = this.state;
-    console.log(chats);
+
     // language=hbs
     return `
       <div class="page">
@@ -249,6 +249,11 @@ export class ChatPage extends Block {
                         time="${chat.last_message ? chat.last_message.time : null}"
                         countNotReadMessage="${chat.unread_count}"
                         srcAvatar="${chat.avatar}"
+                        isOwnerLastMessage="${
+                          chat.last_message
+                            ? chat.last_message.user.login === userInfo.login
+                            : null
+                        }"
                         onClick=addClassForActiveElement
                       }}}`
                   )

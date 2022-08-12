@@ -13,6 +13,7 @@ export class ListItem extends Block {
     time,
     countNotReadMessage,
     srcAvatar,
+    isOwnerLastMessage,
     onClick,
   }: ChatType & ListItemProps) {
     super({
@@ -22,6 +23,7 @@ export class ListItem extends Block {
       time,
       countNotReadMessage,
       srcAvatar,
+      isOwnerLastMessage,
       events: { click: onClick },
     });
   }
@@ -33,13 +35,26 @@ export class ListItem extends Block {
       time: props.time,
       countNotReadMessage: props.countNotReadMessage,
       srcAvatar: props.srcAvatar,
+      isOwnerLastMessage: props.isOwnerLastMessage,
     };
   }
   protected render(): string {
-    const { id, userName, lastMessage, time, countNotReadMessage, srcAvatar } =
-      this.state;
+    const {
+      id,
+      userName,
+      lastMessage,
+      time,
+      countNotReadMessage,
+      srcAvatar,
+      isOwnerLastMessage,
+    } = this.state;
 
     const date = getDate(time);
+
+    const lastMessageText =
+      isOwnerLastMessage === 'true'
+        ? `<span class="list-item__message list-item__message_bold">Вы:</span>${lastMessage}`
+        : lastMessage;
 
     // language=hbs
     return `
@@ -53,11 +68,7 @@ export class ListItem extends Block {
           <div class="list-item__inner">
             <p class="list-item__user-name">${userName}</p>
             <p class="list-item__message">
-              ${
-                lastMessage !== 'null'
-                  ? `${lastMessage}`
-                  : `{{#unless ${countNotReadMessage}}}<span class="list-item__message list-item__message_bold">Вы:</span>{{/unless}}`
-              }
+              ${lastMessage !== 'null' ? lastMessageText : ''}
             </p>
           </div>
           <div class="list-item__wrap">
