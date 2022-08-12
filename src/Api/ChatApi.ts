@@ -5,6 +5,7 @@ import {
   AddUserToChatType,
   GetChatTokenType,
   GetUserForChatType,
+  RemoveUserFromChat,
 } from 'types';
 
 class ChatApi extends BaseAPI {
@@ -34,6 +35,10 @@ class ChatApi extends BaseAPI {
 
   public getUserForChat({ chatId }: GetUserForChatType) {
     return this.get(`/${chatId}/users`);
+  }
+
+  public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
+    return this.delete('/users', { users, chatId });
   }
 }
 

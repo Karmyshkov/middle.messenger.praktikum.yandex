@@ -58,6 +58,11 @@ interface AddUserToChatType {
   chatId: number;
 }
 
+interface RemoveUserFromChat {
+  users: number[];
+  chatId: number;
+}
+
 interface GetChatTokenType {
   chatId: number;
 }
@@ -143,4 +148,5 @@ export {
   UserPasswordType,
   STORE_EVENTS,
   MessageDTO,
+  RemoveUserFromChat,
 };

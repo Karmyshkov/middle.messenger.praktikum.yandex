@@ -5,6 +5,7 @@ import {
   AddUserToChatType,
   GetChatTokenType,
   GetUserForChatType,
+  RemoveUserFromChat,
 } from 'types';
 import {
   showTooltip,
@@ -12,6 +13,7 @@ import {
   SUCCESS_CREATE_MESSAGE,
   SUCCESS_REMOVE_CHAT_MESSAGE,
   SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+  SUCCESS_REMOVE_USER_FROM_CHAT,
 } from 'utils';
 import { store } from 'core';
 
@@ -84,6 +86,27 @@ class ChatService {
       .getUserForChat({ chatId })
       .then(({ response }: any) => {
         store.setState({ usersFromChats: response });
+      })
+      .catch(showError);
+  }
+
+  public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
+    chatApi
+      .removeUserFromChat({ users, chatId })
+      .then(() => {
+        const state = store.getState();
+        const usersFromChats = JSON.parse(state.usersFromChats);
+
+        showTooltip({
+          text: SUCCESS_REMOVE_USER_FROM_CHAT,
+          type: 'success',
+        });
+
+        store.setState({
+          usersFromChats: JSON.stringify(
+            usersFromChats.filter((user) => user.id !== users[0])
+          ),
+        });
       })
       .catch(showError);
   }

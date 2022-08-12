@@ -1,19 +1,11 @@
 import { Block, BrowseRouter as router, store } from 'core';
 import 'styles/chat.css';
-import {
-  MessageProps,
-  CreateChatType,
-  SearchUserByLoginType,
-  GetChatTokenType,
-  STORE_EVENTS,
-  MessageDTO,
-} from 'types';
+import { CreateChatType, SearchUserByLoginType, STORE_EVENTS, MessageDTO } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
   config,
   ADD_CHAT_FORM,
   ADD_USER_FORM,
-  DELETE_USER_FORM,
   SETTINGS_PATH,
   DATA_ATTRIBUTE_CHAT_ID,
   DATA_ATTRIBUTE_USER_ID,
@@ -38,15 +30,6 @@ const addChatFromValidator = new FormValidator(
 const addUserFormValidator = new FormValidator(
   config,
   ADD_USER_FORM,
-  config.inputSelector,
-  config.btnSubmitFormSelector,
-  config.inputHelperTextSelector,
-  config.isShowHelperTextSelector
-);
-
-const deleteUserFormValidator = new FormValidator(
-  config,
-  DELETE_USER_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -187,6 +170,7 @@ export class ChatPage extends Block {
         const target = evt.target as HTMLElement;
         const userItem = target.closest(`.${config.userItemSelector}`);
         const userId = userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID);
+
         chatService.addUserToChat({
           users: [Number(userId)],
           chatId: Number(this.state.chatItemId),
@@ -195,25 +179,24 @@ export class ChatPage extends Block {
 
       // delete user
 
-      handleChangeDeleteUserInput: (evt: Event) => {
-        checkOnValueInput(evt);
-        deleteUserFormValidator.clearError();
-        deleteUserFormValidator.toggleBtnState();
-      },
-      hendleSubmitDeleteUserForm: (evt: Event) => {
-        evt.preventDefault();
-        const dataForm = handleSubmitForm({
-          stateForm: deleteUserFormValidator.checkStateForm(),
-          inputSelector: config.inputSelector,
-          formSelector: DELETE_USER_FORM,
-          disableBtn: deleteUserFormValidator.disableBtn,
-          addErors: deleteUserFormValidator.addErrorsForInput,
+      handleDeleteUserFromChat: (evt: Event) => {
+        const target = evt.target as HTMLElement;
+        const userItem = target.closest(`.${config.userItemSelector}`);
+        const userId = userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID);
+
+        chatService.removeUserFromChat({
+          users: [Number(userId)],
+          chatId: Number(this.state.chatItemId),
         });
 
-        console.log(dataForm);
-      },
-      handleValidateDeleteUserInput: (evt: Event) => {
-        deleteUserFormValidator.handleFieldValidation(evt);
+        store.on(STORE_EVENTS.UPDATE, () => {
+          new Popup(
+            config.popupDeleteUserSelector,
+            config.btnSubmitFormSelector,
+            config.isOpenPopupSelector,
+            config
+          ).handleOpenPopup();
+        });
       },
 
       // ###
@@ -356,6 +339,7 @@ export class ChatPage extends Block {
           users='${users}'
         }}}
         {{{Popup
+          onClick=handleDeleteUserFromChat
           title="Удалить пользователя"
           classesPopup="popup_delete-user"
           classesForm="popup__form_delete-user"

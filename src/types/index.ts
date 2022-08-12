@@ -19,4 +19,5 @@ export {
   UserPasswordType,
   STORE_EVENTS,
   MessageDTO,
+  RemoveUserFromChat,
 } from './types';

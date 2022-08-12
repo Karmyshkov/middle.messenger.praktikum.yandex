@@ -107,6 +107,7 @@ const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
 const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
 const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
 const SUCCESS_ADD_USER_TO_CHAT_MESSAGE = 'Пользователь добавлен в чат!';
+const SUCCESS_REMOVE_USER_FROM_CHAT = 'Пользователь удален из чата!';
 const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
 const DATA_ATTRIBUTE_USER_ID = 'data-user-id';
 const CONNECTION_PROBLEMS = 'Проблемы с подключением';
@@ -141,6 +142,7 @@ export {
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
   SUCCESS_REMOVE_CHAT_MESSAGE,
   SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+  SUCCESS_REMOVE_USER_FROM_CHAT,
   SIGNIN_PATH,
   MESSAGER_PATH,
   SIGNUP_PATH,
