@@ -2,6 +2,7 @@ import { Block } from 'core';
 import './listItem.css';
 import { ListItemProps } from './types';
 import { ChatType } from 'types';
+import { getDate, DAYS } from 'utils';
 
 export class ListItem extends Block {
   static componentName = 'ListItem';
@@ -37,6 +38,9 @@ export class ListItem extends Block {
   protected render(): string {
     const { id, userName, lastMessage, time, countNotReadMessage, srcAvatar } =
       this.state;
+
+    const date = getDate(time);
+
     // language=hbs
     return `
       <li class="list-item" data-chat-id="${id}">
@@ -50,14 +54,16 @@ export class ListItem extends Block {
             <p class="list-item__user-name">${userName}</p>
             <p class="list-item__message">
               ${
-                lastMessage
-                  ? ''
-                  : `{{#unless ${countNotReadMessage}}}<span class="list-item__message list-item__message_bold">Вы:</span>{{/unless}}${lastMessage}`
+                lastMessage !== 'null'
+                  ? `${lastMessage}`
+                  : `{{#unless ${countNotReadMessage}}}<span class="list-item__message list-item__message_bold">Вы:</span>{{/unless}}`
               }
             </p>
           </div>
           <div class="list-item__wrap">
-            <time class="list-item__time">${time}</time>
+            <time class="list-item__time">${
+              time !== 'null' ? DAYS[date.day - 1] : ''
+            }</time>
             <p class="list-item__count-message {{#if ${countNotReadMessage}}}list-item__count-message_is-show{{/if}}">${countNotReadMessage}</p>
           </div>
         </div>

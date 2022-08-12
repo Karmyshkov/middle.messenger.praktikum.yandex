@@ -65,4 +65,13 @@ function showError(err: any) {
     });
 }
 
-export { handleSubmitForm, checkOnValueInput, isEqual, showError };
+function getDate(time: string) {
+  const date = new Date(time);
+  return {
+    day: date.getDay(),
+    hour: date.getHours(),
+    minute: date.getMinutes(),
+  };
+}
+
+export { handleSubmitForm, checkOnValueInput, isEqual, showError, getDate };

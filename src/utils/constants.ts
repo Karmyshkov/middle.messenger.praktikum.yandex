@@ -52,6 +52,8 @@ const config = {
   tooltipIsErrorSelector: 'tooltip_is-error',
 };
 
+const DAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
@@ -131,4 +133,5 @@ export {
   DATA_ATTRIBUTE_CHAT_ID,
   CONNECTION_PROBLEMS,
   IS_NOT_MATCHED_PASSWORD_MESSAGE,
+  DAYS,
 };

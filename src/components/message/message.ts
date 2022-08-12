@@ -1,6 +1,7 @@
 import { Block } from 'core';
 import './message.css';
 import { MessageProps } from 'types';
+import { getDate } from 'utils';
 
 export class Message extends Block {
   static componentName = 'Message';
@@ -18,9 +19,7 @@ export class Message extends Block {
   protected render(): string {
     const { owner, content, time, srcImg, isRead } = this.state;
 
-    const date = new Date(time);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+    const date = getDate(time);
 
     const classesForTitle = `${
       !owner ? 'message_is-not-owner' : srcImg ? 'message_is-img' : ''
@@ -36,8 +35,8 @@ export class Message extends Block {
             ${content}
             ${
               owner
-                ? `<time class="message__time">${hours}:${minutes}</time>`
-                : `<time class="message__time ${classesForTime}">${hours}:${minutes}</time>`
+                ? `<time class="message__time">${date.hour}:${date.minute}</time>`
+                : `<time class="message__time ${classesForTime}">${date.hour}:${date.minute}</time>`
             }
           </p>
       </li>
