@@ -20,4 +20,5 @@ export {
   STORE_EVENTS,
   MessageDTO,
   RemoveUserFromChat,
+  InitialStateType,
 } from './types';

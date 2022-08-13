@@ -121,6 +121,39 @@ interface MessageDTO {
   user_id: number;
 }
 
+interface UserType {
+  avatar: null | string;
+  display_name: string;
+  email: string;
+  first_name: string;
+  login: string;
+  phone: string;
+  second_name: string;
+  id?: number;
+}
+
+interface LastMessage {
+  content: string;
+  id: number;
+  time: string;
+  user: UserType;
+}
+
+interface ChatsType {
+  avatar: null | string;
+  created_by: number;
+  id: number;
+  last_message: LastMessage;
+  title: string;
+  unread_count: number;
+}
+
+interface InitialStateType {
+  chats?: ChatsType[];
+  userInfo?: UserType;
+  usersFromChats?: string;
+}
+
 type props = Record<string, any>;
 
 enum STORE_EVENTS {
@@ -151,4 +184,5 @@ export {
   STORE_EVENTS,
   MessageDTO,
   RemoveUserFromChat,
+  InitialStateType,
 };
