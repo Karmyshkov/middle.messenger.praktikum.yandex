@@ -6,8 +6,7 @@ import {
   showError,
   SUCCESS_SIGNUP_MESSAGE,
   SUCCESS_SIGNIN_MESSAGE,
-  MESSAGER_PATH,
-  SIGNIN_PATH,
+  PATHNAMES,
 } from 'utils';
 
 class AuthService {
@@ -20,7 +19,7 @@ class AuthService {
           type: 'success',
         });
         localStorage.setItem('isSignin', 'true');
-        router.go(MESSAGER_PATH);
+        router.go(PATHNAMES['MESSAGER_PATH']);
       })
       .catch(showError);
   }
@@ -34,7 +33,7 @@ class AuthService {
           type: 'success',
         });
         localStorage.setItem('isSignin', 'true');
-        router.go(MESSAGER_PATH);
+        router.go(PATHNAMES['MESSAGER_PATH']);
       })
       .catch(showError);
   }
@@ -43,7 +42,7 @@ class AuthService {
     authAPI
       .signout()
       .then(() => {
-        router.go(SIGNIN_PATH);
+        router.go(PATHNAMES['SIGNIN_PATH']);
         localStorage.removeItem('isSignin');
       })
       .catch(showError);

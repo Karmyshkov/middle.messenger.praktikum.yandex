@@ -69,6 +69,15 @@ const MONTH = [
   'декабря',
 ];
 
+const PATHNAMES = {
+  SIGNIN_PATH: '/',
+  MESSAGER_PATH: '/messenger',
+  SIGNUP_PATH: '/sign-up',
+  SETTINGS_PATH: '/settings',
+  EDIT_SETTINGS_PATH: '/edit-settings',
+  EDIT_PASSWORD_PATH: '/edit-password',
+};
+
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
@@ -77,13 +86,6 @@ const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
 const BASE_URL_WSS = 'wss://ya-praktikum.tech/ws/chats';
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
-
-const SIGNIN_PATH = '/';
-const MESSAGER_PATH = '/messenger';
-const SIGNUP_PATH = '/sign-up';
-const SETTINGS_PATH = '/settings';
-const EDIT_SETTINGS_PATH = '/edit-settings';
-const EDIT_PASSWORD_PATH = '/edit-password';
 
 const ADD_CHAT_FORM = 'popup__form_add-chat';
 const ADD_USER_FORM = 'popup__form_add-user';
@@ -130,7 +132,6 @@ export {
   REGEXP_FOR_NAME_AND_LASTNAME,
   REGEXP_FOR_PHONE,
   REGEXP_REPLACE_PATHNAME,
-  REGEXP_REPLACE_ID,
   BASE_URL,
   BASE_URL_RESOURCES,
   BASE_HEADERS,
@@ -142,12 +143,7 @@ export {
   SUCCESS_REMOVE_CHAT_MESSAGE,
   SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
   SUCCESS_REMOVE_USER_FROM_CHAT,
-  SIGNIN_PATH,
-  MESSAGER_PATH,
-  SIGNUP_PATH,
-  SETTINGS_PATH,
-  EDIT_SETTINGS_PATH,
-  EDIT_PASSWORD_PATH,
+  PATHNAMES,
   BASE_URL_WSS,
   DATA_ATTRIBUTE_CHAT_ID,
   DATA_ATTRIBUTE_USER_ID,

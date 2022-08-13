@@ -12,7 +12,7 @@ import {
   config,
   ADD_CHAT_FORM,
   ADD_USER_FORM,
-  SETTINGS_PATH,
+  PATHNAMES,
   DATA_ATTRIBUTE_CHAT_ID,
 } from 'utils/constants';
 import {
@@ -215,7 +215,7 @@ export class ChatPage extends Block {
           }
         });
       },
-      handleLinkBtn: () => router.go(SETTINGS_PATH),
+      handleLinkBtn: () => router.go(PATHNAMES['SETTINGS_PATH']),
       handleSendMessage: (evt: Event) => {
         evt.preventDefault();
         const target = evt.target as HTMLFormElement;

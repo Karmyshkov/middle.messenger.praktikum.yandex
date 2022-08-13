@@ -1,7 +1,7 @@
 import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM, SIGNUP_PATH } from 'utils/constants';
+import { config, AUTH_FORM, PATHNAMES } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
@@ -36,7 +36,7 @@ export class SigninPage extends Block {
         dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
-      handleLinkBtn: () => router.go(SIGNUP_PATH),
+      handleLinkBtn: () => router.go(PATHNAMES['SIGNUP_PATH']),
     };
   }
   render() {

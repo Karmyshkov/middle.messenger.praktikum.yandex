@@ -38,6 +38,8 @@ class BrowseRouter {
       return;
     }
 
+    console.log(pathname);
+
     if (this.currentRoute && this.currentRoute !== route) {
       this.currentRoute.leave();
     }
