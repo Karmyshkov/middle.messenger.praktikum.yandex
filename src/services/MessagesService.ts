@@ -79,8 +79,17 @@ class MessagesService {
     });
   }
 
+  private _leave() {
+    if (this._wss) {
+      clearInterval(this._ping);
+      this._wss.close();
+      this._removeListeners();
+    }
+  }
+
   public connect({ userId, chatId, token }: any) {
     if (this._chatId !== chatId) {
+      this._leave();
       this._userId = userId;
       this._chatId = chatId;
       this._token = token;
@@ -99,14 +108,6 @@ class MessagesService {
           type: 'get old',
         })
       );
-    }
-  }
-
-  public leave() {
-    if (this._wss) {
-      clearInterval(this._ping);
-      this._wss.close();
-      this._removeListeners();
     }
   }
 
