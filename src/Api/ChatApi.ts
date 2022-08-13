@@ -26,19 +26,19 @@ class ChatApi extends BaseAPI {
   }
 
   public addUserToChat({ users, chatId }: AddUserToChatType) {
-    return this.put('/users', { users, chatId });
+    return this.put('users', { users, chatId });
   }
 
   public getChatToken({ chatId }: GetChatTokenType) {
-    return this.post(`/token/${chatId}`, {});
+    return this.post(`token/${chatId}`, {});
   }
 
   public getUserForChat({ chatId }: GetUserForChatType) {
-    return this.get(`/${chatId}/users`);
+    return this.get(`${chatId}/users`);
   }
 
   public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
-    return this.delete('/users', { users, chatId });
+    return this.delete('users', { users, chatId });
   }
 }
 
