@@ -122,7 +122,8 @@ class ChatService {
           ),
         });
 
-        store.setState({ chats: state.chats.filter((chat) => chat.id !== chatId) });
+        usersFromChats.length === 1 &&
+          store.setState({ chats: state.chats.filter((chat) => chat.id !== chatId) });
       })
       .catch(showError);
   }
