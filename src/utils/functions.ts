@@ -110,7 +110,7 @@ function getIdUniqDates(messages: any) {
 }
 
 function checkIsLoginIn() {
-  if (!localStorage.getItem('isLoginin')) {
+  if (!localStorage.getItem('isSignin')) {
     router.back();
   }
 }

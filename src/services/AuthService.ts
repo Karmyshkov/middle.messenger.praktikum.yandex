@@ -19,7 +19,7 @@ class AuthService {
           text: SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
         });
-        localStorage.setItem('isSignin', '');
+        localStorage.setItem('isSignin', 'true');
         router.go(MESSAGER_PATH);
       })
       .catch(showError);
@@ -33,7 +33,7 @@ class AuthService {
           text: SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
         });
-        localStorage.setItem('isSignin', '');
+        localStorage.setItem('isSignin', 'true');
         router.go(MESSAGER_PATH);
       })
       .catch(showError);
