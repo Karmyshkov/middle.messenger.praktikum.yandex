@@ -2,7 +2,7 @@ import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
-import { handleSubmitForm } from 'utils';
+import { handleSubmitForm, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
 import { UserInfoDTO, UserInfoType, STORE_EVENTS } from 'types';
 
@@ -72,9 +72,12 @@ export class EditProfilePage extends Block {
     };
   }
   render() {
+    checkIsLoginIn();
+
     const { userInfo = [] } = this.props;
     const { avatar, display_name, email, first_name, login, phone, second_name } =
       userInfo;
+
     // language=hbs
     return `
       <div class="profile">

@@ -1,3 +1,4 @@
+import { BrowseRouter as router } from 'core';
 import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
 import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
@@ -108,6 +109,12 @@ function getIdUniqDates(messages: any) {
   });
 }
 
+function checkIsLoginIn() {
+  if (!localStorage.getItem('isLoginin')) {
+    router.back();
+  }
+}
+
 export {
   handleSubmitForm,
   checkOnValueInput,
@@ -116,4 +123,5 @@ export {
   getDate,
   fixedBottomScroll,
   getIdUniqDates,
+  checkIsLoginIn,
 };

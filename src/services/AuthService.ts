@@ -19,6 +19,7 @@ class AuthService {
           text: SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
         });
+        localStorage.setItem('isSignin', '');
         router.go(MESSAGER_PATH);
       })
       .catch(showError);
@@ -32,6 +33,7 @@ class AuthService {
           text: SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
         });
+        localStorage.setItem('isSignin', '');
         router.go(MESSAGER_PATH);
       })
       .catch(showError);
@@ -40,7 +42,10 @@ class AuthService {
   public signout() {
     authAPI
       .signout()
-      .then(() => router.go(SIGNIN_PATH))
+      .then(() => {
+        router.go(SIGNIN_PATH);
+        localStorage.removeItem('isSignin');
+      })
       .catch(showError);
   }
 

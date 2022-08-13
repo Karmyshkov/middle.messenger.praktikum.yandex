@@ -4,6 +4,7 @@ import { Popup } from 'utils/classes';
 import { config, EDIT_SETTINGS_PATH, EDIT_PASSWORD_PATH } from 'utils/constants';
 import { authService, profileService } from 'services';
 import { STORE_EVENTS } from 'types';
+import { checkIsLoginIn } from 'utils';
 
 export class ProfilePage extends Block {
   constructor(...args: any) {
@@ -44,6 +45,8 @@ export class ProfilePage extends Block {
     };
   }
   render() {
+    checkIsLoginIn();
+
     const { userInfo = [] } = this.props;
     const { avatar, display_name, email, first_name, login, phone, second_name } =
       userInfo;

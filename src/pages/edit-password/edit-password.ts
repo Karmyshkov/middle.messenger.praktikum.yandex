@@ -6,7 +6,7 @@ import {
   EDIT_PASSWORD_FORM,
   IS_NOT_MATCHED_PASSWORD_MESSAGE,
 } from 'utils/constants';
-import { handleSubmitForm, showTooltip } from 'utils';
+import { handleSubmitForm, showTooltip, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
 import { UserPasswordType, STORE_EVENTS } from 'types';
 
@@ -76,8 +76,11 @@ export class EditPasswordPage extends Block {
     };
   }
   render() {
+    checkIsLoginIn();
+
     const { userInfo = [] } = this.props;
     const { avatar, display_name } = userInfo;
+
     // language=hbs
     return `
       <div class="profile">

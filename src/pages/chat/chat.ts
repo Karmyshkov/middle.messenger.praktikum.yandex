@@ -15,6 +15,7 @@ import {
   checkOnValueInput,
   fixedBottomScroll,
   getIdUniqDates,
+  checkIsLoginIn,
 } from 'utils';
 import { chatService, messagesService, profileService, authService } from 'services';
 
@@ -212,6 +213,8 @@ export class ChatPage extends Block {
     };
   }
   render() {
+    checkIsLoginIn();
+
     const {
       chats = [],
       users = [],
