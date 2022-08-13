@@ -6,15 +6,11 @@ import { getDate, MONTH } from 'utils';
 
 export class Message extends Block {
   static componentName = 'Message';
-  constructor({
-    owner,
-    content,
-    time,
-    isRead,
-    isFirstUniqMessage,
-  }: MessageProps & MessageType) {
-    super({ owner, content, time, isRead, isFirstUniqMessage });
+
+  constructor({ ...rest }: MessageProps & MessageType) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: MessageProps & MessageType): void {
     this.state = {
       owner: props.owner,
@@ -24,6 +20,7 @@ export class Message extends Block {
       isFirstUniqMessage: props.isFirstUniqMessage,
     };
   }
+
   protected render(): string {
     const { owner, content, time, srcImg, isRead, isFirstUniqMessage } = this.state;
 

@@ -4,9 +4,11 @@ import { BtnProfileProps } from './types';
 
 export class BtnProfile extends Block {
   static componentName = 'BtnProfile';
-  constructor({ onClick, text, classes, type }: BtnProfileProps) {
-    super({ text, classes, type, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: BtnProfileProps) {
+    super({ events: { click: onClick }, ...rest });
   }
+
   protected getStateFromProps(props: BtnProfileProps): void {
     this.state = {
       text: props.text,
@@ -14,6 +16,7 @@ export class BtnProfile extends Block {
       type: props.type,
     };
   }
+
   protected render(): string {
     const { text, classes, type } = this.state;
     const button =

@@ -4,39 +4,11 @@ import { PopupProps } from './types';
 
 export class Popup extends Block {
   static componentName = 'Popup';
-  constructor({
-    classesPopup,
-    classesForm,
-    name,
-    fieldName,
-    title,
-    isDefault,
-    helperText,
-    textBtn,
-    users,
-    onInput,
-    onFocus,
-    onBlur,
-    onSubmit,
-    onClick,
-  }: PopupProps) {
-    super({
-      classesPopup,
-      classesForm,
-      name,
-      title,
-      fieldName,
-      isDefault,
-      helperText,
-      textBtn,
-      users,
-      onInput,
-      onFocus,
-      onBlur,
-      onSubmit,
-      onClick,
-    });
+
+  constructor({ ...rest }: PopupProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: PopupProps): void {
     this.state = {
       classesPopup: props.classesPopup,
@@ -68,6 +40,7 @@ export class Popup extends Block {
       textBtn,
       users,
     } = this.state;
+
     // language=hbs
     return `
       <div class="popup ${classesPopup ? classesPopup : ''}">

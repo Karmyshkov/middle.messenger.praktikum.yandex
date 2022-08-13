@@ -6,14 +6,17 @@ import { BASE_URL_RESOURCES } from 'utils';
 
 export class EditAvatar extends Block {
   static componentName = 'EditAvatar';
-  constructor({ avatar, onClick }: EditAvatarProps) {
-    super({ avatar, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: EditAvatarProps) {
+    super({ events: { click: onClick }, ...rest });
   }
-  protected getStateFromProps(props: any): void {
+
+  protected getStateFromProps(props: EditAvatarProps): void {
     this.state = {
       avatar: props.avatar,
     };
   }
+
   protected render(): string {
     const { avatar } = this.state;
     // language=hbs

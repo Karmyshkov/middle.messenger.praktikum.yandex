@@ -6,27 +6,14 @@ import { getDate, DAYS, DATA_ATTRIBUTE_CHAT_ID } from 'utils';
 
 export class ListItem extends Block {
   static componentName = 'ListItem';
-  constructor({
-    id,
-    userName,
-    lastMessage,
-    time,
-    countNotReadMessage,
-    srcAvatar,
-    isOwnerLastMessage,
-    onClick,
-  }: ChatType & ListItemProps) {
+
+  constructor({ onClick, ...rest }: ChatType & ListItemProps) {
     super({
-      id,
-      userName,
-      lastMessage,
-      time,
-      countNotReadMessage,
-      srcAvatar,
-      isOwnerLastMessage,
       events: { click: onClick },
+      ...rest,
     });
   }
+
   protected getStateFromProps(props: ChatType & ListItemProps): void {
     this.state = {
       id: props.id,
@@ -38,6 +25,7 @@ export class ListItem extends Block {
       isOwnerLastMessage: props.isOwnerLastMessage,
     };
   }
+
   protected render(): string {
     const {
       id,

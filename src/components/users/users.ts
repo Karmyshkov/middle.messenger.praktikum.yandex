@@ -5,8 +5,9 @@ import { UserType } from 'types';
 
 export class Users extends Block {
   static componentName = 'Users';
-  constructor({ users, type, onClick }: UsersProps) {
-    super({ users, type, onClick });
+
+  constructor({ ...rest }: UsersProps) {
+    super({ ...rest });
   }
 
   protected getStateFromProps(props: any): void {
@@ -19,6 +20,7 @@ export class Users extends Block {
       onClick: props.onClick,
     };
   }
+
   protected render(): string {
     const { users, type } = this.state;
 

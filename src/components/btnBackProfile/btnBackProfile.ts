@@ -5,6 +5,7 @@ import left_arrow from 'img/left-arrow.svg';
 
 export class BtnBackProfile extends Block {
   static componentName = 'BtnBackProfile';
+
   constructor({ onClick }: BtnBackProfileProps) {
     super({ events: { click: onClick } });
   }

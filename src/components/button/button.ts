@@ -4,9 +4,11 @@ import { ButtonProps } from './types';
 
 export class Button extends Block {
   static componentName = 'Button';
-  constructor({ textBtn, type, classes, onClick }: ButtonProps) {
-    super({ textBtn, type, classes, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: ButtonProps) {
+    super({ events: { click: onClick }, ...rest });
   }
+
   protected getStateFromProps(props: ButtonProps): void {
     this.state = {
       textBtn: props.textBtn,
@@ -14,6 +16,7 @@ export class Button extends Block {
       classes: props.classes,
     };
   }
+
   protected render(): string {
     const { textBtn, type, classes } = this.state;
     // language=hbs

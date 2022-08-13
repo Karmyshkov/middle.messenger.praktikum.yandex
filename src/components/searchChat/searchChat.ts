@@ -6,9 +6,11 @@ import { config, Popup } from 'utils';
 
 export class SearchChat extends Block {
   static componentName = 'SearchChat';
-  constructor({ onSearchByChats }: SearchChatProps) {
-    super({ onSearchByChats });
+
+  constructor({ ...rest }: SearchChatProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps() {
     this.state = {
       hendleSubmitForm: (evt: Event) => {
@@ -22,6 +24,7 @@ export class SearchChat extends Block {
       },
     };
   }
+
   protected render(): string {
     // language=hbs
     return `

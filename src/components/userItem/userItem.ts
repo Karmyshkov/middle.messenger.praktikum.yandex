@@ -6,8 +6,9 @@ import defaultIcon from 'img/avatar.svg';
 
 export class UserItem extends Block {
   static componentName = 'UserItem';
-  constructor({ id, avatar, login, email, type, role, onClick }: UserItemProps) {
-    super({ id, avatar, login, email, type, role, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: UserItemProps) {
+    super({ events: { click: onClick }, ...rest });
   }
 
   protected getStateFromProps(props: any): void {
@@ -20,6 +21,7 @@ export class UserItem extends Block {
       role: props.role,
     };
   }
+
   protected render(): string {
     const { id, avatar, login, email, type, role } = this.state;
 

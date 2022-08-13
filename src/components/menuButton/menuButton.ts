@@ -4,9 +4,11 @@ import { MenuButtonProps } from './types';
 
 export class MenuButton extends Block {
   static componentName = 'MenuButton';
-  constructor({ text, icon, alt, classes, type, onClick }: MenuButtonProps) {
-    super({ text, icon, alt, classes, type, events: { click: onClick } });
+
+  constructor({ onClick, ...rest }: MenuButtonProps) {
+    super({ events: { click: onClick }, ...rest });
   }
+
   protected getStateFromProps(props: MenuButtonProps): void {
     this.state = {
       text: props.text,
@@ -16,6 +18,7 @@ export class MenuButton extends Block {
       type: props.type,
     };
   }
+
   protected render(): string {
     const { text, icon, alt, classes, type } = this.state;
     // language=hbs

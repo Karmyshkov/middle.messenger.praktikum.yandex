@@ -3,33 +3,11 @@ import './formPopup.css';
 
 export class FormPopup extends Block {
   static componentName = 'FormPopup';
-  constructor({
-    classesForm,
-    name,
-    isDefault,
-    helperText,
-    fieldName,
-    textBtn,
-    users,
-    onSubmit,
-    onInput,
-    onFocus,
-    onBlur,
-    onClick,
-  }: any) {
+
+  constructor({ onSubmit, ...rest }: any) {
     super({
-      classesForm,
-      name,
-      isDefault,
-      helperText,
-      fieldName,
-      textBtn,
-      users,
-      onInput,
-      onFocus,
-      onBlur,
-      onClick,
       events: { submit: onSubmit },
+      ...rest,
     });
   }
   protected getStateFromProps(props: any): void {
@@ -47,6 +25,7 @@ export class FormPopup extends Block {
       onClick: props.onClick,
     };
   }
+
   protected render(): string {
     const { classesForm, name, isDefault, helperText, fieldName, textBtn, users } =
       this.state;

@@ -6,15 +6,18 @@ import { BASE_URL_RESOURCES } from 'utils';
 
 export class Avatar extends Block {
   static componentName = 'Avatar';
-  constructor({ srcAvatar, userName }: AvatarProps) {
-    super({ srcAvatar, userName });
+
+  constructor({ ...rest }: AvatarProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: AvatarProps): void {
     this.state = {
       userName: props.userName,
       srcAvatar: props.srcAvatar,
     };
   }
+
   protected render(): string {
     const { userName, srcAvatar } = this.state;
 
