@@ -11,7 +11,6 @@ class Store<T> extends EventBus {
   }
 
   getState() {
-    console.log(this.state);
     return this.state;
   }
 

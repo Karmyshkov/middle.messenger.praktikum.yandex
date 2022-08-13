@@ -78,7 +78,6 @@ class ChatService {
         if (state.usersFromChats && state.users) {
           const usersFromChats = JSON.parse(state.usersFromChats);
           const userItems = JSON.parse(state.users);
-          console.log(userItems);
 
           usersFromChats.push(userItems.find((user: UserType) => user.id === users[0]));
           store.setState(
