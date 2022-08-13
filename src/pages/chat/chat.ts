@@ -48,6 +48,14 @@ export class ChatPage extends Block {
     store.on(STORE_EVENTS.UPDATE, () => {
       this.setProps(store.getState());
     });
+
+    store.on(STORE_EVENTS.ADD_USERS, () => {
+      this.setProps(store.getState());
+    });
+
+    store.on(STORE_EVENTS.DELETE_USERS, () => {
+      this.setProps(store.getState());
+    });
   }
 
   protected getStateFromProps() {
@@ -80,6 +88,16 @@ export class ChatPage extends Block {
         }
 
         store.on(STORE_EVENTS.UPDATE, () => {
+          new Chat(config).addActiveClassName(evt);
+          fixedBottomScroll();
+        });
+
+        store.on(STORE_EVENTS.ADD_USERS, () => {
+          new Chat(config).addActiveClassName(evt);
+          fixedBottomScroll();
+        });
+
+        store.on(STORE_EVENTS.DELETE_USERS, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
@@ -149,7 +167,7 @@ export class ChatPage extends Block {
           } as SearchUserByLoginType);
         }
 
-        store.on(STORE_EVENTS.UPDATE, () => {
+        store.on(STORE_EVENTS.ADD_USERS, () => {
           new Popup(
             config.popupAddUserSelector,
             config.btnSubmitFormSelector,
@@ -173,7 +191,7 @@ export class ChatPage extends Block {
           chatId: Number(this.state.chatItemId),
         });
 
-        store.on(STORE_EVENTS.UPDATE, () => {
+        store.on(STORE_EVENTS.DELETE_USERS, () => {
           const state = store.getState();
           const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
 

@@ -125,6 +125,8 @@ type props = Record<string, any>;
 
 enum STORE_EVENTS {
   UPDATE = 'update',
+  ADD_USERS = 'add-users',
+  DELETE_USERS = 'delete-users',
 }
 
 export {
