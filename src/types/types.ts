@@ -143,7 +143,7 @@ interface ChatsType {
   avatar: null | string;
   created_by: number;
   id: number;
-  last_message: LastMessage;
+  last_message?: LastMessage;
   title: string;
   unread_count: number;
 }
@@ -152,6 +152,7 @@ interface InitialStateType {
   chats?: ChatsType[];
   userInfo?: UserType;
   usersFromChats?: string;
+  users?: string;
 }
 
 type props = Record<string, any>;
@@ -185,4 +186,5 @@ export {
   MessageDTO,
   RemoveUserFromChat,
   InitialStateType,
+  UserType,
 };

@@ -21,4 +21,5 @@ export {
   MessageDTO,
   RemoveUserFromChat,
   InitialStateType,
+  UserType,
 } from './types';

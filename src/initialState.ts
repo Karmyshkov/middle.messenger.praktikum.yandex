@@ -36,4 +36,5 @@ export const initialState: InitialStateType = {
     id: 0,
   },
   usersFromChats: '',
+  users: '',
 };

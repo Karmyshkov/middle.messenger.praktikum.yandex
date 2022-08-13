@@ -7,6 +7,8 @@ import {
   GetUserForChatType,
   RemoveUserFromChat,
   STORE_EVENTS,
+  InitialStateType,
+  UserType,
 } from 'types';
 import {
   showTooltip,
@@ -23,21 +25,19 @@ class ChatService {
     chatApi
       .createChat({ title })
       .then(({ response }: any) => {
-        const state = store.getState();
-        const chats = state.chats;
+        const state = store.getState() as InitialStateType;
 
         const newChat = {
           avatar: null,
           id: JSON.parse(response).id,
-          last_message: null,
           title: title,
           unread_count: 0,
-          created_by: null,
+          created_by: 0,
         };
 
-        chats.push(newChat);
+        state.chats?.push(newChat);
 
-        store.setState({ chats });
+        store.setState({ chats: state.chats });
 
         showTooltip({
           text: SUCCESS_CREATE_MESSAGE,
@@ -56,13 +56,15 @@ class ChatService {
     chatApi
       .removeChatById({ chatId })
       .then(() => {
-        const state = store.getState();
+        const state = store.getState() as InitialStateType;
+
         showTooltip({
           text: SUCCESS_REMOVE_CHAT_MESSAGE,
           type: 'success',
         });
+
         store.setState({
-          chats: state.chats.filter((chat) => chat.id !== Number(chatId)),
+          chats: state.chats?.filter((chat) => chat.id !== Number(chatId)),
         });
       })
       .catch(showError);
@@ -71,26 +73,32 @@ class ChatService {
     chatApi
       .addUserToChat({ users, chatId })
       .then(() => {
-        const state = store.getState();
-        const usersFromChats = JSON.parse(state.usersFromChats);
-        const userItems = JSON.parse(state.users);
+        const state = store.getState() as InitialStateType;
 
-        usersFromChats.push(userItems.find((user) => user.id === users[0]));
-        store.setState(
-          { usersFromChats: JSON.stringify(usersFromChats) },
-          STORE_EVENTS.ADD_USERS
-        );
+        if (state.usersFromChats && state.users) {
+          const usersFromChats = JSON.parse(state.usersFromChats);
+          const userItems = JSON.parse(state.users);
+          console.log(userItems);
 
-        const filteredUserItems = userItems.filter((user) => user.id !== users[0]);
-        store.setState(
-          { users: JSON.stringify(filteredUserItems) },
-          STORE_EVENTS.ADD_USERS
-        );
+          usersFromChats.push(userItems.find((user: UserType) => user.id === users[0]));
+          store.setState(
+            { usersFromChats: JSON.stringify(usersFromChats) },
+            STORE_EVENTS.ADD_USERS
+          );
 
-        showTooltip({
-          text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
-          type: 'success',
-        });
+          const filteredUserItems = userItems.filter(
+            (user: UserType) => user.id !== users[0]
+          );
+          store.setState(
+            { users: JSON.stringify(filteredUserItems) },
+            STORE_EVENTS.ADD_USERS
+          );
+
+          showTooltip({
+            text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+            type: 'success',
+          });
+        }
       })
       .catch(showError);
   }
@@ -115,28 +123,31 @@ class ChatService {
     chatApi
       .removeUserFromChat({ users, chatId })
       .then(() => {
-        const state = store.getState();
-        const usersFromChats = JSON.parse(state.usersFromChats);
+        const state = store.getState() as InitialStateType;
 
-        showTooltip({
-          text: SUCCESS_REMOVE_USER_FROM_CHAT,
-          type: 'success',
-        });
+        if (state.usersFromChats) {
+          const usersFromChats = JSON.parse(state.usersFromChats);
 
-        store.setState(
-          {
-            usersFromChats: JSON.stringify(
-              usersFromChats.filter((user) => user.id !== users[0])
-            ),
-          },
-          STORE_EVENTS.DELETE_USERS
-        );
+          showTooltip({
+            text: SUCCESS_REMOVE_USER_FROM_CHAT,
+            type: 'success',
+          });
 
-        usersFromChats.length === 1 &&
           store.setState(
-            { chats: state.chats.filter((chat) => chat.id !== chatId) },
+            {
+              usersFromChats: JSON.stringify(
+                usersFromChats.filter((user: UserType) => user.id !== users[0])
+              ),
+            },
             STORE_EVENTS.DELETE_USERS
           );
+
+          usersFromChats.length === 1 &&
+            store.setState(
+              { chats: state.chats?.filter((chat) => chat.id !== chatId) },
+              STORE_EVENTS.DELETE_USERS
+            );
+        }
       })
       .catch(showError);
   }
