@@ -102,9 +102,6 @@ export class ChatPage extends Block {
           config
         ).handleOpenPopup();
       },
-
-      //add chat
-
       handleChangeAddChatInput: (evt: Event) => {
         checkOnValueInput(evt);
         addChatFromValidator.clearError();
@@ -130,9 +127,6 @@ export class ChatPage extends Block {
       handleValidateAddChatInput: (evt: Event) => {
         addChatFromValidator.handleFieldValidation(evt);
       },
-
-      // add user
-
       handleChangeAddUserInput: (evt: Event) => {
         checkOnValueInput(evt);
         addUserFormValidator.clearError();
@@ -176,9 +170,6 @@ export class ChatPage extends Block {
           chatId: Number(this.state.chatItemId),
         });
       },
-
-      // delete user
-
       handleDeleteUserFromChat: (evt: Event) => {
         const target = evt.target as HTMLElement;
         const userItem = target.closest(`.${config.userItemSelector}`);
@@ -205,13 +196,7 @@ export class ChatPage extends Block {
           }
         });
       },
-
-      // ###
-
       handleLinkBtn: () => router.go(SETTINGS_PATH),
-
-      // send message
-
       handleSendMessage: (evt: Event) => {
         evt.preventDefault();
         const target = evt.target as HTMLFormElement;
