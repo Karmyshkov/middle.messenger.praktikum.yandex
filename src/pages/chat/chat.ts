@@ -16,6 +16,7 @@ import {
   fixedBottomScroll,
   getIdUniqDates,
   checkIsLoginIn,
+  getUserId,
 } from 'utils';
 import { chatService, messagesService, profileService, authService } from 'services';
 
@@ -162,22 +163,14 @@ export class ChatPage extends Block {
         addUserFormValidator.handleFieldValidation(evt);
       },
       handleAddUserToChat: (evt: Event) => {
-        const target = evt.target as HTMLElement;
-        const userItem = target.closest(`.${config.userItemSelector}`);
-        const userId = userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID);
-
         chatService.addUserToChat({
-          users: [Number(userId)],
+          users: [getUserId(evt)],
           chatId: Number(this.state.chatItemId),
         });
       },
       handleDeleteUserFromChat: (evt: Event) => {
-        const target = evt.target as HTMLElement;
-        const userItem = target.closest(`.${config.userItemSelector}`);
-        const userId = userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID);
-
         chatService.removeUserFromChat({
-          users: [Number(userId)],
+          users: [getUserId(evt)],
           chatId: Number(this.state.chatItemId),
         });
 

@@ -1,7 +1,12 @@
 import { BrowseRouter as router } from 'core';
 import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
-import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
+import {
+  config,
+  ADD_USER_FORM,
+  DELETE_USER_FORM,
+  DATA_ATTRIBUTE_USER_ID,
+} from 'utils/constants';
 import { showTooltip } from 'utils';
 
 interface SubmitFormProps {
@@ -115,6 +120,12 @@ function checkIsLoginIn() {
   }
 }
 
+function getUserId(evt: Event) {
+  const target = evt.target as HTMLElement;
+  const userItem = target.closest(`.${config.userItemSelector}`);
+  return Number(userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID));
+}
+
 export {
   handleSubmitForm,
   checkOnValueInput,
@@ -124,4 +135,5 @@ export {
   fixedBottomScroll,
   getIdUniqDates,
   checkIsLoginIn,
+  getUserId,
 };

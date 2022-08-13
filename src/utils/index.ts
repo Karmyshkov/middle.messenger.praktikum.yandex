@@ -7,6 +7,7 @@ export {
   fixedBottomScroll,
   getIdUniqDates,
   checkIsLoginIn,
+  getUserId,
 } from './functions';
 export { Screens, getScreenComponent } from './screenList';
 export { showTooltip } from './tooltip';
