@@ -8,7 +8,6 @@ import {
   ADD_USER_FORM,
   SETTINGS_PATH,
   DATA_ATTRIBUTE_CHAT_ID,
-  DATA_ATTRIBUTE_USER_ID,
 } from 'utils/constants';
 import {
   handleSubmitForm,
