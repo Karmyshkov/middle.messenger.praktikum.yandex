@@ -23,19 +23,20 @@ class ChatService {
       .createChat({ title })
       .then(({ response }: any) => {
         const state = store.getState();
+        const chats = state.chats;
 
-        const chat = {
-          [state.chats.length]: {
-            avatar: null,
-            id: JSON.parse(response).id,
-            last_message: null,
-            title: title,
-            unread_count: 0,
-            created_by: null,
-          },
+        const newChat = {
+          avatar: null,
+          id: JSON.parse(response).id,
+          last_message: null,
+          title: title,
+          unread_count: 0,
+          created_by: null,
         };
 
-        store.setState({ chats: Object.assign(state.chats, chat) });
+        chats.push(newChat);
+
+        store.setState({ chats });
 
         showTooltip({
           text: SUCCESS_CREATE_MESSAGE,
