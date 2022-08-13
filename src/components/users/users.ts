@@ -1,6 +1,7 @@
 import { Block } from 'core';
 import './users.css';
 import { UsersProps } from './types';
+import { UserType } from 'types';
 
 export class Users extends Block {
   static componentName = 'Users';
@@ -28,7 +29,7 @@ export class Users extends Block {
           users &&
           users
             .map(
-              (user: any) =>
+              (user: UserType) =>
                 `{{{UserItem
                   onClick=onClick
                   id=${user.id}
@@ -36,6 +37,7 @@ export class Users extends Block {
                   login="${user.login}"
                   email="${user.email}"
                   type="${type}"
+                  role="${user.role}"
                 }}}`
             )
             .join('')

@@ -23,16 +23,25 @@
 
   &__text-email {
     margin: 0;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--color-primaty);
     font-weight: 400;
-    line-height: 20px;
+    line-height: 16px;
   }
 
   &__avatar {
     max-height: 44px;
     max-width: 44px;
     border-radius: 50%;
+  }
+
+  &__role {
+    margin: 0;
+
+    font-size: 11px;
+    color: var(--color-primaty);
+    font-weight: 400;
+    line-height: 16px;
   }
 
   &__btn {

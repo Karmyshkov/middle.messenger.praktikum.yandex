@@ -130,6 +130,7 @@ interface UserType {
   phone: string;
   second_name: string;
   id?: number;
+  role?: 'regular' | 'admin';
 }
 
 interface LastMessage {

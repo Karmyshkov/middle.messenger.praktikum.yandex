@@ -5,4 +5,5 @@ export interface UserItemProps {
   login: string;
   email: string;
   type: 'delete' | 'add';
+  role: 'regular' | 'admin';
 }
