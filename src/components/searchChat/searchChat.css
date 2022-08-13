@@ -22,7 +22,6 @@
   &__btn {
     position: relative;
     cursor: pointer;
-    background-color: transparent;
     border: none;
     border-radius: 50%;
     min-width: 28px;

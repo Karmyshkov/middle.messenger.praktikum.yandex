@@ -60,11 +60,11 @@
   }
 
   &__time_is-read::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 10px;
     height: 4px;
-    background-image: url('../../image/isRead.svg');
+    background-image: url("../../image/isRead.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -74,11 +74,11 @@
   }
 
   &__time_is-not-read::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 10px;
     height: 4px;
-    background-image: url('../../image/isNotRead.svg');
+    background-image: url("../../image/isNotRead.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

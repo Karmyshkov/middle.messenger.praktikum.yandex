@@ -2,7 +2,7 @@ import { BlockClass, props } from 'types';
 import renderDOM from './renderDOM';
 import Block from 'core/Block';
 import { isEqual } from 'utils';
-import { REGEXP_REPLACE_PATHNAME, REGEXP_REPLACE_ID } from 'utils/constants';
+import { REGEXP_REPLACE_PATHNAME } from 'utils/constants';
 
 export class Route<P = any> {
   private pathname: string;

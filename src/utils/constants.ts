@@ -72,7 +72,6 @@ const MONTH = [
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
-const REGEXP_REPLACE_ID = /[a-z/]+/i;
 
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
