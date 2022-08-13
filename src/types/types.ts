@@ -12,6 +12,7 @@ enum Screens {
   Profile = 'settings',
   EditProfle = 'edit-settings',
   EditPassword = 'edit-password',
+  PathNotFound = 'path-not-found',
 }
 
 enum InputEnum {

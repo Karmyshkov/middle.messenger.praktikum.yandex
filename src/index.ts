@@ -15,5 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .use('/settings', getScreenComponent(Screens.Profile))
     .use('/edit-settings', getScreenComponent(Screens.EditProfle))
     .use('/edit-password', getScreenComponent(Screens.EditPassword))
+    .use('/path-not-found', getScreenComponent(Screens.PathNotFound))
     .start();
 });

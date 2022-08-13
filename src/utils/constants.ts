@@ -76,6 +76,7 @@ const PATHNAMES = {
   SETTINGS_PATH: '/settings',
   EDIT_SETTINGS_PATH: '/edit-settings',
   EDIT_PASSWORD_PATH: '/edit-password',
+  PATH_NOT_FOUND: '/path-not-found',
 };
 
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;

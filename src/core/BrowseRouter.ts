@@ -1,5 +1,6 @@
 import { BlockClass, props } from 'types';
 import { Route } from './Route';
+import { PATHNAMES } from 'utils';
 
 class BrowseRouter {
   static __instance: BrowseRouter;
@@ -32,13 +33,15 @@ class BrowseRouter {
   }
 
   _onRoute(pathname: string) {
+    if (!Object.values(PATHNAMES).find((path) => pathname === path)) {
+      this.go('/path-not-found');
+    }
+
     let route = this.getRoute(pathname);
 
     if (!route) {
       return;
     }
-
-    console.log(pathname);
 
     if (this.currentRoute && this.currentRoute !== route) {
       this.currentRoute.leave();
