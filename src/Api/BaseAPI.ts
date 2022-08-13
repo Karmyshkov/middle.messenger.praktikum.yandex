@@ -2,9 +2,10 @@ import { HTTPTransport } from 'utils/classes';
 import { BASE_URL, BASE_HEADERS } from 'utils/constants';
 
 export abstract class BaseAPI {
-  _http: HTTPTransport;
-  _baseUrl: string;
-  _headers: Record<string, string>;
+  private _http: HTTPTransport;
+  private _baseUrl: string;
+  private _headers: Record<string, string>;
+
   constructor({ path }: Record<string, string>) {
     this._http = new HTTPTransport();
     this._baseUrl = `${BASE_URL}${path}`;
