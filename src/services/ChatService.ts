@@ -70,11 +70,14 @@ class ChatService {
       .addUserToChat({ users, chatId })
       .then(() => {
         const state = store.getState();
-
         const usersFromChats = JSON.parse(state.usersFromChats);
-        usersFromChats.push(JSON.parse(state.users).find((user) => user.id === users[0]));
+        const userItems = JSON.parse(state.users);
 
+        usersFromChats.push(userItems.find((user) => user.id === users[0]));
         store.setState({ usersFromChats: JSON.stringify(usersFromChats) });
+
+        const filteredUserItems = userItems.filter((user) => user.id !== users[0]);
+        store.setState({ users: JSON.stringify(filteredUserItems) });
 
         showTooltip({
           text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
