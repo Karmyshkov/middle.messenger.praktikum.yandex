@@ -53,12 +53,16 @@ class ChatService {
   public removeChatById({ chatId }: RemoveChatType) {
     chatApi
       .removeChatById({ chatId })
-      .then(() =>
+      .then(() => {
+        const state = store.getState();
         showTooltip({
           text: SUCCESS_REMOVE_CHAT_MESSAGE,
           type: 'success',
-        })
-      )
+        });
+        store.setState({
+          chats: state.chats.filter((chat) => chat.id !== Number(chatId)),
+        });
+      })
       .catch(showError);
   }
   public addUserToChat({ users, chatId }: AddUserToChatType) {
