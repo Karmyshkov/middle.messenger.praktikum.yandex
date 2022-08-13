@@ -1,6 +1,12 @@
 import { Block, BrowseRouter as router, store } from 'core';
 import 'styles/chat.css';
-import { CreateChatType, SearchUserByLoginType, STORE_EVENTS, MessageDTO } from 'types';
+import {
+  CreateChatType,
+  SearchUserByLoginType,
+  STORE_EVENTS,
+  MessageDTO,
+  InitialStateType,
+} from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
 import {
   config,
@@ -68,17 +74,17 @@ export class ChatPage extends Block {
 
         this.setState({ chatItemId });
 
-        const state = store.getState() as any;
+        const state = store.getState() as InitialStateType;
         const { chats, userInfo } = state;
 
         this.setState({
-          currentChat: chats.filter((chat: any) => chat.id === Number(chatItemId)),
+          currentChat: chats?.filter((chat: any) => chat.id === Number(chatItemId)),
         });
 
         if (chatItemId) {
           chatService.getChatToken({ chatId: Number(chatItemId) }).then(({ token }) =>
             messagesService.connect({
-              userId: userInfo.id,
+              userId: userInfo?.id,
               chatId: Number(chatItemId),
               token,
             })
@@ -139,7 +145,7 @@ export class ChatPage extends Block {
         dataForm && chatService.createChat(dataForm as CreateChatType);
 
         store.on(STORE_EVENTS.UPDATE, () => {
-          const state = store.getState();
+          const state = store.getState() as InitialStateType;
           this.setProps({ chats: state.chats });
         });
       },
@@ -192,18 +198,20 @@ export class ChatPage extends Block {
         });
 
         store.on(STORE_EVENTS.DELETE_USERS, () => {
-          const state = store.getState();
-          const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
+          const state = store.getState() as InitialStateType;
+          if (state.usersFromChats) {
+            const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
 
-          if (usersFromChatsLength > 0) {
-            new Popup(
-              config.popupDeleteUserSelector,
-              config.btnSubmitFormSelector,
-              config.isOpenPopupSelector,
-              config
-            ).handleOpenPopup();
-          } else {
-            Popup.handleClosePopup(config.isOpenPopupSelector);
+            if (usersFromChatsLength > 0) {
+              new Popup(
+                config.popupDeleteUserSelector,
+                config.btnSubmitFormSelector,
+                config.isOpenPopupSelector,
+                config
+              ).handleOpenPopup();
+            } else {
+              Popup.handleClosePopup(config.isOpenPopupSelector);
+            }
           }
         });
       },
