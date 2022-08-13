@@ -10,9 +10,9 @@ import {
 } from 'utils';
 
 class AuthService {
-  public signup({ email, login, first_name, second_name, phone, password }: SignupType) {
+  public signup({ ...rest }: SignupType) {
     authAPI
-      .signup({ email, login, first_name, second_name, phone, password })
+      .signup({ ...rest })
       .then(() => {
         showTooltip({
           text: SUCCESS_SIGNUP_MESSAGE,
