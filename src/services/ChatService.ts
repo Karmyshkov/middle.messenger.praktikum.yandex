@@ -68,12 +68,18 @@ class ChatService {
   public addUserToChat({ users, chatId }: AddUserToChatType) {
     chatApi
       .addUserToChat({ users, chatId })
-      .then(({ response }: any) => {
+      .then(() => {
+        const state = store.getState();
+
+        const usersFromChats = JSON.parse(state.usersFromChats);
+        usersFromChats.push(JSON.parse(state.users).find((user) => user.id === users[0]));
+
+        store.setState({ usersFromChats: JSON.stringify(usersFromChats) });
+
         showTooltip({
           text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
           type: 'success',
         });
-        store.setState({ users: JSON.parse(response) });
       })
       .catch(showError);
   }
