@@ -153,6 +153,7 @@ interface InitialStateType {
   userInfo?: UserType;
   usersFromChats?: string;
   users?: string;
+  messages?: any;
 }
 
 type props = Record<string, any>;

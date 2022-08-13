@@ -1,5 +1,6 @@
 import { store } from 'core';
 import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
+import { InitialStateType } from 'types';
 
 class MessagesService {
   private _userId!: string | number;
@@ -62,7 +63,7 @@ class MessagesService {
           messages: messages.reverse(),
         });
       } else {
-        const state = store.getState();
+        const state = store.getState() as InitialStateType;
 
         store.setState({
           messages: Object.assign(state.messages, { [state.messages.length]: messages }),
