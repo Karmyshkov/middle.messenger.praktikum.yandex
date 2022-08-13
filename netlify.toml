@@ -3,22 +3,22 @@
   command = "npm run build"
 
 [[redirects]]
-  from = "/signup"
+  from = "/sign-up"
   to = "/"
   status = 200
 
 [[redirects]]
-  from = "/chat"
+  from = "/messenger"
   to = "/"
   status = 200
 
 [[redirects]]
-  from = "/profile"
+  from = "/settings"
   to = "/"
   status = 200
 
 [[redirects]]
-  from = "/edit-profile"
+  from = "/edit-settings"
   to = "/"
   status = 200
 
