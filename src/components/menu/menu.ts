@@ -87,7 +87,6 @@ export class Menu extends Block {
                 alt="Иконка плюса"
                 classes="menu-button_add-photo"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
             <li class="menu__item">
@@ -97,7 +96,6 @@ export class Menu extends Block {
                 alt="Иконка крестика"
                 classes="menu-button_add-file"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
             <li class="menu__item">
@@ -107,7 +105,6 @@ export class Menu extends Block {
                 alt="Иконка локации"
                 classes="menu-button_add-location"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
           </ul>
