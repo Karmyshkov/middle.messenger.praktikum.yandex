@@ -79,6 +79,20 @@ const PATHNAMES = {
   PATH_NOT_FOUND: '/path-not-found',
 };
 
+const ACTIONS_WEBSOCKET = {
+  OPEN: 'open',
+  CLOSE: 'close',
+  MESSAGE: 'message',
+  ERROR: 'error',
+};
+
+const TYPES_MESSAGE_WEBSOCKET = {
+  PING: 'ping',
+  PONG: 'pong',
+  MESSAGE: 'message',
+  GET_OLD: 'get old',
+};
+
 const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
 const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
 const REGEXP_REPLACE_PATHNAME = /\/\d+/;
@@ -152,4 +166,6 @@ export {
   IS_NOT_MATCHED_PASSWORD_MESSAGE,
   DAYS,
   MONTH,
+  ACTIONS_WEBSOCKET,
+  TYPES_MESSAGE_WEBSOCKET,
 };

@@ -1,5 +1,11 @@
 import { store } from 'core';
-import { BASE_URL_WSS, showTooltip, CONNECTION_PROBLEMS } from 'utils';
+import {
+  BASE_URL_WSS,
+  showTooltip,
+  CONNECTION_PROBLEMS,
+  ACTIONS_WEBSOCKET,
+  TYPES_MESSAGE_WEBSOCKET,
+} from 'utils';
 import { InitialStateType } from 'types';
 
 class MessagesService {
@@ -19,19 +25,19 @@ class MessagesService {
 
   private _setListeners() {
     if (this._wss) {
-      this._wss.addEventListener('open', this._handleOpen);
-      this._wss.addEventListener('close', this._handleClose);
-      this._wss.addEventListener('message', this._handleMessage);
-      this._wss.addEventListener('error', this._handleError);
+      this._wss.addEventListener(ACTIONS_WEBSOCKET.OPEN, this._handleOpen);
+      this._wss.addEventListener(ACTIONS_WEBSOCKET.CLOSE, this._handleClose);
+      this._wss.addEventListener(ACTIONS_WEBSOCKET.MESSAGE, this._handleMessage);
+      this._wss.addEventListener(ACTIONS_WEBSOCKET.ERROR, this._handleError);
     }
   }
 
   private _removeListeners() {
     if (this._wss) {
-      this._wss.removeEventListener('open', this._handleOpen);
-      this._wss.removeEventListener('close', this._handleClose);
-      this._wss.removeEventListener('message', this._handleMessage);
-      this._wss.removeEventListener('error', this._handleError);
+      this._wss.removeEventListener(ACTIONS_WEBSOCKET.OPEN, this._handleOpen);
+      this._wss.removeEventListener(ACTIONS_WEBSOCKET.CLOSE, this._handleClose);
+      this._wss.removeEventListener(ACTIONS_WEBSOCKET.MESSAGE, this._handleMessage);
+      this._wss.removeEventListener(ACTIONS_WEBSOCKET.ERROR, this._handleError);
     }
   }
 
@@ -39,7 +45,7 @@ class MessagesService {
     if (this._wss) {
       this.getMessages();
       this._ping = setInterval(() => {
-        this._wss?.send(JSON.stringify({ type: 'ping' }));
+        this._wss?.send(JSON.stringify({ type: TYPES_MESSAGE_WEBSOCKET.PING }));
       }, 5000);
     }
   }
@@ -57,7 +63,7 @@ class MessagesService {
   private _handleMessage(evt: any) {
     const messages = JSON.parse(evt.data);
 
-    if (messages.type !== 'pong') {
+    if (messages.type !== TYPES_MESSAGE_WEBSOCKET.PONG) {
       if (Array.isArray(messages)) {
         store.setState({
           messages: messages.reverse(),
@@ -105,7 +111,7 @@ class MessagesService {
       this._wss.send(
         JSON.stringify({
           content: '0',
-          type: 'get old',
+          type: TYPES_MESSAGE_WEBSOCKET.GET_OLD,
         })
       );
     }
@@ -116,7 +122,7 @@ class MessagesService {
       this._wss?.send(
         JSON.stringify({
           content: message,
-          type: 'message',
+          type: TYPES_MESSAGE_WEBSOCKET.MESSAGE,
         })
       );
     }
