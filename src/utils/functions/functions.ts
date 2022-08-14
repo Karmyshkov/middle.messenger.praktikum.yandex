@@ -6,7 +6,7 @@ function getDate(time: string) {
   return {
     minute: date.getMinutes(),
     hour: date.getHours(),
-    day: date.getDay(),
+    day: date.getDay() + 1,
     month: date.getMonth(),
   };
 }
