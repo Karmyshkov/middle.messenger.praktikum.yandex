@@ -1,18 +1,5 @@
 import { BrowseRouter as router } from 'core';
 import { config, DATA_ATTRIBUTE } from 'utils/constants';
-import { showTooltip } from 'utils';
-
-function getMessageFromResponse(errText: string) {
-  return Object.values(JSON.parse(errText))[0];
-}
-
-function showError(err: any) {
-  err.responseText &&
-    showTooltip({
-      text: getMessageFromResponse(err.responseText) as string,
-      type: 'error',
-    });
-}
 
 function getDate(time: string) {
   const date = new Date(time);
@@ -69,11 +56,4 @@ function getUserId(evt: Event) {
   return Number(userItem?.getAttribute(DATA_ATTRIBUTE.USER_ID));
 }
 
-export {
-  showError,
-  getDate,
-  fixedBottomScroll,
-  getIdUniqDates,
-  checkIsLoginIn,
-  getUserId,
-};
+export { getDate, fixedBottomScroll, getIdUniqDates, checkIsLoginIn, getUserId };

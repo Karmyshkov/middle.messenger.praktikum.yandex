@@ -1,5 +1,4 @@
 export {
-  showError,
   getDate,
   fixedBottomScroll,
   getIdUniqDates,
@@ -8,6 +7,7 @@ export {
 } from './functions';
 export { handleSubmitForm } from './handleSubmitForm';
 export { checkOnValueInput } from './checkOnValueInput';
+export { showError } from './showError';
 export { Screens, getScreenComponent } from './screenList';
 export { showTooltip } from './tooltip';
 export * from './constants';
