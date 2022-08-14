@@ -2,7 +2,7 @@ import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
 import { config, FORM_ELEMENTS, PATHNAMES } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils';
+import { handleSubmitForm, checkOnValueInput, checkIsLoginIn } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
 
@@ -36,10 +36,12 @@ export class SigninPage extends Block {
         dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
-      handleLinkBtn: () => router.go(PATHNAMES.SIGNUP_PATH),
+      handleLinkBtn: () => router.go(PATHNAMES.PUBLIC.SIGNUP_PATH),
     };
   }
   render() {
+    checkIsLoginIn();
+
     // language=hbs
     return `
       <div class="page">

@@ -13,7 +13,7 @@ class AuthService {
           type: 'success',
         });
         localStorage.setItem(lOCALSTORAGE.IS_SIGNIN, 'true');
-        router.go(PATHNAMES.MESSAGER_PATH);
+        router.go(PATHNAMES.PRIVATE.MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -27,7 +27,7 @@ class AuthService {
           type: 'success',
         });
         localStorage.setItem(lOCALSTORAGE.IS_SIGNIN, 'true');
-        router.go(PATHNAMES.MESSAGER_PATH);
+        router.go(PATHNAMES.PRIVATE.MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -36,7 +36,7 @@ class AuthService {
     authAPI
       .signout()
       .then(() => {
-        router.go(PATHNAMES.SIGNIN_PATH);
+        router.go(PATHNAMES.PUBLIC.SIGNIN_PATH);
         localStorage.removeItem(lOCALSTORAGE.IS_SIGNIN);
       })
       .catch(showError);

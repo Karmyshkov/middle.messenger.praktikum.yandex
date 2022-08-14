@@ -1,6 +1,14 @@
 import { BrowseRouter as router } from 'core';
-import { lOCALSTORAGE } from 'utils';
+import { lOCALSTORAGE, PATHNAMES } from 'utils';
 
 export function checkIsLoginIn() {
-  !localStorage.getItem(lOCALSTORAGE.IS_SIGNIN) && router.back();
+  if (localStorage.getItem(lOCALSTORAGE.IS_SIGNIN)) {
+    const pathname = router.getPathname();
+
+    Object.values(PATHNAMES.PUBLIC).find(
+      (privatePathname) => privatePathname === pathname
+    ) && router.go(PATHNAMES.PRIVATE.MESSAGER_PATH);
+  } else {
+    router.back();
+  }
 }

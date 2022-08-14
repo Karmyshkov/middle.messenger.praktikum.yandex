@@ -6,8 +6,8 @@ export class NotFoundPage extends Block {
     this.state = {
       handleClickByLink: () =>
         localStorage.getItem(lOCALSTORAGE.IS_SIGNIN)
-          ? router.go(PATHNAMES.MESSAGER_PATH)
-          : router.go(PATHNAMES.SIGNIN_PATH),
+          ? router.go(PATHNAMES.PRIVATE.MESSAGER_PATH)
+          : router.go(PATHNAMES.PUBLIC.SIGNIN_PATH),
     };
   }
   render() {

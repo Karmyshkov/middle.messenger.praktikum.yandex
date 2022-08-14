@@ -1,6 +1,6 @@
 import { BlockClass, props } from 'types';
 import renderDOM from './renderDOM';
-import Block from 'core/Block';
+import { Block } from 'core';
 
 export class Route<P = any> {
   private pathname: string;

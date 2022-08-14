@@ -1,5 +1,5 @@
 import { registerComponent, BrowseRouter as router } from 'core';
-import { getScreenComponent } from './utils';
+import { getScreenComponent, PATHNAMES } from './utils';
 import { Screens } from 'types';
 import { components } from 'components';
 
@@ -9,12 +9,12 @@ components.forEach((component) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   router
-    .use('/', getScreenComponent(Screens.Signin))
-    .use('/sign-up', getScreenComponent(Screens.Signup))
-    .use('/messenger', getScreenComponent(Screens.Messenger))
-    .use('/settings', getScreenComponent(Screens.Profile))
-    .use('/edit-settings', getScreenComponent(Screens.EditProfle))
-    .use('/edit-password', getScreenComponent(Screens.EditPassword))
-    .use('/path-not-found', getScreenComponent(Screens.PathNotFound))
+    .use(PATHNAMES.PUBLIC.SIGNIN_PATH, getScreenComponent(Screens.Signin))
+    .use(PATHNAMES.PUBLIC.SIGNUP_PATH, getScreenComponent(Screens.Signup))
+    .use(PATHNAMES.PRIVATE.MESSAGER_PATH, getScreenComponent(Screens.Messenger))
+    .use(PATHNAMES.PRIVATE.SETTINGS_PATH, getScreenComponent(Screens.Profile))
+    .use(PATHNAMES.PRIVATE.EDIT_SETTINGS_PATH, getScreenComponent(Screens.EditProfle))
+    .use(PATHNAMES.PRIVATE.EDIT_PASSWORD_PATH, getScreenComponent(Screens.EditPassword))
+    .use(PATHNAMES.PATH_NOT_FOUND, getScreenComponent(Screens.PathNotFound))
     .start();
 });
