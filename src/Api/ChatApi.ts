@@ -13,20 +13,20 @@ class ChatApi extends BaseAPI {
     super({ path: '/chats' });
   }
 
-  public createChat({ title }: CreateChatType) {
-    return this.post('', { title });
+  public createChat({ ...rest }: CreateChatType) {
+    return this.post('', { ...rest });
   }
 
   public getChats() {
     return this.get('');
   }
 
-  public removeChatById({ chatId }: RemoveChatType) {
-    return this.delete('', { chatId });
+  public removeChatById({ ...rest }: RemoveChatType) {
+    return this.delete('', { ...rest });
   }
 
-  public addUserToChat({ users, chatId }: AddUserToChatType) {
-    return this.put('users', { users, chatId });
+  public addUserToChat({ ...rest }: AddUserToChatType) {
+    return this.put('users', { ...rest });
   }
 
   public getChatToken({ chatId }: GetChatTokenType) {
@@ -37,8 +37,8 @@ class ChatApi extends BaseAPI {
     return this.get(`${chatId}/users`);
   }
 
-  public removeUserFromChat({ users, chatId }: RemoveUserFromChat) {
-    return this.delete('users', { users, chatId });
+  public removeUserFromChat({ ...rest }: RemoveUserFromChat) {
+    return this.delete('users', { ...rest });
   }
 }
 

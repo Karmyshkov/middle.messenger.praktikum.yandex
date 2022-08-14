@@ -52,9 +52,9 @@ class ChatService {
       .then(({ response }: any) => store.setState({ chats: JSON.parse(response) }))
       .catch(showError);
   }
-  public removeChatById({ chatId }: RemoveChatType) {
+  public removeChatById({ ...rest }: RemoveChatType) {
     chatApi
-      .removeChatById({ chatId })
+      .removeChatById({ ...rest })
       .then(() => {
         const state = store.getState() as InitialStateType;
 
@@ -102,16 +102,16 @@ class ChatService {
       .catch(showError);
   }
 
-  public getChatToken({ chatId }: GetChatTokenType) {
+  public getChatToken({ ...rest }: GetChatTokenType) {
     return chatApi
-      .getChatToken({ chatId })
+      .getChatToken({ ...rest })
       .then(({ response }: any) => JSON.parse(response))
       .catch(showError);
   }
 
-  public getUserForChat({ chatId }: GetUserForChatType) {
+  public getUserForChat({ ...rest }: GetUserForChatType) {
     chatApi
-      .getUserForChat({ chatId })
+      .getUserForChat({ ...rest })
       .then(({ response }: any) => {
         store.setState({ usersFromChats: response });
       })

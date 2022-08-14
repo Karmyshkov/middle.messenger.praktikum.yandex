@@ -50,9 +50,9 @@ class ProfileService {
       .catch(showError);
   }
 
-  public searchUserByLogin({ login }: SearchUserByLoginType) {
+  public searchUserByLogin({ ...rest }: SearchUserByLoginType) {
     return profileApi
-      .searchUserByLogin({ login })
+      .searchUserByLogin({ ...rest })
       .then(({ response }: any) =>
         store.setState({ users: response }, STORE_EVENTS.ADD_USERS)
       )

@@ -24,9 +24,9 @@ class AuthService {
       .catch(showError);
   }
 
-  public signin({ login, password }: SigninType) {
+  public signin({ ...rest }: SigninType) {
     authAPI
-      .signin({ login, password })
+      .signin({ ...rest })
       .then(() => {
         showTooltip({
           text: SUCCESS_SIGNIN_MESSAGE,

@@ -10,11 +10,8 @@ class AuthAPI extends BaseAPI {
     return this.post('signup', { ...rest });
   }
 
-  public signin({ login, password }: SigninType) {
-    return this.post('signin', {
-      login,
-      password,
-    });
+  public signin({ ...rest }: SigninType) {
+    return this.post('signin', { ...rest });
   }
   public signout() {
     return this.post('logout', {});
