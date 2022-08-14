@@ -2,7 +2,6 @@ import { getDate } from './getDate';
 import { MessageDTO } from 'types';
 
 function getUniqDateFromMessages(messages: MessageDTO[]) {
-  console.log(messages);
   return Array.from(
     new Set(
       messages.map((message) => {
