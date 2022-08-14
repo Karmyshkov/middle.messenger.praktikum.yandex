@@ -1,5 +1,5 @@
 import { HTTPTransport } from 'utils/classes';
-import { URLS, BASE_HEADERS } from 'utils/constants';
+import { URLS, HEADERS } from 'utils/constants';
 
 export abstract class BaseAPI {
   private _http: HTTPTransport;
@@ -9,7 +9,7 @@ export abstract class BaseAPI {
   constructor({ path }: Record<string, string>) {
     this._http = new HTTPTransport();
     this._baseUrl = `${URLS.BASE}${path}`;
-    this._headers = BASE_HEADERS;
+    this._headers = HEADERS.CT_APPLICATION_JSON;
   }
 
   post(url: string, data: unknown) {

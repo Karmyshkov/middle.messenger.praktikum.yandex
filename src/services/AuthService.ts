@@ -1,7 +1,7 @@
 import { authAPI } from 'api';
 import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router, store } from 'core';
-import { showTooltip, showError, MESSAGES, PATHNAMES } from 'utils';
+import { showTooltip, showError, MESSAGES, PATHNAMES, lOCALSTORAGE } from 'utils';
 
 class AuthService {
   public signup({ ...rest }: SignupType) {
@@ -12,7 +12,7 @@ class AuthService {
           text: MESSAGES.SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
         });
-        localStorage.setItem('isSignin', 'true');
+        localStorage.setItem(lOCALSTORAGE.IS_SIGNIN, 'true');
         router.go(PATHNAMES.MESSAGER_PATH);
       })
       .catch(showError);
@@ -26,7 +26,7 @@ class AuthService {
           text: MESSAGES.SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
         });
-        localStorage.setItem('isSignin', 'true');
+        localStorage.setItem(lOCALSTORAGE.IS_SIGNIN, 'true');
         router.go(PATHNAMES.MESSAGER_PATH);
       })
       .catch(showError);
@@ -37,7 +37,7 @@ class AuthService {
       .signout()
       .then(() => {
         router.go(PATHNAMES.SIGNIN_PATH);
-        localStorage.removeItem('isSignin');
+        localStorage.removeItem(lOCALSTORAGE.IS_SIGNIN);
       })
       .catch(showError);
   }

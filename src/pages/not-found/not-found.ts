@@ -1,11 +1,11 @@
 import { Block, BrowseRouter as router } from 'core';
-import { PATHNAMES } from 'utils';
+import { PATHNAMES, lOCALSTORAGE } from 'utils';
 
 export class NotFoundPage extends Block {
   protected getStateFromProps() {
     this.state = {
       handleClickByLink: () =>
-        localStorage.getItem('isSignin')
+        localStorage.getItem(lOCALSTORAGE.IS_SIGNIN)
           ? router.go(PATHNAMES.MESSAGER_PATH)
           : router.go(PATHNAMES.SIGNIN_PATH),
     };

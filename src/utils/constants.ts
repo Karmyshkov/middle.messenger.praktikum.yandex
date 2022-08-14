@@ -120,6 +120,8 @@ const URLS = {
   WSS: 'wss://ya-praktikum.tech/ws/chats',
 };
 
+const HEADERS = { CT_APPLICATION_JSON: { 'Content-Type': 'application/json' } };
+
 const DATA_ATTRIBUTE = {
   CHAT_ID: 'data-chat-id',
   USER_ID: 'data-user-id',
@@ -137,7 +139,9 @@ const FORM_ELEMENTS = {
   PHONE_USER_FIELD: 'phone',
 };
 
-const BASE_HEADERS = { 'Content-Type': 'application/json' };
+const lOCALSTORAGE = {
+  IS_SIGNIN: 'isSignin',
+};
 
 export {
   config,
@@ -149,7 +153,8 @@ export {
   MESSAGES,
   REGEXP,
   URLS,
-  BASE_HEADERS,
+  HEADERS,
   DATA_ATTRIBUTE,
   FORM_ELEMENTS,
+  lOCALSTORAGE,
 };
