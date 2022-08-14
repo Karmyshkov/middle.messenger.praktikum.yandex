@@ -53,10 +53,6 @@ const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
 };
 
-function isEqual(lhs: string, rhs: string): boolean {
-  return lhs === rhs;
-}
-
 function getMessageFromResponse(errText: string) {
   return Object.values(JSON.parse(errText))[0];
 }
@@ -127,7 +123,6 @@ function getUserId(evt: Event) {
 export {
   handleSubmitForm,
   checkOnValueInput,
-  isEqual,
   showError,
   getDate,
   fixedBottomScroll,

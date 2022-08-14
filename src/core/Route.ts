@@ -1,7 +1,6 @@
 import { BlockClass, props } from 'types';
 import renderDOM from './renderDOM';
 import Block from 'core/Block';
-import { isEqual } from 'utils';
 
 export class Route<P = any> {
   private pathname: string;
@@ -25,7 +24,7 @@ export class Route<P = any> {
     }
   }
   match(pathname: string) {
-    return isEqual(pathname, this.pathname);
+    return pathname === this.pathname;
   }
 
   render() {

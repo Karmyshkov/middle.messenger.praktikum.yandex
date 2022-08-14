@@ -1,7 +1,6 @@
 export {
   handleSubmitForm,
   checkOnValueInput,
-  isEqual,
   showError,
   getDate,
   fixedBottomScroll,
