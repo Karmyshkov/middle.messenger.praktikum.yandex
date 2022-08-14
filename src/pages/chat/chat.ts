@@ -215,7 +215,7 @@ export class ChatPage extends Block {
           }
         });
       },
-      handleLinkBtn: () => router.go(PATHNAMES['SETTINGS_PATH']),
+      handleLinkBtn: () => router.go(PATHNAMES.SETTINGS_PATH),
       handleSendMessage: (evt: Event) => {
         evt.preventDefault();
         const target = evt.target as HTMLFormElement;

@@ -36,7 +36,7 @@ export class SigninPage extends Block {
         dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
-      handleLinkBtn: () => router.go(PATHNAMES['SIGNUP_PATH']),
+      handleLinkBtn: () => router.go(PATHNAMES.SIGNUP_PATH),
     };
   }
   render() {

@@ -4,7 +4,10 @@ import { PATHNAMES } from 'utils';
 export class NotFoundPage extends Block {
   protected getStateFromProps() {
     this.state = {
-      handleClickByLink: () => router.go(PATHNAMES['MESSAGER_PATH']),
+      handleClickByLink: () =>
+        localStorage.getItem('isSignin')
+          ? router.go(PATHNAMES.MESSAGER_PATH)
+          : router.go(PATHNAMES.SIGNIN_PATH),
     };
   }
   render() {

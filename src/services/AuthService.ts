@@ -19,7 +19,7 @@ class AuthService {
           type: 'success',
         });
         localStorage.setItem('isSignin', 'true');
-        router.go(PATHNAMES['MESSAGER_PATH']);
+        router.go(PATHNAMES.MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -33,7 +33,7 @@ class AuthService {
           type: 'success',
         });
         localStorage.setItem('isSignin', 'true');
-        router.go(PATHNAMES['MESSAGER_PATH']);
+        router.go(PATHNAMES.MESSAGER_PATH);
       })
       .catch(showError);
   }
@@ -42,7 +42,7 @@ class AuthService {
     authAPI
       .signout()
       .then(() => {
-        router.go(PATHNAMES['SIGNIN_PATH']);
+        router.go(PATHNAMES.SIGNIN_PATH);
         localStorage.removeItem('isSignin');
       })
       .catch(showError);

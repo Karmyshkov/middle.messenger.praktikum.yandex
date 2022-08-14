@@ -40,7 +40,7 @@ export class SignupPage extends Block {
       handleValidateInput: (evt: Event) => {
         signupFormValidator.handleFieldValidation(evt);
       },
-      handleLinkBtn: () => router.go(PATHNAMES['SIGNIN_PATH']),
+      handleLinkBtn: () => router.go(PATHNAMES.SIGNIN_PATH),
     };
   }
 

@@ -40,8 +40,8 @@ export class ProfilePage extends Block {
         authService.signout();
       },
       handleBackBtn: () => router.back(),
-      handleLinkToChangeProfile: () => router.go(PATHNAMES['EDIT_SETTINGS_PATH']),
-      handleLinkToChangePassword: () => router.go(PATHNAMES['EDIT_PASSWORD_PATH']),
+      handleLinkToChangeProfile: () => router.go(PATHNAMES.EDIT_SETTINGS_PATH),
+      handleLinkToChangePassword: () => router.go(PATHNAMES.EDIT_PASSWORD_PATH),
     };
   }
   render() {
