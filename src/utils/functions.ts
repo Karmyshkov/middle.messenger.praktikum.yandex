@@ -1,11 +1,6 @@
 import { BrowseRouter as router } from 'core';
-import { Input } from 'utils/classes';
 import { config, DATA_ATTRIBUTE } from 'utils/constants';
 import { showTooltip } from 'utils';
-
-const checkOnValueInput = (evt: Event) => {
-  evt.target && new Input(config, evt.target).checkOnValueInput();
-};
 
 function getMessageFromResponse(errText: string) {
   return Object.values(JSON.parse(errText))[0];
@@ -75,7 +70,6 @@ function getUserId(evt: Event) {
 }
 
 export {
-  checkOnValueInput,
   showError,
   getDate,
   fixedBottomScroll,
