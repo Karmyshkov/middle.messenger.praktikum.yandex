@@ -8,5 +8,6 @@ export { getDate } from './functions/getDate';
 export { getIdUniqDates } from './functions/getIdUniqDates';
 export { fixedBottomScroll } from './functions/fixedBottomScroll';
 export { checkIsLoginIn } from './functions/checkIsLoginIn';
+export { checkOnCorrectUrl } from './functions/checkOnCorrectUrl';
 export * from './constants';
 export * from './classes';

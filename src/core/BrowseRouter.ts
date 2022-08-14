@@ -1,6 +1,6 @@
 import { BlockClass, props } from 'types';
 import { Route } from './Route';
-import { PATHNAMES } from 'utils';
+import { checkOnCorrectUrl } from 'utils';
 
 class BrowseRouter {
   static __instance: BrowseRouter;
@@ -33,6 +33,8 @@ class BrowseRouter {
   }
 
   _onRoute(pathname: string) {
+    checkOnCorrectUrl(pathname);
+
     let route = this.getRoute(pathname);
 
     if (!route) {
