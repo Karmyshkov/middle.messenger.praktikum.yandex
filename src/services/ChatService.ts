@@ -10,14 +10,7 @@ import {
   InitialStateType,
   UserType,
 } from 'types';
-import {
-  showTooltip,
-  showError,
-  SUCCESS_CREATE_MESSAGE,
-  SUCCESS_REMOVE_CHAT_MESSAGE,
-  SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
-  SUCCESS_REMOVE_USER_FROM_CHAT,
-} from 'utils';
+import { showTooltip, showError, MESSAGES } from 'utils';
 import { store } from 'core';
 
 class ChatService {
@@ -40,7 +33,7 @@ class ChatService {
         store.setState({ chats: state.chats });
 
         showTooltip({
-          text: SUCCESS_CREATE_MESSAGE,
+          text: MESSAGES.SUCCESS_CREATE_MESSAGE,
           type: 'success',
         });
       })
@@ -59,7 +52,7 @@ class ChatService {
         const state = store.getState() as InitialStateType;
 
         showTooltip({
-          text: SUCCESS_REMOVE_CHAT_MESSAGE,
+          text: MESSAGES.SUCCESS_REMOVE_CHAT_MESSAGE,
           type: 'success',
         });
 
@@ -94,7 +87,7 @@ class ChatService {
           );
 
           showTooltip({
-            text: SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
+            text: MESSAGES.SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
             type: 'success',
           });
         }
@@ -128,7 +121,7 @@ class ChatService {
           const usersFromChats = JSON.parse(state.usersFromChats);
 
           showTooltip({
-            text: SUCCESS_REMOVE_USER_FROM_CHAT,
+            text: MESSAGES.SUCCESS_REMOVE_USER_FROM_CHAT,
             type: 'success',
           });
 

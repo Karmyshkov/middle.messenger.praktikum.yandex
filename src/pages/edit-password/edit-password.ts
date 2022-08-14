@@ -1,11 +1,7 @@
 import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
-import {
-  config,
-  EDIT_PASSWORD_FORM,
-  IS_NOT_MATCHED_PASSWORD_MESSAGE,
-} from 'utils/constants';
+import { config, EDIT_PASSWORD_FORM, MESSAGES } from 'utils/constants';
 import { handleSubmitForm, showTooltip, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
 import { UserPasswordType, StoreEvents } from 'types';
@@ -60,7 +56,7 @@ export class EditPasswordPage extends Block {
 
           newPassword !== repeatPassword
             ? showTooltip({
-                text: IS_NOT_MATCHED_PASSWORD_MESSAGE,
+                text: MESSAGES.IS_NOT_MATCHED_PASSWORD_MESSAGE,
                 type: 'error',
               })
             : profileService.changeUserPassword({

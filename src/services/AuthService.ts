@@ -1,13 +1,7 @@
 import { authAPI } from 'api';
 import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router, store } from 'core';
-import {
-  showTooltip,
-  showError,
-  SUCCESS_SIGNUP_MESSAGE,
-  SUCCESS_SIGNIN_MESSAGE,
-  PATHNAMES,
-} from 'utils';
+import { showTooltip, showError, MESSAGES, PATHNAMES } from 'utils';
 
 class AuthService {
   public signup({ ...rest }: SignupType) {
@@ -15,7 +9,7 @@ class AuthService {
       .signup({ ...rest })
       .then(() => {
         showTooltip({
-          text: SUCCESS_SIGNUP_MESSAGE,
+          text: MESSAGES.SUCCESS_SIGNUP_MESSAGE,
           type: 'success',
         });
         localStorage.setItem('isSignin', 'true');
@@ -29,7 +23,7 @@ class AuthService {
       .signin({ ...rest })
       .then(() => {
         showTooltip({
-          text: SUCCESS_SIGNIN_MESSAGE,
+          text: MESSAGES.SUCCESS_SIGNIN_MESSAGE,
           type: 'success',
         });
         localStorage.setItem('isSignin', 'true');

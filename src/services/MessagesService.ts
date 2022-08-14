@@ -2,7 +2,7 @@ import { store } from 'core';
 import {
   BASE_URL_WSS,
   showTooltip,
-  CONNECTION_PROBLEMS,
+  MESSAGES,
   ACTIONS_WEBSOCKET,
   TYPES_MESSAGE_WEBSOCKET,
 } from 'utils';
@@ -54,7 +54,7 @@ class MessagesService {
     this._removeListeners();
     if (!evt.wasClean) {
       showTooltip({
-        text: CONNECTION_PROBLEMS,
+        text: MESSAGES.CONNECTION_PROBLEMS,
         type: 'error',
       });
     }

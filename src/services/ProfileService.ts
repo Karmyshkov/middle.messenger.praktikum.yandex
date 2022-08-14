@@ -1,10 +1,5 @@
 import { profileApi } from 'api';
-import {
-  showTooltip,
-  showError,
-  SUCCESS_CHANGE_AVATAR_MESSAGE,
-  SUCCESS_CHANGE_USER_INFO_MESSAGE,
-} from 'utils';
+import { showTooltip, showError, MESSAGES } from 'utils';
 import { store } from 'core';
 import { UserInfoDTO, UserPasswordType, SearchUserByLoginType, StoreEvents } from 'types';
 
@@ -15,7 +10,7 @@ class ProfileService {
       .then(({ response }: any) => {
         store.setState({ userInfo: JSON.parse(response) });
         showTooltip({
-          text: SUCCESS_CHANGE_AVATAR_MESSAGE,
+          text: MESSAGES.SUCCESS_CHANGE_AVATAR_MESSAGE,
           type: 'success',
         });
       })
@@ -27,7 +22,7 @@ class ProfileService {
       .then(({ response }: any) => {
         store.setState({ userInfo: JSON.parse(response) });
         showTooltip({
-          text: SUCCESS_CHANGE_USER_INFO_MESSAGE,
+          text: MESSAGES.SUCCESS_CHANGE_USER_INFO_MESSAGE,
           type: 'success',
         });
       })
@@ -38,7 +33,7 @@ class ProfileService {
       .changeUserPassword(userPassword)
       .then(() =>
         showTooltip({
-          text: SUCCESS_CHANGE_USER_INFO_MESSAGE,
+          text: MESSAGES.SUCCESS_CHANGE_USER_INFO_MESSAGE,
           type: 'success',
         })
       )

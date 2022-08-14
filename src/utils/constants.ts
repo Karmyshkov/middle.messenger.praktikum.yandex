@@ -93,9 +93,23 @@ const TYPES_MESSAGE_WEBSOCKET = {
   GET_OLD: 'get old',
 };
 
-const REGEXP_FOR_NAME_AND_LASTNAME = /^[A-Z | А-Я | -]/;
-const REGEXP_FOR_PHONE = /^((\+7|7|8)+([0-9]){10})$/;
-const REGEXP_REPLACE_PATHNAME = /\/\d+/;
+const MESSAGES = {
+  SUCCESS_SIGNUP_MESSAGE: 'Вы успешно зарегистрировались!',
+  SUCCESS_SIGNIN_MESSAGE: 'Вы успешно вошли в приложение!',
+  SUCCESS_CREATE_MESSAGE: 'Создан чат!',
+  SUCCESS_CHANGE_AVATAR_MESSAGE: 'Аватар изменен!',
+  SUCCESS_CHANGE_USER_INFO_MESSAGE: 'Информация пользователя изменена!',
+  SUCCESS_REMOVE_CHAT_MESSAGE: 'Чат удален!',
+  SUCCESS_ADD_USER_TO_CHAT_MESSAGE: 'Пользователь добавлен в чат!',
+  SUCCESS_REMOVE_USER_FROM_CHAT: 'Пользователь удален из чата!',
+  CONNECTION_PROBLEMS: 'Проблемы с подключением',
+  IS_NOT_MATCHED_PASSWORD_MESSAGE: 'Пароли не совпадают!',
+};
+
+const REGEXP = {
+  REGEXP_FOR_NAME_AND_LASTNAME: /^[A-Z | А-Я | -]/,
+  REGEXP_FOR_PHONE: /^((\+7|7|8)+([0-9]){10})$/,
+};
 
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
@@ -116,18 +130,9 @@ const PHONE_USER_FIELD = 'phone';
 const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
   'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
 const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
-const SUCCESS_SIGNUP_MESSAGE = 'Вы успешно зарегистрировались!';
-const SUCCESS_SIGNIN_MESSAGE = 'Вы успешно вошли в приложение!';
-const SUCCESS_CREATE_MESSAGE = 'Создан чат!';
-const SUCCESS_CHANGE_AVATAR_MESSAGE = 'Аватар изменен!';
-const SUCCESS_CHANGE_USER_INFO_MESSAGE = 'Информация пользователя изменена!';
-const SUCCESS_REMOVE_CHAT_MESSAGE = 'Чат удален!';
-const SUCCESS_ADD_USER_TO_CHAT_MESSAGE = 'Пользователь добавлен в чат!';
-const SUCCESS_REMOVE_USER_FROM_CHAT = 'Пользователь удален из чата!';
+
 const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
 const DATA_ATTRIBUTE_USER_ID = 'data-user-id';
-const CONNECTION_PROBLEMS = 'Проблемы с подключением';
-const IS_NOT_MATCHED_PASSWORD_MESSAGE = 'Пароли не совпадают!';
 
 export {
   config,
@@ -144,28 +149,17 @@ export {
   PHONE_USER_FIELD,
   CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
   CUSTOM_ERROR_FOR_PHONE_FILED,
-  REGEXP_FOR_NAME_AND_LASTNAME,
-  REGEXP_FOR_PHONE,
-  REGEXP_REPLACE_PATHNAME,
   BASE_URL,
   BASE_URL_RESOURCES,
   BASE_HEADERS,
-  SUCCESS_SIGNUP_MESSAGE,
-  SUCCESS_SIGNIN_MESSAGE,
-  SUCCESS_CREATE_MESSAGE,
-  SUCCESS_CHANGE_AVATAR_MESSAGE,
-  SUCCESS_CHANGE_USER_INFO_MESSAGE,
-  SUCCESS_REMOVE_CHAT_MESSAGE,
-  SUCCESS_ADD_USER_TO_CHAT_MESSAGE,
-  SUCCESS_REMOVE_USER_FROM_CHAT,
   PATHNAMES,
   BASE_URL_WSS,
   DATA_ATTRIBUTE_CHAT_ID,
   DATA_ATTRIBUTE_USER_ID,
-  CONNECTION_PROBLEMS,
-  IS_NOT_MATCHED_PASSWORD_MESSAGE,
   DAYS,
   MONTH,
   ACTIONS_WEBSOCKET,
   TYPES_MESSAGE_WEBSOCKET,
+  MESSAGES,
+  REGEXP,
 };
