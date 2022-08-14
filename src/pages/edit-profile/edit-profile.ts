@@ -1,14 +1,14 @@
 import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
-import { config, EDIT_PROFILE_FORM } from 'utils/constants';
+import { config, FORM_ELEMENTS } from 'utils/constants';
 import { handleSubmitForm, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
 import { UserInfoDTO, UserInfoType, StoreEvents } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,
-  EDIT_PROFILE_FORM,
+  FORM_ELEMENTS.EDIT_PROFILE_FORM,
   config.inputProfileSelector,
   config.btnSubmitFormSelector,
   config.inputProfileHelperTextSelector,
@@ -45,7 +45,7 @@ export class EditProfilePage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: editProfileformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
-          formSelector: EDIT_PROFILE_FORM,
+          formSelector: FORM_ELEMENTS.EDIT_PROFILE_FORM,
           disableBtn: editProfileformValidator.disableBtn,
           addErors: editProfileformValidator.addErrorsForInput,
           isValidField: editProfileformValidator.isValidFieldWithCustomRules(),

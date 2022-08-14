@@ -104,62 +104,52 @@ const MESSAGES = {
   SUCCESS_REMOVE_USER_FROM_CHAT: 'Пользователь удален из чата!',
   CONNECTION_PROBLEMS: 'Проблемы с подключением',
   IS_NOT_MATCHED_PASSWORD_MESSAGE: 'Пароли не совпадают!',
+  CUSTOM_ERROR_FOR_NAME_AND_LASTNAME:
+    'Имя / Фамилия должны начинаться с загловной буквы или с "-"',
+  CUSTOM_ERROR_FOR_PHONE_FILED: 'Не корректный формат',
 };
 
 const REGEXP = {
-  REGEXP_FOR_NAME_AND_LASTNAME: /^[A-Z | А-Я | -]/,
-  REGEXP_FOR_PHONE: /^((\+7|7|8)+([0-9]){10})$/,
+  FIRST_SYMBOL_UPPERCASE: /^[A-Z | А-Я | -]/,
+  PHONE: /^((\+7|7|8)+([0-9]){10})$/,
 };
 
-const BASE_URL = 'https://ya-praktikum.tech/api/v2';
-const BASE_URL_RESOURCES = 'https://ya-praktikum.tech/api/v2/resources';
-const BASE_URL_WSS = 'wss://ya-praktikum.tech/ws/chats';
+const URLS = {
+  BASE: 'https://ya-praktikum.tech/api/v2',
+  RESOURCES: 'https://ya-praktikum.tech/api/v2/resources',
+  WSS: 'wss://ya-praktikum.tech/ws/chats',
+};
+
+const DATA_ATTRIBUTE = {
+  CHAT_ID: 'data-chat-id',
+  USER_ID: 'data-user-id',
+};
+
+const FORM_ELEMENTS = {
+  ADD_CHAT_FORM: 'popup__form_add-chat',
+  ADD_USER_FORM: 'popup__form_add-user',
+  DELETE_USER_FORM: 'popup__form_delete-user',
+  EDIT_PASSWORD_FORM: 'profile__form_el_edit-password-form',
+  EDIT_PROFILE_FORM: 'profile__form_el_edit-form',
+  AUTH_FORM: 'auth',
+  USER_NAME_FIELD: 'first_name',
+  LAST_NAME_USER_FIELD: 'second_name',
+  PHONE_USER_FIELD: 'phone',
+};
+
 const BASE_HEADERS = { 'Content-Type': 'application/json' };
-
-const ADD_CHAT_FORM = 'popup__form_add-chat';
-const ADD_USER_FORM = 'popup__form_add-user';
-const DELETE_USER_FORM = 'popup__form_delete-user';
-const SIGNIN_FORM = 'signin';
-const SIGNUP_FORM = 'signup';
-const EDIT_PASSWORD_FORM = 'profile__form_el_edit-password-form';
-const EDIT_PROFILE_FORM = 'profile__form_el_edit-form';
-const AUTH_FORM = 'auth';
-const USER_NAME_FIELD = 'first_name';
-const LAST_NAME_USER_FIELD = 'second_name';
-const PHONE_USER_FIELD = 'phone';
-const CUSTOM_ERROR_FOR_NAME_AND_LASTNAME =
-  'Имя / Фамилия должны начинаться с загловной буквы или с "-"';
-const CUSTOM_ERROR_FOR_PHONE_FILED = 'Не корректный формат';
-
-const DATA_ATTRIBUTE_CHAT_ID = 'data-chat-id';
-const DATA_ATTRIBUTE_USER_ID = 'data-user-id';
 
 export {
   config,
-  ADD_CHAT_FORM,
-  ADD_USER_FORM,
-  DELETE_USER_FORM,
-  SIGNIN_FORM,
-  SIGNUP_FORM,
-  EDIT_PASSWORD_FORM,
-  EDIT_PROFILE_FORM,
-  AUTH_FORM,
-  USER_NAME_FIELD,
-  LAST_NAME_USER_FIELD,
-  PHONE_USER_FIELD,
-  CUSTOM_ERROR_FOR_NAME_AND_LASTNAME,
-  CUSTOM_ERROR_FOR_PHONE_FILED,
-  BASE_URL,
-  BASE_URL_RESOURCES,
-  BASE_HEADERS,
   PATHNAMES,
-  BASE_URL_WSS,
-  DATA_ATTRIBUTE_CHAT_ID,
-  DATA_ATTRIBUTE_USER_ID,
   DAYS,
   MONTH,
   ACTIONS_WEBSOCKET,
   TYPES_MESSAGE_WEBSOCKET,
   MESSAGES,
   REGEXP,
+  URLS,
+  BASE_HEADERS,
+  DATA_ATTRIBUTE,
+  FORM_ELEMENTS,
 };

@@ -1,7 +1,7 @@
 import { Block } from 'core';
 import './userItem.css';
 import { UserItemProps } from './types';
-import { BASE_URL_RESOURCES, DATA_ATTRIBUTE_USER_ID } from 'utils';
+import { URLS, DATA_ATTRIBUTE } from 'utils';
 import defaultIcon from 'img/avatar.svg';
 
 export class UserItem extends Block {
@@ -27,9 +27,9 @@ export class UserItem extends Block {
 
     // language=hbs
     return `
-      <li class="user-item" ${DATA_ATTRIBUTE_USER_ID}="${id}">
+      <li class="user-item" ${DATA_ATTRIBUTE.USER_ID}="${id}">
         <img class="user-item__avatar" src="${
-          avatar && avatar !== 'null' ? `${BASE_URL_RESOURCES}${avatar}` : defaultIcon
+          avatar && avatar !== 'null' ? `${URLS.RESOURCES}${avatar}` : defaultIcon
         }" alt="Аватар">
         <div class="user-item__wrapper">
           <p class="user-item__text-login">${login}</p>

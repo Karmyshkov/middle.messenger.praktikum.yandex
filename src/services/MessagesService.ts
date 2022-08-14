@@ -1,6 +1,6 @@
 import { store } from 'core';
 import {
-  BASE_URL_WSS,
+  URLS,
   showTooltip,
   MESSAGES,
   ACTIONS_WEBSOCKET,
@@ -100,7 +100,7 @@ class MessagesService {
       this._chatId = chatId;
       this._token = token;
       this._wss = new WebSocket(
-        `${BASE_URL_WSS}/${this._userId}/${this._chatId}/${this._token}`
+        `${URLS.WSS}/${this._userId}/${this._chatId}/${this._token}`
       );
       this._setListeners();
     }

@@ -1,14 +1,14 @@
 import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
-import { config, AUTH_FORM, PATHNAMES } from 'utils/constants';
+import { config, FORM_ELEMENTS, PATHNAMES } from 'utils/constants';
 import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SignupType } from 'types';
 
 const signupFormValidator = new FormValidator(
   config,
-  AUTH_FORM,
+  FORM_ELEMENTS.AUTH_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -28,7 +28,7 @@ export class SignupPage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: signupFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: AUTH_FORM,
+          formSelector: FORM_ELEMENTS.AUTH_FORM,
           disableBtn: signupFormValidator.disableBtn,
           addErors: signupFormValidator.addErrorsForInput,
           isValidField: signupFormValidator.isValidFieldWithCustomRules(),

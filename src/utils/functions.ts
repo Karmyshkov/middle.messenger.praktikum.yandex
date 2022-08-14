@@ -1,12 +1,7 @@
 import { BrowseRouter as router } from 'core';
 import { Input } from 'utils/classes/Input';
 import { Popup } from './classes/Popup';
-import {
-  config,
-  ADD_USER_FORM,
-  DELETE_USER_FORM,
-  DATA_ATTRIBUTE_USER_ID,
-} from 'utils/constants';
+import { config, FORM_ELEMENTS, DATA_ATTRIBUTE } from 'utils/constants';
 import { showTooltip } from 'utils';
 
 interface SubmitFormProps {
@@ -39,7 +34,10 @@ const handleSubmitForm = ({
         dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
       });
 
-      if (form.name !== ADD_USER_FORM && form.name !== DELETE_USER_FORM) {
+      if (
+        form.name !== FORM_ELEMENTS.ADD_USER_FORM &&
+        form.name !== FORM_ELEMENTS.DELETE_USER_FORM
+      ) {
         Popup.handleClosePopup(config.isOpenPopupSelector);
       }
 
@@ -123,7 +121,7 @@ function checkIsLoginIn() {
 function getUserId(evt: Event) {
   const target = evt.target as HTMLElement;
   const userItem = target.closest(`.${config.userItemSelector}`);
-  return Number(userItem?.getAttribute(DATA_ATTRIBUTE_USER_ID));
+  return Number(userItem?.getAttribute(DATA_ATTRIBUTE.USER_ID));
 }
 
 export {

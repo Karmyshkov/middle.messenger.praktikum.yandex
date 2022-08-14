@@ -1,14 +1,14 @@
 import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
 import { Popup, FormValidator } from 'utils/classes';
-import { config, EDIT_PASSWORD_FORM, MESSAGES } from 'utils/constants';
+import { config, FORM_ELEMENTS, MESSAGES } from 'utils/constants';
 import { handleSubmitForm, showTooltip, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
 import { UserPasswordType, StoreEvents } from 'types';
 
 const editPassowrdformValidator = new FormValidator(
   config,
-  EDIT_PASSWORD_FORM,
+  FORM_ELEMENTS.EDIT_PASSWORD_FORM,
   config.inputProfileSelector,
   config.btnSubmitFormSelector,
   config.inputProfileHelperTextSelector,
@@ -45,7 +45,7 @@ export class EditPasswordPage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: editPassowrdformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
-          formSelector: EDIT_PASSWORD_FORM,
+          formSelector: FORM_ELEMENTS.EDIT_PASSWORD_FORM,
           disableBtn: editPassowrdformValidator.disableBtn,
           addErors: editPassowrdformValidator.addErrorsForInput,
         });

@@ -8,13 +8,7 @@ import {
   InitialStateType,
 } from 'types';
 import { Chat, Popup, FormValidator } from 'utils/classes';
-import {
-  config,
-  ADD_CHAT_FORM,
-  ADD_USER_FORM,
-  PATHNAMES,
-  DATA_ATTRIBUTE_CHAT_ID,
-} from 'utils/constants';
+import { config, FORM_ELEMENTS, PATHNAMES, DATA_ATTRIBUTE } from 'utils/constants';
 import {
   handleSubmitForm,
   checkOnValueInput,
@@ -27,7 +21,7 @@ import { chatService, messagesService, profileService, authService } from 'servi
 
 const addChatFromValidator = new FormValidator(
   config,
-  ADD_CHAT_FORM,
+  FORM_ELEMENTS.ADD_CHAT_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -36,7 +30,7 @@ const addChatFromValidator = new FormValidator(
 
 const addUserFormValidator = new FormValidator(
   config,
-  ADD_USER_FORM,
+  FORM_ELEMENTS.ADD_USER_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -70,7 +64,7 @@ export class ChatPage extends Block {
 
       addClassForActiveElement: (evt: Event) => {
         const element = evt.currentTarget as HTMLElement;
-        const chatItemId = element.getAttribute(DATA_ATTRIBUTE_CHAT_ID);
+        const chatItemId = element.getAttribute(DATA_ATTRIBUTE.CHAT_ID);
 
         this.setState({ chatItemId });
 
@@ -137,7 +131,7 @@ export class ChatPage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: addChatFromValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: ADD_CHAT_FORM,
+          formSelector: FORM_ELEMENTS.ADD_CHAT_FORM,
           disableBtn: addChatFromValidator.disableBtn,
           addErors: addChatFromValidator.addErrorsForInput,
         });
@@ -162,7 +156,7 @@ export class ChatPage extends Block {
         const dataForm = handleSubmitForm({
           stateForm: addUserFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: ADD_USER_FORM,
+          formSelector: FORM_ELEMENTS.ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
           addErors: addUserFormValidator.addErrorsForInput,
         });
