@@ -1,53 +1,7 @@
 import { BrowseRouter as router } from 'core';
-import { Input } from 'utils/classes/Input';
-import { Popup } from './classes/Popup';
-import { config, FORM_ELEMENTS, DATA_ATTRIBUTE } from 'utils/constants';
+import { Input } from 'utils/classes';
+import { config, DATA_ATTRIBUTE } from 'utils/constants';
 import { showTooltip } from 'utils';
-
-interface SubmitFormProps {
-  disableBtn: () => void;
-  addErors: () => void;
-  stateForm: boolean;
-  inputSelector: string;
-  formSelector: string;
-  isValidField?: boolean | undefined;
-  isNotCloseBySbmit?: boolean;
-}
-
-const handleSubmitForm = ({
-  stateForm,
-  inputSelector,
-  formSelector,
-  disableBtn,
-  addErors,
-  isValidField = undefined,
-}: SubmitFormProps) => {
-  if (stateForm && isValidField === undefined) {
-    const form = document.querySelector(`.${formSelector}`) as HTMLFormElement;
-
-    if (form) {
-      const inputs = form.querySelectorAll(`.${inputSelector}`);
-      let dataForm = {};
-
-      inputs?.forEach((input) => {
-        const inputElement = input as HTMLInputElement;
-        dataForm = { ...dataForm, [inputElement.name]: inputElement.value };
-      });
-
-      if (
-        form.name !== FORM_ELEMENTS.ADD_USER_FORM &&
-        form.name !== FORM_ELEMENTS.DELETE_USER_FORM
-      ) {
-        Popup.handleClosePopup(config.isOpenPopupSelector);
-      }
-
-      return dataForm;
-    }
-  } else {
-    disableBtn();
-    addErors();
-  }
-};
 
 const checkOnValueInput = (evt: Event) => {
   evt.target && new Input(config, evt.target).checkOnValueInput();
@@ -121,7 +75,6 @@ function getUserId(evt: Event) {
 }
 
 export {
-  handleSubmitForm,
   checkOnValueInput,
   showError,
   getDate,

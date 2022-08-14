@@ -1,5 +1,4 @@
 export {
-  handleSubmitForm,
   checkOnValueInput,
   showError,
   getDate,
@@ -8,6 +7,7 @@ export {
   checkIsLoginIn,
   getUserId,
 } from './functions';
+export { handleSubmitForm } from './handleSubmitForm';
 export { Screens, getScreenComponent } from './screenList';
 export { showTooltip } from './tooltip';
 export * from './constants';
