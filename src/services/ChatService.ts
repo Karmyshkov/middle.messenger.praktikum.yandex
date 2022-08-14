@@ -6,7 +6,7 @@ import {
   GetChatTokenType,
   GetUserForChatType,
   RemoveUserFromChat,
-  STORE_EVENTS,
+  StoreEvents,
   InitialStateType,
   UserType,
 } from 'types';
@@ -82,7 +82,7 @@ class ChatService {
           usersFromChats.push(userItems.find((user: UserType) => user.id === users[0]));
           store.setState(
             { usersFromChats: JSON.stringify(usersFromChats) },
-            STORE_EVENTS.ADD_USERS
+            StoreEvents.ADD_USERS
           );
 
           const filteredUserItems = userItems.filter(
@@ -90,7 +90,7 @@ class ChatService {
           );
           store.setState(
             { users: JSON.stringify(filteredUserItems) },
-            STORE_EVENTS.ADD_USERS
+            StoreEvents.ADD_USERS
           );
 
           showTooltip({
@@ -138,13 +138,13 @@ class ChatService {
                 usersFromChats.filter((user: UserType) => user.id !== users[0])
               ),
             },
-            STORE_EVENTS.DELETE_USERS
+            StoreEvents.DELETE_USERS
           );
 
           usersFromChats.length === 1 &&
             store.setState(
               { chats: state.chats?.filter((chat) => chat.id !== chatId) },
-              STORE_EVENTS.DELETE_USERS
+              StoreEvents.DELETE_USERS
             );
         }
       })

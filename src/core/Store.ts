@@ -16,7 +16,7 @@ class Store<T> extends EventBus {
 
   setState(newData: any, action?: string) {
     this.state = { ...this.state, ...newData };
-    this.emit(action ? action : STORE_EVENTS.UPDATE);
+    this.emit(action ? action : StoreEvents.UPDATE);
   }
 }
 

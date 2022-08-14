@@ -6,12 +6,7 @@ import {
   SUCCESS_CHANGE_USER_INFO_MESSAGE,
 } from 'utils';
 import { store } from 'core';
-import {
-  UserInfoDTO,
-  UserPasswordType,
-  SearchUserByLoginType,
-  STORE_EVENTS,
-} from 'types';
+import { UserInfoDTO, UserPasswordType, SearchUserByLoginType, StoreEvents } from 'types';
 
 class ProfileService {
   public changeAvatar(avatar: FormData) {
@@ -54,7 +49,7 @@ class ProfileService {
     return profileApi
       .searchUserByLogin({ ...rest })
       .then(({ response }: any) =>
-        store.setState({ users: response }, STORE_EVENTS.ADD_USERS)
+        store.setState({ users: response }, StoreEvents.ADD_USERS)
       )
       .catch(showError);
   }

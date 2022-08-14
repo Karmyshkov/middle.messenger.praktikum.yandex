@@ -3,7 +3,7 @@ import 'styles/chat.css';
 import {
   CreateChatType,
   SearchUserByLoginType,
-  STORE_EVENTS,
+  StoreEvents,
   MessageDTO,
   InitialStateType,
 } from 'types';
@@ -51,15 +51,15 @@ export class ChatPage extends Block {
     authService.getInfo();
     messagesService.getMessages();
 
-    store.on(STORE_EVENTS.UPDATE, () => {
+    store.on(StoreEvents.UPDATE, () => {
       this.setProps(store.getState());
     });
 
-    store.on(STORE_EVENTS.ADD_USERS, () => {
+    store.on(StoreEvents.ADD_USERS, () => {
       this.setProps(store.getState());
     });
 
-    store.on(STORE_EVENTS.DELETE_USERS, () => {
+    store.on(StoreEvents.DELETE_USERS, () => {
       this.setProps(store.getState());
     });
   }
@@ -93,17 +93,17 @@ export class ChatPage extends Block {
           chatService.getUserForChat({ chatId: Number(chatItemId) });
         }
 
-        store.on(STORE_EVENTS.UPDATE, () => {
+        store.on(StoreEvents.UPDATE, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
 
-        store.on(STORE_EVENTS.ADD_USERS, () => {
+        store.on(StoreEvents.ADD_USERS, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
 
-        store.on(STORE_EVENTS.DELETE_USERS, () => {
+        store.on(StoreEvents.DELETE_USERS, () => {
           new Chat(config).addActiveClassName(evt);
           fixedBottomScroll();
         });
@@ -144,7 +144,7 @@ export class ChatPage extends Block {
 
         dataForm && chatService.createChat(dataForm as CreateChatType);
 
-        store.on(STORE_EVENTS.UPDATE, () => {
+        store.on(StoreEvents.UPDATE, () => {
           const state = store.getState() as InitialStateType;
           this.setProps({ chats: state.chats });
         });
@@ -173,7 +173,7 @@ export class ChatPage extends Block {
           } as SearchUserByLoginType);
         }
 
-        store.on(STORE_EVENTS.ADD_USERS, () => {
+        store.on(StoreEvents.ADD_USERS, () => {
           new Popup(
             config.popupAddUserSelector,
             config.btnSubmitFormSelector,
@@ -197,7 +197,7 @@ export class ChatPage extends Block {
           chatId: Number(this.state.chatItemId),
         });
 
-        store.on(STORE_EVENTS.DELETE_USERS, () => {
+        store.on(StoreEvents.DELETE_USERS, () => {
           const state = store.getState() as InitialStateType;
           if (state.usersFromChats) {
             const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
@@ -226,7 +226,7 @@ export class ChatPage extends Block {
         messagesService.sendMessage(input.value);
         input.value = '';
 
-        store.on(STORE_EVENTS.UPDATE, () => fixedBottomScroll());
+        store.on(StoreEvents.UPDATE, () => fixedBottomScroll());
       },
     };
   }

@@ -25,7 +25,7 @@ export class EditPasswordPage extends Block {
 
     authService.getInfo();
 
-    store.on(STORE_EVENTS.UPDATE, () => {
+    store.on(StoreEvents.UPDATE, () => {
       this.setProps(store.getState());
     });
   }
