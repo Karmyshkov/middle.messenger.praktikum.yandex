@@ -4,7 +4,7 @@ import { Popup, FormValidator } from 'utils/classes';
 import { config, EDIT_PROFILE_FORM } from 'utils/constants';
 import { handleSubmitForm, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
-import { UserInfoDTO, UserInfoType, STORE_EVENTS } from 'types';
+import { UserInfoDTO, UserInfoType, StoreEvents } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,

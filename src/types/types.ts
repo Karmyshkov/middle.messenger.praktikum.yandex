@@ -160,7 +160,7 @@ interface InitialStateType {
 
 type props = Record<string, any>;
 
-enum STORE_EVENTS {
+enum StoreEvents {
   UPDATE = 'update',
   ADD_USERS = 'add-users',
   DELETE_USERS = 'delete-users',

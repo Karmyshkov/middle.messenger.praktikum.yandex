@@ -3,7 +3,7 @@ import 'styles/profile.css';
 import { Popup } from 'utils/classes';
 import { config, PATHNAMES } from 'utils/constants';
 import { authService, profileService } from 'services';
-import { STORE_EVENTS } from 'types';
+import { StoreEvents } from 'types';
 import { checkIsLoginIn } from 'utils';
 
 export class ProfilePage extends Block {

@@ -8,7 +8,7 @@ import {
 } from 'utils/constants';
 import { handleSubmitForm, showTooltip, checkIsLoginIn } from 'utils';
 import { authService, profileService } from 'services';
-import { UserPasswordType, STORE_EVENTS } from 'types';
+import { UserPasswordType, StoreEvents } from 'types';
 
 const editPassowrdformValidator = new FormValidator(
   config,
