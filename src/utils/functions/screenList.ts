@@ -8,7 +8,7 @@ import EditProfile from 'pages/edit-profile';
 import EditPassword from 'pages/edit-password';
 import PathNotFound from 'pages/not-found';
 
-const map: Record<Screens, BlockClass<any>> = {
+const map: Record<Screens, BlockClass<unknown>> = {
   [Screens.Signin]: Signin,
   [Screens.Signup]: Signup,
   [Screens.Messenger]: Messenger,
@@ -18,7 +18,7 @@ const map: Record<Screens, BlockClass<any>> = {
   [Screens.PathNotFound]: PathNotFound,
 };
 
-const getScreenComponent = (screen: Screens): BlockClass<any> => {
+const getScreenComponent = (screen: Screens): BlockClass<unknown> => {
   return map[screen];
 };
 
