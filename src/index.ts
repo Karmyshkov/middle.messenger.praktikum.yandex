@@ -1,5 +1,5 @@
 import { registerComponent, BrowseRouter as router } from 'core';
-import { getScreenComponent } from './utils/screenList';
+import { getScreenComponent } from './utils';
 import { Screens } from 'types';
 import { components } from 'components';
 
