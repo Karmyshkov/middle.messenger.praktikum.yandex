@@ -1,8 +1,8 @@
-import { ButtonType } from 'types';
+import { ButtonEnum } from 'types';
 
 export interface ButtonProps {
   onClick: () => void;
-  textBtn: string;
-  type: ButtonType;
+  textBtn?: string;
+  type: ButtonEnum;
   classes?: string;
 }

@@ -77,19 +77,4 @@
     font-size: 9px;
     line-height: 9px;
   }
-
-  &__link {
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    font-size: 11px;
-    color: var(--color-secondary);
-    font-weight: 500;
-    line-height: 11px;
-    transition: 0.3s opacity;
-  }
-
-  &__link:hover {
-    opacity: 0.8;
-  }
 }

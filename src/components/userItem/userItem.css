@@ -1,0 +1,65 @@
+.user-item {
+  list-style: none;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 0 14px;
+
+  &:last-of-type {
+    margin: 0;
+  }
+
+  &__wrapper {
+    max-width: 212px;
+    overflow: hidden;
+  }
+
+  &__text-login {
+    margin: 0;
+    font-size: 16px;
+    color: var(--color-primaty);
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &__text-email {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-primaty);
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__avatar {
+    max-height: 44px;
+    max-width: 44px;
+    border-radius: 50%;
+  }
+
+  &__role {
+    margin: 0;
+    font-size: 11px;
+    color: var(--color-primaty);
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--color-secondary);
+    border-radius: 50%;
+    align-self: center;
+    margin-left: auto;
+    margin-right: 7px;
+    font-size: 20px;
+    color: var(--color-primaty);
+    font-weight: 500;
+    width: 27px;
+    transition: 0.3s background-color, 0.3s color;
+  }
+
+  &__btn:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-third);
+  }
+}

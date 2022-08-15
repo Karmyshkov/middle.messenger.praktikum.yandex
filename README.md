@@ -2,8 +2,20 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8d2019e6-98b7-43d0-8cad-a2d86bee843b/deploy-status)](https://app.netlify.com/sites/mellifluous-bunny-f4b9fb/deploys)
 
-* Макет в Figma: [https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1](https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1)
-* Netlify: [https://deploy--sprightly-kataifi-71c800.netlify.app](https://deploy--sprightly-kataifi-71c800.netlify.app)
+* Макет в Figma: [Ссылка на макет](https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1)
+* Netlify: [Ссылка на приложение](https://deploy--sprightly-kataifi-71c800.netlify.app)
+
+#### Логин
+
+```bash
+as1211516dasd
+```
+
+#### Пароль
+
+```bash
+asdasdasdasd
+```
 
 ### Описание
 

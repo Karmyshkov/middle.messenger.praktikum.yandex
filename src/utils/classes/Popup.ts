@@ -13,6 +13,7 @@ export class Popup extends View {
     this._popupAddUserSelector = config.popupAddUserSelector;
     this._popupDeleteUserSelector = config.popupDeleteUserSelector;
     this._popupChangeAvatarSelector = config.popupChangeAvatarSelector;
+    this._popupAddChatSelector = config.popupAddChatSelector;
     this._isActiveChatSelector = config.isActiveChatSelector;
     this._hiddenChatSelecor = config.hiddenChatSelecor;
     this._isOpenPopupSelector = isOpenPopupSelector;
@@ -30,6 +31,7 @@ export class Popup extends View {
     this._isShowMenuSelecor = config.isShowMenuSelecor;
     this._menuBtnSelector = config.menuBtnSelector;
     this._editAvatarTextSelector = config.editAvatarTextSelector;
+    this._addChatBtnSelector = config.addChatBtnSelector;
     this._editAvatar = document.querySelector(`.${this._editAvatarSelector}`);
     this._editAvatarText = document.querySelector(`.${this.editAvatarTextSelector}`);
     this._contentDialod = document.querySelector(`.${this._contentDialodSelector}`);
@@ -112,11 +114,23 @@ export class Popup extends View {
       const isEditAvatar = Array.from(this._menu.classList).includes(
         this._popupChangeAvatarSelector
       );
+      const isAddChat = Array.from(this._menu.classList).includes(
+        this._popupAddChatSelector
+      );
 
       this._closeMenuIfPopupIsOpen(popupContainer);
 
-      !isEditAvatar &&
+      !isAddChat &&
+        !isEditAvatar &&
         this._closeByOutsideZonePopup(popupContainer, this._menuBtnSelector, evt);
+
+      if (
+        isAddChat &&
+        !Array.from(element.classList).includes(this._addChatBtnSelector) &&
+        popupContainer
+      ) {
+        this._closeByOutsideZonePopup(popupContainer, this._addChatBtnSelector, evt);
+      }
 
       if (
         isEditAvatar &&

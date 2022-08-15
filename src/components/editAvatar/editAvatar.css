@@ -2,6 +2,10 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  max-width: 130px;
+  max-height: 130px;
+  overflow: hidden;
+  border-radius: 50%;
   margin-bottom: 21px;
 
   &::before {

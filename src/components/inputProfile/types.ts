@@ -1,4 +1,4 @@
-import { InputType } from 'types';
+import { InputEnum } from 'types';
 
 export interface InputProfileProps {
   onInput?: () => void;
@@ -7,6 +7,6 @@ export interface InputProfileProps {
   name: string;
   minlength?: string;
   maxlength?: string;
-  type: InputType;
+  type: InputEnum;
   value: string;
 }

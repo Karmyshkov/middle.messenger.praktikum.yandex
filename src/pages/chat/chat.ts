@@ -1,27 +1,36 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router, store } from 'core';
 import 'styles/chat.css';
-import right_arrow from 'img/right-arrow.svg';
-import chats from 'data/chats.json';
-import messages from 'data/messages.json';
-import { ChatType, MessageProps } from 'types';
-import { Chat } from 'utils/classes/Chat';
-import { Popup } from 'utils/classes/Popup';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { config, ADD_USER_FORM, DELETE_USER_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import {
+  CreateChatType,
+  SearchUserByLoginType,
+  StoreEvents,
+  MessageDTO,
+  InitialStateType,
+} from 'types';
+import { Chat, Popup, FormValidator } from 'utils/classes';
+import { config, FORM_ELEMENTS, PATHNAMES, DATA_ATTRIBUTE } from 'utils/constants';
+import {
+  handleSubmitForm,
+  checkOnValueInput,
+  fixedBottomScroll,
+  getIdUniqDates,
+  checkIsLoginIn,
+  getUserId,
+} from 'utils';
+import { chatService, messagesService, profileService, authService } from 'services';
 
-const addUserFormValidator = new FormValidator(
+const addChatFromValidator = new FormValidator(
   config,
-  ADD_USER_FORM,
+  FORM_ELEMENTS.ADD_CHAT_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
   config.isShowHelperTextSelector
 );
 
-const deleteUserFormValidator = new FormValidator(
+const addUserFormValidator = new FormValidator(
   config,
-  DELETE_USER_FORM,
+  FORM_ELEMENTS.ADD_USER_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -29,10 +38,69 @@ const deleteUserFormValidator = new FormValidator(
 );
 
 export class ChatPage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    chatService.getChats();
+    authService.getInfo();
+    messagesService.getMessages();
+
+    store.on(StoreEvents.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+
+    store.on(StoreEvents.ADD_USERS, () => {
+      this.setProps(store.getState());
+    });
+
+    store.on(StoreEvents.DELETE_USERS, () => {
+      this.setProps(store.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
+      chatItemId: 0,
+
       addClassForActiveElement: (evt: Event) => {
-        new Chat(config).addActiveClassName(evt);
+        const element = evt.currentTarget as HTMLElement;
+        const chatItemId = element.getAttribute(DATA_ATTRIBUTE.CHAT_ID);
+
+        this.setState({ chatItemId });
+
+        const state = store.getState() as InitialStateType;
+        const { chats, userInfo } = state;
+
+        this.setState({
+          currentChat: chats?.filter((chat: any) => chat.id === Number(chatItemId)),
+        });
+
+        if (chatItemId) {
+          chatService.getChatToken({ chatId: Number(chatItemId) }).then(({ token }) =>
+            messagesService.connect({
+              userId: userInfo?.id,
+              chatId: Number(chatItemId),
+              token,
+            })
+          );
+
+          chatService.getUserForChat({ chatId: Number(chatItemId) });
+        }
+
+        store.on(StoreEvents.UPDATE, () => {
+          new Chat(config).addActiveClassName(evt);
+          fixedBottomScroll();
+        });
+
+        store.on(StoreEvents.ADD_USERS, () => {
+          new Chat(config).addActiveClassName(evt);
+          fixedBottomScroll();
+        });
+
+        store.on(StoreEvents.DELETE_USERS, () => {
+          new Chat(config).addActiveClassName(evt);
+          fixedBottomScroll();
+        });
       },
       handleSearchByChats: () => {
         new Chat(config).toggleStateImg();
@@ -53,71 +121,155 @@ export class ChatPage extends Block {
           config
         ).handleOpenPopup();
       },
+      handleChangeAddChatInput: (evt: Event) => {
+        checkOnValueInput(evt);
+        addChatFromValidator.clearError();
+        addChatFromValidator.toggleBtnState();
+      },
+      hendleSubmitAddChatForm: (evt: Event) => {
+        evt.preventDefault();
+        const dataForm = handleSubmitForm({
+          stateForm: addChatFromValidator.checkStateForm(),
+          inputSelector: config.inputSelector,
+          formSelector: FORM_ELEMENTS.ADD_CHAT_FORM,
+          disableBtn: addChatFromValidator.disableBtn,
+          addErors: addChatFromValidator.addErrorsForInput,
+        });
 
+        dataForm && chatService.createChat(dataForm as CreateChatType);
+
+        store.on(StoreEvents.UPDATE, () => {
+          const state = store.getState() as InitialStateType;
+          this.setProps({ chats: state.chats });
+        });
+      },
+      handleValidateAddChatInput: (evt: Event) => {
+        addChatFromValidator.handleFieldValidation(evt);
+      },
       handleChangeAddUserInput: (evt: Event) => {
         checkOnValueInput(evt);
         addUserFormValidator.clearError();
         addUserFormValidator.toggleBtnState();
       },
-      hendleSubmitAddUserForm: (evt: Event) => {
+      hendleFindUserByLogin: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: addUserFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: ADD_USER_FORM,
+          formSelector: FORM_ELEMENTS.ADD_USER_FORM,
           disableBtn: addUserFormValidator.disableBtn,
           addErors: addUserFormValidator.addErrorsForInput,
+        });
+
+        if (dataForm) {
+          profileService.searchUserByLogin({
+            login: dataForm,
+          } as SearchUserByLoginType);
+        }
+
+        store.on(StoreEvents.ADD_USERS, () => {
+          new Popup(
+            config.popupAddUserSelector,
+            config.btnSubmitFormSelector,
+            config.isOpenPopupSelector,
+            config
+          ).handleOpenPopup();
         });
       },
       handleValidateAddUserInput: (evt: Event) => {
         addUserFormValidator.handleFieldValidation(evt);
       },
-
-      handleChangeDeleteUserInput: (evt: Event) => {
-        checkOnValueInput(evt);
-        deleteUserFormValidator.clearError();
-        deleteUserFormValidator.toggleBtnState();
-      },
-      hendleSubmitDeleteUserForm: (evt: Event) => {
-        evt.preventDefault();
-        handleSubmitForm({
-          stateForm: deleteUserFormValidator.checkStateForm(),
-          inputSelector: config.inputSelector,
-          formSelector: DELETE_USER_FORM,
-          disableBtn: deleteUserFormValidator.disableBtn,
-          addErors: deleteUserFormValidator.addErrorsForInput,
+      handleAddUserToChat: (evt: Event) => {
+        chatService.addUserToChat({
+          users: [getUserId(evt)],
+          chatId: Number(this.state.chatItemId),
         });
       },
-      handleValidateDeleteUserInput: (evt: Event) => {
-        deleteUserFormValidator.handleFieldValidation(evt);
+      handleDeleteUserFromChat: (evt: Event) => {
+        chatService.removeUserFromChat({
+          users: [getUserId(evt)],
+          chatId: Number(this.state.chatItemId),
+        });
+
+        store.on(StoreEvents.DELETE_USERS, () => {
+          const state = store.getState() as InitialStateType;
+          if (state.usersFromChats) {
+            const usersFromChatsLength = JSON.parse(state.usersFromChats).length;
+
+            if (usersFromChatsLength > 0) {
+              new Popup(
+                config.popupDeleteUserSelector,
+                config.btnSubmitFormSelector,
+                config.isOpenPopupSelector,
+                config
+              ).handleOpenPopup();
+            } else {
+              Popup.handleClosePopup(config.isOpenPopupSelector);
+            }
+          }
+        });
+      },
+      handleLinkBtn: () => router.go(PATHNAMES.SETTINGS_PATH),
+      handleSendMessage: (evt: Event) => {
+        evt.preventDefault();
+        const target = evt.target as HTMLFormElement;
+        const input = target.querySelector(
+          `.${config.chatFooterInputSelector}`
+        ) as HTMLFormElement;
+
+        messagesService.sendMessage(input.value);
+        input.value = '';
+
+        store.on(StoreEvents.UPDATE, () => fixedBottomScroll());
       },
     };
   }
   render() {
+    checkIsLoginIn();
+
+    const {
+      chats = [],
+      users = [],
+      messages = [],
+      userInfo = [],
+      usersFromChats = [],
+    } = this.props;
+    const { chatItemId, currentChat } = this.state;
+
+    const uniqMessages = getIdUniqDates(messages);
+
     // language=hbs
     return `
       <div class="page">
         <ul class="chat">
           <li class="chat__column chat__column_left">
-            <a class="chat__link-profile page__link-profile" href="/profile">
-              <span class="chat__link-text">Профиль</span>
-              <img class="chat__link-img" src="${right_arrow}" alt="Перейти к профилю пользователя">
-            </a>
+            {{{ChatLink onClick=handleLinkBtn}}}
             {{{SearchChat onSearchByChats=handleSearchByChats }}}
             <ul class="chat__list">
-              ${chats.payload
-                .map(
-                  (chat: ChatType) =>
-                    `{{{ListItem
-                      userName="${chat.userName}"
-                      lastMessage="${chat.lastMessage}"
-                      time="${chat.time}"
-                      countNotReadMessage="${chat.countNotReadMessage}"
-                      srcAvatar="${chat.srcAvatar}"
-                      onClick=addClassForActiveElement
-                    }}}`
-                )
-                .join('')}
+              ${
+                chats &&
+                Object.values(chats)
+                  ?.map(
+                    (chat: any) =>
+                      `{{{ListItem
+                        id="${chat.id}"
+                        userName="${chat.title}"
+                        lastMessage="${
+                          chat.last_message ? chat.last_message.content : null
+                        }"
+                        time="${chat.last_message ? chat.last_message.time : null}"
+                        countNotReadMessage="${chat.unread_count}"
+                        srcAvatar="${chat.avatar}"
+                        isOwnerLastMessage="${
+                          chat.last_message
+                            ? chat.last_message.user.login === userInfo.login
+                            : null
+                        }"
+                        onClick=addClassForActiveElement
+                      }}}`
+                  )
+                  .join('')
+              }
             </ul>
           </li>
           <li class="chat__column chat__column-default">
@@ -126,59 +278,82 @@ export class ChatPage extends Block {
           <li class="chat__column chat__column-dialog chat__column_is-hidden">
             <div class="chat__header">
               <div class="chat__inner">
-                {{{Avatar
-                  srcAvatar="https://4tololo.ru/sites/default/files/images/20151308202253.jpg?itok=XZXWgPTt"
-                  userName="Вадим"
-                }}}
-                <p class="chat__user-name">Вадим</p>
+              ${
+                currentChat &&
+                currentChat.map((chat: any) => {
+                  return `
+                    {{{Avatar
+                      srcAvatar="${chat.avatar}"
+                      userName="${chat.title}"
+                    }}}
+                    <p class="chat__user-name">${chat.title}</p>
+                `;
+                })
+              }
               </div>
               {{{BurgerMenu onClick=handleOpenUserMenu}}}
             </div>
-            <p class="chat__text-date">19 июня</p>
             <ul class="chat__messages">
-              ${messages.payload
-                .map(
-                  (message: MessageProps) =>
-                    `{{{Message
-                      owner=${message.owner}
-                      text="${message.text ? message.text : ''}"
+              ${messages
+                .map((message: MessageDTO) => {
+                  const isUniqCurrentMessage = uniqMessages.find(
+                    (uniqMessage) => uniqMessage.id === message.id
+                  );
+                  return `
+                    {{{Message
+                      owner=${message.user_id === userInfo.id}
+                      content="${message.content}"
                       time="${message.time}"
-                      srcImg="${message.srcImg ? message.srcImg : ''}"
-                      isRead=${message.isRead ? true : false}
-                    }}}`
-                )
+                      isRead=${message.is_read}
+                      isFirstUniqMessage=${isUniqCurrentMessage ? true : false}
+                    }}}`;
+                })
                 .join('')}
             </ul>
-            {{{ChatFooter onClick=handleOpenFileMenu}}}
+            {{{ChatFooter onSubmit=handleSendMessage onClick=handleOpenFileMenu}}}
           </li>
         </ul>
-        {{{Menu isUser=true}}}
+        {{{Menu isUser=true chatItemId="${chatItemId}"}}}
         {{{Menu isUser=false}}}
         {{{Popup
-          onClick=hendleSubmitAddUserForm
+          onSubmit=hendleSubmitAddChatForm
+          onInput=handleChangeAddChatInput
+          onFocus=handleValidateAddChatInput
+          onBlur=handleValidateAddChatInput
+          title="Создать чат"
+          helperText="Название"
+          textBtn="Создать"
+          classesPopup="popup_add-chat"
+          classesForm="popup__form_add-chat"
+          isDefault=true
+          name="popup__form_add-chat"
+          fieldName="title"
+        }}}
+        {{{Popup
+          onSubmit=hendleFindUserByLogin
           onInput=handleChangeAddUserInput
           onFocus=handleValidateAddUserInput
           onBlur=handleValidateAddUserInput
+          onClick=handleAddUserToChat
           title="Добавить пользователя"
           helperText="Логин"
-          textBtn="Добавить"
+          textBtn="Найти"
           classesPopup="popup_add-user"
           classesForm="popup__form_add-user"
           isDefault=true
           name="popup__form_add-user"
+          fieldName="login"
+          users='${users}'
         }}}
         {{{Popup
-          onClick=hendleSubmitDeleteUserForm
-          onInput=handleChangeDeleteUserInput
-          onFocus=handleValidateDeleteUserInput
-          onBlur=handleValidateDeleteUserInput
+          onClick=handleDeleteUserFromChat
           title="Удалить пользователя"
-          helperText="Логин"
-          textBtn="Удалить"
           classesPopup="popup_delete-user"
           classesForm="popup__form_delete-user"
           isDefault=true
           name="popup__form_delete-user"
+          fieldName="login"
+          users='${usersFromChats}'
         }}}
       </div>
     `;

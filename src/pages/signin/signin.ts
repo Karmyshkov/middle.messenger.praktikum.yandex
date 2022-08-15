@@ -1,12 +1,14 @@
-import Block from 'core/Block';
+import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { config, AUTH_FORM } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput } from 'utils/functions';
+import { FormValidator } from 'utils/classes';
+import { config, FORM_ELEMENTS, PATHNAMES } from 'utils/constants';
+import { handleSubmitForm, checkOnValueInput, checkIsLoginIn } from 'utils';
+import { authService } from 'services';
+import { SigninType } from 'types';
 
 const signinFormValidator = new FormValidator(
   config,
-  AUTH_FORM,
+  FORM_ELEMENTS.AUTH_FORM,
   config.inputSelector,
   config.btnSubmitFormSelector,
   config.inputHelperTextSelector,
@@ -23,15 +25,18 @@ export class SigninPage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: signinFormValidator.checkStateForm(),
           inputSelector: config.inputSelector,
-          formSelector: AUTH_FORM,
+          formSelector: FORM_ELEMENTS.AUTH_FORM,
           disableBtn: signinFormValidator.disableBtn,
           addErors: signinFormValidator.addErrorsForInput,
         });
+
+        dataForm && authService.signin(dataForm as SigninType);
       },
       handleValidateInput: (evt: Event) => signinFormValidator.handleFieldValidation(evt),
+      handleLinkBtn: () => router.go(PATHNAMES.SIGNUP_PATH),
     };
   }
   render() {
@@ -68,7 +73,10 @@ export class SigninPage extends Block {
               type="submit"
               classes="button_is-auth"
             }}}
-            <a class="auth__link" href="/signup">Нет аккаунта?</a>
+            {{{AuthLink
+              onClick=handleLinkBtn
+              text="Нет аккаунта?"
+            }}}
           </form>
         </main>
       </div>

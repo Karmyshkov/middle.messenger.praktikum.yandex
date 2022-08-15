@@ -1,28 +1,31 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './menu.css';
 import { MenuProps } from './types';
-import { Popup } from 'utils/classes/Popup';
-import { config } from 'utils/constants';
+import { config, Popup } from 'utils';
 import plus from 'img/plus.svg';
 import close from 'img/close.svg';
 import photo from 'img/photo.svg';
 import file from 'img/file.svg';
 import location from 'img/location.svg';
+import { chatService } from 'services';
 
 export class Menu extends Block {
   static componentName = 'Menu';
-  constructor({ isUser }: MenuProps) {
-    super({ isUser });
+
+  constructor({ ...rest }: MenuProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: MenuProps): void {
     this.state = {
       isUser: props.isUser,
+      chatItemId: props.chatItemId,
 
       handleAddUserPopup: () => {
         new Popup(
           config.popupAddUserSelector,
           config.menuBtnAddUserSelector,
-          config.isOpenPopupSelecot,
+          config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
       },
@@ -30,12 +33,17 @@ export class Menu extends Block {
         new Popup(
           config.popupDeleteUserSelector,
           config.menuBtnDeleteUserSelector,
-          config.isOpenPopupSelecot,
+          config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
       },
+      handleRemoveChat: () => {
+        chatService.removeChatById({ chatId: this.state.chatItemId });
+        Popup.handleClosePopup(config.isShowMenuSelecor);
+      },
     };
   }
+
   protected render(): string {
     // language=hbs
     return `
@@ -62,6 +70,14 @@ export class Menu extends Block {
                 onClick=handleDeleteUserPopup
               }}}
             </li>
+            <li class="menu__item">
+            {{{Button
+              onClick=handleRemoveChat
+              textBtn="Удалить чат"
+              type="button"
+              classes="button_el_remove-item"
+            }}}
+            </li>
           </ul>
         </nav>
       {{else}}
@@ -74,7 +90,6 @@ export class Menu extends Block {
                 alt="Иконка плюса"
                 classes="menu-button_add-photo"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
             <li class="menu__item">
@@ -84,7 +99,6 @@ export class Menu extends Block {
                 alt="Иконка крестика"
                 classes="menu-button_add-file"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
             <li class="menu__item">
@@ -94,7 +108,6 @@ export class Menu extends Block {
                 alt="Иконка локации"
                 classes="menu-button_add-location"
                 type="button"
-                onClick=handleDeleteUserPopup
               }}}
             </li>
           </ul>

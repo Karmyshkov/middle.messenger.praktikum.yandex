@@ -5,7 +5,7 @@
 
   &__link {
     box-sizing: border-box;
-    text-decoration: none;
+    cursor: pointer;
     border: none;
     padding: 0;
     width: 100%;

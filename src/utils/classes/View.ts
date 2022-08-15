@@ -23,6 +23,7 @@ export abstract class View {
   protected _popupAddUserSelector!: string;
   protected _popupDeleteUserSelector!: string;
   protected _popupChangeAvatarSelector!: string;
+  protected _popupAddChatSelector!: string;
   protected _isOpenPopupSelector!: string;
   protected _isActiveBurgerMenuSelector!: string;
   protected _popoverSelector!: string;
@@ -47,6 +48,7 @@ export abstract class View {
   protected _btnAttach!: Nullable<HTMLElement>;
   protected _menuItems!: NodeList;
   protected _editAvatarTextSelector!: string;
+  protected _addChatBtnSelector!: string;
   //FormValidator
   protected _formSelector!: string;
   protected _btnSelector!: string;

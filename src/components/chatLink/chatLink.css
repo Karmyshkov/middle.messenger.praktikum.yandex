@@ -1,0 +1,20 @@
+.link-profile {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: inline-block;
+  transition: 0.3s opacity;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &__text {
+    font-size: 12px;
+    color: var(--color-grey);
+    font-weight: 500;
+    line-height: 12px;
+    margin-right: 8px;
+  }
+}

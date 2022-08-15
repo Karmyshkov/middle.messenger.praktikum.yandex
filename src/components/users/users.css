@@ -1,0 +1,24 @@
+.users {
+  margin: 0;
+  padding: 0;
+  max-height: 160px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-grey);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey);
+    border-radius: 20px;
+  }
+
+  &_is-margin {
+    margin-top: 35px;
+  }
+}

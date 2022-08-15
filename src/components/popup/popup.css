@@ -1,4 +1,5 @@
 .popup {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,10 +19,11 @@
   }
 
   &__container {
+    cursor: default;
     background-color: var(--color-third);
     box-sizing: border-box;
     padding: 40px 30px;
-    max-width: 340px;
+    max-width: 380px;
     width: 100%;
     border-radius: 12px;
   }

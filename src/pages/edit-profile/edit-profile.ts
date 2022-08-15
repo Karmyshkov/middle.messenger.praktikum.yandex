@@ -1,30 +1,38 @@
-import Block from 'core/Block';
+import { Block, store, BrowseRouter as router } from 'core';
 import 'styles/profile.css';
-import { Popup } from 'utils/classes/Popup';
-import { FormValidator } from 'utils/classes/FormValidator';
-import { config, EDIT_PROFILE_FORM } from 'utils/constants';
-import { handleSubmitForm } from 'utils/functions';
-import dataProfile from 'data/profile.json';
+import { Popup, FormValidator } from 'utils/classes';
+import { config, FORM_ELEMENTS } from 'utils/constants';
+import { handleSubmitForm, checkIsLoginIn } from 'utils';
+import { authService, profileService } from 'services';
+import { UserInfoDTO, UserInfoType, StoreEvents } from 'types';
 
 const editProfileformValidator = new FormValidator(
   config,
-  EDIT_PROFILE_FORM,
+  FORM_ELEMENTS.EDIT_PROFILE_FORM,
   config.inputProfileSelector,
   config.btnSubmitFormSelector,
   config.inputProfileHelperTextSelector,
   config.isShowInputProfileHelperTextSelector
 );
 
-const { email, login, name, lastName, chatName, phone } = dataProfile.payload;
-
 export class EditProfilePage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.getInfo();
+
+    store.on(StoreEvents.UPDATE, () => {
+      this.setProps(store.getState());
+    });
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleEditAvatar: () => {
         new Popup(
           config.popupChangeAvatarSelector,
           config.editAvatarSelector,
-          config.isOpenPopupSelecot,
+          config.isOpenPopupSelector,
           config
         ).handleOpenPopup();
       },
@@ -34,33 +42,54 @@ export class EditProfilePage extends Block {
       },
       hendleSubmitForm: (evt: Event) => {
         evt.preventDefault();
-        const isValidField = editProfileformValidator.isValidFieldWithCustomRules();
-        handleSubmitForm({
+        const dataForm = handleSubmitForm({
           stateForm: editProfileformValidator.checkStateForm(),
           inputSelector: config.inputProfileSelector,
-          formSelector: EDIT_PROFILE_FORM,
+          formSelector: FORM_ELEMENTS.EDIT_PROFILE_FORM,
           disableBtn: editProfileformValidator.disableBtn,
           addErors: editProfileformValidator.addErrorsForInput,
-          isValidField,
+          isValidField: editProfileformValidator.isValidFieldWithCustomRules(),
         });
+
+        if (dataForm) {
+          const { chatName, email, lastName, login, name, phone } =
+            dataForm as UserInfoType;
+
+          dataForm &&
+            profileService.changeUserInfo({
+              first_name: name,
+              second_name: lastName,
+              display_name: chatName,
+              login,
+              email,
+              phone,
+            } as UserInfoDTO);
+        }
       },
       handleValidateInput: (evt: Event) =>
         editProfileformValidator.handleFieldValidation(evt),
+      handleBackBtn: () => router.back(),
     };
   }
   render() {
+    checkIsLoginIn();
+
+    const { userInfo = [] } = this.props;
+    const { avatar, display_name, email, first_name, login, phone, second_name } =
+      userInfo;
+
     // language=hbs
     return `
       <div class="profile">
         <ul class="profile__wrapper">
-          {{{BtnBackProfile href="/profile"}}}
+          {{{BtnBackProfile onClick=handleBackBtn}}}
           <li class="profile__column">
             <form
               class="profile__form profile__form_el_edit-form"
               novalidate
             >
-              {{{EditAvatar onClick=handleEditAvatar}}}
-              <p class="profile__user-name">Иван</p>
+            {{{EditAvatar avatar="${avatar}" onClick=handleEditAvatar}}}
+              <p class="profile__user-name">${display_name ? display_name : ''}</p>
               <ul class="profile__list">
                 {{{InputProfileWrapper
                   onInput=handleChangeInput
@@ -68,7 +97,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="email"
                   helperText="Почта"
-                  value="${email}"
+                  value="${email ? email : ''}"
                   name="email"
                   formName="profile__form_el_edit-form"
                 }}}
@@ -78,7 +107,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Логин"
-                  value="${login}"
+                  value="${login ? login : ''}"
                   minlength="3"
                   maxlength="20"
                   name="login"
@@ -90,7 +119,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя"
-                  value="${name}"
+                  value="${first_name ? first_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="name"
@@ -102,7 +131,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Фамилия"
-                  value="${lastName}"
+                  value="${second_name ? second_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="lastName"
@@ -114,7 +143,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="tel"
                   helperText="Телефон"
-                  value="${phone}"
+                  value="${phone ? phone : ''}"
                   minlength="10"
                   maxlength="15"
                   name="phone"
@@ -126,7 +155,7 @@ export class EditProfilePage extends Block {
                   onBlur=handleValidateInput
                   type="text"
                   helperText="Имя в чате"
-                  value="${chatName}"
+                  value="${display_name ? display_name : ''}"
                   minlength="1"
                   maxlength="50"
                   name="chatName"

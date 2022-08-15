@@ -19,6 +19,11 @@ import MenuButton from './menuButton';
 import Popup from './popup';
 import InputFile from './inputFile';
 import InputProfile from './inputProfile';
+import FormPopup from './formPopup';
+import AuthLink from './authLink';
+import ChatLink from './chatLink';
+import Users from './users';
+import userItem from './userItem';
 
 export const components: BlockConstructable<any>[] = [
   Input,
@@ -41,4 +46,9 @@ export const components: BlockConstructable<any>[] = [
   Popup,
   InputFile,
   InputProfile,
+  FormPopup,
+  AuthLink,
+  ChatLink,
+  Users,
+  userItem,
 ];

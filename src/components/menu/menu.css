@@ -5,6 +5,7 @@
   border-radius: 12px;
   box-shadow: 0 0 6px var(--shadow);
   color: var(--color-third);
+  background-color: var(--color-third);
 
   &_is-show {
     display: block;

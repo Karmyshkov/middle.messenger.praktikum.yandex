@@ -1,34 +1,14 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './inputProfileWrapper.css';
 import { InputProfileWrapperProps } from './types';
 
 export class InputProfileWrapper extends Block {
   static componentName = 'InputProfileWrapper';
-  constructor({
-    formName,
-    name,
-    minlength,
-    maxlength,
-    type,
-    value,
-    helperText,
-    onInput,
-    onFocus,
-    onBlur,
-  }: InputProfileWrapperProps) {
-    super({
-      formName,
-      name,
-      minlength,
-      maxlength,
-      type,
-      value,
-      helperText,
-      onInput,
-      onFocus,
-      onBlur,
-    });
+
+  constructor({ ...rest }: InputProfileWrapperProps) {
+    super({ ...rest });
   }
+
   protected getStateFromProps(props: InputProfileWrapperProps): void {
     this.state = {
       formName: props.formName,
@@ -43,6 +23,7 @@ export class InputProfileWrapper extends Block {
       onBlur: props.onBlur,
     };
   }
+
   protected render(): string {
     const { name, minlength, maxlength, type, value, helperText } = this.state;
     // language=hbs

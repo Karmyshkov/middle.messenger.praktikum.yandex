@@ -41,8 +41,9 @@ export class Chat extends View {
 
   public addActiveClassName(evt: Event) {
     this._removeActiveClassName();
+
     this._element = evt.currentTarget as Element;
-    this._element.classList.add(this._isActiveChatSelector);
+    this._element?.classList.add(this._isActiveChatSelector);
     if (this._contentDefault && this._contentDialod) {
       this._contentDefault.classList.add(this._hiddenChatSelecor);
       this._contentDialod.classList.remove(this._hiddenChatSelecor);

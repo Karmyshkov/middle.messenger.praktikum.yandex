@@ -1,4 +1,4 @@
-import { InputType } from 'types';
+import { InputEnum } from 'types';
 
 export interface InputProfileWrapperProps {
   onInput?: () => void;
@@ -8,7 +8,7 @@ export interface InputProfileWrapperProps {
   name: string;
   minlength: string;
   maxlength: string;
-  type: InputType;
+  type: InputEnum;
   value: string;
   helperText: string;
 }

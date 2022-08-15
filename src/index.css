@@ -4,7 +4,7 @@
 
 body {
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -38,5 +38,31 @@ body {
 
   &__link-profile {
     margin: 21px 10px 23px 0;
+  }
+}
+
+.tooltip {
+  cursor: pointer;
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: var(--color-third);
+  font-weight: 500;
+  line-height: 18px;
+  transition: 0.3s opacity;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &_is-success {
+    background-color: var(--color-success);
+  }
+
+  &_is-error {
+    background-color: var(--color-error);
   }
 }

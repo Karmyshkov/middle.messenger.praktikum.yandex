@@ -1,28 +1,17 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './inputProfile.css';
 import { InputProfileProps } from './types';
 
 export class InputProfile extends Block {
   static componentName = 'InputProfile';
-  constructor({
-    name,
-    minlength,
-    maxlength,
-    type,
-    value,
-    onInput,
-    onFocus,
-    onBlur,
-  }: InputProfileProps) {
+
+  constructor({ onInput, onFocus, onBlur, ...rest }: InputProfileProps) {
     super({
-      name,
-      minlength,
-      maxlength,
-      type,
-      value,
       events: { input: onInput, focus: onFocus, blur: onBlur },
+      ...rest,
     });
   }
+
   protected getStateFromProps(props: InputProfileProps): void {
     this.state = {
       name: props.name,
@@ -32,6 +21,7 @@ export class InputProfile extends Block {
       value: props.value,
     };
   }
+
   protected render(): string {
     const { name, minlength, maxlength, type, value } = this.state;
     // language=hbs

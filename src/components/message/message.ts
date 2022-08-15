@@ -1,51 +1,54 @@
-import Block from 'core/Block';
+import { Block } from 'core';
 import './message.css';
 import { MessageProps } from 'types';
+import { MessageType } from './types';
+import { getDate, MONTH } from 'utils';
 
 export class Message extends Block {
   static componentName = 'Message';
-  constructor({ owner, text, time, srcImg, isRead }: MessageProps) {
-    super({ owner, text, time, srcImg, isRead });
+
+  constructor({ ...rest }: MessageProps & MessageType) {
+    super({ ...rest });
   }
-  protected getStateFromProps(props: MessageProps): void {
+
+  protected getStateFromProps(props: MessageProps & MessageType): void {
     this.state = {
       owner: props.owner,
-      text: props.text,
+      content: props.content,
       time: props.time,
-      srcImg: props.srcImg,
       isRead: props.isRead,
+      isFirstUniqMessage: props.isFirstUniqMessage,
     };
   }
+
   protected render(): string {
-    const { owner, text, time, srcImg, isRead } = this.state;
+    const { owner, content, time, srcImg, isRead, isFirstUniqMessage } = this.state;
+
+    const date = getDate(time);
+
     const classesForTitle = `${
       !owner ? 'message_is-not-owner' : srcImg ? 'message_is-img' : ''
     }`;
     const classesForText = `${owner ? 'message__text_is-me' : 'message__text_is-friend'}`;
     const classesForTime = `${
-      isRead ? 'message__time_is-not-read' : 'message__time_is-read'
+      isRead ? 'message__time_is-read' : 'message__time_is-not-read'
     }`;
     // language=hbs
     return `
       <li class="message ${classesForTitle}">
-        {{#if ${text.length > 0}}}
-          <p class="message__text ${classesForText}">
-            ${text}
-            ${
-              owner
-                ? `<time class="message__time">${time}</time>`
-                : `<time class="message__time ${classesForTime}">${time}</time>`
-            }
-          </p>
-        {{/if}}
-        {{#if ${srcImg.length > 0}}}
-          <img class="message__img" src=${srcImg} alt="Прикрепленное фото пользователем" />
+        ${
+          isFirstUniqMessage
+            ? `<p class="chat__text-date">${date.day} ${MONTH[date.month]}</p>`
+            : ''
+        }
+        <p class="message__text ${classesForText}">
+          ${content}
           ${
             owner
-              ? `<time class="message__time message__time_is-img">${time}</time>`
-              : `<time class="message__time ${classesForTime}">${time}</time>`
+              ? `<time class="message__time">${date.hour}:${date.minute}</time>`
+              : `<time class="message__time ${classesForTime}">${date.hour}:${date.minute}</time>`
           }
-        {{/if}}
+        </p>
       </li>
     `;
   }
