@@ -51,7 +51,7 @@ class BrowseRouter {
 
   go(pathname: string) {
     this.history.pushState({}, '', pathname);
-    setTimeout(() => this._onRoute(pathname));
+    this._onRoute(pathname);
   }
 
   back() {
@@ -68,10 +68,6 @@ class BrowseRouter {
       router['block'] = null;
     }
     return router || this.routers.find((route) => route.match('*'));
-  }
-
-  getPathname() {
-    return window.location.pathname;
   }
 }
 

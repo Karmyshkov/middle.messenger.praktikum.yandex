@@ -4,12 +4,14 @@ import { PATHNAMES, lOCALSTORAGE } from 'utils';
 export class NotFoundPage extends Block {
   protected getStateFromProps() {
     this.state = {
-      handleClickByLink: () =>
+      handleClickByLink: () => {
         localStorage.getItem(lOCALSTORAGE.IS_SIGNIN)
           ? router.go(PATHNAMES.MESSAGER_PATH)
-          : router.go(PATHNAMES.SIGNIN_PATH),
+          : router.go(PATHNAMES.SIGNIN_PATH);
+      },
     };
   }
+
   render() {
     // language=hbs
     return `

@@ -9,7 +9,7 @@ export class Route<P = any> {
   private props: props;
 
   constructor(pathname: string, view: BlockClass<P>, props: props) {
-    this.pathname = pathname.replace('/:id', '');
+    this.pathname = pathname;
     this.blockClass = view;
     this.props = props;
   }

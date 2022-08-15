@@ -40,8 +40,6 @@ export class SigninPage extends Block {
     };
   }
   render() {
-    checkIsLoginIn();
-
     // language=hbs
     return `
       <div class="page">
