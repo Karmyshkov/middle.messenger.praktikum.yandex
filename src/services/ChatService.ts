@@ -57,7 +57,7 @@ class ChatService {
         });
 
         store.setState({
-          chats: state.chats?.filter((chat) => chat.id !== Number(chatId)),
+          chats: state.chats?.filter((chat) => chat.id !== Number(rest.chatId)),
         });
       })
       .catch(showError);
