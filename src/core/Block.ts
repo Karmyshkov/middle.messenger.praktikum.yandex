@@ -53,6 +53,9 @@ export default class Block<P = any> {
 
   protected getStateFromProps(props: any): void {
     this.state = {};
+    if (!props) {
+      return;
+    }
   }
 
   init() {
@@ -60,21 +63,21 @@ export default class Block<P = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props);
   }
 
-  _componentDidMount(props: P) {
-    this.componentDidMount(props);
+  _componentDidMount() {
+    this.componentDidMount();
   }
 
-  componentDidMount(props: P) {}
+  componentDidMount() {}
 
-  _componentDidUpdate(oldProps: P, newProps: P) {
-    const response = this.componentDidUpdate(oldProps, newProps);
+  _componentDidUpdate() {
+    const response = this.componentDidUpdate();
     if (!response) {
       return;
     }
     this._render();
   }
 
-  componentDidUpdate(oldProps: P, newProps: P) {
+  componentDidUpdate() {
     return true;
   }
 
