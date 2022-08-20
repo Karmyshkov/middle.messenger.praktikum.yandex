@@ -297,7 +297,7 @@ export class ChatPage extends Block {
               ${messages
                 .map((message: MessageDTO) => {
                   const isUniqCurrentMessage = uniqMessages.find(
-                    (uniqMessage) => uniqMessage.id === message.id
+                    (uniqMessage) => uniqMessage?.id === message.id
                   );
                   return `
                     {{{Message
