@@ -4,7 +4,7 @@ import { Block } from 'core';
 
 export class Route<P = any> {
   private pathname: string;
-  private blockClass: BlockClass<P>;
+  private blockClass: BlockClass<any>;
   private block: Block | null = null;
   private props: props;
 
