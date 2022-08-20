@@ -6,9 +6,7 @@ export interface BlockConstructable<Props extends Record<string, unknown>> {
   componentName: string;
 }
 
-export default function registerComponent<Props extends any>(
-  Component: BlockConstructable<Props>
-) {
+export default function registerComponent<Props>(Component: BlockConstructable<any>) {
   Handlebars.registerHelper(
     Component.componentName,
     function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
