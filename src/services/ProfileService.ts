@@ -1,4 +1,4 @@
-import { profileApi } from 'api';
+import { profileApi } from '../Api';
 import { showTooltip, showError, MESSAGES } from 'utils';
 import { store } from 'core';
 import { UserInfoDTO, UserPasswordType, SearchUserByLoginType, StoreEvents } from 'types';

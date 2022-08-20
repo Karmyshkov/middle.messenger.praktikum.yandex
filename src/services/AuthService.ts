@@ -1,4 +1,4 @@
-import { authAPI } from 'api';
+import { authAPI } from '../Api';
 import { SignupType, SigninType } from 'types';
 import { BrowseRouter as router, store } from 'core';
 import { showTooltip, showError, MESSAGES, PATHNAMES, lOCALSTORAGE } from 'utils';
