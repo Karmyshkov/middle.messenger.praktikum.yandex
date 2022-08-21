@@ -3,3 +3,6 @@
 /dist
 /.github
 /api
+postcss.config.js
+babel.config.js
+webpack.config.js
