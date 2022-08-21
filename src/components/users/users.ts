@@ -10,7 +10,7 @@ export class Users extends Block {
     super({ ...rest });
   }
 
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: UsersProps): void {
     this.state = {
       users:
         props.users !== 'undefined' && props.users.length > 0
