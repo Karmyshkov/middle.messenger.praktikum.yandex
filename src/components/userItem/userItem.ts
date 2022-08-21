@@ -11,7 +11,7 @@ export class UserItem extends Block {
     super({ events: { click: onClick }, ...rest });
   }
 
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: UserItemProps): void {
     this.state = {
       id: props.id,
       avatar: props.avatar,
