@@ -8,13 +8,8 @@
     "start": "node ./api/server.js",
     "lint:ts": "npx eslint .",
     "lint:style": "npx stylelint \"**/*.css\" --fix",
-    "docker": "docker build -t messanger ."
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:ts npm run lint:style",
-      "pre-push": "npm run lint:ts npm run lint:style"
-    }
+    "docker": "docker build -t messanger .",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
