@@ -7,7 +7,14 @@
     "dev": "webpack serve",
     "start": "node ./api/server.js",
     "lint:ts": "npx eslint .",
-    "lint:style": "npx stylelint \"**/*.css\" --fix"
+    "lint:style": "npx stylelint \"**/*.css\" --fix",
+    "docker": "docker build -t messanger ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:ts npm run lint:style",
+      "pre-push": "npm run lint:ts npm run lint:style"
+    }
   },
   "repository": {
     "type": "git",
@@ -33,6 +40,7 @@
     "eslint": "8.22.0",
     "handlebars": "4.7.7",
     "html-webpack-plugin": "5.5.0",
+    "husky": "8.0.1",
     "mini-css-extract-plugin": "2.6.1",
     "postcss-loader": "7.0.1",
     "postcss-nested": "5.0.6",
