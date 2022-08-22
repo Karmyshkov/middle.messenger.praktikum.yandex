@@ -4,6 +4,7 @@
 
 * Макет в Figma: [Ссылка на макет](https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1)
 * Netlify: [Ссылка на приложение](https://deploy--sprightly-kataifi-71c800.netlify.app)
+* Heroku: [Ссылка на приложение](https://yandex-practicume-messanger.herokuapp.com)
 * [Ссылка на Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 
 #### Логин
