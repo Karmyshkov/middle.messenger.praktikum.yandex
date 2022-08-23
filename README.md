@@ -2,20 +2,11 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8d2019e6-98b7-43d0-8cad-a2d86bee843b/deploy-status)](https://app.netlify.com/sites/mellifluous-bunny-f4b9fb/deploys)
 
-* Макет в Figma: [Ссылка на макет](https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1)
-* Netlify: [Ссылка на приложение](https://deploy--sprightly-kataifi-71c800.netlify.app)
-
-#### Логин
-
-```bash
-as1211516dasd
-```
-
-#### Пароль
-
-```bash
-asdasdasdasd
-```
+* [Figma](https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1)
+* [Netlify](https://deploy--sprightly-kataifi-71c800.netlify.app)
+* [Heroku](https://yandex-practicume-messanger.herokuapp.com)
+* [Surge CDN](karmyskove.surge.sh)
+* [Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 
 ### Описание
 
@@ -64,6 +55,16 @@ https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/3
   * Поиск, добавление и удаление пользователей в чате
   * Отправка и получение текстовых сообщений
 
+### Спринт 4
+
+* Написаны unit тесты для основных модулей (Jest)
+* Переход с Parcel на Webpack
+* Настройка образа Dockerfile
+* Деплой контейнера на Heroku
+* Настроен pre commit (Husky)
+* Настройка Surge CDN
+* Добавлена защита от DDoS
+
 ### Планы по доработке проекта
 
 * Дополнить EventBus в Store
@@ -93,11 +94,40 @@ npm run start
 npm run dev
 ```
 
+Eslinter
+
+```bash
+npm run lint:ts
+```
+
+Проверка на стилистические и типовые ошибки
+
+```bash
+npm run lint:style
+```
+
+Статический анализ css и postcss файлов
+
+```bash
+npm run docker
+```
+
+Запуск тестов
+
+```bash
+npm run test
+```
+
 ### Технологии
 
 - HTML
 - CSS (PostCSS)
 - TypeScript
 - Parcel
+- Webpack
 - Handlebars
+- Jest
 - Express
+- Netlify
+- Heroku
+- Surge CDN
