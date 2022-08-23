@@ -1,16 +1,22 @@
-import { expect } from 'chai';
+import { StoreEvents } from 'types';
 import store from '../Store';
 
 describe('core/Store', () => {
-  it('initial store not should be empty', () => {
-    expect(store.getState()).to.be.not.null;
-  });
-
   it('should set state', () => {
     store.setState({ users: 'test' });
 
     const state = store.getState();
 
-    expect(state?.users).to.equal('test');
+    expect(state?.users).toEqual('test');
+  });
+
+  it('should emit event after store was update', () => {
+    const mock = jest.fn();
+
+    store.on(StoreEvents.UPDATE, mock);
+
+    store.setState({ users: 'test' });
+
+    expect(mock).toHaveBeenCalled();
   });
 });
