@@ -11,14 +11,9 @@ export class Test extends Block {
 }
 
 describe('Router test', () => {
-  router.use('/login', Test).use('/profile', Test).start();
+  router.use('/test-1', Test).use('/test-2', Test).start();
 
-  // it('Should works add new routes', () => {
-  //   expect(router.getHistory().length).to.equal(2);
-  // });
-
-  // it('Should be correct elements on paths', () => {
-  //   // expect(router.getRoute('/login')?._block).to.deep.equal(componentOne);
-  //   // expect(router.getRoute('/profile')?._block).to.deep.equal(componentTwo);
-  // });
+  it('Should works add new routes', () => {
+    expect(router.getHistory().length).toEqual(2);
+  });
 });
