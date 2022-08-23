@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import store from '../Store';
 
 describe('core/Store', () => {
-  it('Initial store not should be empty', () => {
+  it('initial store not should be empty', () => {
     expect(store.getState()).to.be.not.null;
   });
 
