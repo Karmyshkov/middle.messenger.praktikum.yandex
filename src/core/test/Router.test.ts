@@ -13,6 +13,10 @@ export class Test extends Block {
 describe('core/Router', () => {
   router.use('/test-1', Test).use('/test-2', Test).start();
 
+  it('must be defined', () => {
+    expect(router).toBeDefined();
+  });
+
   it('should works add new routes', () => {
     expect(router.getHistory().length).toEqual(2);
   });
