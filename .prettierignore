@@ -1,3 +1,4 @@
 tsconfig.json
 .eslintrc.cjs
 README.md
+jest.config.js

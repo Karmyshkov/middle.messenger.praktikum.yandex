@@ -61,8 +61,16 @@
   },
   "jest": {
     "moduleNameMapper": {
+      "^core(.*)$": "<rootDir>/src/core$1",
       "^utils(.*)$": "<rootDir>/src/utils$1",
-      "^types(.*)$": "<rootDir>/src/types$1"
+      "^types(.*)$": "<rootDir>/src/types$1",
+      "^pages(.*)$": "<rootDir>/src/pages$1",
+      "^components(.*)$": "<rootDir>/src/components$1",
+      "^img(.*)$": "<rootDir>/src/img$1",
+      "^routes(.*)$": "<rootDir>/src/routes$1",
+      "^vendor(.*)$": "<rootDir>/src/vendor$1",
+      "^api(.*)$": "<rootDir>/src/api$1",
+      "^services(.*)$": "<rootDir>/src/services$1"
     }
   }
 }
