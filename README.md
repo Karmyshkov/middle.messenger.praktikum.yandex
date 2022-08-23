@@ -5,7 +5,7 @@
 * [Figma](https://www.figma.com/file/tT9Qv8j6OeVC2AmgQzXEG3/Chat?node-id=0%3A1)
 * [Netlify](https://deploy--sprightly-kataifi-71c800.netlify.app)
 * [Heroku](https://yandex-practicume-messanger.herokuapp.com)
-* [Surge CDN](karmyskove.surge.sh)
+* [Surge CDN](https://karmyskove.surge.sh/)
 * [Swagger](https://ya-praktikum.tech/api/v2/swagger/#/)
 
 ### Описание
