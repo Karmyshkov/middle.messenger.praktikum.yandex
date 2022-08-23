@@ -1,5 +1,5 @@
-import store from './Store';
-import { StoreEvents } from '../types';
+import store from '../src/core/Store';
+import { StoreEvents } from '../src/types';
 
 describe('core/Store', () => {
   it('should set state', () => {
