@@ -76,7 +76,7 @@ https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/3
 
 ### Сборка и запуск
 
-Проект собирается в [Parcel](https://parceljs.org/):
+Сборка проекта в Webpack
 
 ```bash
 npm run build
@@ -88,7 +88,7 @@ npm run build
 npm run start
 ```
 
-Сборка проекта в Parcel:
+Запуск проекта в dev режиме
 
 ```bash
 npm run dev
