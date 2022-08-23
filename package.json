@@ -60,7 +60,11 @@
     "nanoid": "4.0.0"
   },
   "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!nanoid)"
+    ],
     "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy",
       "^core(.*)$": "<rootDir>/src/core$1",
       "^utils(.*)$": "<rootDir>/src/utils$1",
       "^types(.*)$": "<rootDir>/src/types$1",
