@@ -1,4 +1,5 @@
 import store from './Store';
+import { StoreEvents } from '../types';
 
 describe('core/Store', () => {
   it('should set state', () => {
@@ -7,5 +8,15 @@ describe('core/Store', () => {
     const state = store.getState();
 
     expect(state?.users).toEqual('test');
+  });
+
+  it('should emit event after store was update', () => {
+    const mock = jest.fn();
+
+    store.on(StoreEvents.UPDATE, mock);
+
+    store.setState({ users: 'test' });
+
+    expect(mock).toHaveBeenCalled();
   });
 });
