@@ -1,5 +1,5 @@
 import EventBus from './EventBus';
-import { StoreEvents } from 'types';
+import { StoreEvents } from '../types';
 import { initialState } from '../initialState';
 
 class Store<T> extends EventBus {
