@@ -15,4 +15,16 @@ describe('core/EventBus', () => {
 
     expect(mock).toHaveBeenCalled();
   });
+
+  it('must return error', () => {
+    try {
+      eventBus.emit('test-event1');
+      eventBus.off('test-event1', mock);
+
+      eventBus.on('test-event1', mock);
+    } catch (err) {
+      const objError = err as Error;
+      expect(objError.message).toEqual('Нет события: test-event1');
+    }
+  });
 });
