@@ -57,5 +57,10 @@
     "core-js": "3.24.1",
     "express": "4.18.1",
     "nanoid": "4.0.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^utils(.*)$": "<rootDir>/src/utils$1"
+    }
   }
 }
