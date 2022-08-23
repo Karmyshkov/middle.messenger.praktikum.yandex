@@ -2,20 +2,10 @@ import store from './Store';
 
 describe('core/Store', () => {
   it('should set state', () => {
-    store.setState({ userId: 123 });
+    store.setState({ users: 'test' });
 
-    expect(store.getState()).toEqual({ userId: 123 });
+    const state = store.getState();
+
+    expect(state?.users).toEqual('test');
   });
-
-  // it('should emit event after store was update', () => {
-  //   const store = new Store({ userId: -1 });
-  //   const mock = jest.fn();
-
-  //   store.on('changed', mock);
-
-  //   store.set({ userId: 123 });
-
-  //   expect(mock).toHaveBeenCalled();
-  //   expect(mock).toHaveBeenCalledWith({ userId: -1 }, { userId: 123 });
-  // });
 });
