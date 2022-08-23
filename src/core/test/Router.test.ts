@@ -18,6 +18,11 @@ describe('core/Router', () => {
   });
 
   it('should works add new routes', () => {
-    expect(router.getRoutes().length).toEqual(2);
+    expect(router.getRouters().length).toEqual(2);
+  });
+
+  it('should return lenght of history equal 3', () => {
+    router.go('/test-3');
+    expect(window.history.length).toEqual(3);
   });
 });

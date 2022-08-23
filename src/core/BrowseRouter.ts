@@ -71,7 +71,7 @@ class BrowseRouter {
     return router || this.routers.find((route) => route.match('*'));
   }
 
-  getRoutes() {
+  getRouters() {
     return this.routers;
   }
 }
