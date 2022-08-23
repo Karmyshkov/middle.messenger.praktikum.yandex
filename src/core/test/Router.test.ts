@@ -13,7 +13,7 @@ export class Test extends Block {
 describe('core/Router', () => {
   router.use('/test-1', Test).use('/test-2', Test).start();
 
-  it('Should works add new routes', () => {
+  it('should works add new routes', () => {
     expect(router.getHistory().length).toEqual(2);
   });
 });
