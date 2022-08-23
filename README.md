@@ -57,6 +57,8 @@ https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/3
 
 ### Спринт 4
 
+https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/5
+
 * Написаны unit тесты для основных модулей (Jest)
 * Переход с Parcel на Webpack
 * Настройка образа Dockerfile
