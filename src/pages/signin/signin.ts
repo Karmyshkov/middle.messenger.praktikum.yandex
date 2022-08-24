@@ -16,6 +16,12 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.redirectUser();
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {
