@@ -83,7 +83,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": "npm lint:ts",
-    "*.css": "npm lint:style"
+    "*.ts": "npm run lint:ts",
+    "*.css": "npm run lint:style"
   }
 }
