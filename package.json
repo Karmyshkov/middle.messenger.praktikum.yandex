@@ -83,7 +83,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": "eslint --cache --fix",
-    "*.css": "stylelint --fix"
+    "*.ts": "npm lint:ts",
+    "*.css": "npm lint:style"
   }
 }
