@@ -1,16 +1,17 @@
 import { Block } from 'core';
+import { FormPopupProps } from './types';
 import './formPopup.css';
 
 export class FormPopup extends Block {
   static componentName = 'FormPopup';
 
-  constructor({ onSubmit, ...rest }: any) {
+  constructor({ onSubmit, ...rest }: FormPopupProps) {
     super({
       events: { submit: onSubmit },
       ...rest,
     });
   }
-  protected getStateFromProps(props: any): void {
+  protected getStateFromProps(props: FormPopupProps): void {
     this.state = {
       classesForm: props.classesForm,
       name: props.name,

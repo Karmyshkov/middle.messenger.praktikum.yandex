@@ -2,7 +2,7 @@ import { Block, BrowseRouter as router } from 'core';
 import 'styles/auth.css';
 import { FormValidator } from 'utils/classes';
 import { config, FORM_ELEMENTS, PATHNAMES } from 'utils/constants';
-import { handleSubmitForm, checkOnValueInput, checkIsLoginIn } from 'utils';
+import { handleSubmitForm, checkOnValueInput } from 'utils';
 import { authService } from 'services';
 import { SigninType } from 'types';
 
@@ -16,6 +16,12 @@ const signinFormValidator = new FormValidator(
 );
 
 export class SigninPage extends Block {
+  constructor(...args: any) {
+    super(...args);
+
+    authService.redirectUser();
+  }
+
   protected getStateFromProps() {
     this.state = {
       handleChangeInput: (evt: Event) => {

@@ -6,9 +6,7 @@ export interface BlockConstructable<Props extends Record<string, unknown>> {
   componentName: string;
 }
 
-export default function registerComponent<Props extends any>(
-  Component: BlockConstructable<Props>
-) {
+export default function registerComponent<Props>(Component: BlockConstructable<any>) {
   Handlebars.registerHelper(
     Component.componentName,
     function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
@@ -24,7 +22,7 @@ export default function registerComponent<Props extends any>(
 
       (Object.keys(hash) as any).forEach((key: keyof Props) => {
         if (this[key] && typeof this[key] === 'string') {
-          hash[key] = hash[key].replace(new RegExp(`{{${key}}}`, 'i'), this[key]);
+          hash[key] = hash[key].replace(new RegExp(`{{${String(key)}}}`, 'i'), this[key]);
         }
       });
 

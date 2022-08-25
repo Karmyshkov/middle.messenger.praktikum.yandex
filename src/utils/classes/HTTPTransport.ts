@@ -8,6 +8,8 @@ enum METHODS {
 
 type RequestData = Record<string, string | number>;
 
+type Data = Document | XMLHttpRequestBodyInit | null | undefined;
+
 type RequestOptions = {
   method?: METHODS;
   headers?: Record<string, string>;
@@ -53,7 +55,9 @@ export class HTTPTransport {
       withCredentials = true,
     } = options;
 
-    const query = method === METHODS.GET ? queryStringify(data as RequestData) : '';
+    const dataTypeCov = data as RequestData;
+
+    const query = method === METHODS.GET ? queryStringify(dataTypeCov) : '';
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -73,8 +77,8 @@ export class HTTPTransport {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      if (data?.constructor.name === 'FormData') {
-        xhr.send(data);
+      if (dataTypeCov?.constructor.name === 'FormData') {
+        xhr.send(data as Data);
       } else {
         method === METHODS.GET || !data ? xhr.send() : xhr.send(JSON.stringify(data));
       }

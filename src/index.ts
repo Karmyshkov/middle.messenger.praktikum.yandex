@@ -1,3 +1,4 @@
+import './index.css';
 import { registerComponent, BrowseRouter as router } from 'core';
 import { getScreenComponent, PATHNAMES } from './utils';
 import { Screens } from 'types';
