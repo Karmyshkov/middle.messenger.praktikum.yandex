@@ -84,7 +84,7 @@ https://github.com/Karmyshkov/middle.messenger.praktikum.yandex/pull/5
 npm run build
 ```
 
-Сборка и запуск статического сервера на Express:
+Запуск статического сервера на Express:
 
 ```bash
 npm run start
