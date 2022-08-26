@@ -96,19 +96,19 @@ npm run start
 npm run dev
 ```
 
-Eslinter
+Проверка на стилистические и типовые ошибки
 
 ```bash
 npm run lint:ts
 ```
 
-Проверка на стилистические и типовые ошибки
+Статический анализ css и postcss файлов
 
 ```bash
 npm run lint:style
 ```
 
-Статический анализ css и postcss файлов
+Запуск docker образа
 
 ```bash
 npm run docker
