@@ -133,3 +133,4 @@ npm run test
 - Netlify
 - Heroku
 - Surge CDN
+- Docker
